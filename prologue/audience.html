@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content=
-    "application/xhtml+xml; charset=iso-8859-1" />
+    "application/xhtml+xml; charset=utf-8" />
     <title>
       致读者
     </title>
@@ -35,7 +35,7 @@
           </p>
         </li>
         <li class="up">
-          <a accesskey="u" href="preface.html" title="Preface">Up</a>
+          <a accesskey="u" href="preface.html" title="Preface">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
@@ -50,66 +50,56 @@
       <p>
         说到为什么要读这本书，我想，原因一定很多。有些人可能会提出这样的疑问：
         <span class=
-        "quote">&ldquo;<span class="quote">都已经有现成的 Linux 系统可以下载
-        和安装了，你为什么还要多此一的从无到有创建一个呢？</span>&rdquo;</span>
+        "quote">&ldquo;<span class="quote">都已经有现成的 Linux 系统可以下载和安装了，你为什么还要多此一举的从无到有创建一个呢？</span>&rdquo;</span>
       </p>
       <p>
-        一个很重要的原因是，此项目存在的意义在于帮助你了解 Linux 内部是如何
-        工作的。通过构建 LFS 系统，你可以更好的理解 Linux 是如何正常运转，
-        和其它程序之间是如何协同工作，和其它程序之间的依赖关系。最棒的是：
-        从头构建 LFS 的经历，是打造量身定制的 Linux 系统的宝贵经验。
+        一个很重要的原因是，此项目存在的意义在于帮助你了解 Linux 内部是如何工作的。通过构建 LFS 系统，你可以更好的理解 Linux 是如何正常运转，和其它程序之间是如何协同工作，以及和其它程序之间的依赖关系。最棒的是：从头构建 LFS 的经历，是打造量身定制的 Linux 系统的宝贵经验。
       </p>
       <p>
-        另一个重要的原因是，你对系统本身有更多的控制权，而不比知道别人是如何实现的。
-        在 LFS 下，你就是主宰，系统的各个方面都需要你亲力亲为。
+        另一个重要的原因是，你对系统本身有更多的控制权，而不必知道别人是如何实现的。在 LFS 下，你就是主宰，系统的各个方面都需要你亲力亲为。
       </p>
       <p>
-        LFS 可以让你创建极其精简的 Linux 系统。当安装那些常规的 Linux 系统，
-        你往往迫不得已安装那些你用不到的（甚至你都不知道它们是干什么的）程序。
-        这些程序也许会浪费你的硬件资源。你可能要说了，现在计算机的资源那么丰富，
-        稍微浪费一些又有什么关系呢。但是你依旧要考虑到 CD、USB 或者是一些嵌入式
-        环境，它们对资源高度敏感，这恰恰是 LFS 擅的地方。
+        LFS 可以让你创建极其精简的 Linux 系统。当安装那些常规的 Linux 系统，你往往迫不得已安装那些你用不到的（甚至你都不知道它们是干什么的）程序。这些程序也许会浪费你的硬件资源。你可能要说了，现在计算机的资源那么丰富，稍微浪费一些又有什么关系呢。但是你依旧要考虑到可引导 CD、USB 棒或者是一些嵌入式环境，它们对资源高度敏感，这恰恰是 LFS 所擅长的地方。
       </p>
       <p>
-        另一个优势是，自定义的 Linux 系统有更高的安全性。通过从源码构建一个完整
-        的系统，你有权审核所有的代码和并入安全补丁。这避免了花很长时间去等待别人
-        编译包含补丁的二进制程序。而且，除非你检查了补丁文件且做了完整的验证，否
-        则你又怎么确信，新的二进制程序的的确确编译正确且解决了问题呢？
+        另一个优势是，自定义的 Linux 系统有更高的安全性。通过从源码构建一个完整的系统，你有权审核所有的代码和打入所需的安全补丁。这避免了花很长时间去等待别人编译修复了安全漏洞的二进制程序。而且，除非你检查了补丁文件且做了完整的验证，否则你又怎么能确信，新的二进制程序的的确确编译正确且解决了问题呢？
       </p>
       <p>
-        从零构建一个基本可用的 Linux 系统是本书的目标，如果你并不打算这么做，那么，
-        这本书可能对你来说用处并不大。
+        从零构建一个基本可用的 Linux 系统是本书的目标，如果你并不打算这么做，那么，这本书可能对你来说用处并不大。
       </p>
       <p>
-        有太多的原因来支撑你从头构建属于自己的 LFS 系统了。最重要的原因，我想还是当你
-        学会构建 LFS 后，就会发现你已经学会太多的相关信息和知识了（逼格指数提高一个数
-        量级，en，这一定是正确的！）。There are too many other good reasons to build your own LFS system to
-        list them all here. In the end, education is by far the most powerful
-        of reasons. As you continue in your LFS experience, you will discover
-        the power that information and knowledge truly bring.
+        有太多的原因来支撑你从头构建属于自己的 LFS 系统了。最重要的原因，我想还是当你学会构建 LFS 后，就会发现你已经学会太多的相关信息和知识了（逼格指数提高一个数量级，en，这一定是正确的！）。
       </p>
     </div>
     <div class="navfooter">
+      <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
+            </div>
+        </div>
+      </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="foreword.html" title="Foreword">Prev</a>
+          <a accesskey="p" href="foreword.html" title="Foreword">上一页</a>
           <p>
-            Foreword
+            前言
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="architecture.html" title=
-          "LFS Target Architectures">Next</a>
+          "LFS Target Architectures">下一页</a>
           <p>
-            LFS Target Architectures
+            LFS 的目标架构
           </p>
         </li>
         <li class="up">
-          <a accesskey="u" href="preface.html" title="Preface">Up</a>
+          <a accesskey="u" href="preface.html" title="Preface">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
