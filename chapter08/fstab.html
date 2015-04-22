@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=iso-8859-1" />
     <title>
-      8.2.&nbsp;Creating the /etc/fstab File
+      8.2.&nbsp;建立 /etc/fstab 文件
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -50,10 +50,9 @@
         the /etc/fstab File
       </h1>
       <p>
-        The <code class="filename">/etc/fstab</code> file is used by some
-        programs to determine where file systems are to be mounted by
-        default, in which order, and which must be checked (for integrity
-        errors) prior to mounting. Create a new file systems table like this:
+        <code class="filename">/etc/fstab</code> 文件的作用是让其它程序确定
+        存储设备的默认挂载点、挂载参数和检查信息（例如完整性检测）。使用以下
+        命令建立此文件：
       </p>
       <pre class="userinput">
 <kbd class="command">cat &gt; /etc/fstab &lt;&lt; "EOF"
