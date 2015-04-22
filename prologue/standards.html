@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content=
-    "application/xhtml+xml; charset=iso-8859-1" />
+    "application/xhtml+xml; charset=utf-8" />
     <title>
-      LFS and Standards
+      LFS和标准
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -18,21 +18,21 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Preface
+        前言
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="architecture.html" title=
           "LFS Target Architectures">Prev</a>
           <p>
-            LFS Target Architectures
+            LFS的目标架构
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="package-choices.html" title=
           "Rationale for Packages in the Book">Next</a>
           <p>
-            Rationale for Packages in the Book
+            本书中的软件包逻辑
           </p>
         </li>
         <li class="up">
@@ -46,11 +46,11 @@
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
-        <a id="pre-standards" name="pre-standards"></a>iv. LFS and Standards
+        <a id="pre-standards" name="pre-standards"></a>iv. LFS和标准
       </h1>
       <p>
-        The structure of LFS follows Linux standards as closely as possible.
-        The primary standards are:
+        LFS的结构尽可能的和Linux的标准相同。
+        主要的标准是：
       </p>
       <div class="itemizedlist">
         <ul>
@@ -64,49 +64,38 @@
             <p>
               <a class="ulink" href=
               "http://www.linuxfoundation.org/collaborate/workgroups/lsb/fhs-30-draft-1">
-              Filesystem Hierarchy Standard version 3.0 Draft 1 (FHS)</a>
+              文件系统层次标准 版本3.0 草案1 (FHS)</a>
             </p>
           </li>
           <li class="listitem">
             <p>
               <a class="ulink" href=
-              "http://refspecs.linuxfoundation.org/lsb.shtml">Linux Standard
-              Base (LSB) Specifications</a>
+              "http://refspecs.linuxfoundation.org/lsb.shtml">Linux标准基础（LSB）规格</a>
             </p>
             <p>
-              The LSB has five separate standards: Core, C++, Desktop,
-              Runtime Languages, and Printing. In addition to generic
-              requirements there are also architecture specific requirements.
-              LFS attempts to conform to the architectures discussed in the
-              previous section.
+              LSB有五个独立的标准：内核，C++，桌面，运行时语言和输出。除了普通的要求，还有架构特定要求。LFS试图符合前一节中所讨论的架构。
             </p>
             <div class="admon note">
               <img alt="[Note]" src="../images/note.png" />
               <h3>
-                Note
+                注意
               </h3>
               <p>
-                Many people do not agree with the requirements of the LSB.
-                The main purpose of defining it is to ensure that proprietary
-                software will be able to be installed and run properly on a
-                compliant system. Since LFS is source based, the user has
-                complete control over what packages are desired and many
-                choose not to install some packages that are specified by the
-                LSB.
+                很多人不认同LSB的要求。定义它的主要目的是确保私有软件将能够在
+                兼容系统上安装并统正常运行。由于LFS是基于源代码的，用户对什么
+                软件包是需要的有完全的控制权，很多人选择不安装LSB指定的软件包。
               </p>
             </div>
           </li>
         </ul>
       </div>
       <p>
-        Creating a complete LFS system capable of passing the LSB
-        certifications tests is possible, but not without many additional
-        packages that are beyond the scope of LFS. These additional packages
-        have installation instructions in BLFS.
+        创建一个能够通过LSB认证测试的完整LFS系统是可能的，但不能缺少
+        很多LFS范围之上的额外的软件包。在BLFS中有这些额外软件包的安装说明。
       </p>
       <div class="variablelist">
         <h3>
-          Packages supplied by LFS needed to satisfy the LSB Requirements
+          需要满足LSB要求的由LFS提供的软件包
         </h3>
         <table border="0" class="variablelist">
           <colgroup>
@@ -118,7 +107,7 @@
               <td>
                 <p>
                   <span class="term"><span class="emphasis"><em>LSB
-                  Core:</em></span></span>
+                  内核:</em></span></span>
                 </p>
               </td>
               <td>
@@ -146,12 +135,12 @@
               <td>
                 <p>
                   <span class="term"><span class="emphasis"><em>LSB
-                  Desktop:</em></span></span>
+                  桌面:</em></span></span>
                 </p>
               </td>
               <td>
                 <p>
-                  None
+                  无
                 </p>
               </td>
             </tr>
@@ -177,7 +166,7 @@
               </td>
               <td>
                 <p>
-                  None
+                  无
                 </p>
               </td>
             </tr>
@@ -190,7 +179,7 @@
               </td>
               <td>
                 <p>
-                  None
+                  无
                 </p>
               </td>
             </tr>
@@ -199,7 +188,7 @@
       </div>
       <div class="variablelist">
         <h3>
-          Packages supplied by BLFS needed to satisfy the LSB Requirements
+          需要满足LSB要求的由BLFS提供的软件包
         </h3>
         <table border="0" class="variablelist">
           <colgroup>
@@ -211,7 +200,7 @@
               <td>
                 <p>
                   <span class="term"><span class="emphasis"><em>LSB
-                  Core:</em></span></span>
+                  内核:</em></span></span>
                 </p>
               </td>
               <td>
@@ -230,7 +219,7 @@
               </td>
               <td>
                 <p>
-                  None
+                  无
                 </p>
               </td>
             </tr>
@@ -238,7 +227,7 @@
               <td>
                 <p>
                   <span class="term"><span class="emphasis"><em>LSB
-                  Desktop:</em></span></span>
+                  桌面:</em></span></span>
                 </p>
               </td>
               <td>
@@ -252,8 +241,7 @@
             <tr>
               <td>
                 <p>
-                  <span class="term"><span class="emphasis"><em>LSB Runtime
-                  Languages:</em></span></span>
+                  <span class="term"><span class="emphasis"><em>LSB运行时语言:</em></span></span>
                 </p>
               </td>
               <td>
@@ -265,8 +253,7 @@
             <tr>
               <td>
                 <p>
-                  <span class="term"><span class="emphasis"><em>LSB
-                  Printing:</em></span></span>
+                  <span class="term"><span class="emphasis"><em>LSB输出:</em></span></span>
                 </p>
               </td>
               <td>
@@ -278,8 +265,7 @@
             <tr>
               <td>
                 <p>
-                  <span class="term"><span class="emphasis"><em>LSB
-                  Multimeda:</em></span></span>
+                  <span class="term"><span class="emphasis"><em>LSB多媒体:</em></span></span>
                 </p>
               </td>
               <td>
@@ -293,7 +279,7 @@
       </div>
       <div class="variablelist">
         <h3>
-          Packages not supplied by LFS or BLFS needed to satisfy the LSB
+          需要满足LSB要求的非LFS或BLFS提供的软件包
           Requirements
         </h3>
         <table border="0" class="variablelist">
@@ -306,12 +292,12 @@
               <td>
                 <p>
                   <span class="term"><span class="emphasis"><em>LSB
-                  Core:</em></span></span>
+                  内核:</em></span></span>
                 </p>
               </td>
               <td>
                 <p>
-                  None
+                  无
                 </p>
               </td>
             </tr>
@@ -324,7 +310,7 @@
               </td>
               <td>
                 <p>
-                  None
+                  无
                 </p>
               </td>
             </tr>
@@ -332,7 +318,7 @@
               <td>
                 <p>
                   <span class="term"><span class="emphasis"><em>LSB
-                  Desktop:</em></span></span>
+                  桌面:</em></span></span>
                 </p>
               </td>
               <td>
@@ -344,26 +330,12 @@
             <tr>
               <td>
                 <p>
-                  <span class="term"><span class="emphasis"><em>LSB Runtime
-                  Languages:</em></span></span>
+                  <span class="term"><span class="emphasis"><em>LSB运行时语言:</em></span></span>
                 </p>
               </td>
               <td>
                 <p>
-                  None
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p>
-                  <span class="term"><span class="emphasis"><em>LSB
-                  Printing:</em></span></span>
-                </p>
-              </td>
-              <td>
-                <p>
-                  None
+                  无
                 </p>
               </td>
             </tr>
@@ -371,12 +343,24 @@
               <td>
                 <p>
                   <span class="term"><span class="emphasis"><em>LSB
-                  Multimeda:</em></span></span>
+                  输出:</em></span></span>
                 </p>
               </td>
               <td>
                 <p>
-                  None
+                  无
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>
+                  <span class="term"><span class="emphasis"><em>LSB多媒体:</em></span></span>
+                </p>
+              </td>
+              <td>
+                <p>
+                  无
                 </p>
               </td>
             </tr>
@@ -390,14 +374,14 @@
           <a accesskey="p" href="architecture.html" title=
           "LFS Target Architectures">Prev</a>
           <p>
-            LFS Target Architectures
+            LFS的目标架构
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="package-choices.html" title=
           "Rationale for Packages in the Book">Next</a>
           <p>
-            Rationale for Packages in the Book
+            本书中的软件包逻辑
           </p>
         </li>
         <li class="up">
