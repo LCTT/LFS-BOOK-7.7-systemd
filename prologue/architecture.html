@@ -22,14 +22,14 @@
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="audience.html" title="Audience">Prev</a>
+          <a accesskey="p" href="audience.html" title="Audience">上一页</a>
           <p>
-            Audience
+            读者
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="standards.html" title=
-          "LFS and Standards">Next</a>
+          "LFS and Standards">下一页</a>
           <p>
             LFS and Standards
           </p>
@@ -39,80 +39,64 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
-        <a id="pre-architecture" name="pre-architecture"></a>iii. LFS Target
-        Architectures
+        <a id="pre-architecture" name="pre-architecture"></a>iii. LFS 目标架构
       </h1>
       <p>
-        The primary target architectures of LFS are the AMD/Intel x86
-        (32-bit) and x86_64 (64-bit) CPUs. On the other hand, the
-        instructions in this book are also known to work, with some
-        modifications, with the Power PC and ARM CPUs. To build a system that
-        utilizes one of these CPUs, the main prerequisite, in addition to
-        those on the next few pages, is an existing Linux system such as an
-        earlier LFS installation, Ubuntu, Red Hat/Fedora, SuSE, or other
-        distribution that targets the architecture that you have. Also note
-        that a 32-bit distribution can be installed and used as a host system
-        on a 64-bit AMD/Intel computer.
+        LFS 当前主要支持 AMD/Intel 的 x86(32 位)和 x86_64 (64 位) CPU。另外，本文档
+        也涉及一些更改可以让 LFS 顺利的运行于 Power PC 和 ARM CPU。为了顺利的构建 LFS，
+        除了后面几页的内容外，你还需要一个可以在当前 CPU 上正常运行的 Linux 系统，例如：
+        早先版本的 LFS，Ubuntu/Fedora/ Suse或者是其它的发行版。对了，32 位的发行版是可以
+        正常的在 64 位的 AMD/Intel 处理器上正常的运作的。
       </p>
       <p>
-        Some other facts about 64-bit systems need to be added here. When
-        compared to a 32-bit system, the sizes of executable programs are
-        slightly larger and the execution speeds are only slightly faster.
-        For example, in a test build of LFS-6.5 on a Core2Duo CPU based
-        system, the following statistics were measured:
+        不过，64 位的一些实情是：和 32 位相比，运行的速度稍微的快那么一点点，但是
+        相较而言，体积也稍微的大一点点。以在 Core 2 Duo 处理器上运行的 LFS-6.5 系统
+        为例，以下是一些实际的数据：
       </p>
       <pre class="screen">
-<code class="computeroutput">Architecture Build Time     Build Size
+<code class="computeroutput">架构 构建时间     构建后体积
 32-bit       198.5 minutes  648 MB
 64-bit       190.6 minutes  709 MB</code>
 </pre>
       <p>
-        As you can see, the 64-bit build is only 4% faster and is 9% larger
-        than the 32-bit build. The gain from going to a 64-bit system is
-        relatively minimal. Of course, if you have more than 4GB of RAM or
-        want to manipulate data that exceeds 4GB, the advantages of a 64-bit
-        system are substantial.
+        正如你看到的，64 位程序仅仅比 32 位程序快了 4%，体积大了 9%。由此可见，
+        单纯的追逐 64 位系统其实并没有太大的必要。但是，假如你的电脑的内存超过
+        了 4G 又或者说需要操作大于 4G 的数据，64 位系统的优势就比较明显了。
       </p>
       <p>
-        The default 64-bit build that results from LFS is considered a "pure"
-        64-bit system. That is, it supports 64-bit executables only. Building
-        a "multi-lib" system requires compiling many applications twice, once
-        for a 32-bit system and once for a 64-bit system. This is not
-        directly supported in LFS because it would interfere with the
-        educational objective of providing the instructions needed for a
-        straightforward base Linux system. You can refer to the <a class=
-        "ulink" href="http://trac.clfs.org/">Cross Linux From Scratch</a>
-        project for this advanced topic.
+        假如按照本文的默认方式构建，那么你将得到一个纯粹的 64 位系统————这意味着
+        你仅能够执行 64 位的程序。构建 "multi-lib" 也并不是不可，但是这意味着很
+        多的程序都需要编译两次：一次编译为 32 位程序，一次编译为 64 位程序。不过，
+        本文档并不涉及这部份的内容：这会干扰用户学习构建“最基本” Linux 系统。你可
+        以通过阅读 <a class=
+        "ulink" href="http://trac.clfs.org/">Cross Linux From Scratch</a> 相关内容
+        获得有关本话题的更多帮助。
       </p>
       <p>
-        There is one last comment about 64-bit systems. There are some older
-        packages that cannot currently be built in a "pure" 64-bit system or
-        require specialized build instructions. Generally, these packages
-        have some embedded 32-bit specific assembly language instructions
-        that fail when building on a 64-bit system. This includes some Xorg
-        drivers for some legacy video cards at <a class="ulink" href=
-        "http://xorg.freedesktop.org/releases/individual/driver/">http://xorg.freedesktop.org/releases/individual/driver/</a>.
-        Many of these problems can be worked around, but may require some
-        specialized procedures or patches.
+        关于 64 位系统，还有一点需要说明。有一些异常老旧的包无法在纯 64 位系统
+        上构建，或者是需要专门的编译指令。通常出现这样的问题是因为这些包包含有
+        一些与 32 位系统紧密相关的汇编指令。这些包包括一些 Xorg 的视频卡驱动（<a class="ulink" href=
+        "http://xorg.freedesktop.org/releases/individual/driver/">http://xorg.freedesktop.org/releases/individual/driver/</a>），
+        许多类似的情况都有解决方案，但可能需要特别的程序或者是补丁。
       </p>
     </div>
     <div class="navfooter">
       <ul>
         <li class="prev">
-          <a accesskey="p" href="audience.html" title="Audience">Prev</a>
+          <a accesskey="p" href="audience.html" title="Audience">上一页</a>
           <p>
-            Audience
+            读者
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="standards.html" title=
-          "LFS and Standards">Next</a>
+          "LFS and Standards">下一页</a>
           <p>
             LFS and Standards
           </p>
@@ -122,7 +106,7 @@
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
