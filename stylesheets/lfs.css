@@ -611,3 +611,10 @@ p.updated {
 .feature-blowfish {
   color: #8E6B23
 }
+
+li.sect1 a,li.appendix a {
+  color: red !important;
+}
+li.translated a,li.translated a{
+  color: green !important;
+}
