@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="pre-standards">
+  <?dbhtml filename="standards.html"?>
+
+  <title>LFS and Standards</title>
+
+  <!--<sect2>
+    <title/> -->
+
+     <para>The structure of LFS follows Linux standards as closely as
+     possible.  The primary standards are:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><ulink url="http://pubs.opengroup.org/onlinepubs/9699919799/">
+        POSIX.1-2008</ulink>.</para>
+      </listitem>
+      <listitem>
+        <para><ulink 
+        url="http://www.linuxfoundation.org/collaborate/workgroups/lsb/fhs-30-draft-1">
+        Filesystem Hierarchy Standard version 3.0 Draft 1 (FHS)</ulink></para>
+
+      </listitem>
+      <listitem>
+        <para><ulink url="http://refspecs.linuxfoundation.org/lsb.shtml">Linux
+        Standard Base (LSB) Specifications</ulink></para>
+
+        <para>The LSB has five separate standards: Core, C++, Desktop,
+        Runtime Languages, and Printing. In addition to generic requirements
+        there are also architecture specific requirements.  LFS attempts to
+        conform to the architectures discussed in the previous section.</para>
+
+        <note><para>Many people do not agree with the requirements of the LSB.
+        The main purpose of defining it is to ensure that proprietary software
+        will be able to be installed and run properly on a compliant system.
+        Since LFS is source based, the user has complete control over what
+        packages are desired and many choose not to install some packages that
+        are specified by the LSB.</para></note>
+
+      </listitem>
+    </itemizedlist>
+
+    <para>Creating a complete LFS system capable of passing the LSB
+    certifications tests is possible, but not without many additional packages
+    that are beyond the scope of LFS.  These additional packages have
+    installation instructions in BLFS. </para>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Packages supplied by LFS needed to
+          satisfy the LSB Requirements</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry>
+        <term><emphasis>LSB Core:</emphasis></term>
+        <listitem>
+          <para>Bash, Bc, Binutils, Coreutils, Diffutils, File, Findutils, Gawk,
+                Grep, Gzip, M4, Man-DB, Ncurses, Procps, Psmisc, Sed,
+                Shadow, Tar, Util-linux, Zlib</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB C++:</emphasis></term>
+        <listitem>
+          <para>Gcc</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Desktop:</emphasis></term>
+        <listitem>
+          <para>None</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Runtime Languages:</emphasis></term>
+        <listitem>
+          <para>Perl</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Printing:</emphasis></term>
+        <listitem>
+          <para>None</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Multimeda:</emphasis></term>
+        <listitem>
+          <para>None</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Packages supplied by BLFS needed to
+          satisfy the LSB Requirements</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry>
+        <term><emphasis>LSB Core:</emphasis></term>
+        <listitem>
+          <para>At, Batch (a part of At), Cpio, Ed, Fcrontab, Initd-tools,
+          Lsb_release, PAM, Pax, Sendmail (or Postfix or Exim), time </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB C++:</emphasis></term>
+        <listitem>
+          <para>None</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Desktop:</emphasis></term>
+        <listitem>
+          <para>ATK, Cairo, Desktop-file-utils, Freetype, Fontconfig,
+                Glib2, GTK+2, Icon-naming-utils, Libjpeg, Libpng, Libxml2,
+                MesaLib, Pango, Qt4, Xorg</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Runtime Languages:</emphasis></term>
+        <listitem>
+          <para>Python</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Printing:</emphasis></term>
+        <listitem>
+          <para>CUPS</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Multimeda:</emphasis></term>
+        <listitem>
+          <para>Alsa Libraries, NSPR, NSS, OpenSSL, Java, Xdg-utils</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Packages not supplied by LFS or BLFS
+      needed to satisfy the LSB Requirements</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry>
+        <term><emphasis>LSB Core:</emphasis></term>
+        <listitem>
+          <para>None</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB C++:</emphasis></term>
+        <listitem>
+          <para>None</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Desktop:</emphasis></term>
+        <listitem>
+          <para>Qt3</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Runtime Languages:</emphasis></term>
+        <listitem>
+          <para>None</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Printing:</emphasis></term>
+        <listitem>
+          <para>None</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><emphasis>LSB Multimeda:</emphasis></term>
+        <listitem>
+          <para>None</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+</sect1>
+

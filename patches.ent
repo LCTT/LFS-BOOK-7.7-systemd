@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- Start of Common Patches -->
+
+<!ENTITY bash-fixes-patch "bash-&bash-version;-upstream_fixes-1.patch">
+<!ENTITY bash-fixes-patch-md5 "e2571929a43fdf76ae1eb683fe86b5c0">
+<!ENTITY bash-fixes-patch-size "8.8 KB">
+
+<!ENTITY bc-memory-leak-patch "bc-&bc-version;-memory_leak-1.patch">
+<!ENTITY bc-memory-leak-patch-md5 "877e81fba316fe487ec23501059d54b8">
+<!ENTITY bc-memory-leak-patch-size "1.4 KB">
+
+<!ENTITY bzip2-docs-patch "bzip2-&bzip2-version;-install_docs-1.patch">
+<!ENTITY bzip2-docs-patch-md5 "6a5ac7e89b791aae556de0f745916f7f">
+<!ENTITY bzip2-docs-patch-size "1.6 KB">
+
+<!ENTITY coreutils-i18n-patch "coreutils-&coreutils-version;-i18n-1.patch">
+<!ENTITY coreutils-i18n-patch-md5 "587051bc411e0da9b3bf8984b49b364e">
+<!ENTITY coreutils-i18n-patch-size "138 KB">
+
+<!ENTITY glibc-fhs-patch "glibc-&glibc-version;-fhs-1.patch">
+<!ENTITY glibc-fhs-patch-md5 "9a5997c3452909b1769918c759eff8a2">
+<!ENTITY glibc-fhs-patch-size "2.8 KB">
+
+<!ENTITY kbd-backspace-patch "kbd-&kbd-version;-backspace-1.patch">
+<!ENTITY kbd-backspace-patch-md5 "f75cca16a38da6caa7d52151f7136895">
+<!ENTITY kbd-backspace-patch-size "12 KB">
+
+<!ENTITY mpfr-fixes-patch "mpfr-&mpfr-version;-upstream_fixes-3.patch">
+<!ENTITY mpfr-fixes-patch-md5 "5ba8bafe42920d6e570567529629bc59">
+<!ENTITY mpfr-fixes-patch-size "38 KB">
+
+<!--
+<!ENTITY perl-fix-patch "perl-&perl-version;-infinite_recurse_fix-1.patch">
+<!ENTITY perl-fix-patch-md5 "579dfed34e97e0a2fe21b74aa53946ac">
+<!ENTITY perl-fix-patch-size "11 KB">
+-->
+
+<!ENTITY readline-fixes-patch "readline-&readline-version;-upstream_fixes-3.patch">
+<!ENTITY readline-fixes-patch-md5 "6b0d9f4e79319d56a7fee9b35e5cfd1b">
+<!ENTITY readline-fixes-patch-size "8 KB">
+
+<!ENTITY systemd-compat-patch "systemd-&systemd-version;-compat-1.patch">
+<!ENTITY systemd-compat-patch-md5 "5b629e00a1a501a103b5561df3ccf148">
+<!ENTITY systemd-compat-patch-size "12 KB">
