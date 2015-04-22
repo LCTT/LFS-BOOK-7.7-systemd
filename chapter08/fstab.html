@@ -51,14 +51,14 @@
       </h1>
       <p>
         <code class="filename">/etc/fstab</code> 文件的作用是让其它程序确定
-        存储设备的默认挂载点、挂载参数和检查信息（例如完整性检测）。使用以下
-        命令建立此文件：
+        存储设备的默认挂载点、挂载参数和检查信息（例如完整性检测）。仿照以下
+        格式新建一个 File System TABl（fstab）文件：
       </p>
       <pre class="userinput">
 <kbd class="command">cat &gt; /etc/fstab &lt;&lt; "EOF"
 <code class="literal"># Begin /etc/fstab
 
-# file system  mount-point  type     options             dump  fsck
+# 文件系统  挂载点  文件类型     挂载选项             dump  fsck
 #                                                              order
 
 /dev/<em class=
@@ -71,38 +71,33 @@
 EOF</kbd>
 </pre>
       <p>
-        Replace <em class="replaceable"><code>&lt;xxx&gt;</code></em>,
-        <em class="replaceable"><code>&lt;yyy&gt;</code></em>, and <em class=
-        "replaceable"><code>&lt;fff&gt;</code></em> with the values
-        appropriate for the system, for example, <code class=
-        "filename">sda2</code>, <code class="filename">sda5</code>, and
-        <code class="systemitem">ext4</code>. For details on the six fields
-        in this file, see <span class="command"><strong>man 5
-        fstab</strong></span>.
+        其中，<em class="replaceable"><code>&lt;xxx&gt;</code></em>，
+        <em class="replaceable"><code>&lt;yyy&gt;</code></em> 和 <em class=
+        "replaceable"><code>&lt;fff&gt;</code></em> 请使用适当的值替换。例如
+        <code class="filename">sda2</code>，<code class="filename">sda5</code>
+        和<code class="systemitem">ext4</code>。关于第六列字段的含义，请查看
+        <span class="command"><strong>man 5 fstab</strong></span>（译者注：
+        fsck 列的数值来决定需要检查的文件系统的检查顺序。允许的数字是0, 1, 和2。
+        根目录应当获得最高的优先权 1, 其它所有需要被检查的设备设置为 2。
+        0 表示设备不会被 fsck 所检查。）。
       </p>
       <p>
-        Filesystems with MS-DOS or Windows origin (i.e.: vfat, ntfs, smbfs,
-        cifs, iso9660, udf) need the <span class="quote">&ldquo;<span class=
-        "quote">iocharset</span>&rdquo;</span> mount option in order for
-        non-ASCII characters in file names to be interpreted properly. The
-        value of this option should be the same as the character set of your
-        locale, adjusted in such a way that the kernel understands it. This
-        works if the relevant character set definition (found under File
-        systems -&gt; Native Language Support) has been compiled into the
-        kernel or built as a module. The <span class=
-        "quote">&ldquo;<span class="quote">codepage</span>&rdquo;</span>
-        option is also needed for vfat and smbfs filesystems. It should be
-        set to the codepage number used under MS-DOS in your country. E.g.,
-        in order to mount USB flash drives, a ru_RU.KOI8-R user would need
-        the following in the options portion of its mount line in
-        <code class="filename">/etc/fstab</code>:
+        基于 MS-DOS 或者是来源于 Windows 的文件系统（例如：vfat，ntfs，smbfs，
+        cifs，iso9660，udf）需要在挂载选项中添加 <span class="quote">&ldquo;
+        <span class="quote">iocharset</span>&rdquo;</span>，才能让非 ASCII 字
+        符的文件名正确解析。此选项的值应该与语言区域设置的值相同，以让内核正确
+        的处理。此选项在相关字符集定义已为内核内建或是编译为模块时生效（在文件
+        系统 -&gt; 本地语言支持中查看）。此外，vfat 和 smbfs 还需启用 <span class=
+        "quote">&ldquo;<span class="quote">codepage</span>&rdquo;</span> 支持。例
+        如，想要挂载 USB 闪存设备，zh-CN.GBK 用户需要在 <code class="filename">
+            /etc/fstab</code> 中添加以下的挂载选项：
       </p>
       <pre class="screen">
 <code class=
-"literal">noauto,user,quiet,showexec,iocharset=koi8r,codepage=866</code>
+"literal">noauto,user,quiet,showexec,iocharset=gbk,codepage=866</code>
 </pre>
       <p>
-        The corresponding options fragment for ru_RU.UTF-8 users is:
+        假如这个用户是 zh-CN.UTF-8 用户则是：
       </p>
       <pre class="screen">
 <code class=
@@ -111,10 +106,10 @@ EOF</kbd>
       <div class="admon note">
         <img alt="[Note]" src="../images/note.png" />
         <h3>
-          Note
+          注意
         </h3>
         <p>
-          In the latter case, the kernel emits the following message:
+          在后一种情况下，内核将会输出以下的信息：
         </p>
         <pre class="screen">
 <code class=
@@ -122,48 +117,42 @@ EOF</kbd>
     filesystem will be case sensitive!</code>
 </pre>
         <p>
-          This negative recommendation should be ignored, since all other
-          values of the <span class="quote">&ldquo;<span class=
-          "quote">iocharset</span>&rdquo;</span> option result in wrong
-          display of filenames in UTF-8 locales.
+          此提示信息其实是错误的，忽略它就好，因为在 UTF-8 模式下，<span class="quote">
+              &ldquo;<span class="quote">iocharset</span>&rdquo;</span> 的任何其它选项
+              都会导致错误的显示。
         </p>
       </div>
       <p>
-        It is also possible to specify default codepage and iocharset values
-        for some filesystems during kernel configuration. The relevant
-        parameters are named <span class="quote">&ldquo;<span class=
+        此外，还有可能在内核的配置过程中就指定一些文件系统的默认代码页和 
+        iocharset 值。相关参数有 <span class="quote">&ldquo;<span class=
         "quote">Default NLS Option</span>&rdquo;</span> (<code class=
-        "option">CONFIG_NLS_DEFAULT)</code>, <span class=
+        "option">CONFIG_NLS_DEFAULT)</code>，<span class=
         "quote">&ldquo;<span class="quote">Default Remote NLS
         Option</span>&rdquo;</span> (<code class=
-        "option">CONFIG_SMB_NLS_DEFAULT</code>), <span class=
+        "option">CONFIG_SMB_NLS_DEFAULT</code>)，<span class=
         "quote">&ldquo;<span class="quote">Default codepage for
         FAT</span>&rdquo;</span> (<code class=
-        "option">CONFIG_FAT_DEFAULT_CODEPAGE</code>), and <span class=
+        "option">CONFIG_FAT_DEFAULT_CODEPAGE</code>)，和 <span class=
         "quote">&ldquo;<span class="quote">Default iocharset for
         FAT</span>&rdquo;</span> (<code class=
-        "option">CONFIG_FAT_DEFAULT_IOCHARSET</code>). There is no way to
-        specify these settings for the ntfs filesystem at kernel compilation
-        time.
+        "option">CONFIG_FAT_DEFAULT_IOCHARSET</code>)。不过，无法在内核编译阶段
+        指定 ntfs 文件系统的设置。
       </p>
       <p>
-        It is possible to make the ext3 filesystem reliable across power
-        failures for some hard disk types. To do this, add the <code class=
-        "option">barrier=1</code> mount option to the appropriate entry in
-        <code class="filename">/etc/fstab</code>. To check if the disk drive
-        supports this option, run <a class="ulink" href=
+        另外，一些硬盘类型在遇到电源故障时，假如在 <code class="filename">/etc/fstab</code> 中
+        使用 <code class="option">barrier=1</code> 这个挂载选项，则会让 ext3 文件系统的数据更加安全。
+        如需检查磁盘是否支持此选项，请运行<a class="ulink" href=
         "http://www.linuxfromscratch.org/blfs/view/systemd/general/hdparm.html">
-        hdparm</a> on the applicable disk drive. For example, if:
+        hdparm</a>。例如：
       </p>
       <pre class="userinput">
 <kbd class="command">hdparm -I /dev/sda | grep NCQ</kbd>
 </pre>
       <p>
-        returns non-empty output, the option is supported.
+        如果无返回值，则代表选项可用。returns non-empty output, the option is supported.
       </p>
       <p>
-        Note: Logical Volume Management (LVM) based partitions cannot use the
-        <code class="option">barrier</code> option.
+        注意：Logical Volume Management (LVM) 分区不可使<code class="option">barrier</code> 选项。
       </p>
     </div>
     <div class="navfooter">

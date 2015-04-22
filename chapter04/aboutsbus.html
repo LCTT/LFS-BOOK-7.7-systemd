@@ -1,146 +1,71 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content=
-    "application/xhtml+xml; charset=iso-8859-1" />
-    <title>
-      4.5.&nbsp;About SBUs
-    </title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
-    <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
-    <link rel="stylesheet" href="stylesheets/lfs-print.css" type="text/css"
-    media="print" />
-  </head>
-  <body class="lfs" id="lfs-7.7-systemd">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=iso-8859-1">
+<title>4.5.&nbsp;关于 SBU（标准编译单位）</title>
+<link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="stylesheet" href="stylesheets/lfs-print.css" type="text/css" media="print">
+</head>
+<body class="lfs" id="lfs-7.7-systemd">
     <div class="navheader">
-      <h4>
-        Linux From Scratch - Version 7.7-systemd
-      </h4>
-      <h3>
-        Chapter&nbsp;4.&nbsp;Final Preparations
-      </h3>
+      <h4>Linux From Scratch - Version 7.7-systemd</h4>
+      <h3>第四章.&nbsp;最后的准备工作</h3>
       <ul>
-        <li class="prev">
-          <a accesskey="p" href="settingenvironment.html" title=
-          "Setting Up the Environment">Prev</a>
-          <p>
-            Setting Up the Environment
-          </p>
+<li class="prev">
+<a accesskey="p" title="Setting Up the Environment" href="settingenvironment.html">上一章</a><p>设置环境</p>
         </li>
         <li class="next">
-          <a accesskey="n" href="abouttestsuites.html" title=
-          "About the Test Suites">Next</a>
-          <p>
-            About the Test Suites
-          </p>
+<a accesskey="n" title="About the Test Suites" href="abouttestsuites.html">下一章</a><p>关于测试套件</p>
         </li>
-        <li class="up">
-          <a accesskey="u" href="chapter04.html" title=
-          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
-        </li>
-        <li class="home">
-          <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
-        </li>
+        <li class="up">&lt;font color="#5e717f"&gt;<u>向上</u>&lt;/font&gt;</li>
+        <li class="home"><a accesskey="h" href="../index.html" title="Linux From Scratch - Version 7.7-systemd">主页</a></li>
       </ul>
-    </div>
-    <div class="sect1" lang="en" xml:lang="en">
+</div>
+    <div class="sect1" lang="zh_CN" xml:lang="en">
       <h1 class="sect1">
-        <a id="prepare-aboutsbus" name="prepare-aboutsbus"></a>4.5. About
-        SBUs
-      </h1>
-      <p>
-        Many people would like to know beforehand approximately how long it
-        takes to compile and install each package. Because Linux From Scratch
-        can be built on many different systems, it is impossible to provide
-        accurate time estimates. The biggest package (Glibc) will take
-        approximately 20 minutes on the fastest systems, but could take up to
-        three days on slower systems! Instead of providing actual times, the
-        Standard Build Unit (SBU) measure will be used instead.
-      </p>
-      <p>
-        The SBU measure works as follows. The first package to be compiled
-        from this book is Binutils in <a class="xref" href=
-        "../chapter05/chapter05.html" title=
-        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Chapter 5</a>.
-        The time it takes to compile this package is what will be referred to
-        as the Standard Build Unit or SBU. All other compile times will be
-        expressed relative to this time.
-      </p>
-      <p>
-        For example, consider a package whose compilation time is 4.5 SBUs.
-        This means that if a system took 10 minutes to compile and install
-        the first pass of Binutils, it will take <span class=
-        "emphasis"><em>approximately</em></span> 45 minutes to build this
-        example package. Fortunately, most build times are shorter than the
-        one for Binutils.
-      </p>
-      <p>
-        In general, SBUs are not entirely accurate because they depend on
-        many factors, including the host system's version of GCC. They are
-        provided here to give an estimate of how long it might take to
-        install a package, but the numbers can vary by as much as dozens of
-        minutes in some cases.
-      </p>
+<a id="prepare-aboutsbus" name="prepare-aboutsbus"></a>4.5. 标准编译单位</h1>
+      <p>不少人在开始做之前都想要知道，编译和安装一个软件包到底需要
+	多长的时间。实在是抱歉，因为 Linux From Scratch 能够运行于众
+	多的硬件上，所以具体的编译时间无法一概而论。举一个简单的例子：
+	在最快的硬件设备上，编译那种非常巨大的软件包（如 Glibc）可能
+	仅需要 20 分钟，在那种很慢很慢的硬件上呢，这个时间可能就变
+	成 3 天了。所以，这里使用 SBU（标准编译单位）来代替具体的
+	编译时间。</p>
+      <p>我们以 <a title="Chapter&nbsp;5.&nbsp;Constructing a Temporary 
+	System" class="xref" href="../chapter05/chapter05.html">第五章</a> 编译的
+	第一个软件包 Binutils 所用时间作为一个标准 SBU，其它软件的生成时间都以其为标准进行
+	比较。</p>
+      <p>例如，假如编译一个软件耗时 4.5 SBU，而编译一个 Binutils 用时 10 分钟的话，那么编
+	译这个软件包 <span class="emphasis"><em>大约</em></span>耗时 45 分钟。当然啦，
+	对于大多数人来说，编译 Binutils 可用不了 10 分钟那么久。</p>
+      <p>一般来说，SBU 的结果并不准确，因为影响编译的因素太多，例如宿主机的 GCC 版本的不同就
+	会改变编译的时间。所以更多的时候，这仅仅是提供一个编译和安装时间的预估，有些情况下，预
+	估时间和实际编译时间可能相差几十分钟。</p>
       <div class="admon note">
-        <img alt="[Note]" src="../images/note.png" />
-        <h3>
-          Note
-        </h3>
-        <p>
-          For many modern systems with multiple processors (or cores) the
-          compilation time for a package can be reduced by performing a
-          "parallel make" by either setting an environment variable or
-          telling the <span class="command"><strong>make</strong></span>
-          program how many processors are available. For instance, a Core2Duo
-          can support two simultaneous processes with:
-        </p>
-        <pre class="userinput">
-<kbd class="command">export MAKEFLAGS='-j 2'</kbd>
-</pre>
-        <p>
-          or just building with:
-        </p>
-        <pre class="userinput">
-<kbd class="command">make -j2</kbd>
-</pre>
-        <p>
-          When multiple processors are used in this way, the SBU units in the
-          book will vary even more than they normally would. In some cases,
-          the make step will simply fail. Analyzing the output of the build
-          process will also be more difficult because the lines of different
-          processes will be interleaved. If you run into a problem with a
-          build step, revert back to a single processor build to properly
-          analyze the error messages.
-        </p>
+<img alt="[Note]" src="../images/note.png"><h3>注意</h3>
+        <p>对于大多数现代操作系统而言，可以通过设置环境变量或者是告知&nbsp;<span class="command">
+	<strong>make</strong></span><span>&nbsp;程序具体可用的 CPU 数目或者是核心数据来进行
+	“</span>并行编译”而减少编译的时间。例如，对于&nbsp;Core2Duo 可以通过以下参数实现双核同时
+	编译：</p>
+        <pre class="userinput"><kbd class="command">export MAKEFLAGS='-j 2'</kbd></pre>
+        <p>或者直接这样编译：</p>
+        <pre class="userinput"><kbd class="command">make -j2</kbd></pre>
+        <p>当使用多核心同时编译，SBU 的结果可能和本书提供的建议值有所不同。在一些情况下，
+	使用多核心同时编译可能失败，分析错误日志变得异常困难：因为核心之间是交叉编译（导致
+	错误信息乱七八糟）。如果你在编译的时候遇到问题，那么请使用单核心编译，然后查看错误消息。</p>
       </div>
     </div>
     <div class="navfooter">
       <ul>
-        <li class="prev">
-          <a accesskey="p" href="settingenvironment.html" title=
-          "Setting Up the Environment">Prev</a>
-          <p>
-            Setting Up the Environment
-          </p>
+<li class="prev">
+<a accesskey="p" title="Setting Up the Environment" href="settingenvironment.html">上一章</a><p>设置环境</p>
         </li>
         <li class="next">
-          <a accesskey="n" href="abouttestsuites.html" title=
-          "About the Test Suites">Next</a>
-          <p>
-            About the Test Suites
-          </p>
+<a accesskey="n" title="About the Test Suites" href="abouttestsuites.html">下一章</a><p>关于测试套件</p>
         </li>
-        <li class="up">
-          <a accesskey="u" href="chapter04.html" title=
-          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
-        </li>
-        <li class="home">
-          <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
-        </li>
+        <li class="up">&lt;font color="#5e717f"&gt;<u>向上</u>&lt;/font&gt;</li>
+        <li class="home"><a accesskey="h" href="../index.html" title="Linux From Scratch - Version 7.7-systemd">主页</a></li>
       </ul>
-    </div>
+</div>
   </body>
 </html>
