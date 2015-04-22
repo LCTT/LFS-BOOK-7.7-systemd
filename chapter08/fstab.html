@@ -3,9 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content=
-    "application/xhtml+xml; charset=iso-8859-1" />
+    "application/xhtml+xml; charset=iutf-8" />
     <title>
-      8.2.&nbsp;建立 /etc/fstab 文件
+      8.2.&nbsp;创建 /etc/fstab 文件
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -18,41 +18,38 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;8.&nbsp;Making the LFS System Bootable
+        第八章&nbsp;让 LFS 系统可引导
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="introduction.html" title=
-          "Introduction">Prev</a>
+          "Introduction">上一页</a>
           <p>
-            Introduction
+            简介
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="kernel.html" title="Linux-3.19">Next</a>
+          <a accesskey="n" href="kernel.html" title="Linux-3.19">下一页</a>
           <p>
             Linux-3.19
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter08.html" title=
-          "Chapter&nbsp;8.&nbsp;Making the LFS System Bootable">Up</a>
+          "第八章&nbsp;让 LFS 系统可引导">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
-        <a id="ch-bootable-fstab" name="ch-bootable-fstab"></a>8.2. Creating
-        the /etc/fstab File
+        <a id="ch-bootable-fstab" name="ch-bootable-fstab"></a>8.2. 创建 /etc/fstab 文件
       </h1>
       <p>
-        <code class="filename">/etc/fstab</code> 文件的作用是让其它程序确定
-        存储设备的默认挂载点、挂载参数和检查信息（例如完整性检测）。仿照以下
-        格式新建一个 File System TABl（fstab）文件：
+        <code class="filename">/etc/fstab</code> 文件的作用是让其它程序确定存储设备的默认挂载点、挂载参数和检查信息（例如完整性检测）。仿照以下格式新建一个 File System TABle（fstab）文件：
       </p>
       <pre class="userinput">
 <kbd class="command">cat &gt; /etc/fstab &lt;&lt; "EOF"
@@ -75,33 +72,24 @@ EOF</kbd>
         <em class="replaceable"><code>&lt;yyy&gt;</code></em> 和 <em class=
         "replaceable"><code>&lt;fff&gt;</code></em> 请使用适当的值替换。例如
         <code class="filename">sda2</code>，<code class="filename">sda5</code>
-        和<code class="systemitem">ext4</code>。关于第六列字段的含义，请查看
-        <span class="command"><strong>man 5 fstab</strong></span>（译者注：
-        fsck 列的数值来决定需要检查的文件系统的检查顺序。允许的数字是0, 1, 和2。
-        根目录应当获得最高的优先权 1, 其它所有需要被检查的设备设置为 2。
-        0 表示设备不会被 fsck 所检查。）。
+        和 <code class="systemitem">ext4</code>。关于第六列字段的含义，请查看
+        <span class="command"><strong>man 5 fstab</strong></span>（译者注：fsck 列的数值来决定需要检查的文件系统的检查顺序。允许的数字是0, 1, 和2。根目录应当获得最高的优先权 1, 其它所有需要被检查的设备设置为 2。0 表示设备不会被 fsck 所检查。）。
       </p>
       <p>
-        基于 MS-DOS 或者是来源于 Windows 的文件系统（例如：vfat，ntfs，smbfs，
-        cifs，iso9660，udf）需要在挂载选项中添加 <span class="quote">&ldquo;
-        <span class="quote">iocharset</span>&rdquo;</span>，才能让非 ASCII 字
-        符的文件名正确解析。此选项的值应该与语言区域设置的值相同，以让内核正确
-        的处理。此选项在相关字符集定义已为内核内建或是编译为模块时生效（在文件
-        系统 -&gt; 本地语言支持中查看）。此外，vfat 和 smbfs 还需启用 <span class=
-        "quote">&ldquo;<span class="quote">codepage</span>&rdquo;</span> 支持。例
-        如，想要挂载 USB 闪存设备，zh-CN.GBK 用户需要在 <code class="filename">
-            /etc/fstab</code> 中添加以下的挂载选项：
+        基于 MS-DOS 或者是来源于 Windows 的文件系统（例如：vfat，ntfs，smbfs，cifs，iso9660，udf）需要在挂载选项中添加 <span class="quote">&ldquo;
+        <span class="quote">iocharset</span>&rdquo;</span>，才能让非 ASCII 字符的文件名正确解析。此选项的值应该与语言区域设置的值相同，以便让内核能正确处理。此选项在相关字符集定义已为内核内建或是编译为模块时生效（在文件系统 -&gt; 本地语言支持中查看）。此外，vfat 和 smbfs 还需启用 <span class=
+        "quote">&ldquo;<span class="quote">codepage</span>&rdquo;</span> 支持。例如，想要挂载 USB 闪存设备，zh-CN.GBK 用户需要在 <code class="filename">/etc/fstab</code> 中添加以下的挂载选项：
       </p>
       <pre class="screen">
 <code class=
-"literal">noauto,user,quiet,showexec,iocharset=gbk,codepage=866</code>
+"literal">noauto,user,quiet,showexec,iocharset=gbk,codepage=936</code>
 </pre>
       <p>
-        假如这个用户是 zh-CN.UTF-8 用户则是：
+        对于 zh-CN.UTF-8 用户的对应选项是：
       </p>
       <pre class="screen">
 <code class=
-"literal">noauto,user,quiet,showexec,iocharset=utf8,codepage=866</code>
+"literal">noauto,user,quiet,showexec,iocharset=utf8,codepage=936</code>
 </pre>
       <div class="admon note">
         <img alt="[Note]" src="../images/note.png" />
@@ -114,34 +102,29 @@ EOF</kbd>
         <pre class="screen">
 <code class=
 "computeroutput">FAT: utf8 is not a recommended IO charset for FAT filesystems,
-    filesystem will be case sensitive!</code>
+    filesystem will be case sensitive! （FAT: 对于 FAT 文件系统而言并不推荐将 utf8 作为 IO 字符集参数，需要小心文件系统出错！）</code>
 </pre>
         <p>
           此提示信息其实是错误的，忽略它就好，因为在 UTF-8 模式下，<span class="quote">
-              &ldquo;<span class="quote">iocharset</span>&rdquo;</span> 的任何其它选项
-              都会导致错误的显示。
+              &ldquo;<span class="quote">iocharset</span>&rdquo;</span> 的任何其它选项都会导致错误的文件名显示。
         </p>
       </div>
       <p>
-        此外，还有可能在内核的配置过程中就指定一些文件系统的默认代码页和 
-        iocharset 值。相关参数有 <span class="quote">&ldquo;<span class=
-        "quote">Default NLS Option</span>&rdquo;</span> (<code class=
+        此外，还有可能在内核的配置过程中就指定一些文件系统的默认代码页和 iocharset 值。相关参数有 <span class="quote">&ldquo;<span class=
+        "quote">默认 NLS 选项</span>&rdquo;</span> (<code class=
         "option">CONFIG_NLS_DEFAULT)</code>，<span class=
-        "quote">&ldquo;<span class="quote">Default Remote NLS
-        Option</span>&rdquo;</span> (<code class=
+        "quote">&ldquo;<span class="quote">默认远程 NLS
+        选项</span>&rdquo;</span> (<code class=
         "option">CONFIG_SMB_NLS_DEFAULT</code>)，<span class=
-        "quote">&ldquo;<span class="quote">Default codepage for
-        FAT</span>&rdquo;</span> (<code class=
+        "quote">&ldquo;<span class="quote">
+        FAT 默认代码页</span>&rdquo;</span> (<code class=
         "option">CONFIG_FAT_DEFAULT_CODEPAGE</code>)，和 <span class=
-        "quote">&ldquo;<span class="quote">Default iocharset for
-        FAT</span>&rdquo;</span> (<code class=
-        "option">CONFIG_FAT_DEFAULT_IOCHARSET</code>)。不过，无法在内核编译阶段
-        指定 ntfs 文件系统的设置。
+        "quote">&ldquo;<span class="quote">
+        FAT 默认 IO 字符集</span>&rdquo;</span> (<code class=
+        "option">CONFIG_FAT_DEFAULT_IOCHARSET</code>)。不过，无法在内核编译阶段指定 ntfs 文件系统的设置。
       </p>
       <p>
-        另外，一些硬盘类型在遇到电源故障时，假如在 <code class="filename">/etc/fstab</code> 中
-        使用 <code class="option">barrier=1</code> 这个挂载选项，则会让 ext3 文件系统的数据更加安全。
-        如需检查磁盘是否支持此选项，请运行<a class="ulink" href=
+        另外，一些硬盘类型在遇到电源故障时，假如在 <code class="filename">/etc/fstab</code> 中使用 <code class="option">barrier=1</code> 这个挂载选项，则会让 ext3 文件系统的数据更加安全。如需检查磁盘是否支持此选项，请运行 <a class="ulink" href=
         "http://www.linuxfromscratch.org/blfs/view/systemd/general/hdparm.html">
         hdparm</a>。例如：
       </p>
@@ -149,34 +132,42 @@ EOF</kbd>
 <kbd class="command">hdparm -I /dev/sda | grep NCQ</kbd>
 </pre>
       <p>
-        如果无返回值，则代表选项可用。returns non-empty output, the option is supported.
+        如果有输出内容，则代表选项可用。
       </p>
       <p>
-        注意：Logical Volume Management (LVM) 分区不可使<code class="option">barrier</code> 选项。
+        注意：Logical Volume Management (LVM) 分区不可使用 <code class="option">barrier</code> 选项。
       </p>
     </div>
     <div class="navfooter">
+      <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
+            </div>
+        </div>
+      </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="introduction.html" title=
-          "Introduction">Prev</a>
+          "简介">上一页</a>
           <p>
-            Introduction
+            简介
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="kernel.html" title="Linux-3.19">Next</a>
+          <a accesskey="n" href="kernel.html" title="Linux-3.19">下一页</a>
           <p>
             Linux-3.19
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter08.html" title=
-          "Chapter&nbsp;8.&nbsp;Making the LFS System Bootable">Up</a>
+          "第八章&nbsp;让 LFS 系统可引导">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
