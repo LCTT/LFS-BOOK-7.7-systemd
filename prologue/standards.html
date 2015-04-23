@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=utf-8" />
     <title>
-      LFS和标准
+      LFS 和标准
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -18,25 +18,25 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        前言
+        序章
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="architecture.html" title=
-          "LFS Target Architectures">上一页</a>
+          "LFS 的目标架构">上一页</a>
           <p>
-            LFS的目标架构
+            LFS 的目标架构
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="package-choices.html" title=
-          "Rationale for Packages in the Book">下一页</a>
+          "本书中的软件包逻辑">下一页</a>
           <p>
             本书中的软件包逻辑
           </p>
         </li>
         <li class="up">
-          <a accesskey="u" href="preface.html" title="Preface">返回</a>
+          <a accesskey="u" href="preface.html" title="序章">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
@@ -46,11 +46,10 @@
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
-        <a id="pre-standards" name="pre-standards"></a>iv. LFS和标准
+        <a id="pre-standards" name="pre-standards"></a>iv. LFS 和标准
       </h1>
       <p>
-        LFS的结构尽可能的和Linux的标准相同。
-        主要的标准是：
+        LFS 的结构尽可能的遵循 Linux 的标准。主要的标准有：
       </p>
       <div class="itemizedlist">
         <ul>
@@ -64,16 +63,16 @@
             <p>
               <a class="ulink" href=
               "http://www.linuxfoundation.org/collaborate/workgroups/lsb/fhs-30-draft-1">
-              文件系统层次标准 版本3.0 草案1 (FHS)</a>
+              文件系统层次标准 版本 3.0 草案 1 (FHS)</a>
             </p>
           </li>
           <li class="listitem">
             <p>
               <a class="ulink" href=
-              "http://refspecs.linuxfoundation.org/lsb.shtml">Linux标准基础（LSB）规格</a>
+              "http://refspecs.linuxfoundation.org/lsb.shtml">Linux 标准基础（LSB）规格</a>
             </p>
             <p>
-              LSB有五个独立的标准：内核，C++，桌面，运行时语言和输出。除了普通的要求，还有架构特定要求。LFS试图符合前一节中所讨论的架构。
+              LSB 有五个独立的标准：内核、C++、桌面、运行时语言和输出。除了普通的要求，还有架构特定要求。LFS 试图遵从前一节中所讨论的架构要求。
             </p>
             <div class="admon note">
               <img alt="[Note]" src="../images/note.png" />
@@ -81,23 +80,20 @@
                 注意
               </h3>
               <p>
-                很多人不认同LSB的要求。定义它的主要目的是确保私有软件将能够在
-                兼容系统上安装并统正常运行。由于LFS是基于源代码的，用户对什么
-                软件包是需要的有完全的控制权，很多人选择不安装LSB指定的软件包。
+                很多人不认同 LSB 的要求。定义它的主要目的是确保私有软件能够在兼容的系统上安装并正常运行。由于 LFS 是基于源代码的，用户对于需要什么软件包有完全的控制权，很多人选择不安装 LSB 规范所要求的软件包。
               </p>
             </div>
           </li>
         </ul>
       </div>
       <p>
-        创建一个能够通过LSB认证测试的完整LFS系统是可能的，但不能缺少
-        很多LFS范围之上的额外的软件包。在BLFS中有这些额外软件包的安装说明。
+        创建一个能够通过 LSB 认证测试的完整 LFS 系统是可行的，但需要很多 LFS 范围之外的额外软件包。在 BLFS 中有这些额外软件包的安装说明。
       </p>
       <div class="variablelist">
         <h3>
-          需要满足LSB要求的由LFS提供的软件包
+          由 LFS 提供，用于满足 LSB 要求的软件包
         </h3>
-        <table border="0" class="variablelist">
+        <table border="1" class="variablelist">
           <colgroup>
             <col align="left" valign="top" />
             <col />
@@ -147,8 +143,8 @@
             <tr>
               <td>
                 <p>
-                  <span class="term"><span class="emphasis"><em>LSB Runtime
-                  Languages:</em></span></span>
+                  <span class="term"><span class="emphasis"><em>LSB
+                  运行时语言:</em></span></span>
                 </p>
               </td>
               <td>
@@ -161,7 +157,7 @@
               <td>
                 <p>
                   <span class="term"><span class="emphasis"><em>LSB
-                  Printing:</em></span></span>
+                  输出:</em></span></span>
                 </p>
               </td>
               <td>
@@ -174,7 +170,7 @@
               <td>
                 <p>
                   <span class="term"><span class="emphasis"><em>LSB
-                  Multimeda:</em></span></span>
+                  多媒体:</em></span></span>
                 </p>
               </td>
               <td>
@@ -188,9 +184,9 @@
       </div>
       <div class="variablelist">
         <h3>
-          需要满足LSB要求的由BLFS提供的软件包
+          由BLFS提供，用于满足 LSB 要求的软件包
         </h3>
-        <table border="0" class="variablelist">
+        <table border="1" class="variablelist">
           <colgroup>
             <col align="left" valign="top" />
             <col />
@@ -205,8 +201,8 @@
               </td>
               <td>
                 <p>
-                  At, Batch (a part of At), Cpio, Ed, Fcrontab, Initd-tools,
-                  Lsb_release, PAM, Pax, Sendmail (or Postfix or Exim), time
+                  At, Batch (At 包的一部分), Cpio, Ed, Fcrontab, Initd-tools,
+                  Lsb_release, PAM, Pax, Sendmail (或 Postfix，或 Exim), time
                 </p>
               </td>
             </tr>
@@ -241,7 +237,7 @@
             <tr>
               <td>
                 <p>
-                  <span class="term"><span class="emphasis"><em>LSB运行时语言:</em></span></span>
+                  <span class="term"><span class="emphasis"><em>LSB 运行时语言:</em></span></span>
                 </p>
               </td>
               <td>
@@ -253,7 +249,7 @@
             <tr>
               <td>
                 <p>
-                  <span class="term"><span class="emphasis"><em>LSB输出:</em></span></span>
+                  <span class="term"><span class="emphasis"><em>LSB 输出:</em></span></span>
                 </p>
               </td>
               <td>
@@ -265,7 +261,7 @@
             <tr>
               <td>
                 <p>
-                  <span class="term"><span class="emphasis"><em>LSB多媒体:</em></span></span>
+                  <span class="term"><span class="emphasis"><em>LSB 多媒体:</em></span></span>
                 </p>
               </td>
               <td>
@@ -279,8 +275,7 @@
       </div>
       <div class="variablelist">
         <h3>
-          需要满足LSB要求的非LFS或BLFS提供的软件包
-          Requirements
+          LFS 和 BLFS 没有提供，用于满足 LSB 要求的软件包
         </h3>
         <table border="0" class="variablelist">
           <colgroup>
@@ -330,7 +325,7 @@
             <tr>
               <td>
                 <p>
-                  <span class="term"><span class="emphasis"><em>LSB运行时语言:</em></span></span>
+                  <span class="term"><span class="emphasis"><em>LSB 运行时语言:</em></span></span>
                 </p>
               </td>
               <td>
@@ -355,7 +350,7 @@
             <tr>
               <td>
                 <p>
-                  <span class="term"><span class="emphasis"><em>LSB多媒体:</em></span></span>
+                  <span class="term"><span class="emphasis"><em>LSB 多媒体:</em></span></span>
                 </p>
               </td>
               <td>
@@ -369,23 +364,31 @@
       </div>
     </div>
     <div class="navfooter">
+      <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
+            </div>
+        </div>
+      </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="architecture.html" title=
-          "LFS Target Architectures">上一页</a>
+          "LFS 的目标架构">上一页</a>
           <p>
-            LFS的目标架构
+            LFS 的目标架构
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="package-choices.html" title=
-          "Rationale for Packages in the Book">下一页</a>
+          "本书中的软件包逻辑">下一页</a>
           <p>
             本书中的软件包逻辑
           </p>
         </li>
         <li class="up">
-          <a accesskey="u" href="preface.html" title="Preface">返回</a>
+          <a accesskey="u" href="preface.html" title="序章">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
