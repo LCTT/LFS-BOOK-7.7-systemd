@@ -1,137 +1,85 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content=
-    "application/xhtml+xml; charset=iso-8859-1" />
-    <title>
-      4.6.&nbsp;About the Test Suites
-    </title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
-    <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
-    <link rel="stylesheet" href="stylesheets/lfs-print.css" type="text/css"
-    media="print" />
-  </head>
-  <body class="lfs" id="lfs-7.7-systemd">
-    <div class="navheader">
-      <h4>
-        Linux From Scratch - Version 7.7-systemd
-      </h4>
-      <h3>
-        Chapter&nbsp;4.&nbsp;Final Preparations
-      </h3>
-      <ul>
-        <li class="prev">
-          <a accesskey="p" href="aboutsbus.html" title="About SBUs">Prev</a>
-          <p>
-            About SBUs
-          </p>
-        </li>
-        <li class="next">
-          <a accesskey="n" href="../chapter05/chapter05.html" title=
-          "Constructing a Temporary System">Next</a>
-          <p>
-            Constructing a Temporary System
-          </p>
-        </li>
-        <li class="up">
-          <a accesskey="u" href="chapter04.html" title=
-          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
-        </li>
-        <li class="home">
-          <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
-        </li>
-      </ul>
-    </div>
-    <div class="sect1" lang="en" xml:lang="en">
-      <h1 class="sect1">
-        <a id="prepare-abouttestsuites" name=
-        "prepare-abouttestsuites"></a>4.6. About the Test Suites
-      </h1>
-      <p>
-        Most packages provide a test suite. Running the test suite for a
-        newly built package is a good idea because it can provide a
-        <span class="quote">&ldquo;<span class="quote">sanity
-        check</span>&rdquo;</span> indicating that everything compiled
-        correctly. A test suite that passes its set of checks usually proves
-        that the package is functioning as the developer intended. It does
-        not, however, guarantee that the package is totally bug free.
-      </p>
-      <p>
-        Some test suites are more important than others. For example, the
-        test suites for the core toolchain packages&mdash;GCC, Binutils, and
-        Glibc&mdash;are of the utmost importance due to their central role in
-        a properly functioning system. The test suites for GCC and Glibc can
-        take a very long time to complete, especially on slower hardware, but
-        are strongly recommended.
-      </p>
-      <div class="admon note">
-        <img alt="[Note]" src="../images/note.png" />
-        <h3>
-          Note
-        </h3>
-        <p>
-          Experience has shown that there is little to be gained from running
-          the test suites in <a class="xref" href=
-          "../chapter05/chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Chapter
-          5</a>. There can be no escaping the fact that the host system
-          always exerts some influence on the tests in that chapter, often
-          causing inexplicable failures. Because the tools built in <a class=
-          "xref" href="../chapter05/chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Chapter
-          5</a> are temporary and eventually discarded, we do not recommend
-          running the test suites in <a class="xref" href=
-          "../chapter05/chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Chapter
-          5</a> for the average reader. The instructions for running those
-          test suites are provided for the benefit of testers and developers,
-          but they are strictly optional.
-        </p>
-      </div>
-      <p>
-        A common issue with running the test suites for Binutils and GCC is
-        running out of pseudo terminals (PTYs). This can result in a high
-        number of failing tests. This may happen for several reasons, but the
-        most likely cause is that the host system does not have the
-        <code class="systemitem">devpts</code> file system set up correctly.
-        This issue is discussed in greater detail at <a class="ulink" href=
-        "http://www.linuxfromscratch.org/lfs/faq.html#no-ptys">http://www.linuxfromscratch.org/lfs/faq.html#no-ptys</a>.
-      </p>
-      <p>
-        Sometimes package test suites will fail, but for reasons which the
-        developers are aware of and have deemed non-critical. Consult the
-        logs located at <a class="ulink" href=
-        "http://www.linuxfromscratch.org/lfs/build-logs/7.7-systemd/">http://www.linuxfromscratch.org/lfs/build-logs/7.7-systemd/</a>
-        to verify whether or not these failures are expected. This site is
-        valid for all tests throughout this book.
-      </p>
-    </div>
-    <div class="navfooter">
-      <ul>
-        <li class="prev">
-          <a accesskey="p" href="aboutsbus.html" title="About SBUs">Prev</a>
-          <p>
-            About SBUs
-          </p>
-        </li>
-        <li class="next">
-          <a accesskey="n" href="../chapter05/chapter05.html" title=
-          "Constructing a Temporary System">Next</a>
-          <p>
-            Constructing a Temporary System
-          </p>
-        </li>
-        <li class="up">
-          <a accesskey="u" href="chapter04.html" title=
-          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
-        </li>
-        <li class="home">
-          <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
-        </li>
-      </ul>
-    </div>
-  </body>
+<head>
+<meta http-equiv="Content-Type" content="text/html;
+charset=windows-1252">
+<title> 4.6.&nbsp;About the Test Suites </title>
+<link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="stylesheet" href="stylesheets/lfs-print.css"
+type="text/css" media="print">
+</head>
+<body class="lfs" id="lfs-7.7-systemd">
+<div class="navheader">
+<h4> Linux From Scratch - Version 7.7-systemd </h4>
+<h3> Chapter&nbsp;4.&nbsp;Final Preparations </h3>
+<ul>
+<li class="prev"> <a accesskey="p" href="aboutsbus.html"
+title="About SBUs">上一页</a>
+<p> 关于 SBU </p>
+</li>
+<li class="next"> <a accesskey="n"
+href="../chapter05/chapter05.html" title="Constructing a
+Temporary System">下一页</a>
+<p> Constructing a Temporary System </p>
+</li>
+<li class="up"> <a accesskey="u" href="chapter04.html"
+title="Chapter&nbsp;4.&nbsp;Final Preparations">Up</a> </li>
+<li class="home"> <a accesskey="h" href="../index.html"
+title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
+</ul>
+</div>
+<div class="sect1" xml:lang="en" lang="en">
+<h1 class="sect1"> <a id="prepare-abouttestsuites"
+name="prepare-abouttestsuites"></a>4.6. 关于测试套件 </h1>
+<p>
+很多软件包都提供相应的测试套件。在新构建的系统上运行测试套件一直都是一个很好的习惯：它可以帮助我们“检查”软件编译是否正确。经由一系列的测试，套
+件往往能够检查出软件包的功能是否都如开发人员预想的那样正常。但是，它并不能总是保证所测试的软件包就一定没有虫子（bug：bug
+复 bug，bug 何其多，若待无 bug，万事成蹉跎！）。</p>
+<p> 有一些测试套件又是极其重要的。例如，核心工具链软件包——GCC、Binutils 和
+Glibc，对于一个系统的正常运转起到至关重要的作用。GCC 和 Glibc
+的测试套件的编译可能要花费很长的时间，尤其对于那些硬件性能不是很好的设备来说，但是还是强烈推荐编译它们的！ </p>
+<div class="admon note"> <img alt="[Note]"
+src="../images/note.png">
+<h3> 注意 </h3>
+<p> 经验标明，在 <a class="xref" href="../chapter05/chapter05.html"
+title="Chapter&nbsp;5.&nbsp;Constructing a Temporary System">第
+五章</a>
+中运行测试套件可不是什么好主意。一个无法回避的现实是宿主机系统或多或少的都会对实际测试产生一些影响。这往往会导致出现一起让人摸不着头脑的错误信
+息。<a class="xref"
+href="file:///home/dee/LFS-BOOK-7.7-systemd/chapter05/chapter05.html"
+title="Chapter&nbsp;5.&nbsp;Constructing a Temporary System">第
+五章</a> 中提及的这些工具都是临时的，最终我们都不需要它们。所以，我们不建议一般用户在 <a
+class="xref"
+href="file:///home/dee/LFS-BOOK-7.7-systemd/chapter05/chapter05.html"
+title="Chapter&nbsp;5.&nbsp;Constructing a Temporary System">第
+五章</a> 中运行测试套件。运行测试套件可以给测试和开发人员提供一些有用的信息，但是这依旧是可选项。</p>
+</div>
+<p> 运行 GCC 和 Binutils 测试套件，都可能会遇到这样的一个问题：伪终端（pseudo terminals，PTY）
+可能会耗尽（组长，running out 翻译为耗尽是什么鬼？）。出现此问题的原因很多，但是一个主要的原因是因为宿主机没有正确的
+设置 <code class="systemitem">devpts </code>文件系统。在此页面有对这一问题更加详尽的
+讨论： <a class="ulink"
+href="http://www.linuxfromscratch.org/lfs/faq.html#no-ptys">http://www.linuxfromscratch.org/lfs/faq.html#no-ptys</a>。
+</p>
+<p> 还有一些测试套件运行错误，是开发人员已知且被视为不重要的。请访问 <a class="ulink"
+href="http://www.linuxfromscratch.org/lfs/build-logs/7.7-systemd/">http://www.linuxfromscratch.org/lfs/build-logs/7.7-systemd/</a>
+来查看你遇到的测试问题是否都是别人已经遇到或者预想到。此网址涉及的内容会贯穿全书所有的测试。 </p>
+</div>
+<div class="navfooter">
+<ul>
+<li class="prev"> <a accesskey="p" href="aboutsbus.html"
+title="About SBUs">上一页</a>
+<p> 关于 SBU </p>
+</li>
+<li class="next"> <a accesskey="n"
+href="../chapter05/chapter05.html" title="Constructing a
+Temporary System">下一页</a>
+<p> Constructing a Temporary System </p>
+</li>
+<li class="up"> <a accesskey="u" href="chapter04.html"
+title="Chapter&nbsp;4.&nbsp;Final Preparations">Up</a> </li>
+<li class="home"> <a accesskey="h" href="../index.html"
+title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
+</ul>
+</div>
+</body>
 </html>
