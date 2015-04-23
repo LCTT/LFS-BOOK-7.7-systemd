@@ -19,168 +19,137 @@ Translating by H-mudcup
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;1.&nbsp;Introduction
+        Chapter&nbsp;1.&nbsp;介绍
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="chapter01.html" title=
-          "Introduction">Prev</a>
+          "Introduction">上一页</a>
           <p>
-            Introduction
+            介绍 
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="whatsnew.html" title=
-          "What's new since the last release">Next</a>
+          "What's new since the last release">下一页</a>
           <p>
-            What's new since the last release
+            上次发布以来的更新
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter01.html" title=
-          "Chapter&nbsp;1.&nbsp;Introduction">Up</a>
+          "Chapter&nbsp;1.&nbsp;Introduction">向上</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
-        <a id="ch-intro-how" name="ch-intro-how"></a>1.1. How to Build an LFS
-        System
+        <a id="ch-intro-how" name="ch-intro-how"></a>1.1. 如何构建一个LFS系统
       </h1>
       <p>
-        The LFS system will be built by using an already installed Linux
-        distribution (such as Debian, OpenMandriva, Fedora, or openSUSE).
-        This existing Linux system (the host) will be used as a starting
-        point to provide necessary programs, including a compiler, linker,
-        and shell, to build the new system. Select the <span class=
-        "quote">&ldquo;<span class="quote">development</span>&rdquo;</span>
-        option during the distribution installation to be able to access
-        these tools.
+        LFS系统可以被一个已经安装好的Linux发行版（比如Debian、OpenMandriva、Fedora或OpenSUSE）构建。
+        这个已经存在的Linux系统（宿主）将被用作一个起始点来提供必要的程序，包括一个编译器，链接器和shell，用来构建新系统。要想
+        访问 这些工具请在安装发行版的过程中选择
+        <span class="quote">&ldquo;<span class="quote">development（开发）</span>&rdquo;</span>选项。
       </p>
       <p>
-        As an alternative to installing a separate distribution onto your
-        machine, you may wish to use a LiveCD from a commercial distribution.
+        你可能希望使用一个商业发行版的LiveCD，而不是在你的电脑上安装一个独立的发行版。
       </p>
       <p>
-        <a class="xref" href="../chapter02/chapter02.html" title=
-        "Chapter&nbsp;2.&nbsp;Preparing a New Partition">Chapter 2</a> of
-        this book describes how to create a new Linux native partition and
-        file system. This is the place where the new LFS system will be
-        compiled and installed. <a class="xref" href=
-        "../chapter03/chapter03.html" title=
-        "Chapter&nbsp;3.&nbsp;Packages and Patches">Chapter 3</a> explains
-        which packages and patches need to be downloaded to build an LFS
-        system and how to store them on the new file system. <a class="xref"
+        本书的<a class="xref" href="../chapter02/chapter02.html" title=
+        "Chapter&nbsp;2.&nbsp;Preparing a New Partition">第二章</a> 
+        描述了如何创建一个的新Linux本地分区和文件系统。这就是新的LFS系统将要被编译和安装的地方
+        <a class="xref" href="../chapter03/chapter03.html" title=
+        "Chapter&nbsp;3.&nbsp;Packages and Patches">第三章</a> 
+        阐述了构建LFS系统需要下载的包和补丁以及如何把他们保存在新的文件系统里。 <a class="xref"
         href="../chapter04/chapter04.html" title=
-        "Chapter&nbsp;4.&nbsp;Final Preparations">Chapter 4</a> discusses the
-        setup of an appropriate working environment. Please read <a class=
-        "xref" href="../chapter04/chapter04.html" title=
-        "Chapter&nbsp;4.&nbsp;Final Preparations">Chapter 4</a> carefully as
-        it explains several important issues you need be aware of before
-        beginning to work your way through <a class="xref" href=
+        "Chapter&nbsp;4.&nbsp;Final Preparations">第四章</a>
+         讨论了如何设置恰当的工作环境。请仔细阅读
+         <a class="xref" href="../chapter04/chapter04.html" title=
+        "Chapter&nbsp;4.&nbsp;Final Preparations">第四章</a>，因为它阐述了几个在你开始阅读 <a class="xref" href=
         "../chapter05/chapter05.html" title=
-        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Chapter 5</a>
-        and beyond.
+        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">第五章</a>
+        之后的内容之前需要注意的非常重要的问题
       </p>
       <p>
         <a class="xref" href="../chapter05/chapter05.html" title=
-        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Chapter 5</a>
-        explains the installation of a number of packages that will form the
-        basic development suite (or toolchain) which is used to build the
-        actual system in <a class="xref" href="../chapter06/chapter06.html"
-        title="Chapter&nbsp;6.&nbsp;Installing Basic System Software">Chapter
-        6</a>. Some of these packages are needed to resolve circular
-        dependencies&mdash;for example, to compile a compiler, you need a
-        compiler.
+        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">第五章</a>
+        阐述了构成基本开发套件（即工具链）的大量的包的安装，在<a class="xref" href="../chapter06/chapter06.html"
+        title="Chapter&nbsp;6.&nbsp;Installing Basic System Software">第六章</a>中
+        将用这个开发套件构建真正的系统。其中一些包是为了解决无法直接使用的依赖&mdash;比如，你需要一个编译器来编译一个编译
+        器。 
       </p>
       <p>
         <a class="xref" href="../chapter05/chapter05.html" title=
-        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Chapter 5</a>
-        also shows you how to build a first pass of the toolchain, including
-        Binutils and GCC (first pass basically means these two core packages
-        will be reinstalled). The next step is to build Glibc, the C library.
-        Glibc will be compiled by the toolchain programs built in the first
-        pass. Then, a second pass of the toolchain will be built. This time,
-        the toolchain will be dynamically linked against the newly built
-        Glibc. The remaining <a class="xref" href=
+        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">第五章</a>
+        还将向你展示如何构建第一遍的工具链，包括 Binutils 和 GCC
+        （第一遍基本上意味着这两的核心包将被重装）。下一步是构建 Glibc，即C语言库。Glibc
+        将被在第一遍里构建的工具链编译。然后，第二遍的工具链就被编译完了。这次，工具链将被动态连接到新建成的Glibc。
+         <a class="xref" href=
         "../chapter05/chapter05.html" title=
-        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Chapter 5</a>
-        packages are built using this second pass toolchain. When this is
-        done, the LFS installation process will no longer depend on the host
-        distribution, with the exception of the running kernel.
+        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">第五章</a>
+        中剩余的包将被这个第二遍的工具链编译。当这些工作完成以后，LFS的安装就不会再依赖于宿主发行版了，除了正在运行的
+        内核。 
       </p>
       <p>
-        This effort to isolate the new system from the host distribution may
-        seem excessive. A full technical explanation as to why this is done
-        is provided in <a class="xref" href=
+        把新系统从宿主发行版中分离出来的工作看起来可能有点多余。<a class="xref" href=
         "../chapter05/toolchaintechnotes.html" title=
         "5.2.&nbsp;Toolchain Technical Notes">Section&nbsp;5.2,
-        &ldquo;Toolchain Technical Notes&rdquo;</a>.
+        &ldquo;工具链技术备注 &rdquo;</a>这
+        一部分提供了为什么要这么做的全技术详解。
       </p>
       <p>
         In <a class="xref" href="../chapter06/chapter06.html" title=
-        "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Chapter
-        6</a>, the full LFS system is built. The <span class=
-        "command"><strong>chroot</strong></span> (change root) program is
-        used to enter a virtual environment and start a new shell whose root
-        directory will be set to the LFS partition. This is very similar to
-        rebooting and instructing the kernel to mount the LFS partition as
-        the root partition. The system does not actually reboot, but instead
-        uses <span class="command"><strong>chroot</strong></span> because
-        creating a bootable system requires additional work which is not
-        necessary just yet. The major advantage is that <span class=
-        "quote">&ldquo;<span class="quote">chrooting</span>&rdquo;</span>
-        allows you to continue using the host system while LFS is being
-        built. While waiting for package compilations to complete, you can
-        continue using your computer as normal.
+        "Chapter&nbsp;6.&nbsp;Installing Basic System Software">第六章</a>
+        ，完整的LFS系统将被构建完成。我们将使用<span class=
+        "command"><strong>chroot</strong></span> (change root改变根目录) 程序来进入一个虚拟的环境并启动一个新的shell，
+        这个shell的根目录将被设置到LFS分区里。这个过程非
+        常像是重启并引导内核把LFS分区挂载成根分区。系统并没有真正的重启，而是在使用
+        <span class="command"><strong>chroot</strong></span>，因为创建一个可启动的系统需要有一些目前还没必要有的额外工作。
+        使用它最大的好处是，它在运行过程中允许你在构建LFS的同时继续使用宿主系统。在等待包的编译过程中，你可以继续正常使用你的电脑。
       </p>
       <p>
-        To finish the installation, the basic system configuration is set up
-        in <a class="xref" href="../chapter07/chapter07.html" title=
-        "Chapter&nbsp;7.&nbsp;Basic System Configuration">Chapter 7</a>, and
-        the kernel and boot loader are set up in <a class="xref" href=
+        为了完成安装，基本的系统配置方法在<a class="xref" href="../chapter07/chapter07.html" title=
+        "Chapter&nbsp;7.&nbsp;Basic System Configuration">第七章</a>，内核和 boot loader（启动引导程序）的设置方法在
+        <a class="xref" href=
         "../chapter08/chapter08.html" title=
-        "Chapter&nbsp;8.&nbsp;Making the LFS System Bootable">Chapter 8</a>.
+        "Chapter&nbsp;8.&nbsp;Making the LFS System Bootable">第八章</a>。
         <a class="xref" href="../chapter09/chapter09.html" title=
-        "Chapter&nbsp;9.&nbsp;The End">Chapter 9</a> contains information on
-        continuing the LFS experience beyond this book. After the steps in
-        this book have been implemented, the computer will be ready to reboot
-        into the new LFS system.
+        "Chapter&nbsp;9.&nbsp;The End">第九章</a>包含了用完本书以后继续使用LFS的一些建议。
+        在本书内的步骤完成之后，电脑就可以重启进入新的LFS系统了。 
       </p>
       <p>
-        This is the process in a nutshell. Detailed information on each step
-        is discussed in the following chapters and package descriptions.
-        Items that may seem complicated will be clarified, and everything
-        will fall into place as you embark on the LFS adventure.
+        流程大概就是这样。每一步的详细信息和包的描述都会在之后的章节里继续讨论。
+        一旦你开始这段LFS旅程，看起来混乱的事件将被理清，每一个都将对号入座。
       </p>
     </div>
     <div class="navfooter">
       <ul>
         <li class="prev">
           <a accesskey="p" href="chapter01.html" title=
-          "Introduction">Prev</a>
+          "Introduction">上一页</a>
           <p>
-            Introduction
+            介绍 
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="whatsnew.html" title=
-          "What's new since the last release">Next</a>
+          "What's new since the last release">下一页</a>
           <p>
-            What's new since the last release
+            上次发布以来的更新 
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter01.html" title=
-          "Chapter&nbsp;1.&nbsp;Introduction">Up</a>
+          "Chapter&nbsp;1.&nbsp;Introduction">向上</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
