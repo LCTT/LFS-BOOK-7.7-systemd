@@ -8,18 +8,19 @@ charset=windows-1252">
 <link rel="stylesheet" href="stylesheets/lfs-print.css"
 type="text/css" media="print">
 </head>
-<body class="lfs" id="lfs-7.7-systemd">
+<body class="lfs" id="lfs-7.7-systemd" link="#0000EE" text="#000000"
+vlink="#551A8B" bgcolor="#999999" alink="#EE0000">
 <div class="navheader">
 <h4> Linux From Scratch - Version 7.7-systemd </h4>
 <h3> Preface </h3>
 <ul>
 <li class="prev"> <a accesskey="p" href="prerequisites.html"
-title="Prerequisites">Prev</a>
-<p> Prerequisites </p>
+title="Prerequisites">上一页</a>
+<p> 系统必备组件 </p>
 </li>
 <li class="next"> <a accesskey="n" href="typography.html"
-title="Typography">Next</a>
-<p> Typography </p>
+title="Typography">下一页</a>
+<p> 版式 </p>
 </li>
 <li class="up"> <a accesskey="u" href="preface.html"
 title="Preface">Up</a> </li>
@@ -29,7 +30,8 @@ title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
 </div>
 <div class="sect1" xml:lang="en" lang="en">
 <h1 class="sect1"> <a id="pre-hostreqs" name="pre-hostreqs"></a>vii.
-Host System Requirements </h1>
+
+宿主机系统需求</h1>
 <p> 你的宿主机应该安装有以下的软件包，且软件包的版本不能低于标注的版本。对于大部分现代 Linux
 来说应该不是什么难事。不少发行版可能会将开发用到的头文件单独打包，并且命名为“<span class="quote"><span
 class="quote">&lt;package-name&gt;-devel”或是“</span></span><span
@@ -48,7 +50,7 @@ class="quote"><span class="quote">&lt;package-name&gt;-dev</span>”
 </li>
 <li class="listitem">
 <p> <span class="strong"><strong>Bison-2.3</strong></span>
-（/usr/bin/yacc 应该是一个到 bison 的硬链接符号或者是一个执行 bison的脚本）</p>
+（/usr/bin/yacc 应该是一个到 bison 的硬链接符号或者是一个执行 bison 的脚本）</p>
 </li>
 <li class="listitem">
 <p> <span class="strong"><strong>Bzip2-1.0.4</strong></span>
@@ -71,8 +73,8 @@ class="quote"><span class="quote">&lt;package-name&gt;-dev</span>”
 （/usr/bin/awk 应该是到 gawk 的链接） </p>
 </li>
 <li class="listitem">
-<p> <span class="strong"><strong>GCC-4.1.2</strong></span>包
-括 C++ 编译器、 <span class="command"><strong>g++</strong></span>
+<p> <span class="strong"><strong>GCC-4.1.2</strong></span>
+包括 C++ 编译器、 <span class="command"><strong>g++</strong></span>
 （不推荐安装 4.9.2 以上的版本，它们都没有经过测试，并不敢保证没有问题） </p>
 <div class="admon note"> <img alt="[Note]"
 src="../images/note.png">
@@ -99,24 +101,14 @@ libmpc.la。这三个文件应该要么都存在，要么都没有，而不是�
 <li class="listitem">
 <p> <span class="strong"><strong>Linux Kernel-2.6.32</strong></span>
 </p>
-<p> The reason for the kernel version requirement is that we
-specify that version when building <span
-class="application">glibc</span> in Chapter 6 at the
-recommendation of the developers. It is also required by
-udev. </p>
-<p> If the host kernel is earlier than 2.6.32 you will need
-to replace the kernel with a more up to date version.
-There are two ways you can go about this. First, see if
-your Linux vendor provides a 2.6.32 or later kernel
-package. If so, you may wish to install it. If your vendor
-doesn't offer an acceptable kernel package, or you would
-prefer not to install it, you can compile a kernel
-yourself. Instructions for compiling the kernel and
-configuring the boot loader (assuming the host uses GRUB)
-are located in <a class="xref"
-href="../chapter08/chapter08.html"
+<p> 之所以指定使用这一版本的内核，是因为在第六章需要编译 glibc，开发人员有此建议。同时，编译 udev
+也同样依赖于此版本的内核。</p>
+<p> 如果当前宿主机的内核版本早于
+2.6.32，也也许需要先升级到更新的版本。升级方法有两种：假如你的系统维护者有提供更新版本的内核，那么直接升级就可以了；假如你的系统维护者没有
+提供更新版本的内核，那么你需要自己编译内核。<a class="xref"
+href="file:///home/dee/LFS-BOOK-7.7-systemd/chapter08/chapter08.html"
 title="Chapter&nbsp;8.&nbsp;Making the LFS System
-Bootable">Chapter 8</a>. </p>
+Bootable">第八章</a> 将指导你如何编译内核和设置系统的启动配置（这里假定你使用 GRUB）。 </p>
 </li>
 <li class="listitem">
 <p> <span class="strong"><strong>M4-1.4.10</strong></span>
@@ -150,18 +142,14 @@ Bootable">Chapter 8</a>. </p>
 </li>
 </ul>
 </div>
-<p> Note that the symlinks mentioned above are required to build
-an LFS system using the instructions contained within this book.
-Symlinks that point to other software (such as dash, mawk, etc.)
-may work, but are not tested or supported by the LFS development
-team, and may require either deviation from the instructions or
-additional patches to some packages. </p>
+<p> 需要注意的是，通过学习本文构建 LFS 系统，必须包含上文提及的所有链接。那些链接假如指向其它的软件（例如
+dash，mawk 等[译者注：这句话的本义是，本书建议构建 LFS 建议使用的 sh 应该是 bash，但是假如你喜欢
+dash，这并不一定不行，但是假如出问题，那也是在情理之中的事情。]），也许依旧可以构建系统，但是开发团队并没有做过系统的测试，而且可能会在执行
+一些命令或者应用某些补丁的时候出现问题。</p>
 <div class="sect2" xml:lang="en" lang="en">
 <h2 class="sect2"> <a id="version-check" name="version-check"></a>
 </h2>
-<p> To see whether your host system has all the appropriate
-versions, and the ability to compile programs, run the
-following: </p>
+<p> 请执行以下命令，查看宿主机的各个软件包的版本以及编译环境是否准备妥当： </p>
 <pre class="userinput"><kbd class="command">cat &gt; version-check.sh &lt;&lt; "EOF"
 <code class="literal">#!/bin/bash
 # Simple script to list version numbers of critical development tools
@@ -218,7 +206,9 @@ EOF
 
 bash version-check.sh</kbd>
 </pre>
-<p> Also check for some library consistency: </p>
+<pre class="userinput"><kbd class="command">译者注：这里给出一个典型的输出（当前译者使用的系统为：LSB Version:1.4,Distributor ID:Arch,Description:Arch Linux,Release:rolling<br>Codename:n/a）<br>bash, version 4.3.33(1)-release<br>/bin/sh -&gt; /usr/bin/bash <font color="#999999"># 这里 sh 是到 bash 的硬链接</font><br>Binutils: (GNU Binutils) 2.25.0 <font color="#999999"># 版本正好是 2.25（好险）</font><br>bison (GNU Bison) 3.0.4<br>yacc is bison (GNU Bison) 3.0.4 <font color="#999999"># yacc 是到 bison 的硬链接</font><br>bzip2, Version 1.0.6, 6-Sept-2010.<br>Coreutils: 8.23<br>diff (GNU diffutils) 3.3<br>find (GNU findutils) 4.4.2<br>GNU Awk 4.1.1, API: 1.1 (GNU MPFR 3.1.2-p11, GNU MP 6.0.0)<br>/usr/bin/awk -&gt; /usr/bin/gawk <font color="#999999"># awk 是到 gawk 的硬链接</font><br>gcc (GCC) 4.9.2 20150304 (prerelease)<br>g++ (GCC) 4.9.2 20150304 (prerelease)<br>(GNU libc) 2.21 <font color="#999999"># glib 的版本是 2.21</font><br>grep (GNU grep) 2.21<br>gzip 1.6<br>Linux version 4.0.0-2-ARCH (builduser@tobias) (gcc version 4.9.2 20150304 (prerelease) (GCC) ) <br>m4 (GNU M4) 1.4.17<br>GNU Make 4.1<br>GNU patch 2.7.5<br>Perl version='5.20.2';<br>sed (GNU sed) 4.2.2<br>tar (GNU tar) 1.28<br>makeinfo (GNU texinfo) 5.2<br>xz (XZ Utils) 5.2.1<br>g++ compilation OK</kbd> <font color="#999999"># 编译器功能正常</font>
+<br></pre>
+<p>同时，还请进行库文件的一致性检查： </p>
 <pre class="userinput"><kbd class="command">cat &gt; library-check.sh &lt;&lt; "EOF"
 <code class="literal">#!/bin/bash
 for lib in lib{gmp,mpfr,mpc}.la; do
@@ -230,19 +220,18 @@ EOF
 
 bash library-check.sh</kbd>
 </pre>
-<p> The files identified by this script should be all present or
-all absent, but not only one or two present. </p>
+<p> 这些文件应该要么都在或者是都缺失，而不应该只有一两个。</p>
 </div>
 </div>
 <div class="navfooter">
 <ul>
 <li class="prev"> <a accesskey="p" href="prerequisites.html"
-title="Prerequisites">Prev</a>
-<p> Prerequisites </p>
+title="Prerequisites">上一页</a>
+<p> 系统必备组件 </p>
 </li>
 <li class="next"> <a accesskey="n" href="typography.html"
-title="Typography">Next</a>
-<p> Typography </p>
+title="Typography">下一页</a>
+<p> 版式 </p>
 </li>
 <li class="up"> <a accesskey="u" href="preface.html"
 title="Preface">Up</a> </li>
