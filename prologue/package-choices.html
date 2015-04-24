@@ -18,25 +18,25 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        前言
+        序章
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="standards.html" title=
-          "LFS and Standards">上一页</a>
+          "LFS 和标准">上一页</a>
           <p>
-            LFS和标准
+            LFS 和标准
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="prerequisites.html" title=
-          "Prerequisites">下一页</a>
+          "前置需求">下一页</a>
           <p>
             前置需求
           </p>
         </li>
         <li class="up">
-          <a accesskey="u" href="preface.html" title="Preface">返回</a>
+          <a accesskey="u" href="preface.html" title="序章">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
@@ -49,11 +49,7 @@
         <a id="pre-why" name="pre-why"></a>v. 本书中的软件包逻辑
       </h1>
       <p>
-        正如之前所述，LFS的目的是构建一个完整可用的基础级系统。这包括
-        基于用户的选择定制一个更加完整的系统提供相对最小基础而需要自我
-        复制的所有软件包。这并不意味着LFS是可能的最小系统。它也包括一些
-        并不严格要求的重要软件包。下面的列表介绍了本书中每个软件包需要
-        的理由。
+        正如前文所述，LFS 的目标是构建一个完整可用的基本系统。该系统包含自复制所需的所有软件包，因此，用户可以从一个相对小的基础开始，依选择配置一个相对复杂的系统。所以，严格意义上说，LFS 并不是最小可用系统的代名词。甚至某些最重要的软件包都不一定必须安装。下面的列表介绍了本书中选择每个软件包的理由。
       </p>
       <div class="itemizedlist">
         <ul>
@@ -62,8 +58,7 @@
               Acl
             </p>
             <p>
-               这个软件包包括管理访问控制列表的工具，用于定义文件和目录
-               更细粒度的自主访问权。
+               这个软件包包括了管理访问控制列表（ACL）的工具，用于定义文件和目录更细粒度的自主访问权。
             </p>
           </li>
           <li class="listitem">
@@ -71,7 +66,7 @@
               Attr
             </p>
             <p>
-                这个软件包包括管理文件系统对象扩展属性的程序。
+                这个软件包包括了管理文件系统的对象扩展属性的程序。
             </p>
           </li>
           <li class="listitem">
@@ -79,8 +74,7 @@
               Autoconf
             </p>
             <p>
-                这个软件包包括能生成根据开发者的模板自动配置源代码的shell脚本
-                的程序。更新了构建过程之后重新构建软件包通常需要这个。
+                这个软件包包括了能根据开发者的模板自动生成配置源代码的 shell 脚本的程序。更新了构建过程之后重新构建软件包通常需要这个。
             </p>
           </li>
           <li class="listitem">
@@ -88,8 +82,7 @@
               Automake
             </p>
             <p>
-                这个软件包包括从模板生成Make文件的程序。更新了构建过程之后重新
-                构建软件包通常需要这个。
+                这个软件包包括了从模板生成 Make 文件的程序。更新了构建过程之后重新构建软件包通常需要这个。
             </p>
           </li>
           <li class="listitem">
@@ -97,8 +90,7 @@
               Bash
             </p>
             <p>
-                这个软件包能满足提供到系统的Bourne Shell接口的LSB核心需求。由于
-                通用性和能在基本shell功能上进行扩展，它能取代其它的shell软件包。
+                这个软件包能满足提供到系统的 Bourne Shell 接口的 LSB 核心需求。由于其通用性和在基本 shell 功能上的扩展能力，所以选择它而不是其它的 shell 软件包。
             </p>
           </li>
           <li class="listitem">
@@ -106,8 +98,7 @@
               Bc
             </p>
             <p>
-                这个软件包提供了能处理任意精度数值的语言。它能满足构建Linux内核
-                时的需求。
+                这个软件包提供了一种任意精度的数值处理语言。在构建 Linux 内核时需要它。
             </p>
           </li>
           <li class="listitem">
@@ -115,8 +106,7 @@
               Binutils
             </p>
             <p>
-                这个软件包包括一个链接器，汇编器和其它处理对象文件的工具。
-                编译LFS系统以及之上的大部分软件包需要这个软件包中的程序。
+                这个软件包包括了一个链接器、汇编器和其它处理对象文件的工具。编译 LFS 系统以及之上的大部分软件包需要这个软件包中的程序。
             </p>
           </li>
           <li class="listitem">
@@ -124,8 +114,7 @@
               Bison
             </p>
             <p>
-                这个软件包中有yacc(Yet Another Compiler Compiler)的GNU版本，
-                需要用来构建一些其它的LFS程序。
+                这个软件包中有 yacc(Yet Another Compiler Compiler) 的 GNU 版本，需要用来构建一些其它的 LFS 程序。
             </p>
           </li>
           <li class="listitem">
@@ -133,8 +122,7 @@
               Bzip2
             </p>
             <p>
-                这个软件包包括用来压缩和解压缩文件的程序。在解压缩很多LFS
-                软件包的时候需要它。
+                这个软件包包括了用来压缩和解压缩文件的程序。在解压缩很多 LFS 软件包的时候需要它。
             </p>
           </li>
           <li class="listitem">
@@ -142,7 +130,7 @@
               Check
             </p>
             <p>
-               这个软件包包括一个用于其它程序从测试工具。它只安装在临时工具链中。
+               这个软件包包括了一个用于其它程序的测试工具。它只安装在临时工具链中。
             </p>
           </li>
           <li class="listitem">
@@ -150,8 +138,7 @@
               Coreutils
             </p>
             <p>
-                这个软件包包含一些查看和管理文件和目录的重要程序。在命令行
-                文件管理和每个LFS软件包的安装过程中需要它。
+                这个软件包包括了一些查看和管理文件和目录的重要程序。在命令行里管理文件和每个 LFS 软件包的安装过程中需要它。
             </p>
           </li>
           <li class="listitem">
@@ -159,8 +146,7 @@
               D-Bus
             </p>
             <p>
-                这个软件包包括一些实现一个消息总线的程序，消息总线是一种应用
-                程序和另一个应用程序通信的简单方式。systemd也需要它。
+                这个软件包包括了一个用于提供消息总线的程序，消息总线是一种应用程序之间通信的简单方式。systemd 也需要它。
             </p>
           </li>
           <li class="listitem">
@@ -168,7 +154,7 @@
               DejaGNU
             </p>
             <p>
-                这个软件包包括一个测试其它程序的框架。只安装在临时工具链中。
+                这个软件包包括了一个测试其它程序的框架。只安装在临时工具链中。
             </p>
           </li>
           <li class="listitem">
@@ -176,8 +162,7 @@
               Diffutils
             </p>
             <p>
-                这个软件包包括一些显示文件和目录差别的程序。这些程序用来
-                创建补丁，以及很多软件包的构建过程。
+                这个软件包包括了一些显示文件和目录差异的程序。这些程序可以用来创建补丁，也用于很多软件包的构建过程。
             </p>
           </li>
           <li class="listitem">
@@ -185,8 +170,7 @@
               E2fsprogs
             </p>
             <p>
-                这个软件包包括一些处理ext2，ext3和ext4文件系统的工具。这些是
-                Linux支持的最常用而且完全通过测试的文件系统。
+                这个软件包包括了一些处理 ext2、ext3 和 ext4 文件系统的工具。这些是 Linux 上支持的最常用而且完全经过考验的文件系统。
             </p>
           </li>
           <li class="listitem">
@@ -194,7 +178,7 @@
               Expat
             </p>
             <p>
-                这个软件包包括一个相对小的XML解析库。Perl模块XML::Parser需要用到这个。
+                这个软件包包括了一个相对小的 XML 解析库。Perl 模块 XML::Parser 需要用到这个。
             </p>
           </li>
           <li class="listitem">
@@ -202,8 +186,7 @@
               Expect
             </p>
             <p>
-                这个软件包包括一个执行和其它交互程序交互的脚本对话框。
-                通常用来测试其它软件包。只安装在临时工具链中。
+                这个软件包包括了一个生成与其它程序交互的脚本对话框的程序。通常用来测试其它软件包。只安装在临时工具链中。
             </p>
           </li>
           <li class="listitem">
@@ -211,8 +194,7 @@
               File
             </p>
             <p>
-                这个软件包包括一个能判断给定文件文件类型的工具。
-                一些软件包需要用它来构建。
+                这个软件包包括了一个能判断给定文件的类型的工具。一些软件包需要用它来构建。
             </p>
           </li>
           <li class="listitem">
@@ -220,8 +202,7 @@
               Findutils
             </p>
             <p>
-                这个软件包包括一些在文件系统中查找文件的程序。
-                在很多软件包构建脚本中会用到它。
+                这个软件包包括了一些在文件系统中查找文件的程序。在很多软件包构建脚本中会用到它。
             </p>
           </li>
           <li class="listitem">
@@ -229,8 +210,7 @@
               Flex
             </p>
             <p>
-                这个软件包包括一个能生成识别文本模式程序的工具。是lex(lexical analyzer)
-                程序的GNU版本。构建很多LFS软件包需要用到它。
+                这个软件包包括了一个能生成识别文本模式程序的工具。是 lex(lexical analyzer) 程序的 GNU 版本。构建很多 LFS 软件包需要用到它。
             </p>
           </li>
           <li class="listitem">
@@ -238,8 +218,7 @@
               Gawk
             </p>
             <p>
-                这个软件包包括一些操作文本文件的程序。是awk(Aho-Weinberg-Kernighan)
-                的GNU版本。在很多软件包的构建脚本中会用到它。
+                这个软件包包括了一些操作文本文件的程序。是 awk(Aho-Weinberg-Kernighan) 的 GNU 版本。在很多软件包的构建脚本中会用到它。
             </p>
           </li>
           <li class="listitem">
@@ -247,7 +226,7 @@
               Gcc
             </p>
             <p>
-                这个软件包是GNU编译器工具集。它包括C和C++的编译器以及其它一些不是由LFS构建的。
+                这个软件包是 GNU 编译器工具集。它包括 C 和 C++ 的编译器以及其它一些不是由 LFS 构建的软件包。
             </p>
           </li>
           <li class="listitem">
@@ -255,7 +234,7 @@
               GDBM
             </p>
             <p>
-                这个软件包包含数据库管理库。LFS的另一个软件包Man-DB会用到它。
+                这个软件包包括了 GNU 数据库管理库。LFS 的另一个软件包 Man-DB 会用到它。
             </p>
           </li>
           <li class="listitem">
@@ -263,7 +242,7 @@
               Gettext
             </p>
             <p>
-                这个软件包包括实现很多软件包国际化和本地化需要用到的工具和库。
+                这个软件包包括了很多软件包国际化和本地化需要用到的工具和库。
             </p>
           </li>
           <li class="listitem">
@@ -271,7 +250,7 @@
               Glibc
             </p>
             <p>
-                这个软件包包括主要的C语言库。缺少它Linux程序就运行不了。
+                这个软件包包括了主要的 C 语言库。缺少它 Linux 程序就运行不了。
             </p>
           </li>
           <li class="listitem">
@@ -279,7 +258,7 @@
               GMP
             </p>
             <p>
-                这个软件包包括能提供任意精度数值运算的数学库。编译Gcc会用到它。
+                这个软件包包括了能提供任意精度数值运算的数学库。编译 Gcc 会用到它。
             </p>
           </li>
           <li class="listitem">
@@ -287,7 +266,7 @@
               Gperf
             </p>
             <p>
-                这个软件包包括一个能从一个键集生成完美哈希函数的程序。sysetmd会用到它。
+                这个软件包包括了一个能从一个键集生成完美哈希函数的程序。sysetmd 会用到它。
             </p>
           </li>
           <li class="listitem">
@@ -295,7 +274,7 @@
               Grep
             </p>
             <p>
-                这个软件包包括一些在文件中搜索的程序。大部分软件包的构建脚本会用到它。
+                这个软件包包括了一些在文件中搜索的程序。大部分软件包的构建脚本会用到它。
             </p>
           </li>
           <li class="listitem">
@@ -303,7 +282,7 @@
               Groff
             </p>
             <p>
-                这个软件包包括处理和格式化文本的程序。其中一个重要的功能是格式化man页面。
+                这个软件包包括了处理和格式化文本的程序。其中一个重要的功能是格式化 man 页面。
             </p>
           </li>
           <li class="listitem">
@@ -311,7 +290,7 @@
               GRUB
             </p>
             <p>
-                这个包是Grand Unified Boot Loader。是可用的boot加载器之一，但最灵活。
+                这个包是 Grand Unified Boot Loader。是可用的引导加载器之一，但最灵活。
             </p>
           </li>
           <li class="listitem">
@@ -319,7 +298,7 @@
               Gzip
             </p>
             <p>
-                这个包包括一些压缩和解压缩文件的程序。解压很多LFS以及之上的软件包时会需要它。
+                这个包包括了一些压缩和解压缩文件的程序。解压很多 LFS 以及之上的软件包时会需要它。
             </p>
           </li>
           <li class="listitem">
@@ -327,7 +306,7 @@
               Iana-etc
             </p>
             <p>
-                这个软件包为网络服务和协议提供数据。启用合适的网络功能会用到它。
+                这个软件包提供了网络服务和协议的数据。启用合适的网络功能会用到它。
             </p>
           </li>
           <li class="listitem">
@@ -335,7 +314,7 @@
               Inetutils
             </p>
             <p>
-                这个包包括基本网络管理的程序。
+                这个包包括了基本网络管理的程序。
             </p>
           </li>
           <li class="listitem">
@@ -343,7 +322,7 @@
               Intltool
             </p>
             <p>
-                这个包包括能从源文件中抽取可翻译字符串的工具。
+                这个包包括了能从源文件中抽取可翻译字符串的工具。
             </p>
           </li>
           <li class="listitem">
@@ -351,8 +330,7 @@
               IProute2
             </p>
             <p>
-                这个包包括一些基本和高级的IPv4和IPv6网络的程序。由于它的IPv6功能，
-                比起其它普通网络工具通常选择它。
+                这个包包括了一些基本和高级的 IPv4 和 IPv6 网络的程序。由于其 IPv6 功能，所以选择它而不选择其它的常见网络工具包（net-tools）。
             </p>
           </li>
           <li class="listitem">
@@ -360,7 +338,7 @@
               Kbd
             </p>
             <p>
-                这个包包括一些键表文件，用于非US键盘的键盘工具以及一些控制台字体。
+                这个包包括了一些键盘映射文件，用于非 US 键盘的键盘工具以及一些控制台字体。
             </p>
           </li>
           <li class="listitem">
@@ -368,7 +346,7 @@
               Kmod
             </p>
             <p>
-                这个软件包包括一些管理Linux内核模块的程序。
+                这个软件包包括了一些用于管理 Linux 内核模块的程序。
             </p>
           </li>
           <li class="listitem">
@@ -376,8 +354,7 @@
               Less
             </p>
             <p>
-                这个软件包包括一个很好的文本文件查看器，运行查看文件的时候向上或向下滚动。
-            也用于Man-DB查看man页面。
+                这个软件包包括了一个很好的文本文件查看器，允许查看文件的时候向上或向下滚动。Man-DB 用它来查看 man 页面。
             </p>
           </li>
           <li class="listitem">
@@ -385,7 +362,7 @@
               Libcap
             </p>
             <p>
-                这个包实现了Linux内核中可用的从用户空间到POSIX 1003.1e的接口。
+                这个包实现了可以用于 Linux 内核的，从用户空间到 POSIX 1003.1e 的接口。
             </p>
           </li>
           <li class="listitem">
@@ -393,8 +370,7 @@
               Libpipeline
             </p>
             <p>
-                Libpipeline软件包包括一个以灵活和便捷的方式操作子进程流水线的库。
-                Man-DB软件包会用到它。
+                这个包包括了一个以灵活和便捷的方式操作子进程流水线的库。Man-DB 软件包会用到它。
             </p>
           </li>
           <li class="listitem">
@@ -402,8 +378,7 @@
               Libtool
             </p>
             <p>
-                这个软件包包括一些GNU通用库支持脚本。它降低了在一致，可移植
-                的接口上使用共享库的复杂度。在其他LFS软件包的测试套件里需要它。
+                这个软件包包括一些 GNU 通用库支持脚本。它降低了在一致、可移植的接口上使用共享库的复杂度。在其他 LFS 软件包的测试套件里需要它。
             </p>
           </li>
           <li class="listitem">
@@ -411,7 +386,7 @@
               Linux Kernel
             </p>
             <p>
-                这个包是操作系统。是GNU/Linux环境中的Linux。
+                这个包就是操作系统。即我们常说的 “GNU/Linux” 中的 “Linux”。
             </p>
           </li>
           <li class="listitem">
@@ -419,7 +394,7 @@
               M4
             </p>
             <p>
-                这个包包括一个普通的文本宏处理器，作为其它程序的构建工具使用。
+                这个包包括了一个普通的文本宏处理器，作为其它程序的构建工具使用。
             </p>
           </li>
           <li class="listitem">
@@ -427,7 +402,7 @@
               Make
             </p>
             <p>
-                这个包包括一个指导软件包构建的程序。LFS中的几乎每个包都需要它。
+                这个包包括了一个指导软件包构建的程序。LFS 中的几乎每个包都需要它。
             </p>
           </li>
           <li class="listitem">
@@ -435,8 +410,7 @@
               Man-DB
             </p>
             <p>
-                这个包包括一些查找和查看man页面的程序。由于更好的国际化功能，
-                用来代替<span class="application">man</span>软件包。它支持man程序。
+                这个包包括了一些查找和查看 man 页面的程序。由于其更好的国际化功能，用来代替 <span class="application">man</span>软件包。它提供了 man 程序。
             </p>
           </li>
           <li class="listitem">
@@ -444,7 +418,7 @@
               Man-pages
             </p>
             <p>
-                这个包包括基本Linux man页面的真正内容。
+                这个包包括了基本的 Linux man 页面的真正内容。
             </p>
           </li>
           <li class="listitem">
@@ -452,7 +426,7 @@
               MPC
             </p>
             <p>
-                这个包包括复数运算的函数。Gcc需要它。
+                这个包包括了复数运算的函数。Gcc 需要它。
             </p>
           </li>
           <li class="listitem">
@@ -460,7 +434,7 @@
               MPFR
             </p>
             <p>
-                这个包包括多精度运算的函数。Gcc需要它。
+                这个包包括了多精度运算的函数。Gcc 需要它。
             </p>
           </li>
           <li class="listitem">
@@ -468,8 +442,7 @@
               Ncurses
             </p>
             <p>
-              这个包包括一些处理字符界面的终端无关的库。通常用来为菜单系统
-              提供光标控制。一些LFS的软件包会用到它。
+              这个包包括了一些处理字符界面的不依赖特定终端的库。通常用来为菜单系统提供光标控制。一些 LFS 的软件包会用到它。
             </p>
           </li>
           <li class="listitem">
@@ -477,9 +450,7 @@
               Patch
             </p>
             <p>
-                这个包包括一个通过使用通常由<span class="application">diff</span>
-                程序创建的<span class="emphasis"><em>补丁</em></span>
-                文件来修改或新建文件的程序。一些LFS软件包的构建过程会需要它。
+                这个包包括了一个通过<span class="emphasis"><em>补丁</em></span>文件来修改或新建文件的程序，<span class="emphasis"><em>补丁</em></span>文件通常是由 <span class="application">diff</span> 程序创建的。一些 LFS 软件包的构建过程会需要它。
             </p>
           </li>
           <li class="listitem">
@@ -487,7 +458,7 @@
               Perl
             </p>
             <p>
-                这个包包括一个运行时语言PERL的解析器。一些LFS软件包的安装和测试套件会需要它。
+                这个包包括了一个运行时语言 PERL 的解析器。一些 LFS 软件包的安装和测试套件会需要它。
             </p>
           </li>
           <li class="listitem">
@@ -495,7 +466,7 @@
               Pkg-config
             </p>
             <p>
-                这个包提供了一个返回已安装库或软件包元数据的程序。
+                这个包提供了一个返回已安装库或软件包的元数据的程序。
             </p>
           </li>
           <li class="listitem">
@@ -503,8 +474,7 @@
               Procps-NG
             </p>
             <p>
-                这个包包括了一些监视进程的程序。这些程序对系统管理非常有用，也
-                用于LFS的boot脚本。
+                这个包包括了一些监视进程的程序。这些程序对系统管理非常有用，也用于 LFS 的启动脚本。
             </p>
           </li>
           <li class="listitem">
@@ -512,7 +482,7 @@
               Psmisc
             </p>
             <p>
-                这个包包括一些显示运行中进程信息的程序。这些程序对系统管理非常有用。
+                这个包包括了一些显示运行中进程信息的程序。这些程序对系统管理非常有用。
             </p>
           </li>
           <li class="listitem">
@@ -520,7 +490,7 @@
               Readline
             </p>
             <p>
-                这个包提供了一些命令行编辑和历史功能的库。Bash会使用它。
+                这个包提供了一些命令行编辑和历史功能的库。Bash 会使用它。
             </p>
           </li>
           <li class="listitem">
@@ -528,8 +498,7 @@
               Sed
             </p>
             <p>
-                这个包允许不在一个文本编辑器中打开而直接编辑文本。大部分LFS
-                软件包的配置脚本需要它。
+                这个包提供了不通过文本编辑器而直接编辑文本的功能。大部分 LFS 软件包的配置脚本需要它。
             </p>
           </li>
           <li class="listitem">
@@ -537,7 +506,7 @@
               Shadow
             </p>
             <p>
-                这个包包括一些以安全方式处理密码的程序。
+                这个包包括了一些以安全方式处理密码的程序。
             </p>
           </li>
           <li class="listitem">
@@ -545,8 +514,7 @@
               Systemd
             </p>
             <p>
-                作为Sysvinit的替代品，这个包提供了一个<span class="application">init</span>
-                程序以及一些其它的boot和系统控制功能。很多Linux发行版都用它。
+                作为 Sysvinit 的替代品，这个包提供了一个 <span class="application">init</span> 程序以及一些其它的引导和系统控制功能。很多 Linux 发行版都用它。
             </p>
           </li>
           <li class="listitem">
@@ -554,7 +522,7 @@
               Tar
             </p>
             <p>
-             这个软件包提供的LFS使用的几乎所有的包归档和提取功能。
+             这个软件包提供了归档和提取 LFS 中的几乎所有软件包的能力。
             </p>
           </li>
           <li class="listitem">
@@ -562,8 +530,7 @@
               Tcl
             </p>
             <p>
-                这个包包括了在很多LFS软件包测试套件中使用的工具命令语言。
-                只安装在临时工具链中。
+                这个包包括了在很多 LFS 软件包测试套件中使用的工具命令语言。只安装在临时工具链中。
             </p>
           </li>
           <li class="listitem">
@@ -571,8 +538,7 @@
               Texinfo
             </p>
             <p>
-                这个包包括一些读，写以及转换信息页面的程序。在很多LFS软件包的
-                安装过程中会使用它。
+                这个包包括了一些读、写以及转换信息页面的程序。在很多 LFS 软件包的安装过程中会使用它。
             </p>
           </li>
           <li class="listitem">
@@ -580,7 +546,7 @@
               Util-linux
             </p>
             <p>
-                该软件包包含许多工具。其中有处理文件系统，控制台，分区和消息的工具。
+                该软件包包括了许多工具。其中有处理文件系统、控制台、分区和消息的工具。
             </p>
           </li>
           <li class="listitem">
@@ -588,9 +554,7 @@
               Vim
             </p>
             <p>
-                这个包包括一个编辑器。由于vi编辑器的经典以及大量的强大功能而选择它。
-                对很多用户来说一个编辑器是一个非常个人的选择，如果需要的话其
-                它编辑器也能替代它。
+                这个包包括了一个编辑器。由于 vi 编辑器的经典以及大量的强大功能而选择它。对很多用户来说一个编辑器是一个非常个人的选择，如果需要的话也可以选择其它编辑器。
             </p>
           </li>
           <li class="listitem">
@@ -598,7 +562,7 @@
               XML::Parser
             </p>
             <p>
-                这个包是和Expat交互的Perl模块。
+                这个包是和 Expat 交互的 Perl 模块。
             </p>
           </li>
           <li class="listitem">
@@ -606,8 +570,7 @@
               XZ Utils
             </p>
             <p>
-                这个包包括一些压缩和解压缩文件的程序。它通常提供最高的压缩率以及在解压XZ或者
-                LZMA格式的软件包时非常有用。
+                这个包包括了一些压缩和解压缩文件的程序。通常它的压缩率最高，在解压 XZ 或者 LZMA 格式的软件包时非常有用。
             </p>
           </li>
           <li class="listitem">
@@ -615,30 +578,38 @@
               Zlib
             </p>
             <p>
-                这个包包括一些程序使用的压缩和解压缩例程。
+                这个包包括了一些程序所使用的压缩和解压缩功能。
             </p>
           </li>
         </ul>
       </div>
     </div>
     <div class="navfooter">
+      <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
+            </div>
+        </div>
+      </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="standards.html" title=
-          "LFS and Standards">上一页</a>
+          "LFS 和标准">上一页</a>
           <p>
-            LFS和标准
+            LFS 和标准
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="prerequisites.html" title=
-          "Prerequisites">下一页</a>
+          "前置需求">下一页</a>
           <p>
             前置需求
           </p>
         </li>
         <li class="up">
-          <a accesskey="u" href="preface.html" title="Preface">返回</a>
+          <a accesskey="u" href="preface.html" title="序章">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -18,83 +18,73 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Preface
+        前言
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="package-choices.html" title=
-          "Rationale for Packages in the Book">Prev</a>
+          "Rationale for Packages in the Book">上一页</a>
           <p>
-            Rationale for Packages in the Book
+            本书中的软件包逻辑
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="hostreqs.html" title=
-          "Host System Requirements">Next</a>
+          "Host System Requirements">下一页</a>
           <p>
-            Host System Requirements
+            宿主系统需求
           </p>
         </li>
         <li class="up">
-          <a accesskey="u" href="preface.html" title="Preface">Up</a>
+          <a accesskey="u" href="preface.html" title="Preface">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="pre-prerequisites" name="pre-prerequisites"></a>vi.
-        Prerequisites Typography Translating by ictlyh
+        前置需求
       </h1>
       <p>
-        Building an LFS system is not a simple task. It requires a certain
-        level of existing knowledge of Unix system administration in order to
-        resolve problems and correctly execute the commands listed. In
-        particular, as an absolute minimum, you should already have the
-        ability to use the command line (shell) to copy or move files and
-        directories, list directory and file contents, and change the current
-        directory. It is also expected that you have a reasonable knowledge
-        of using and installing Linux software.
+        构建一个LFS系统并不是一个简单的任务。它要求对Unix系统管理有一定水平的
+        了解知识，以便解决问题并正确地执行罗列的命令。特别是，最低要求下，你应该
+        有使用命令行(shell)复制或移动文件和目录，列出目录和文件内容，改变当前
+        文件夹的能力。同时也希望你有使用和安装Linux软件的基本知识。
       </p>
       <p>
-        Because the LFS book assumes <span class="emphasis"><em>at
-        least</em></span> this basic level of skill, the various LFS support
-        forums are unlikely to be able to provide you with much assistance in
-        these areas. You will find that your questions regarding such basic
-        knowledge will likely go unanswered or you will simply be referred to
-        the LFS essential pre-reading list.
+        因为LFS书中假设你<span class="emphasis"><em>至少</em></span>有这基本水平
+        的技能，在这方面众多的LFS支持论坛并不像是能提供给你很多的帮助。你会发现
+        对于这些基本知识的问题并不会得到解答，或者会简单的建议你去看一下LFS重要
+        的预阅读列表。
       </p>
       <p>
-        Before building an LFS system, we recommend reading the following
-        HOWTOs:
+        构建LFS系统之前，我们建议阅读以下的 怎么样：
       </p>
       <div class="itemizedlist">
         <ul>
           <li class="listitem">
             <p>
-              Software-Building-HOWTO <a class="ulink" href=
+              如何编译软件 <a class="ulink" href=
               "http://www.tldp.org/HOWTO/Software-Building-HOWTO.html">http://www.tldp.org/HOWTO/Software-Building-HOWTO.html</a>
             </p>
             <p>
-              This is a comprehensive guide to building and installing
-              <span class="quote">&ldquo;<span class=
-              "quote">generic</span>&rdquo;</span> Unix software packages
-              under Linux. Although it was written some time ago, it still
-              provides a good summary of the basic techniques needed to build
-              and install software.
+                这是一个在Linux上编译和安装<span class="quote">&ldquo;<span class=
+              "quote">通用</span>&rdquo;</span>Unix软件包的综合指南。尽管写了有一段
+              时间了，它提供了一个编译和安装软件所需基本技能的好的总结。
             </p>
           </li>
           <li class="listitem">
             <p>
-              The Linux Users' Guide <a class="ulink" href=
+              Linux用户指南 <a class="ulink" href=
               "http://tldp.org/pub/Linux/docs/ldp-archived/users-guide/">http://tldp.org/pub/Linux/docs/ldp-archived/users-guide/</a>
             </p>
             <p>
-              This guide covers the usage of assorted Linux software. This
-              reference is also fairly old, but still valid.
+              该指南涵盖的各类Linux软件的使用。这个指南也挺旧了，
+              但是仍然有效。
             </p>
           </li>
         </ul>
@@ -104,24 +94,24 @@
       <ul>
         <li class="prev">
           <a accesskey="p" href="package-choices.html" title=
-          "Rationale for Packages in the Book">Prev</a>
+          "Rationale for Packages in the Book">上一页</a>
           <p>
-            Rationale for Packages in the Book
+            本书中的软件包逻辑
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="hostreqs.html" title=
-          "Host System Requirements">Next</a>
+          "Host System Requirements">下一页</a>
           <p>
-            Host System Requirements
+            宿主系统需求
           </p>
         </li>
         <li class="up">
-          <a accesskey="u" href="preface.html" title="Preface">Up</a>
+          <a accesskey="u" href="preface.html" title="Preface">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
