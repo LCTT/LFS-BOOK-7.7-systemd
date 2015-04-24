@@ -50,10 +50,10 @@
         <a id="space-mounting" name="space-mounting"></a>2.4. 挂载新分区
       </h1>
       <p>
-        现在已经创建了一个文件系统，要使分区能够访问。为了实现这个，需要在选择的挂载点挂载分区。在本书中，假定文件系统挂载到 <code class="filename">/mnt/lfs</code> 下面，但目录的选择取决于你。
+        至此，文件系统已经创建妥当，下一步就是访问这些分区了。为此，需要将这些建立的分区挂载到选定的挂载点。本书假定的挂载点为 <code class="filename">/mnt/lfs</code>，这里，你可以根据喜好自行更改（译者注：这里强烈建 议，看这本书的读者就将挂载点设置为 /mnt/lfs 吧，这样在自行后面的命令时，大多数命令都无需做任何的修改）。
       </p>
       <p>
-        选择一个挂载点，用下面的命令给 <code class="envar">LFS</code> 环境变量赋值：
+        运行以下命令，将欲选定的挂载点设置为 <code class="envar">LFS</code> 环境变量赋值：
       </p>
       <pre class="userinput">
 <kbd class="command">export LFS=/mnt/lfs</kbd>
@@ -61,33 +61,31 @@
       <p>
         下一步，创建挂载点并用下面的命令挂载 LFS 文件系统：
       </p>
-      <pre class="userinput">
-<kbd class="command">mkdir -pv $LFS
-mount -v -t ext4 /dev/<em class=
-"replaceable"><code>&lt;xxx&gt;</code></em> $LFS</kbd>
+      <pre class="userinput"><kbd class="command">mkdir -pv $LFS	<font color="#999999"># 建立挂载点</font>
+mount -v -t ext4 /dev/<em class="replaceable"><code>&lt;xxx&gt;</code></em> $LFS</kbd>	<font color="#999999"># 将 /dev/<em class="replaceable"><code>&lt;xxx&gt;</code></em> 挂载到 $LFS</font>
 </pre>
       <p>
-        用 LFS 分区的名称替换<em class="replaceable"><code>&lt;xxx&gt;</code></em>。
+        此处 <em class="replaceable"><code>&lt;xxx&gt;</code></em>
+        用实际的设备名称代替（下同）。</em>。
       </p>
       <p>
-        如果 LFS 使用了多个分区，(比如、一个是 <code class=
-        "filename">/</code>，另一个是 <code class=
+        如果 LFS 使用了多个分区，(比如、一个 <code class=
+        "filename">/</code>，一个 <code class=
         "filename">/usr</code>)，用下面的命令挂载它们：
       </p>
-      <pre class="userinput">
-<kbd class="command">mkdir -pv $LFS
-mount -v -t ext4 /dev/<em class=
-"replaceable"><code>&lt;xxx&gt;</code></em> $LFS
-mkdir -v $LFS/usr
-mount -v -t ext4 /dev/<em class=
-"replaceable"><code>&lt;yyy&gt;</code></em> $LFS/usr</kbd>
+      <pre class="userinput"><kbd class="command">mkdir -pv $LFS	<font color="#999999"># 建立 / 分区的挂载点</font>
+mount -v -t ext4 /dev/<em class="replaceable"><code>&lt;xxx&gt;</code></em> $LFS	<font color="#999999"># 将 </font></kbd><font color="#999999"><kbd class="command">/dev/<em class="replaceable"><code>&lt;xxx&gt; 挂载到 </code></em></kbd></font><kbd class="command"><font color="#999999"><em class="replaceable"><code>$LFS</code></em></font>
+mkdir -v $LFS/usr	<font color="#999999"># 建立 </font></kbd><kbd class="command"><font color="#999999">$LFS/usr 挂载点，用于挂载 /usr</font>
+mount -v -t ext4 /dev/<em class="replaceable"><code>&lt;yyy&gt;</code></em> $LFS/usr</kbd>	<font color="#999999"># 将 /dev/<em class="replaceable"><code>&lt;yyy&gt;</code></em> 挂载到 <kbd class="command"></kbd><kbd class="command">$LFS/usr</kbd></font>
 </pre>
       <p>
-        用合适的分区名称替换 <em class="replaceable"><code>&lt;xxx&gt;</code></em> 和 <em class="replaceable"><code>&lt;yyy&gt;</code></em>。
-      </p>
+        （译者注：挂载是有顺序的！假如需要挂载以下分区：/、/usr、/usr/bin，在挂载的时候，只能按照这样的顺序挂载，假如先挂载
+        /，然后挂载 /usr/bin，再挂载 /usr 将会出错！）</p>
       <p>
-        确保这个新的分区不要挂载到要求严格权限的地方(比如 <code class="option">nosuid</code> 或 <code class="option">nodev</code> 选项)。用不带任何参数的 <span class="command"><strong>mount</strong></span> 命令查看给挂载的 LFS 分区设定了什么选项。如果设置了 <code class="option">nosuid</code> 和/或 <code class="option">nodev</code> 选项，该分区就不用重新挂载。
+        需要注意的是挂载的时候请不要使用严格权限的参数(比如 <code class="option">nosuid</code> 或 <code class="option">nodev</code> 选项)。用不带任何参数的 <span class="command"><strong>mount</strong></span> 命令查看挂载的 LFS 分区具体使用了哪些参数。如果设置了 <code class="option">nosuid</code> 和/或 <code class="option">nodev</code> 参数，请重新挂载。
       </p>
+      <pre class="userinput"><kbd class="command">（译者注：使用不带任何参数的 mount 命令，可以得到类似如下的输出：<br>devtmpfs on /dev type devtmpfs (rw,relatime,size=500896k,nr_inodes=125224,mode=755)<br>其中，括号内的内容为挂载的参数<br>）</kbd>
+</pre>
       <p>
         如果你正在使用<code class="systemitem">交换</code>分区，用 <span class="command"><strong>swapon</strong></span> 命令确保它已经启用。
       </p>
@@ -99,7 +97,7 @@ mount -v -t ext4 /dev/<em class=
         用<code class="systemitem">交换</code>分区的名字替换<em class="replaceable"><code>&lt;zzz&gt;</code></em>。
       </p>
       <p>
-        现在已经建立了一个可以工作的地方，是时候下载软件包了。
+        到现在，所有的准备工作都做的差不多了，是时候下载软件包了。
       </p>
     </div>
     <div class="navfooter">
@@ -107,7 +105,7 @@ mount -v -t ext4 /dev/<em class=
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a></span>
             </div>
         </div>
         </div>
