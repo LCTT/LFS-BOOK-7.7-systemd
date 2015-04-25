@@ -18,28 +18,28 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;5.&nbsp;Constructing a Temporary System
+        第5章 构建临时系统
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="texinfo.html" title="Texinfo-5.2">Prev</a>
+          <a accesskey="p" href="texinfo.html" title="Texinfo-5.2">上一页</a>
           <p>
             Texinfo-5.2
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="xz.html" title="Xz-5.2.0">Next</a>
+          <a accesskey="n" href="xz.html" title="Xz-5.2.0">下一页</a>
           <p>
             Xz-5.2.0
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第5章 构建临时系统">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">首页</a>
         </li>
       </ul>
     </div>
@@ -50,16 +50,16 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Util-linux package contains miscellaneous utility programs.
+          Util-linux软件包包含了各种各样的小工具。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">估计构建时间：</strong>
               <span class="segbody">0.6 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">所需磁盘空间：</strong>
               <span class="segbody">139 MB</span>
             </div>
           </div>
@@ -67,10 +67,10 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          5.33.1. Installation of Util-linux
+          5.33.1. 安装Util-linux
         </h2>
         <p>
-          Prepare Util-linux for compilation:
+          配置Util-linux准备编译：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/tools                \
@@ -81,7 +81,7 @@
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the configure option:</strong>
+            <strong>配置脚本参数的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -90,9 +90,7 @@
             </dt>
             <dd>
               <p>
-                This switch disables using <span class=
-                "application">Python</span> if it is installed on the host
-                system. It avoids trying to build unneeded bindings.
+                这个选项会禁止使用宿主系统中的<span class="application">Python</span>。这样可以避免构建一些不必要的捆绑应用。
               </p>
             </dd>
             <dt>
@@ -101,11 +99,7 @@
             </dt>
             <dd>
               <p>
-                This switch disables using the <span class=
-                "command"><strong>chown</strong></span> command during
-                installation. This is not needed when installing into the
-                /tools directory and avoids the necessity of installing as
-                root.
+                这个选项会禁止在安装的时候使用<span class="command"><strong>chown</strong></span>命令。这对我们安装到/tools目录没有意义而且可以避免使用root用户安装。
               </p>
             </dd>
             <dt>
@@ -114,9 +108,7 @@
             </dt>
             <dd>
               <p>
-                On systems that use systemd, the package tries to install a
-                systemd specific file to a non-existent directory in /tools.
-                This switch disables the unnecessary action.
+                对于使用systemd的系统，这个软件包会尝试安装systemd特定文件到/tools下一个不存在的目录里。这个选项可以避免这个不必要的动作。
               </p>
             </dd>
             <dt>
@@ -125,25 +117,19 @@
             </dt>
             <dd>
               <p>
-                Setting this envronment variable prevents adding unneeded
-                features that may be available on the host. Note that the
-                location shown for setting this environment variable is
-                different from other LFS sections where variables are set
-                preceding the command. This location is shown to demonstrate
-                an alternative way of setting an environment variable when
-                using configure.
+                设定这个环境变量可以避免增加一些宿主机上存在却不必要的功能。请注意这里设定环境变量的方式和LFS其他部分放在命令前面的方式不同。在这里是为了展示一下使用configure脚本配置时设定环境变量的另一种方式。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
@@ -151,26 +137,34 @@
       </div>
     </div>
     <div class="navfooter">
+      <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/</span>
+            </div>
+        </div>
+      </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="texinfo.html" title="Texinfo-5.2">Prev</a>
+          <a accesskey="p" href="texinfo.html" title="Texinfo-5.2">上一页</a>
           <p>
             Texinfo-5.2
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="xz.html" title="Xz-5.2.0">Next</a>
+          <a accesskey="n" href="xz.html" title="Xz-5.2.0">下一页</a>
           <p>
             Xz-5.2.0
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第5章 构建临时系统">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">首页</a>
         </li>
       </ul>
     </div>
