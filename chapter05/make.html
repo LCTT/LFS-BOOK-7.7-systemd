@@ -69,14 +69,14 @@
           5.27.1. 安装Make
         </h2>
         <p>
-          Prepare Make for compilation:
+          配置Make准备编译：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/tools --without-guile</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the configure option:</strong>
+            <strong>配置脚本参数的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -85,11 +85,7 @@
             </dt>
             <dd>
               <p>
-                This ensures that Make-4.1 won't link against Guile
-                libraries, which may be present on the host system, but won't
-                be available within the <span class=
-                "command"><strong>chroot</strong></span> environment in the
-                next chapter.
+                这个选项会保证Make-4.1不会链接宿主系统上可能存在的Guile库，而在下一章里通过<span class="command"><strong>chroot</strong></span>切换环境后就不再可用。
               </p>
             </dd>
           </dl>
