@@ -58,198 +58,19 @@
           <p>译者注：通过执行 ip link 命令，你应该能够取得类似以下的输出：</p>
           <pre class="userinput"><kbd class="command">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default <br>    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00<br>2: <i>enp3s0</i>: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP mode DEFAULT<br>   group default qlen 1000<br>    link/ether fc:aa:14:2d:db:a1 brd ff:ff:ff:ff:ff:ff<br>3: <i>wlp0s20u9</i>: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP mode DORMANT group<br>   default qlen 1000<br>    link/ether 0c:82:68:52:85:57 brd ff:ff:ff:ff:ff:ff</kbd>
 </pre>
-          <p>其中斜体的部分就是物理网卡的名称。</p>
-          <p style="margin: 0.4em 0px 0.5em; line-height:
-            19.0499992370605px; color: rgb(34, 34, 34); font-family:
-            sans-serif; font-size: 12.6999998092651px; font-style:
-            normal; font-variant: normal; font-weight: normal;
-            letter-spacing: normal; orphans: auto; text-align: start;
-            text-indent: 0px; text-transform: none; white-space: normal;
-            widows: 1; word-spacing: 0px; -webkit-text-stroke-width:
-            0px; background-color: rgb(255, 255, 255);">以下资讯摘录于
-            ArchLinux wiki：<br>
+          <p>其中斜体的部分就是物理网卡的名称。<br>
           </p>
-          <p style="margin: 0.4em 0px 0.5em; line-height:
-            19.0499992370605px; color: rgb(34, 34, 34); font-family:
-            sans-serif; font-size: 12.6999998092651px; font-style:
-            normal; font-variant: normal; font-weight: normal;
-            letter-spacing: normal; orphans: auto; text-align: start;
-            text-indent: 0px; text-transform: none; white-space: normal;
-            widows: 1; word-spacing: 0px; -webkit-text-stroke-width:
-            0px; background-color: rgb(255, 255, 255);">对于有多块网卡的电脑，固定设备名
-            称很重要。许多配置问题都是由于网络接口名称变化引起的。</p>
-          <p style="margin: 0.4em 0px 0.5em; line-height:
-            19.0499992370605px; color: rgb(34, 34, 34); font-family:
-            sans-serif; font-size: 12.6999998092651px; font-style:
-            normal; font-variant: normal; font-weight: normal;
-            letter-spacing: normal; orphans: auto; text-align: start;
-            text-indent: 0px; text-transform: none; white-space: normal;
-            widows: 1; word-spacing: 0px; -webkit-text-stroke-width:
-            0px; background-color: rgb(255, 255, 255);"><a
-              href="https://wiki.archlinux.org/index.php/Udev"
-              title="Udev" style="text-decoration: none; color: rgb(51,
-              85, 119); outline: none; font-weight: bold; background:
-              none;">udev</a><span class="Apple-converted-space">&nbsp;</span>负
-            责给设备命名。Systemd v197 引入了<a rel="nofollow" class="external
-              text"
-href="http://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
-              style="text-decoration: none; color: rgb(51, 85, 119);
-              outline: none; padding-right: 13px; font-weight: bold;
-              background:
-              url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTMiIHdpZHRoPSIxMyIgdmVyc2lvbj0iMS4xIiB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzYuNDY3ODA4LC0yNTguMzkwMDUpIj4KPHBhdGggc3R5bGU9Im9wYWNpdHk6MTtmaWxsOiMzMzY2YmI7IiBkPSJtNDEuNDcsMjU5LjQsNywwLDAsNy0yLTItMywyLDAtMSwzLTIuMjUsMSwxLDAtMy43NS0zLjc1LDAsMSwxLTIuMjUsMy0xLDAsMi0zeiIvPgo8cGF0aCBzdHlsZT0ib3BhY2l0eToxO2ZpbGw6IzMzNjZiYjsiIGQ9Im00My40NywyNjEuNC01LDAsMCw4LDgsMCwwLTUtMSwwLDAsNC02LDAsMC02LDQsMHoiLz4KPHBhdGggc3R5bGU9Im9wYWNpdHk6MTtmaWxsOiMxNWE1ZWE7IiBkPSJtNDAuNTUsMjYzLjljMC0wLjYyMTMsMC42MjEzLTAuNjIxMywwLjYyMTMtMC42MjEzLDEuODY0LDAuNjIxMywzLjEwNywxLjg2NCwzLjcyOCwzLjcyOCwwLDAsMCwwLjYyMTMtMC42MjEzLDAuNjIxMy0xLjI0My0xLjg2NC0xLjg2NC0yLjQ4NS0zLjcyOC0zLjcyOHoiLz4KPC9nPgo8L3N2Zz4K)
-              100% 50% no-repeat;">可预测的网络接口名称</a>自动给网络设备分配静态名称，网络接口现在是以前
-            缀<span class="Apple-converted-space">&nbsp;</span><code
-              style="font-family: monospace; color: rgb(34, 34, 34);
-              border: 0px solid rgb(221, 221, 221); border-radius: 0px;
-              padding: 0px 0.3em; display: inline-block;
-              background-color: rgb(235, 241, 245);">en</code>（以太网）、<code
-              style="font-family: monospace; color: rgb(34, 34, 34);
-              border: 0px solid rgb(221, 221, 221); border-radius: 0px;
-              padding: 0px 0.3em; display: inline-block;
-              background-color: rgb(235, 241, 245);">wl</code>（WLAN）、或者<span
-              class="Apple-converted-space">&nbsp;</span><code
-              style="font-family: monospace; color: rgb(34, 34, 34);
-              border: 0px solid rgb(221, 221, 221); border-radius: 0px;
-              padding: 0px 0.3em; display: inline-block;
-              background-color: rgb(235, 241, 245);">ww</code>（WWAN）附上一个
-            自动生成的标识符，产生了一个类似于<span class="Apple-converted-space">&nbsp;</span><code
-              style="font-family: monospace; color: rgb(34, 34, 34);
-              border: 0px solid rgb(221, 221, 221); border-radius: 0px;
-              padding: 0px 0.3em; display: inline-block;
-              background-color: rgb(235, 241, 245);">enp0s25</code><span
-              class="Apple-converted-space">&nbsp;</span>的条目。</p>
-          <p style="margin: 0.4em 0px 0.5em; line-height:
-            19.0499992370605px; color: rgb(34, 34, 34); font-family:
-            sans-serif; font-size: 12.6999998092651px; font-style:
-            normal; font-variant: normal; font-weight: normal;
-            letter-spacing: normal; orphans: auto; text-align: start;
-            text-indent: 0px; text-transform: none; white-space: normal;
-            widows: 1; word-spacing: 0px; -webkit-text-stroke-width:
-            0px; background-color: rgb(255, 255, 255);">可以添加一个链接来禁用这个行为：</p>
-          <pre style="font-family: monospace; color: rgb(34, 34, 34); border: 1px solid rgb(187, 204, 221); padding: 1em; line-height: 1.1em; overflow: auto; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(235, 241, 245);"># ln -s /dev/null /etc/udev/rules.d/80-net-name-slot.rules
-</pre>
-          <p style="margin: 0.4em 0px 0.5em; line-height:
-            19.0499992370605px; color: rgb(34, 34, 34); font-family:
-            sans-serif; font-size: 12.6999998092651px; font-style:
-            normal; font-variant: normal; font-weight: normal;
-            letter-spacing: normal; orphans: auto; text-align: start;
-            text-indent: 0px; text-transform: none; white-space: normal;
-            widows: 1; word-spacing: 0px; -webkit-text-stroke-width:
-            0px; background-color: rgb(255, 255, 255);">从以前版本的 systemd
-            升级的用户会有一份自动创建的空规则文件。因此，如果你想使用固定的设备名称，删除这个文件即可。</p>
-          <div style="color: rgb(34, 34, 34); font-family: sans-serif;
-            font-size: 12.6999998092651px; font-style: normal;
-            font-variant: normal; font-weight: normal; letter-spacing:
-            normal; line-height: 19.0499992370605px; orphans: auto;
-            text-align: start; text-indent: 0px; text-transform: none;
-            white-space: normal; widows: 1; word-spacing: 0px;
-            -webkit-text-stroke-width: 0px; padding: 5px; margin: 0.5em
-            0px; border: thin solid rgb(187, 187, 221); overflow:
-            hidden; background-color: rgb(221, 221, 255);"><strong>注意:<span
-                class="Apple-converted-space">&nbsp;</span></strong>当你改变
-            接口命名规则时，不要忘记更新所有与网络相关的配置文件和自定义的 systemd unit
-            文件以反映变化。特别是当你启用了<span class="Apple-converted-space">&nbsp;</span><a
-href="https://wiki.archlinux.org/index.php/Netctl#Basic_method"
-              title="Netctl" style="text-decoration: none; color:
-              rgb(51, 85, 119); outline: none; font-weight: bold;
-              background: none;">netctl 静态配置</a><span
-              class="Apple-converted-space">&nbsp;</span>时，要运行<span
-              class="Apple-converted-space">&nbsp;</span><code
-              style="font-family: monospace; color: rgb(34, 34, 34);
-              border: 0px solid rgb(221, 221, 221); border-radius: 0px;
-              padding: 0px 0.3em; display: inline-block;
-              background-color: rgb(235, 241, 245);">netctl reenable<span
-                class="Apple-converted-space">&nbsp;</span><i>profile</i></code><span
-              class="Apple-converted-space">&nbsp;</span>来更新生成的服务文件。</div>
-          <h4 style="color: rgb(34, 34, 34); font-weight: bold; margin:
-            0px 0px 0.3em; overflow: hidden; padding-top: 0.5em;
-            padding-bottom: 0.17em; border-bottom-style: none;
-            font-size: 14.7319993972778px; font-family: sans-serif;
-            font-style: normal; font-variant: normal; letter-spacing:
-            normal; line-height: 19.0499992370605px; orphans: auto;
-            text-align: start; text-indent: 0px; text-transform: none;
-            white-space: normal; widows: 1; word-spacing: 0px;
-            -webkit-text-stroke-width: 0px; background: none rgb(255,
-            255, 255);"><span class="mw-headline"
-              id=".E6.9B.B4.E6.94.B9.E8.AE.BE.E5.A4.87.E5.90.8D.E7.A7.B0">更
-              改设备名称</span></h4>
-          <p style="margin: 0.4em 0px 0.5em; line-height:
-            19.0499992370605px; color: rgb(34, 34, 34); font-family:
-            sans-serif; font-size: 12.6999998092651px; font-style:
-            normal; font-variant: normal; font-weight: normal;
-            letter-spacing: normal; orphans: auto; text-align: start;
-            text-indent: 0px; text-transform: none; white-space: normal;
-            widows: 1; word-spacing: 0px; -webkit-text-stroke-width:
-            0px; background-color: rgb(255, 255, 255);">你可以用 udev-rule
-            手动定义名称来更改设备名称。例如：</p>
-          <pre style="font-family: monospace; color: rgb(34, 34, 34); border-top-width: 1px; border-right-width: 1px; border-left-width: 1px; border-style: solid solid none; border-top-color: rgb(187, 204, 221); border-right-color: rgb(187, 204, 221); border-left-color: rgb(187, 204, 221); padding: 1em 1em 0.8em; line-height: 1.1em; overflow: auto; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px; margin-bottom: 0px; background-color: rgb(235, 241, 245);">/etc/udev/rules.d/10-network.rules</pre>
-          <pre style="font-family: monospace; color: rgb(34, 34, 34); border-width: 1px; border-style: dashed solid solid; border-color: rgb(187, 204, 221); padding: 0.8em 1em 1em; line-height: 1.1em; overflow: auto; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px; margin-top: 0px; background-color: rgb(235, 241, 245);">SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="aa:bb:cc:dd:ee:ff", NAME="net1"
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="ff:ee:dd:cc:bb:aa", NAME="net0"
-</pre>
-          <p style="margin: 0.4em 0px 0.5em; line-height:
-            19.0499992370605px; color: rgb(34, 34, 34); font-family:
-            sans-serif; font-size: 12.6999998092651px; font-style:
-            normal; font-variant: normal; font-weight: normal;
-            letter-spacing: normal; orphans: auto; text-align: start;
-            text-indent: 0px; text-transform: none; white-space: normal;
-            widows: 1; word-spacing: 0px; -webkit-text-stroke-width:
-            0px; background-color: rgb(255, 255, 255);">值得注意的两点：</p>
-          <ul style="line-height: 19.0499992370605px; list-style-type:
-            square; margin: 0.3em 0px 0px 1.6em; padding: 0px;
-            list-style-image: none; color: rgb(34, 34, 34); font-family:
-            sans-serif; font-size: 12.6999998092651px; font-style:
-            normal; font-variant: normal; font-weight: normal;
-            letter-spacing: normal; orphans: auto; text-align: start;
-            text-indent: 0px; text-transform: none; white-space: normal;
-            widows: 1; word-spacing: 0px; -webkit-text-stroke-width:
-            0px; background-color: rgb(255, 255, 255);">
-            <li style="margin-bottom: 0.1em;">使用这条命令来获得每张网卡的 MAC 地址：<code
-                style="font-family: monospace; color: rgb(34, 34, 34);
-                border: 0px solid rgb(221, 221, 221); border-radius:
-                0px; padding: 0px 0.3em; display: inline-block;
-                background-color: rgb(235, 241, 245);">cat
-                /sys/class/net/<b>设备名</b>/address</code></li>
-            <li style="margin-bottom: 0.1em;">确保你的 udev
-              规则中使用小写的十六进制值，而不是大写。</li>
-          </ul>
-          <div style="color: rgb(34, 34, 34); font-family: sans-serif;
-            font-size: 12.6999998092651px; font-style: normal;
-            font-variant: normal; font-weight: normal; letter-spacing:
-            normal; line-height: 19.0499992370605px; orphans: auto;
-            text-align: start; text-indent: 0px; text-transform: none;
-            white-space: normal; widows: 1; word-spacing: 0px;
-            -webkit-text-stroke-width: 0px; padding: 5px; margin: 0.5em
-            0px; border: thin solid rgb(187, 187, 221); overflow:
-            hidden; background-color: rgb(221, 221, 255);"><strong>注意:<span
-                class="Apple-converted-space">&nbsp;</span></strong>选择静态
-            名称时，<b>应该避免使用形如 "eth<i>X</i>" 或 "wlan<i>X</i>" 的名称</b>，因为这可能
-            在引导时导致内核与 udev 之间的竞争状态。相反，最好用内核默认不会使用的接口名称，例如：<code
-              style="font-family: monospace; color: rgb(34, 34, 34);
-              border: 0px solid rgb(221, 221, 221); border-radius: 0px;
-              padding: 0px 0.3em; display: inline-block;
-              background-color: rgb(235, 241, 245);">net0</code>、<code
-              style="font-family: monospace; color: rgb(34, 34, 34);
-              border: 0px solid rgb(221, 221, 221); border-radius: 0px;
-              padding: 0px 0.3em; display: inline-block;
-              background-color: rgb(235, 241, 245);">net1</code>、<code
-              style="font-family: monospace; color: rgb(34, 34, 34);
-              border: 0px solid rgb(221, 221, 221); border-radius: 0px;
-              padding: 0px 0.3em; display: inline-block;
-              background-color: rgb(235, 241, 245);">wifi0</code>、<code
-              style="font-family: monospace; color: rgb(34, 34, 34);
-              border: 0px solid rgb(221, 221, 221); border-radius: 0px;
-              padding: 0px 0.3em; display: inline-block;
-              background-color: rgb(235, 241, 245);">wifi1</code>。更多细节请查
-            看<span class="Apple-converted-space">&nbsp;</span><a
-              rel="nofollow" class="external text"
-href="http://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
-              style="text-decoration: none; color: rgb(51, 85, 119);
-              outline: none; padding-right: 13px; font-weight: bold;
-              background:
-              url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTMiIHdpZHRoPSIxMyIgdmVyc2lvbj0iMS4xIiB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMzYuNDY3ODA4LC0yNTguMzkwMDUpIj4KPHBhdGggc3R5bGU9Im9wYWNpdHk6MTtmaWxsOiMzMzY2YmI7IiBkPSJtNDEuNDcsMjU5LjQsNywwLDAsNy0yLTItMywyLDAtMSwzLTIuMjUsMSwxLDAtMy43NS0zLjc1LDAsMSwxLTIuMjUsMy0xLDAsMi0zeiIvPgo8cGF0aCBzdHlsZT0ib3BhY2l0eToxO2ZpbGw6IzMzNjZiYjsiIGQ9Im00My40NywyNjEuNC01LDAsMCw4LDgsMCwwLTUtMSwwLDAsNC02LDAsMC02LDQsMHoiLz4KPHBhdGggc3R5bGU9Im9wYWNpdHk6MTtmaWxsOiMxNWE1ZWE7IiBkPSJtNDAuNTUsMjYzLjljMC0wLjYyMTMsMC42MjEzLTAuNjIxMywwLjYyMTMtMC42MjEzLDEuODY0LDAuNjIxMywzLjEwNywxLjg2NCwzLjcyOCwzLjcyOCwwLDAsMCwwLjYyMTMtMC42MjEzLDAuNjIxMy0xLjI0My0xLjg2NC0xLjg2NC0yLjQ4NS0zLjcyOC0zLjcyOHoiLz4KPC9nPgo8L3N2Zz4K)
-              100% 50% no-repeat;">systemd</a><span
-              class="Apple-converted-space">&nbsp;</span>文档。<br>
-          </div>
+          <p> 以下内容摘录于 <a
+href="https://wiki.archlinux.org/index.php/Network_Configuration_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">ArchLinux
+              wiki</a>：<br>
+          </p>
+          <p>译者注：通过执行 ip link 命令，你应该能够取得类似以下的输出：</p>
+          <p>对于有多块网卡的电脑，固定设备名称很重要。许多配置问题都是由于网络接口名称变化引起的。<br>
+            <br>
+            udev 负 责给设备命名。Systemd v197
+            引入了可预测的网络接口名称自动给网络设备分配静态名称，网络接口现在是以前 缀 en（以太网）、wl（WLAN）、或者
+            ww（WWAN）附上一个 自动生成的标识符，产生了一个类似于 enp0s25 的条目。<br>
+          </p>
         </div>
         <div class="sect3">
           <h3 class="sect3"> <a id="systemd-networkd-static"
@@ -285,6 +106,7 @@ EOF</kbd>
       </div>
       <div class="sect2" xml:lang="en" lang="en">
         <h2 class="sect2"> <a id="resolv.conf" name="resolv.conf"></a>7.2.2.
+
           建立 /etc/resolv.conf 文件 </h2>
         <p> 如果你的系统需要连接到互联网，它需要利用 DNS 服务将互联网域名解析为实际的 IP 地址，反之亦然。最好的方法是将从
           ISP 或者是网络管理员那里取得的 DNS 服务器地址填入<code> </code><code
