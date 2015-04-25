@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=utf-8" />
     <title>
-      Typography
+      排版约定
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -23,20 +23,20 @@
       <ul>
         <li class="prev">
           <a accesskey="p" href="hostreqs.html" title=
-          "Host System Requirements">上一页</a>
+          "宿主系统需求">上一页</a>
           <p>
             宿主系统需求
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="organization.html" title=
-          "Structure">下一页</a>
+          "结构">下一页</a>
           <p>
-            结构
+            本书结构
           </p>
         </li>
         <li class="up">
-          <a accesskey="u" href="preface.html" title="Preface">返回</a>
+          <a accesskey="u" href="preface.html" title="序章">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
@@ -46,53 +46,46 @@
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
-        <a id="pre-typography" name="pre-typography"></a>viii. 排版
+        <a id="pre-typography" name="pre-typography"></a>viii. 排版约定
       </h1>
       <p>
-        为了能更轻松地阅读，这里有一些全书使用的排版约定。这个部分
-        包括一些Scratch中Linux排版格式的例子。
+        为了能更轻松地阅读，这里有一些全书使用的排版约定。这个部分包括一些来自 Linux From Scratch 中的排版格式例子。
       </p>
       <pre class="userinput">
 <kbd class="command">./configure --prefix=/usr</kbd>
 </pre>
       <p>
-        这种形式的文本被设计成完全按照看到的样子输入，
-        除非在周围文本中另有说明。
+        这种形式的文本被设计成完全按照看到的样子输入，除非在周围文本中另有说明。它也用在解释部分，用以指出引用的是哪个命令。
       </p>
       <p>
-        某些情况下，一个逻辑行会通过在行末添加反斜杠
-        被扩展为两个或者更多的物理行。
+        某些情况下，一个逻辑行会通过在行末添加反斜杠被折叠为两个或者更多的物理行。
       </p>
       <pre class="userinput">
 <kbd class="command">CC="gcc -B/usr/bin/" ../binutils-2.18/configure \
   --prefix=/tools --disable-nls --disable-werror</kbd>
 </pre>
       <p>
-        注意，反斜杠后面必须紧跟一个回车符。其它空格字符，例如空格和tab键
-        会导致错误结果。
+        注意，反斜杠后面必须紧跟一个回车符。其它空格字符，例如空格和tab键会导致错误结果。
       </p>
       <pre class="screen">
 <code class=
 "computeroutput">install-info: unknown option '--dir-file=/mnt/lfs/usr/info/dir'</code>
 </pre>
       <p>
-        这种形式的文本(定宽文本)显示屏幕输出，通常是发出的命令的结果。
-        这种形式也用来显示文件名，例如<code class="filename">/etc/ld.so.conf</code>。
+        这种形式的文本(定宽文本)显示屏幕输出，通常是所运行命令的输出结果。 这种形式也用来显示文件名，例如 <code class="filename">/etc/ld.so.conf</code>。
       </p>
       <p>
         <span class="emphasis"><em>强调</em></span>
       </p>
       <p>
-        这种形式的文本在本书中有多重目的。
-        主要目的是强调重要的点或项目。
+        这种形式的文本在本书中有多重目的。主要目的是强调重要的内容或项目。
       </p>
       <p>
         <a class="ulink" href=
         "http://www.linuxfromscratch.org/">http://www.linuxfromscratch.org/</a>
       </p>
       <p>
-        这种格式用来表示LFS社区内部和外部网页的超链接。
-        包括HOWTOs，下载地址和网站。
+        这种格式用来表示 LFS 社区内部及外部网页的超链接。包括 HOWTO，下载地址和网站等。
       </p>
       <pre class="userinput">
 <kbd class="command">cat &gt; $LFS/etc/group &lt;&lt; "EOF"
@@ -102,19 +95,17 @@ bin:x:1:
 EOF</kbd>
 </pre>
       <p>
-        这种格式在创建配置文件中会使用。第一个命令告诉系统新建一个文件<code class=
-        "filename">$LFS/etc/group</code>，从不论在后面的行中输入什么直到遇到文件终结符(EOF)。
-        因此，这整个部分正如看到的那样输入。
+        这种格式在创建配置文件中会使用。第一个命令告诉系统新建一个文件 <code class=
+        "filename">$LFS/etc/group</code>，不论在后面的行中输入了什么，直到遇到文件终结符 (EOF)。因此，这整个部分正如看到的那样输入。
       </p>
       <p>
-        <em class="replaceable"><code>&lt;REPLACED TEXT&gt;</code></em>
+        <em class="replaceable"><code>&lt;需要替换的文本&gt;</code></em>
       </p>
       <p>
-        这种格式用来封装并非像见到的那样输入的文本
-        以及复制粘贴操作。
+        这种格式用来封装需要替换为合适内容的文本，以及复制粘贴操作。
       </p>
       <p>
-        <em class="replaceable"><code>[OPTIONAL TEXT]</code></em>
+        <em class="replaceable"><code>[可选的文本]</code></em>
       </p>
       <p>
         这种格式用来封装可选项文本。
@@ -123,45 +114,48 @@ EOF</kbd>
         <code class="filename">passwd(5)</code>
       </p>
       <p>
-        这种格式用来表示特定的手册(man)页面。括号内的数字表示该手册
-        内的特定部分。例如<span class=
-        "command"><strong>passwd</strong></span>有两个手册页面。每个LFS
-            安装指令，这两个手册页面会表示为
+        这种格式用来表示特定的手册 (man) 页面。括号内的数字表示该手册的特定部分。例如 <span class=
+        "command"><strong>passwd</strong></span> 有两个手册页面。在 LFS 安装说明中，这两个手册页面会表示为
             <code class="filename">/usr/share/man/man1/passwd.1</code> 以及
-        <code class="filename">/usr/share/man/man5/passwd.5</code>。
-        当书中使用<code class="filename">passwd(5)</code>时它特定表示
+        <code class="filename">/usr/share/man/man5/passwd.5</code>。当书中使用 <code class="filename">passwd(5)</code> 时它特指
         <code class=
         "filename">/usr/share/man/man5/passwd.5</code>。<span class=
-        "command"><strong>man passwd</strong></span>会输出它找到的符合
+        "command"><strong>man passwd</strong></span> 会输出它找到匹配
             <span class="quote">&ldquo;<span class=
-        "quote">passwd</span>&rdquo;</span>的第一个手册页面，也就是
+        "quote">passwd</span>&rdquo;</span> 的第一个手册页面，也就是
         <code class=
-        "filename">/usr/share/man/man1/passwd.1</code>。在这个例子中，
-        你需要执行<span class="command"><strong>man 5
-        passwd</strong></span> 才能阅读指定的手册页面。应该注意的是，大部分
-        的手册页面在不同部分不会有重复的页面名字。因此，<span class=
+        "filename">/usr/share/man/man1/passwd.1</code>。在这个例子中，你需要执行 <span class="command"><strong>man 5
+        passwd</strong></span> 才能阅读指定的手册页面。应该注意的是，大部分的手册页面在不同部分不会有重复的页面名字。因此，<span class=
         "command"><strong>man <em class="replaceable"><code>&lt;program
-        name&gt;</code></em></strong></span>通常就足够了。
+        name&gt;</code></em></strong></span> 通常就足够了。
       </p>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
+            </div>
+        </div>
+      </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="hostreqs.html" title=
-          "Host System Requirements">上一页</a>
+          "宿主系统需求">上一页</a>
           <p>
             宿主系统需求
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="organization.html" title=
-          "Structure">下一页</a>
+          "本书结构">下一页</a>
           <p>
-            结构
+            本书结构
           </p>
         </li>
         <li class="up">
-          <a accesskey="u" href="preface.html" title="Preface">返回</a>
+          <a accesskey="u" href="preface.html" title="序章">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=

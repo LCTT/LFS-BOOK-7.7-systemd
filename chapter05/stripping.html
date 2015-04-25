@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=utf-8" />
     <title>
-      5.35.&nbsp;Stripping
+      5.35. 瘦身
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -18,94 +18,89 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;5.&nbsp;Constructing a Temporary System
+        第5章 构建临时系统
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="xz.html" title="Xz-5.2.0">Prev</a>
+          <a accesskey="p" href="xz.html" title="Xz-5.2.0">上一页</a>
           <p>
             Xz-5.2.0
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="changingowner.html" title=
-          "Changing Ownership">Next</a>
+          "改变属主">下一页</a>
           <p>
-            Changing Ownership
+            改变属主
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第5章 构建临时系统">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">首页</a>
         </li>
       </ul>
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
-        <a id="ch-tools-stripping" name="ch-tools-stripping"></a>5.35.
-        Stripping
+        <a id="ch-tools-stripping" name="ch-tools-stripping"></a>5.35. 瘦身
       </h1>
       <p>
-        The steps in this section are optional, but if the LFS partition is
-        rather small, it is beneficial to learn that unnecessary items can be
-        removed. The executables and libraries built so far contain about 70
-        MB of unneeded debugging symbols. Remove those symbols with:
+        本小节里的步骤是可选的，但如果你的LFS分区容量比较小，知道有些不必要的内容可以被删除也是挺好的。目前编译好的可执行文件和库大概会有70MB左右不需要的调试符号。可以通过下面的命令移除这些符号：
       </p>
       <pre class="userinput">
 <kbd class="command">strip --strip-debug /tools/lib/*
 /usr/bin/strip --strip-unneeded /tools/{,s}bin/*</kbd>
 </pre>
       <p>
-        These commands will skip a number of files, reporting that it does
-        not recognize their file format. Most of these are scripts instead of
-        binaries. Also use the system strip command to include the strip
-        binary in /tools.
+        这两个命令会跳过一些文件，并提示不可识别的文件格式。大多数是脚本文件而不是二进制文件。同样还可以用宿主系统里的strip命令为/tools目录下的strip二进制文件瘦身。
       </p>
       <p>
-        Take care <span class="emphasis"><em>not</em></span> to use
-        <em class="parameter"><code>--strip-unneeded</code></em> on the
-        libraries. The static ones would be destroyed and the toolchain
-        packages would need to be built all over again.
+        注意<span class="emphasis"><em>不要</em></span>对库文件使用<em class="parameter"><code>--strip-unneeded</code></em>选项。静态库会被损坏导致整个工具链将会需要全部重新编译。
       </p>
       <p>
-        To save more, remove the documentation:
+        更节省更多空间，还可以删除帮助文档：
       </p>
       <pre class="userinput">
 <kbd class="command">rm -rf /tools/{,share}/{info,man,doc}</kbd>
 </pre>
       <p>
-        At this point, you should have at least 3 GB of free space in
-        <code class="envar">$LFS</code> that can be used to build and install
-        Glibc and Gcc in the next phase. If you can build and install Glibc,
-        you can build and install the rest too.
+        这个时候，你应该在<code class="envar">$LFS</code>分区中为下个阶段编译安装Glibc和Gcc预留至少3GB剩余空间。如果你可以编译安装Glibc，那其他的就不会有问题了。
       </p>
     </div>
     <div class="navfooter">
+      <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/</span>
+            </div>
+        </div>
+      </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="xz.html" title="Xz-5.2.0">Prev</a>
+          <a accesskey="p" href="xz.html" title="Xz-5.2.0">上一页</a>
           <p>
             Xz-5.2.0
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="changingowner.html" title=
-          "Changing Ownership">Next</a>
+          "改变属主">下一页</a>
           <p>
-            Changing Ownership
+            改变属主
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第5章 构建临时系统">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">首页</a>
         </li>
       </ul>
     </div>
