@@ -1,297 +1,188 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content=
-    "application/xhtml+xml; charset=utf-8" />
-    <title>
-      7.7.&nbsp;Configuring the System Locale
-    </title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
-    <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
-    <link rel="stylesheet" href="stylesheets/lfs-print.css" type="text/css"
-    media="print" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> 7.7.&nbsp;Configuring the System Locale </title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css">
+    <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+    <link rel="stylesheet" href="stylesheets/lfs-print.css"
+      type="text/css" media="print">
   </head>
   <body class="lfs" id="lfs-7.7-systemd">
     <div class="navheader">
-      <h4>
-        Linux From Scratch - Version 7.7-systemd
-      </h4>
-      <h3>
-        Chapter&nbsp;7.&nbsp;Basic System Configuration
-      </h3>
+      <h4> Linux From Scratch - Version 7.7-systemd </h4>
+      <h3> 第 7 章. 基本系统配置 </h3>
       <ul>
-        <li class="prev">
-          <a accesskey="p" href="console.html" title=
-          "Configuring the Linux Console">Prev</a>
-          <p>
-            Configuring the Linux Console
-          </p>
+        <li class="prev"> <a accesskey="p" href="console.html"
+            title="Configuring the Linux Console">上一页</a>
+          <p> Configuring the Linux Console </p>
         </li>
-        <li class="next">
-          <a accesskey="n" href="inputrc.html" title=
-          "Creating the /etc/inputrc File">Next</a>
-          <p>
-            Creating the /etc/inputrc File
-          </p>
+        <li class="next"> <a accesskey="n" href="inputrc.html"
+            title="Creating the /etc/inputrc File">下一页</a>
+          <p> 建立 /etc/inputrc 文件 </p>
         </li>
-        <li class="up">
-          <a accesskey="u" href="chapter07.html" title=
-          "Chapter&nbsp;7.&nbsp;Basic System Configuration">Up</a>
+        <li class="up"> 返回<br>
         </li>
-        <li class="home">
-          <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
-        </li>
+        <li class="home"> <a accesskey="h" href="../index.html"
+            title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
       </ul>
     </div>
-    <div class="sect1" lang="en" xml:lang="en">
-      <h1 class="sect1">
-        <a id="ch-scripts-locale" name="ch-scripts-locale"></a>7.7.
-        Configuring the System Locale
-      </h1>
-      <p>
-        The <code class="filename">/etc/locale.conf</code> below sets some
-        environment variables necessary for native language support. Setting
-        them properly results in:
-      </p>
+    <div class="sect1" xml:lang="en" lang="en">
+      <h1 class="sect1"> <a id="ch-scripts-locale"
+          name="ch-scripts-locale"></a>7.7. 系统区域设置 </h1>
+      <p> <code></code> 本地语言的支持依赖于 <code class="filename">/etc/locale.conf</code>，<code
+          class="filename">/etc/locale.conf</code>
+        包含不少于此相关的环境变量。更改此文件后，可能会出现以下的变化：</p>
       <div class="itemizedlist">
         <ul>
           <li class="listitem">
-            <p>
-              The output of programs translated into the native language
-            </p>
+            <p> 大量的程序界面语言的本地化 </p>
+          </li>
+          <li class="listitem">
+            <p> 修正字符在字母、数字和其他类的分类。对于非英语区域设置来说，只有这样，<span class="command"><strong>bash</strong></span>
+              才能正常显示非 ASCII 字符</p>
           </li>
           <li class="listitem">
             <p>
-              Correct classification of characters into letters, digits and
-              other classes. This is necessary for <span class=
-              "command"><strong>bash</strong></span> to properly accept
-              non-ASCII characters in command lines in non-English locales
-            </p>
+              国家顺序可以按照子母顺序正常排序（译者注：这里所谓的正常排序，应该是首先将国家名称转换成本地语言的国家名称，比如中国的开头子母是
+              Z，那么显示就很靠后了。但是假如显示为英文，就是 C 开头，那么将会靠前显示。）</p>
           </li>
           <li class="listitem">
-            <p>
-              The correct alphabetical sorting order for the country
-            </p>
+            <p> 默认纸张尺寸</p>
           </li>
           <li class="listitem">
-            <p>
-              Appropriate default paper size
-            </p>
-          </li>
-          <li class="listitem">
-            <p>
-              Correct formatting of monetary, time, and date values
-            </p>
+            <p> 货币、时间和日期值的格式</p>
           </li>
         </ul>
       </div>
-      <p>
-        Replace <em class="replaceable"><code>&lt;ll&gt;</code></em> below
-        with the two-letter code for the desired language (e.g., <span class=
-        "quote">&ldquo;<span class="quote">en</span>&rdquo;</span>) and
-        <em class="replaceable"><code>&lt;CC&gt;</code></em> with the
-        two-letter code for the appropriate country (e.g., <span class=
-        "quote">&ldquo;<span class="quote">GB</span>&rdquo;</span>).
-        <em class="replaceable"><code>&lt;charmap&gt;</code></em> should be
-        replaced with the canonical charmap for your chosen locale. Optional
-        modifiers such as <span class="quote">&ldquo;<span class=
-        "quote">@euro</span>&rdquo;</span> may also be present.
-      </p>
-      <p>
-        The list of all locales supported by Glibc can be obtained by running
-        the following command:
-      </p>
-      <pre class="userinput">
-<kbd class="command">locale -a</kbd>
+      <p> <code class="filename">/etc/locale.conf</code> 中 <em
+          class="replaceable"><code>&lt;ll&gt;</code></em>
+        使用语言代码代替（比如中文是 zh，英文是 en），<em class="replaceable"><code>&lt;CC&gt;</code></em>
+        使用国家代码代替（比如中国是 CN，中国香港是 HK，中国台湾是 TW，美国是 US），<em
+          class="replaceable"><code>&lt;charmap&gt;</code></em>
+        使用选定字符集指定的标准字符映射表替换。诸如 “<span class="quote"><span class="quote">@euro”</span></span>
+        这样的可选修饰符也可使用。 </p>
+      <p> 运行以下命令可以获得当前 Glibc 支持的本地字符集。 </p>
+      <pre class="userinput"><kbd class="command">locale -a</kbd>
 </pre>
-      <p>
-        Charmaps can have a number of aliases, e.g., <span class=
-        "quote">&ldquo;<span class="quote">ISO-8859-1</span>&rdquo;</span> is
-        also referred to as <span class="quote">&ldquo;<span class=
-        "quote">iso8859-1</span>&rdquo;</span> and <span class=
-        "quote">&ldquo;<span class="quote">iso88591</span>&rdquo;</span>.
-        Some applications cannot handle the various synonyms correctly (e.g.,
-        require that <span class="quote">&ldquo;<span class=
-        "quote">UTF-8</span>&rdquo;</span> is written as <span class=
-        "quote">&ldquo;<span class="quote">UTF-8</span>&rdquo;</span>, not
-        <span class="quote">&ldquo;<span class=
-        "quote">utf8</span>&rdquo;</span>), so it is safest in most cases to
-        choose the canonical name for a particular locale. To determine the
-        canonical name, run the following command, where <em class=
-        "replaceable"><code>&lt;locale name&gt;</code></em> is the output
-        given by <span class="command"><strong>locale -a</strong></span> for
-        your preferred locale (<span class="quote">&ldquo;<span class=
-        "quote">en_GB.iso88591</span>&rdquo;</span> in our example).
-      </p>
-      <pre class="userinput">
-<kbd class="command">LC_ALL=<em class=
-"replaceable"><code>&lt;locale name&gt;</code></em> locale charmap</kbd>
+      <p> 字符映射表可能存在很多的别名，比如<span class="quote">“<span class="quote">ISO-8859-1</span>”</span>可
+        以写作<span class="quote">“<span class="quote">iso8859-1</span>”</span>或<span
+          class="quote">“<span class="quote">iso88591</span>”。但是有一些程序不支持
+          这些乱七八糟的写法（比如 UTF-8 只能写作 UTF-8，utf8
+          它就不认识了）。所以，为了安全起见，在设置的时候还是尽量的使用特定区域设置的规范名称。可以通过以下命令，查询在特定区域下的</span><span
+          class="quote">字符映射表标准名称</span><span class="quote">，</span><em
+          class="replaceable"><code>&lt;locale name&gt;</code></em> 为运行
+        <meta http-equiv="content-type" content="text/html;
+          charset=UTF-8">
+        <span style="color: rgb(34, 34, 34); font-family: verdana,
+          tahoma, helvetica, arial, sans-serif; font-size: 16px;
+          font-style: normal; font-variant: normal; font-weight: normal;
+          letter-spacing: normal; line-height: 19.2000007629395px;
+          orphans: auto; text-align: left; text-indent: 0px;
+          text-transform: none; white-space: normal; widows: 1;
+          word-spacing: 0px; -webkit-text-stroke-width: 0px; display:
+          inline !important; float: none; background-color: rgb(255,
+          255, 255);"><span class="Apple-converted-space">&nbsp;</span></span><span
+          class="command" style="font-family: monospace; color: rgb(34,
+          34, 34); font-style: normal; font-variant: normal;
+          font-weight: normal; letter-spacing: normal; line-height:
+          19.2000007629395px; orphans: auto; text-align: left;
+          text-indent: 0px; text-transform: none; white-space: normal;
+          widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px;
+          background-color: rgb(255, 255, 255);"><strong>locale -a </strong></span>输
+        出的首选区域设置（这里以 zh_CN.utf8 为例）。</p>
+      <pre class="userinput"><kbd class="command">LC_ALL=<em class="replaceable"><code>&lt;locale name&gt;</code></em> locale charmap</kbd>	
 </pre>
-      <p>
-        For the <span class="quote">&ldquo;<span class=
-        "quote">en_GB.iso88591</span>&rdquo;</span> locale, the above command
-        will print:
-      </p>
-      <pre class="screen">
-<code class="computeroutput">ISO-8859-1</code>
+      <p> 对于“<span class="quote">zh_CN.utf8”以上命令将会如下输出：</span></p>
+      <pre class="screen"><code class="computeroutput">UTF-8</code>
 </pre>
-      <p>
-        This results in a final locale setting of <span class=
-        "quote">&ldquo;<span class=
-        "quote">en_GB.ISO-8859-1</span>&rdquo;</span>. It is important that
-        the locale found using the heuristic above is tested prior to it
-        being added to the Bash startup files:
-      </p>
-      <pre class="userinput">
-<kbd class="command">LC_ALL=&lt;locale name&gt; locale language
+      <p> 根据以上输出，我们再次修改 <code class="filename">/etc/locale.conf</code>，
+        将字符映射表设置为标准形式（zh_CN.utf8 变为
+        zh_CN.UTF-8）。同理，也可一并查询以下设置的标准命令，然后将其添加到 bash 的启动文件中（译者注：对于 bash
+        来说，启动文件为 bashrc）。</p>
+      <pre class="userinput"><kbd class="command">LC_ALL=&lt;locale name&gt; locale language
 LC_ALL=&lt;locale name&gt; locale charmap
 LC_ALL=&lt;locale name&gt; locale int_curr_symbol
 LC_ALL=&lt;locale name&gt; locale int_prefix</kbd>
 </pre>
       <p>
-        The above commands should print the language name, the character
-        encoding used by the locale, the local currency, and the prefix to
-        dial before the telephone number in order to get into the country. If
-        any of the commands above fail with a message similar to the one
-        shown below, this means that your locale was either not installed in
-        Chapter 6 or is not supported by the default installation of Glibc.
+        以上的命令将会打印当前区域设置的语言、字符编码、本地货币单位以及电话国际编码。如果出现类似下文的错误输出，可能是你没有严格按照第六章指导的方法操
+        作或者是你当前所用的 Glibc 不支持。<br>
       </p>
-      <pre class="screen">
-<code class=
-"computeroutput">locale: Cannot set LC_* to default locale: No such file or directory</code>
+      <pre class="screen"><code class="computeroutput">locale: Cannot set LC_* to default locale: No such file or directory</code>
 </pre>
-      <p>
-        If this happens, you should either install the desired locale using
-        the <span class="command"><strong>localedef</strong></span> command,
-        or consider choosing a different locale. Further instructions assume
-        that there are no such error messages from Glibc.
-      </p>
-      <p>
-        Some packages beyond LFS may also lack support for your chosen
-        locale. One example is the X library (part of the X Window System),
-        which outputs the following error message if the locale does not
-        exactly match one of the character map names in its internal files:
-      </p>
-      <pre class="screen">
-<code class=
-"computeroutput">Warning: locale not supported by Xlib, locale set to C</code>
+      <p> 如果这种情况真的发生，你应该使用 <span class="command"><strong>localedef</strong></span>
+        命令安装对于的系统区域，或者是考虑更改为其它的区域。假如没有出现错误提示，我们就可以愉快的进行下一步操作了！</p>
+      <p> 有一些 LFS 之外的包可能出现对你设置的区域支持很差劲的情况。比如 X 的库（X Windows System
+        的一部份），就可能在内部文件中输出以下消息：</p>
+      <pre class="screen"><code class="computeroutput">Warning: locale not supported by Xlib, locale set to C</code>
 </pre>
+      <p> 在若干情况下，Xlib
+        需要字符映射表部分提供正确大大小写和连接符，比如"ISO-8859-1"不应该写作"iso88591"。不过，也可以通过省略
+        charmap 字段（翻译不下去了，组长来）part of the locale specification. This can
+        be checked by running the <span class="command"><strong>locale
+            charmap</strong></span> command in both locales. For
+        example, one would have to change "de_DE.ISO-8859-15@euro" to
+        "de_DE@euro" in order to get this locale recognized by Xlib. </p>
       <p>
-        In several cases Xlib expects that the character map will be listed
-        in uppercase notation with canonical dashes. For instance,
-        "ISO-8859-1" rather than "iso88591". It is also possible to find an
-        appropriate specification by removing the charmap part of the locale
-        specification. This can be checked by running the <span class=
-        "command"><strong>locale charmap</strong></span> command in both
-        locales. For example, one would have to change
-        "de_DE.ISO-8859-15@euro" to "de_DE@euro" in order to get this locale
-        recognized by Xlib.
-      </p>
-      <p>
-        Other packages can also function incorrectly (but may not necessarily
-        display any error messages) if the locale name does not meet their
-        expectations. In those cases, investigating how other Linux
-        distributions support your locale might provide some useful
-        information.
-      </p>
-      <p>
-        Once the proper locale settings have been determined, create the
-        <code class="filename">/etc/locale.conf</code> file:
-      </p>
-      <pre class="userinput">
-<kbd class="command">cat &gt; /etc/locale.conf &lt;&lt; "EOF"
-<code class="literal">LANG=<em class=
-"replaceable"><code>&lt;ll&gt;_&lt;CC&gt;.&lt;charmap&gt;&lt;@modifiers&gt;</code></em></code>
+        即便如此，也可能遇到某些程序因为区域设置和它们预置的不同而导致功能异常（可能不会显示任何的错误消息）。如果出现这样的情况，可以通过查看其它的发行
+        版是如何进行设置区域，从而得到启发。</p>
+      <p> 一旦确定了到底该使用哪个区域设置，就可以创建 <code class="filename">/etc/locale.conf</code>
+        文件了： </p>
+      <pre class="userinput"><kbd class="command">cat &gt; /etc/locale.conf &lt;&lt; "EOF"
+<code class="literal">LANG=<em class="replaceable"><code>&lt;ll&gt;_&lt;CC&gt;.&lt;charmap&gt;&lt;@modifiers&gt;</code></em></code>
 EOF</kbd>
 </pre>
-      <p>
-        Note that you can modify <code class=
-        "filename">/etc/locale.conf</code> with systemd <span class=
-        "command"><strong>localectl</strong></span> utility. To use
-        <span class="command"><strong>localectl</strong></span> for the
-        example above, run:
-      </p>
-      <pre class="userinput">
-<kbd class="command">localectl set-locale LANG="<em class=
-"replaceable"><code>&lt;ll&gt;_&lt;CC&gt;.&lt;charmap&gt;&lt;@modifiers&gt;</code></em>"</kbd>
+      <p> 也可以通过 systemd 提供的实用程序 <span class="command"><strong>localectl
+          </strong></span>修改<code> </code><code class="filename">/etc/locale.conf</code>：</p>
+      <pre class="userinput"><kbd class="command">localectl set-locale LANG="<em class="replaceable"><code>&lt;ll&gt;_&lt;CC&gt;.&lt;charmap&gt;&lt;@modifiers&gt;</code></em>"</kbd>
 </pre>
-      <p>
-        You can also specify other language specific environment variables
-        such as <code class="envar">LANG</code>, <code class=
-        "envar">LC_CTYPE</code>, <code class="envar">LC_NUMERIC</code> or any
-        other environment variable from <span class=
-        "command"><strong>locale</strong></span> output. Just separate them
-        with a space. An example where <code class="envar">LANG</code> is set
-        as en_US.UTF-8 but <code class="envar">LC_CTYPE</code> is set as just
-        en_US is:
-      </p>
-      <pre class="userinput">
-<kbd class=
-"command">localectl set-locale LANG="en_US.UTF-8" LC_CTYPE="en_US"</kbd>
+      <p> 此处，也可以指定其它和语言相关的环境变量，例如 <code class="envar">LANG</code>，<code
+          class="envar">LC_CTYPE</code>，<code class="envar">LC_NUMERIC</code>
+        和其它 <span class="command"><strong>locale</strong></span>
+        的输出只需要用一个空格分开它们就可以了。以下示例中，<code class="envar">LANG</code> 设置为
+        en_US.UTF-8，但 <code></code><code class="envar">LC_CTYPE</code>
+        设置为 en_US：</p>
+      <pre class="userinput"><kbd class="command">localectl set-locale LANG="en_US.UTF-8" LC_CTYPE="en_US"</kbd>
 </pre>
-      <div class="admon note">
-        <img alt="[Note]" src="../images/note.png" />
-        <h3>
-          Note
-        </h3>
-        <p>
-          Please note that <span class=
-          "command"><strong>localectl</strong></span> command can be used
-          only on a system booted with systemd.
-        </p>
+      <div class="admon note"> <img alt="[Note]"
+          src="../images/note.png">
+        <h3> 注意 </h3>
+        <p> <span class="command"><strong>localectl</strong></span>
+          仅可用于 systemd 环境（译者注：你要是用 sysV 什么的就别用这个命令瞎捣乱了。）。</p>
       </div>
-      <p>
-        The <span class="quote">&ldquo;<span class=
-        "quote">C</span>&rdquo;</span> (default) and <span class=
-        "quote">&ldquo;<span class="quote">en_US</span>&rdquo;</span> (the
-        recommended one for United States English users) locales are
-        different. <span class="quote">&ldquo;<span class=
-        "quote">C</span>&rdquo;</span> uses the US-ASCII 7-bit character set,
-        and treats bytes with the high bit set as invalid characters. That's
-        why, e.g., the <span class="command"><strong>ls</strong></span>
-        command substitutes them with question marks in that locale. Also, an
-        attempt to send mail with such characters from Mutt or Pine results
-        in non-RFC-conforming messages being sent (the charset in the
-        outgoing mail is indicated as <span class="quote">&ldquo;<span class=
-        "quote">unknown 8-bit</span>&rdquo;</span>). So you can use the
-        <span class="quote">&ldquo;<span class="quote">C</span>&rdquo;</span>
-        locale only if you are sure that you will never need 8-bit
-        characters.
-      </p>
-      <p>
-        UTF-8 based locales are not supported well by many programs. Work is
-        in progress to document and, if possible, fix such problems, see
-        <a class="ulink" href=
-        "http://www.linuxfromscratch.org/blfs/view/systemd/introduction/locale-issues.html">
-        http://www.linuxfromscratch.org/blfs/view/systemd/introduction/locale-issues.html</a>.
+      <p> <span class="quote">“<span class="quote">C</span>”</span>
+        （默认）和<span class="quote">“<span class="quote">en_US</span>”</span>（推
+        荐美国英语用户使用）这两种区域设置有所不同。<span class="quote">“<span class="quote">C</span>”</span>
+        使用 US-ASCII 7 位字符集，and treats bytes with the high bit set as
+        invalid characters. That's why, e.g., the <span class="command"><strong>ls</strong></span>
+        command substitutes them with question marks in that locale.
+        同样，如果你想要使用 Mutt 或 Pine 发送包含有类似字符的邮件，将会得到如下消息：非 RFC 兼容字符（the
+        charset in the outgoing mail is indicated as <span
+          class="quote">“<span class="quote">unknown 8-bit</span>”</span>）。
+        所以，如果你一定以及肯定一定不会用到 8 位的字符，那你可以仅使用<span class="quote">“<span
+            class="quote">C</span>”</span>。</p>
+      <p> 不少程序还不支持 UTF-8 区域设置（译者注：作者，你确定你不是在瞎说？）。Work is in progress to
+        document and, if possible, fix such problems, see <a
+          class="ulink"
+href="http://www.linuxfromscratch.org/blfs/view/systemd/introduction/locale-issues.html">http://www.linuxfromscratch.org/blfs/view/systemd/introduction/locale-issues.html</a>.
       </p>
     </div>
     <div class="navfooter">
       <ul>
-        <li class="prev">
-          <a accesskey="p" href="console.html" title=
-          "Configuring the Linux Console">Prev</a>
-          <p>
-            Configuring the Linux Console
-          </p>
+        <li class="prev"> <a accesskey="p" href="console.html"
+            title="Configuring the Linux Console">上一页</a>
+          <p> Configuring the Linux Console </p>
         </li>
-        <li class="next">
-          <a accesskey="n" href="inputrc.html" title=
-          "Creating the /etc/inputrc File">Next</a>
-          <p>
-            Creating the /etc/inputrc File
-          </p>
+        <li class="next"> <a accesskey="n" href="inputrc.html"
+            title="Creating the /etc/inputrc File">Next</a>
+          <p> 建立 /etc/inputrc 文件 </p>
         </li>
-        <li class="up">
-          <a accesskey="u" href="chapter07.html" title=
-          "Chapter&nbsp;7.&nbsp;Basic System Configuration">Up</a>
+        <li class="up"> <a accesskey="u" href="chapter07.html"
+            title="Chapter&nbsp;7.&nbsp;Basic System Configuration">返回</a>
         </li>
-        <li class="home">
-          <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
-        </li>
+        <li class="home"> <a accesskey="h" href="../index.html"
+            title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
       </ul>
     </div>
   </body>
