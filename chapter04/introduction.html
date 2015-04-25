@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=utf-8" />
     <title>
-      4.1.&nbsp;Introduction
+      4.1.&nbsp;简介
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -18,73 +18,76 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;4.&nbsp;Final Preparations
+        第4章&nbsp;最后的准备工作
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="chapter04.html" title=
-          "Final Preparations">Prev</a>
+          "最后的准备工作">上一页</a>
           <p>
-            Final Preparations
+            最后的准备工作
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="creatingtoolsdir.html" title=
-          "Creating the $LFS/tools Directory">Next</a>
+          "创建 $LFS/tools 文件夹">下一页</a>
           <p>
-            Creating the $LFS/tools Directory
+            创建 $LFS/tools 文件夹
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter04.html" title=
-          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
+          "第4章&nbsp;最后的准备工作">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="prepare-introduction" name="prepare-introduction"></a>4.1.
-        Introduction
+        简介
       </h1>
       <p>
-        In this chapter, we will perform a few additional tasks to prepare
-        for building the temporary system. We will create a directory in
-        <code class="filename">$LFS</code> for the installation of the
-        temporary tools, add an unprivileged user to reduce risk, and create
-        an appropriate build environment for that user. We will also explain
-        the unit of time we use to measure how long LFS packages take to
-        build, or <span class="quote">&ldquo;<span class=
-        "quote">SBUs</span>&rdquo;</span>, and give some information about
-        package test suites.
+        在本章，我们还需要为构建临时系统做一些额外的准备工作。我们会在 <code class="filename">$LFS</code> 
+        中新建一个文件夹用于临时工具的安装，增加一个非特权用户用于降低风险，并为该用户创建合适的构建环境。
+        我们也会解释用于测量构建 LFS 软件包花费的时间单元，或者说是<span class="quote">&ldquo;<span class=
+        "quote">标准编译单元</span>&rdquo;</span>，并给出一些关于软件包测试套件的信息。
       </p>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="chapter04.html" title=
-          "Final Preparations">Prev</a>
+          "最后的准备工作">上一页</a>
           <p>
-            Final Preparations
+            最后的准备工作
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="creatingtoolsdir.html" title=
-          "Creating the $LFS/tools Directory">Next</a>
+          "创建 $LFS/tools 文件夹">下一页</a>
           <p>
-            Creating the $LFS/tools Directory
+            创建 $LFS/tools 文件夹
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter04.html" title=
-          "Chapter&nbsp;4.&nbsp;Final Preparations">Up</a>
+          "第4章&nbsp;最后的准备工作">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>

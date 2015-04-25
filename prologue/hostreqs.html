@@ -1,165 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html;
-charset=utf-8">
-<title> 宿主系统需求 </title>
-<link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css">
-<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
-<link rel="stylesheet" href="stylesheets/lfs-print.css"
-type="text/css" media="print">
-</head>
-<body class="lfs" id="lfs-7.7-systemd" link="#0000EE" text="#000000"
-vlink="#551A8B" bgcolor="#999999" alink="#EE0000">
-<div class="navheader">
-<h4> Linux From Scratch - Version 7.7-systemd </h4>
-<h3> 前言 </h3>
-<ul>
-<li class="prev"> <a accesskey="p" href="prerequisites.html"
-title="前置需求">上一页</a>
-<p> 前置需求 </p>
-</li>
-<li class="next"> <a accesskey="n" href="typography.html"
-title="排版">下一页</a>
-<p> 排版 </p>
-</li>
-<li class="up"> <a accesskey="u" href="preface.html"
-title="序章">返回</a> </li>
-<li class="home"> <a accesskey="h" href="../index.html"
-title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
-</ul>
-</div>
-<div class="sect1" xml:lang="en" lang="en">
-<h1 class="sect1"> <a id="pre-hostreqs" name="pre-hostreqs"></a>vii.
-
-宿主系统需求</h1>
-<p> 你的宿主机应该安装有以下的软件包，且软件包的版本不能低于标注的版本。对于大部分现代 Linux
-来说应该不是什么难事。不少发行版可能会将开发用到的头文件单独打包，并且命名为“<span class="quote"><span
-class="quote">&lt;package-name&gt;-devel”或是“</span></span><span
-class="quote"><span class="quote">&lt;package-name&gt;-dev</span>”
-这样的额形式。</span>务必保证这样的包都已经装上！</p>
-<p> 可能某些软件包的版本如果低于以下标注的版本也可以工作，不过我们不能一一测试。</p>
-<div class="itemizedlist">
-<ul class="compact">
-<li class="listitem">
-<p> <span class="strong"><strong>Bash-3.2</strong></span>
-（/bin/sh 需要是到 bash 的硬链接符号） </p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Binutils-2.17</strong></span>
-（不推荐安装 2 .25 以上的版本，它们都没有经过测试，并不敢保证没有问题） </p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Bison-2.3</strong></span>
-（/usr/bin/yacc 应该是一个到 bison 的硬链接符号或者是一个执行 bison 的脚本）</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Bzip2-1.0.4</strong></span>
-</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Coreutils-6.9</strong></span>
-</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Diffutils-2.8.1</strong></span>
-</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Findutils-4.2.31</strong></span>
-</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Gawk-4.0.1</strong></span>
-（/usr/bin/awk 应该是到 gawk 的链接） </p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>GCC-4.1.2</strong></span>
-包括 C++ 编译器、 <span class="command"><strong>g++</strong></span>
-（不推荐安装 4.9.2 以上的版本，它们都没有经过测试，并不敢保证没有问题） </p>
-<div class="admon note"> <img alt="[Note]"
-src="../images/note.png">
-<h3> 注意 </h3>
-<p> 有报告称，部分发行版使用的 gcc 库存在缺失或者是不一致的情况。这一情况可能会干扰 LFS
-系统的构建。请检查 /usr/lib 或是 /usr/lib64 下是否存在
-libgmp.la、libmpfr.la 和
-libmpc.la。这三个文件应该要么都存在，要么都没有，而不是只有一两个。假如你的情况不是这样，请将这些文件重命名或者是删除之，或者是安装缺少
-的软件包。</p>
-</div>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Glibc-2.5.1</strong></span>
-（不推荐安装 2.21以上的版本，它们都没有经过测试，并不敢保证没有问题）</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Grep-2.5.1a</strong></span>
-</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Gzip-1.3.12</strong></span>
-</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Linux Kernel-2.6.32</strong></span>
-</p>
-<p> 之所以指定使用这一版本的内核，是因为在第六章需要编译 glibc，开发人员有此建议。同时，编译 udev
-也同样依赖于此版本的内核。</p>
-<p> 如果当前宿主机的内核版本早于
-2.6.32，也也许需要先升级到更新的版本。升级方法有两种：假如你的系统维护者有提供更新版本的内核，那么直接升级就可以了；假如你的系统维护者没有
-提供更新版本的内核，那么你需要自己编译内核。<a class="xref"
-href="file:///home/dee/LFS-BOOK-7.7-systemd/chapter08/chapter08.html"
-title="Chapter&nbsp;8.&nbsp;Making the LFS System
-Bootable">第八章</a> 将指导你如何编译内核和设置系统的启动配置（这里假定你使用 GRUB）。 </p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>M4-1.4.10</strong></span>
-</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Make-3.81</strong></span>
-</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Patch-2.5.4</strong></span>
-</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Perl-5.8.8</strong></span>
-</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Sed-4.1.5</strong></span>
-</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Tar-1.18</strong></span> </p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Texinfo-4.7</strong></span>
-</p>
-</li>
-<li class="listitem">
-<p> <span class="strong"><strong>Xz-5.0.0</strong></span> </p>
-</li>
-</ul>
-</div>
-<p> 需要注意的是，通过学习本文构建 LFS 系统，必须包含上文提及的所有链接。那些链接假如指向其它的软件（例如
-dash，mawk 等[译者注：这句话的本义是，本书建议构建 LFS 建议使用的 sh 应该是 bash，但是假如你喜欢
-dash，这并不一定不行，但是假如出问题，那也是在情理之中的事情。]），也许依旧可以构建系统，但是开发团队并没有做过系统的测试，而且可能会在执行
-一些命令或者应用某些补丁的时候出现问题。</p>
-<div class="sect2" xml:lang="en" lang="en">
-<h2 class="sect2"> <a id="version-check" name="version-check"></a>
-</h2>
-<p> 请执行以下命令，查看宿主机的各个软件包的版本以及编译环境是否准备妥当： </p>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;
+    charset=utf-8">
+    <title> 宿主系统需求 </title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css">
+    <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+    <link rel="stylesheet" href="stylesheets/lfs-print.css"
+      type="text/css" media="print">
+    </head>
+    <body class="lfs" id="lfs-7.7-systemd" link="#0000EE" text="#000000"
+      vlink="#551A8B" bgcolor="#999999" alink="#EE0000">
+      <div class="navheader">
+        <h4> Linux From Scratch - Version 7.7-systemd </h4>
+        <h3> 前言 </h3>
+        <ul>
+          <li class="prev"> <a accesskey="p" href="prerequisites.html"
+            title="前置需求">上一页</a>
+            <p> 前置需求 </p>
+          </li>
+          <li class="next"> <a accesskey="n" href="typography.html"
+            title="排版">下一页</a>
+            <p> 排版约定 </p>
+          </li>
+          <li class="up"> <a accesskey="u" href="preface.html"
+          title="序章">返回</a> </li>
+          <li class="home"> <a accesskey="h" href="../index.html"
+          title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
+        </ul>
+      </div>
+      <div class="sect1" xml:lang="en" lang="en">
+        <h1 class="sect1"> <a id="pre-hostreqs" name="pre-hostreqs"></a>vii.
+        宿主系统需求</h1>
+        <p> 你的宿主机应该安装有以下的软件包，且软件包的版本不能低于标注的版本。对于大部分现代 Linux 来说应该不是什么问题。不少发行版可能会将开发用到的头文件单独打包，并且命名为 “<span class="quote"><span
+        class="quote">&lt;package-name&gt;-devel” 或是 “</span></span><span
+        class="quote"><span class="quote">&lt;package-name&gt;-dev</span>” 这样的形式。</span>务必保证这样的包都已经装上！</p>
+        <p> 可能某些软件包的版本低于以下标注的版本也可以工作，不过我们不能一一测试。</p>
+        <div class="itemizedlist">
+          <ul class="compact">
+            <li class="listitem">
+              <p> <span class="strong"><strong>Bash-3.2</strong></span>
+              （/bin/sh 应该是到 bash 的符号链接或硬链接） </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Binutils-2.17</strong></span>
+              （不推荐安装 2.25 以上的版本，它们没有经过测试，并不敢保证没有问题） </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Bison-2.3</strong></span>
+              （/usr/bin/yacc 应该是一个到 bison 的链接或者是一个执行 bison 的脚本）</p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Bzip2-1.0.4</strong></span>
+              </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Coreutils-6.9</strong></span>
+              </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Diffutils-2.8.1</strong></span>
+              </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Findutils-4.2.31</strong></span>
+              </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Gawk-4.0.1</strong></span>
+              （/usr/bin/awk 应该是到 gawk 的链接） </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>GCC-4.1.2</strong></span>
+              包括 C++ 编译器、 <span class="command"><strong>g++</strong></span>
+              （不推荐安装 4.9.2 以上的版本，它们没有经过测试，并不敢保证没有问题） </p>
+              <div class="admon note"> <img alt="[Note]"
+                src="../images/note.png">
+                <h3> 注意 </h3>
+                <p> 有报告称，部分发行版使用的 gcc 库存在缺失或者是不一致的情况。这一情况可能会干扰到一些 LFS 软件包的构建。请检查 /usr/lib 或是 /usr/lib64 下是否存在 libgmp.la、libmpfr.la 和 libmpc.la。这三个文件应该要么都存在，要么都没有，而不是只有一两个。假如你的系统有这样的问题，要么这些文件重命名或删除（并重新安装 GCC），要么安装缺少的软件包。</p>
+              </div>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Glibc-2.5.1</strong></span>
+              （不推荐安装 2.21 以上的版本，它们都没有经过测试，并不敢保证没有问题）</p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Grep-2.5.1a</strong></span>
+              </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Gzip-1.3.12</strong></span>
+              </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Linux Kernel-2.6.32</strong></span>
+              </p>
+              <p> 之所以指定使用这一版本的内核，是因为在第六章需要编译 glibc，开发人员有此建议。同时，编译 udev
+              也同样依赖于此版本的内核。</p>
+              <p> 如果当前宿主机的内核版本早于 2.6.32，也许需要先升级到更新的版本。升级方法有两种：假如你的系统维护者有提供更新版本的内核，那么直接升级就可以了；假如你的系统维护者没有提供更新版本的内核，或者你不想安装它，那么你需要自己编译内核。<a class="xref"
+              href="file:///home/dee/LFS-BOOK-7.7-systemd/chapter08/chapter08.html"
+              title="第八章&nbsp;让 LFS 系统可引导">第八章</a>将指导你如何编译内核和设置系统的启动配置（这里假定你使用 GRUB）。 </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>M4-1.4.10</strong></span>
+              </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Make-3.81</strong></span>
+              </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Patch-2.5.4</strong></span>
+              </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Perl-5.8.8</strong></span>
+              </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Sed-4.1.5</strong></span>
+              </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Tar-1.18</strong></span> </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Texinfo-4.7</strong></span>
+              </p>
+            </li>
+            <li class="listitem">
+              <p> <span class="strong"><strong>Xz-5.0.0</strong></span> </p>
+            </li>
+          </ul>
+        </div>
+        <p> 需要注意的是，通过学习本文构建 LFS 系统，必须包含上文提及的所有文件链接。那些链接假如指向其它的软件（例如 dash，mawk 等） ，也许依旧可以构建系统，但是开发团队并没有做过系统的测试，而且可能会在执行一些命令或者应用某些补丁的时候出现问题。[译者注：这句话的本义是，本书建议构建 LFS 建议使用的 sh 应该是 bash，但是假如你喜欢 dash，这并不一定不行，但是假如出问题，那也是在情理之中的事情。]</p>
+        <div class="sect2" xml:lang="en" lang="en">
+          <h2 class="sect2"> <a id="version-check" name="version-check"></a>
+          </h2>
+          <p> 请执行以下命令，查看宿主机的各个软件包的版本以及编译环境是否准备妥当： </p>
 <pre class="userinput"><kbd class="command">cat &gt; version-check.sh &lt;&lt; "EOF"
 <code class="literal">#!/bin/bash
 # Simple script to list version numbers of critical development tools
-
 export LC_ALL=C
 bash --version | head -n1 | cut -d" " -f2-4
 echo "/bin/sh -&gt; `readlink -f /bin/sh`"
 echo -n "Binutils: "; ld --version | head -n1 | cut -d" " -f3-
 bison --version | head -n1
-
 if [ -h /usr/bin/yacc ]; then
 echo "/usr/bin/yacc -&gt; `readlink -f /usr/bin/yacc`";
 elif [ -x /usr/bin/yacc ]; then
@@ -167,13 +154,11 @@ echo yacc is `/usr/bin/yacc --version | head -n1`
 else
 echo "yacc not found"
 fi
-
 bzip2 --version 2&gt;&amp;1 &lt; /dev/null | head -n1 | cut -d" " -f1,6-
 echo -n "Coreutils: "; chown --version | head -n1 | cut -d")" -f2
 diff --version | head -n1
 find --version | head -n1
 gawk --version | head -n1
-
 if [ -h /usr/bin/awk ]; then
 echo "/usr/bin/awk -&gt; `readlink -f /usr/bin/awk`";
 elif [ -x /usr/bin/awk ]; then
@@ -181,7 +166,6 @@ echo yacc is `/usr/bin/awk --version | head -n1`
 else
 echo "awk not found"
 fi
-
 gcc --version | head -n1
 g++ --version | head -n1
 ldd --version | head -n1 | cut -d" " -f2- # glibc version
@@ -196,19 +180,17 @@ sed --version | head -n1
 tar --version | head -n1
 makeinfo --version | head -n1
 xz --version | head -n1
-
 echo 'main(){}' &gt; dummy.c &amp;&amp; g++ -o dummy dummy.c
 if [ -x dummy ]
 then echo "g++ compilation OK";
 else echo "g++ compilation failed"; fi
 rm -f dummy.c dummy</code>
 EOF
-
 bash version-check.sh</kbd>
 </pre>
 <pre class="userinput"><kbd class="command">译者注：这里给出一个典型的输出（当前译者使用的系统为：LSB Version:1.4,Distributor ID:Arch,Description:Arch Linux,Release:rolling<br>Codename:n/a）<br>bash, version 4.3.33(1)-release<br>/bin/sh -&gt; /usr/bin/bash <font color="#999999"># 这里 sh 是到 bash 的硬链接</font><br>Binutils: (GNU Binutils) 2.25.0 <font color="#999999"># 版本正好是 2.25（好险）</font><br>bison (GNU Bison) 3.0.4<br>yacc is bison (GNU Bison) 3.0.4 <font color="#999999"># yacc 是到 bison 的硬链接</font><br>bzip2, Version 1.0.6, 6-Sept-2010.<br>Coreutils: 8.23<br>diff (GNU diffutils) 3.3<br>find (GNU findutils) 4.4.2<br>GNU Awk 4.1.1, API: 1.1 (GNU MPFR 3.1.2-p11, GNU MP 6.0.0)<br>/usr/bin/awk -&gt; /usr/bin/gawk <font color="#999999"># awk 是到 gawk 的硬链接</font><br>gcc (GCC) 4.9.2 20150304 (prerelease)<br>g++ (GCC) 4.9.2 20150304 (prerelease)<br>(GNU libc) 2.21 <font color="#999999"># glib 的版本是 2.21</font><br>grep (GNU grep) 2.21<br>gzip 1.6<br>Linux version 4.0.0-2-ARCH (builduser@tobias) (gcc version 4.9.2 20150304 (prerelease) (GCC) ) <br>m4 (GNU M4) 1.4.17<br>GNU Make 4.1<br>GNU patch 2.7.5<br>Perl version='5.20.2';<br>sed (GNU sed) 4.2.2<br>tar (GNU tar) 1.28<br>makeinfo (GNU texinfo) 5.2<br>xz (XZ Utils) 5.2.1<br>g++ compilation OK</kbd> <font color="#999999"># 编译器功能正常</font>
 <br></pre>
-<p>同时，还请进行库文件的一致性检查： </p>
+          <p>同时，还请进行库文件的一致性检查： </p>
 <pre class="userinput"><kbd class="command">cat &gt; library-check.sh &lt;&lt; "EOF"
 <code class="literal">#!/bin/bash
 for lib in lib{gmp,mpfr,mpc}.la; do
@@ -217,35 +199,34 @@ grep -q $lib;then :;else echo not;fi) found
 done
 unset lib</code>
 EOF
-
 bash library-check.sh</kbd>
 </pre>
-<p> 这些文件应该要么都在或者是都缺失，而不应该只有一两个。</p>
-</div>
-</div>
-<div class="navfooter">
-    <div class="book">
-        <div class="titlepage">
-            <div class="author">
-                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
-            </div>
+          <p> 这些文件应该要么都在或者是都缺失，而不应该只有一两个。</p>
         </div>
       </div>
-<ul>
-<li class="prev"> <a accesskey="p" href="prerequisites.html"
-title="前置需求">上一页</a>
-<p> 前置需求 </p>
-</li>
-<li class="next"> <a accesskey="n" href="typography.html"
-title="排版">下一页</a>
-<p> 排版 </p>
-</li>
-<li class="up"> <a accesskey="u" href="preface.html"
-title="序章">返回</a> </li>
-<li class="home"> <a accesskey="h" href="../index.html"
-title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
-</ul>
-</div>
-</body>
-</html>
+      <div class="navfooter">
+        <div class="book">
+          <div class="titlepage">
+            <div class="author">
+              <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+              <span class="surname">译者/校对：<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
+            </div>
+          </div>
+        </div>
+        <ul>
+          <li class="prev"> <a accesskey="p" href="prerequisites.html"
+            title="前置需求">上一页</a>
+            <p> 前置需求 </p>
+          </li>
+          <li class="next"> <a accesskey="n" href="typography.html"
+            title="排版">下一页</a>
+            <p> 排版约定 </p>
+          </li>
+          <li class="up"> <a accesskey="u" href="preface.html"
+          title="序章">返回</a> </li>
+          <li class="home"> <a accesskey="h" href="../index.html"
+          title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
+        </ul>
+      </div>
+    </body>
+  </html>
