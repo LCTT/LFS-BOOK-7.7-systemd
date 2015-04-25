@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=utf-8" />
     <title>
-      5.3.&nbsp;General Compilation Instructions
+      5.3.&nbsp;通用编译指南
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -18,199 +18,176 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;5.&nbsp;Constructing a Temporary System
+        第5章&nbsp;构建临时系统
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="toolchaintechnotes.html" title=
-          "Toolchain Technical Notes">Prev</a>
+          "工具链技术说明">上一页</a>
           <p>
-            Toolchain Technical Notes
+            工具链技术说明
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="binutils-pass1.html" title=
-          "Binutils-2.25 - Pass 1">Next</a>
+          "Binutils-2.25 - 第1遍">下一页</a>
           <p>
-            Binutils-2.25 - Pass 1
+            Binutils-2.25 - 第1遍
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第5章&nbsp;构建临时系统">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-tools-generalinstructions" name=
-        "ch-tools-generalinstructions"></a>5.3. General Compilation
-        Instructions Translating by ictlyh
+        "ch-tools-generalinstructions"></a>5.3. 通用编译指南
       </h1>
       <p>
-        When building packages there are several assumptions made within the
-        instructions:
+        编译软件包时本指南中有几个假定：
       </p>
       <div class="itemizedlist">
         <ul>
           <li class="listitem">
             <p>
-              Several of the packages are patched before compilation, but
-              only when the patch is needed to circumvent a problem. A patch
-              is often needed in both this and the next chapter, but
-              sometimes in only one or the other. Therefore, do not be
-              concerned if instructions for a downloaded patch seem to be
-              missing. Warning messages about <span class=
-              "emphasis"><em>offset</em></span> or <span class=
-              "emphasis"><em>fuzz</em></span> may also be encountered when
-              applying a patch. Do not worry about these warnings, as the
-              patch was still successfully applied.
+                当需要用补丁来避免问题的时候，几个软件包在编译之前需要打补丁。
+                本章和下一章中经常需要补丁，但有时候只有其中一章会需要。因此，
+                不用担心看起来确实某个补丁的下载说明。安装补丁的时候也许会遇到关于
+                <span class="emphasis"><em>offset</em></span> 或者 <span class=
+              "emphasis"><em>fuzz</em></span> 的警告信息。别担心这些警告，补丁还是会
+                成功安装的。
             </p>
           </li>
           <li class="listitem">
             <p>
-              During the compilation of most packages, there will be several
-              warnings that scroll by on the screen. These are normal and can
-              safely be ignored. These warnings are as they
-              appear&mdash;warnings about deprecated, but not invalid, use of
-              the C or C++ syntax. C standards change fairly often, and some
-              packages still use the older standard. This is not a problem,
-              but does prompt the warning.
+                在大部分软件包的编译过程中，屏幕上都可能出现几个警告。这都很正常，可以
+                安全地忽略。这些警告正如它们描述的那样，是关于使用过时 C 或 C++ 语法，
+                而不是不可用的。C 标准库经常改变，一些软件包仍然在使用旧的标准。这并不是
+                一个问题，虽然确实会弹出警告。
             </p>
           </li>
           <li class="listitem">
             <p>
-              Check one last time that the <code class="envar">LFS</code>
-              environment variable is set up properly:
+                最后确认一次正确设置了 <code class="envar">LFS</code> 环境变量：
             </p>
             <pre class="userinput">
 <kbd class="command">echo $LFS</kbd>
 </pre>
             <p>
-              Make sure the output shows the path to the LFS partition's
-              mount point, which is <code class="filename">/mnt/lfs</code>,
-              using our example.
+                确保输出显示了 LFS 分区挂载点的路径，在我们的例子中也就是
+                <code class="filename">/mnt/lfs</code>。
             </p>
           </li>
           <li class="listitem">
             <p>
-              Finally, two last important items must be emphasized:
+                最后，必须强调两个重要的点：
             </p>
             <div class="admon important">
               <img alt="[Important]" src="../images/important.png" />
               <h3>
-                Important
+                重要
               </h3>
               <p>
-                The build instructions assume that the <a class="xref" href=
+                编译指南假定正确地设置了 <a class="xref" href=
                 "../prologue/hostreqs.html" title=
-                "Host System Requirements">Host System Requirements</a>,
-                including symbolic links, have been set properly:
+            "宿主系统需求">宿主系统需求</a> 和符号链接：
               </p>
               <div class="itemizedlist">
                 <ul>
                   <li class="listitem">
                     <p>
-                      <span class="command"><strong>bash</strong></span> is
-                      the shell in use.
+                      shell 使用的是 <span class="command"><strong>bash</strong></span>。
                     </p>
                   </li>
                   <li class="listitem">
                     <p>
-                      <span class="command"><strong>sh</strong></span> is a
-                      symbolic link to <span class=
-                      "command"><strong>bash</strong></span>.
-                    </p>
-                  </li>
-                  <li class="listitem">
-                    <p>
-                      <span class=
-                      "command"><strong>/usr/bin/awk</strong></span> is a
-                      symbolic link to <span class=
-                      "command"><strong>gawk</strong></span>.
+                        <span class="command"><strong>sh</strong></span> 是到
+                        <span class=
+                      "command"><strong>bash</strong></span> 的符合链接。
                     </p>
                   </li>
                   <li class="listitem">
                     <p>
                       <span class=
-                      "command"><strong>/usr/bin/yacc</strong></span> is a
-                      symbolic link to <span class=
-                      "command"><strong>bison</strong></span> or a small
-                      script that executes bison.
+                      "command"><strong>/usr/bin/awk</strong></span> 是到 <span class=
+                      "command"><strong>gawk</strong></span> 的符合链接。
+                    </p>
+                  </li>
+                  <li class="listitem">
+                    <p>
+                      <span class=
+                      "command"><strong>/usr/bin/yacc</strong></span> 是到 <span class=
+                      "command"><strong>bison</strong></span> 或者一个执行 bison 脚本的符合链接。
                     </p>
                   </li>
                 </ul>
               </div>
             </div>
             <div class="admon important">
-              <img alt="[Important]" src="../images/important.png" />
+              <img alt="[重要]" src="../images/important.png" />
               <h3>
-                Important
+                重要
               </h3>
               <p>
-                To re-emphasize the build process:
+                再次强调构建过程：
               </p>
               <div class="orderedlist">
                 <ol class="compact">
                   <li class="listitem">
                     <p>
-                      Place all the sources and patches in a directory that
-                      will be accessible from the chroot environment such as
-                      <code class="filename">/mnt/lfs/sources/</code>. Do
-                      <span class="emphasis"><em>not</em></span> put sources
-                      in <code class="filename">/mnt/lfs/tools/</code>.
+                        把所有源文件和补丁放到 chroot 环境可访问的目录，例如
+                        <code class="filename">/mnt/lfs/sources/</code>。
+                        千万<span class="emphasis"><em>不能</em></span>把源文件放在
+                        <code class="filename">/mnt/lfs/tools/</code>。
                     </p>
                   </li>
                   <li class="listitem">
                     <p>
-                      Change to the sources directory.
+                        进入到源文件目录。
                     </p>
                   </li>
                   <li class="listitem">
                     <p>
-                      <a id="buildinstr" name="buildinstr"></a>For each
-                      package:
+                      <a id="buildinstr" name="buildinstr"></a>对于每个软件包:
                     </p>
                     <div class="orderedlist">
                       <ol class="compact">
                         <li class="listitem">
                           <p>
-                            Using the <span class=
-                            "command"><strong>tar</strong></span> program,
-                            extract the package to be built. In Chapter 5,
-                            ensure you are the <span class=
-                            "emphasis"><em>lfs</em></span> user when
-                            extracting the package.
+                            用 <span class=
+                            "command"><strong>tar</strong></span> 软件解压要编译的软件包。
+                                在第5章中，确保解压软件包时你是 <span class=
+                            "emphasis"><em>lfs</em></span> 用户。
                           </p>
                         </li>
                         <li class="listitem">
                           <p>
-                            Change to the directory created when the package
-                            was extracted.
+                            进入到解压后创建的文件夹中。
                           </p>
                         </li>
                         <li class="listitem">
                           <p>
-                            Follow the book's instructions for building the
-                            package.
+                            根据指南说明编译软件包。
                           </p>
                         </li>
                         <li class="listitem">
                           <p>
-                            Change back to the sources directory.
+                            回退到源文件目录。
                           </p>
                         </li>
                         <li class="listitem">
                           <p>
-                            Delete the extracted source directory and any
+                            除非特别说明，删除解压出来的文件夹和所有编译过程中生成的
                             <code class="filename"><em class=
                             "replaceable"><code>&lt;package&gt;</code></em>-build</code>
-                            directories that were created in the build
-                            process unless instructed otherwise.
+                                文件夹。
                           </p>
                         </li>
                       </ol>
@@ -224,28 +201,36 @@
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="toolchaintechnotes.html" title=
-          "Toolchain Technical Notes">Prev</a>
+          "工具链技术说明">上一页</a>
           <p>
-            Toolchain Technical Notes
+            工具链技术说明
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="binutils-pass1.html" title=
-          "Binutils-2.25 - Pass 1">Next</a>
+          "Binutils-2.25 - 第1遍">下一页</a>
           <p>
-            Binutils-2.25 - Pass 1
+            Binutils-2.25 - 第1遍
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第5章&nbsp;构建临时系统">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
