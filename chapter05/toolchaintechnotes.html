@@ -18,160 +18,84 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;5.&nbsp;Constructing a Temporary System
+        第五章 构建临时系统
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="introduction.html" title=
-          "Introduction">Prev</a>
+          "简介">前一页</a>
           <p>
-            Introduction
+            简介
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="generalinstructions.html" title=
-          "General Compilation Instructions">Next</a>
+          "一般性编译说明">下一页</a>
           <p>
-            General Compilation Instructions
+            一般性编译说明
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第五章 构建临时系统">向上</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
-        <a id="ch-tools-toolchaintechnotes" name=
-        "ch-tools-toolchaintechnotes"></a>5.2. Toolchain Technical Notes(Translated by Yuking)
-      </h1>
+        <a id="ch-tools-toolchaintechnotes" name="ch-tools-toolchaintechnotes"></a>5.2 工具链技术备注</h1>
       <p>
-        This section explains some of the rationale and technical details
-        behind the overall build method. It is not essential to immediately
-        understand everything in this section. Most of this information will
-        be clearer after performing an actual build. This section can be
-        referred to at any time during the process.
+        本节解释总体构建方法之中的某些基本原理和技术细节。并不需要立即理解本节中的所有问题。在进行实际构建的过程中，绝大部分的信息将会变得愈加清晰。在该过程中可随时查阅本小节的内容。
       </p>
       <p>
-        The overall goal of <a class="xref" href="chapter05.html" title=
-        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Chapter 5</a>
-        is to produce a temporary area that contains a known-good set of
-        tools that can be isolated from the host system. By using
-        <span class="command"><strong>chroot</strong></span>, the commands in
-        the remaining chapters will be contained within that environment,
-        ensuring a clean, trouble-free build of the target LFS system. The
-        build process has been designed to minimize the risks for new readers
-        and to provide the most educational value at the same time.
+        <a class="xref" href="chapter05.html" title="第五章 构建临时系统">第五章</a> 的总体目标是生成一个临时的系统，它包含一个已知的较好工具集，该工具集可与宿主系统分离。通过使用 <span class="command"><strong>chroot</strong></span>，其余各章中的命令将被包含在此环境中，以保证目标 LFS 系统能够洁净且无故障地生成。构建过程的设计就是为了使得新读者有最少的风险，同时还能有最好的指导价值。
       </p>
       <div class="admon note">
         <img alt="[Note]" src="../images/note.png" />
         <h3>
-          Note
+          注意
         </h3>
         <p>
-          Before continuing, be aware of the name of the working platform,
-          often referred to as the target triplet. A simple way to determine
-          the name of the target triplet is to run the <span class=
-          "command"><strong>config.guess</strong></span> script that comes
-          with the source for many packages. Unpack the Binutils sources and
-          run the script: <strong class=
-          "userinput"><code>./config.guess</code></strong> and note the
-          output. For example, for a modern 32-bit Intel processor the output
-          will likely be <span class=
-          "emphasis"><em>i686-pc-linux-gnu</em></span>.
+          在继续之前，请留意工作平台的名称，目标系统三元组的名称可通过运行脚本 <span class="command"><strong>config.guess</strong></span> 获得，许多软件的源码包都附带有该脚本。解开 Binutils 源码包并执行脚本：<strong class="userinput"><code>./config.guess</code></strong>，查看其输出。例如，对于一个现代的 32 位英特尔处理器，其输出很可能为  <span class="emphasis"><em>i686-pc-linux-gnu</em></span>。
         </p>
         <p>
-          Also be aware of the name of the platform's dynamic linker, often
-          referred to as the dynamic loader (not to be confused with the
-          standard linker <span class="command"><strong>ld</strong></span>
-          that is part of Binutils). The dynamic linker provided by Glibc
-          finds and loads the shared libraries needed by a program, prepares
-          the program to run, and then runs it. The name of the dynamic
-          linker for a 32-bit Intel machine will be <code class=
-          "filename">ld-linux.so.2</code>. A sure-fire way to determine the
-          name of the dynamic linker is to inspect a random binary from the
-          host system by running: <strong class="userinput"><code>readelf -l
-          &lt;name of binary&gt; | grep interpreter</code></strong> and
-          noting the output. The authoritative reference covering all
-          platforms is in the <code class="filename">shlib-versions</code>
-          file in the root of the Glibc source tree.
+          还请留意平台的动态链接器的名称，它通常被称为动态加载器（为了不与标准链接器 <span class="command"><strong>ld</strong></span> 发生混淆，后者包含中在 Binutils 中）。该动态链接器由 Glibc 提供，它寻找并加载程序所需的共享库，为程序运行作准备，并运行它。对于 32-位英特尔的机器，动态链接器的名称为 <code class="filename">ld-linux.so.2</code>。判断动态链接器的一个可靠方法是检查宿主系统中的任意一个二进制文件，执行：<strong class="userinput"><code>readelf -l &lt;二进制文件名&gt; | grep interpreter</code></strong> 且查看其输出。可在 Glibc 源码树根目录下的文件 <code class="filename">shlib-versions</code> 中找到所有平台的权威参考。
         </p>
       </div>
       <p>
-        Some key technical points of how the <a class="xref" href=
-        "chapter05.html" title=
-        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Chapter 5</a>
-        build method works:
+        下面是 <a class="xref" href="chapter05.html" title="第五章 构建临时系统">第五章</a>构建方法的几个关键技术点：
       </p>
       <div class="itemizedlist">
         <ul>
           <li class="listitem">
             <p>
-              Slightly adjusting the name of the working platform, by
-              changing the "vendor" field target triplet by way of the
-              <code class="envar">LFS_TGT</code> variable, ensures that the
-              first build of Binutils and GCC produces a compatible
-              cross-linker and cross-compiler. Instead of producing binaries
-              for another architecture, the cross-linker and cross-compiler
-              will produce binaries compatible with the current hardware.
+              使用 <code class="envar">LFS_TGT</code> 变量改变目标系统三元组的“vendor”字段，从而稍微调整工作平台的名称，以保证第一遍构建 Binutils 和 GCC 时能够生成兼容的交叉链接器和交叉编译器。此处的交叉链接器和交叉编译器生成的二进制文件与当前的硬件兼容，而不是用于其它的硬件架构。
             </p>
           </li>
           <li class="listitem">
             <p>
-              The temporary libraries are cross-compiled. Because a
-              cross-compiler by its nature cannot rely on anything from its
-              host system, this method removes potential contamination of the
-              target system by lessening the chance of headers or libraries
-              from the host being incorporated into the new tools.
-              Cross-compilation also allows for the possibility of building
-              both 32-bit and 64-bit libraries on 64-bit capable hardware.
+              临时库经交叉编译获得。由于交叉编译原本就不应该依赖于宿主系统，因此，通过降低宿主系统的头文件或库进入新工具的可能性，该方法可去除目标系统的可能污染。交叉编译的方式，还可以在 64-位硬件平台上同时构建出 32-位和 64-位库。
             </p>
           </li>
           <li class="listitem">
             <p>
-              Careful manipulation of the GCC source tells the compiler which
-              target dynamic linker will be used.
+              谨慎操作 GCC 源码，以告诉编译器将使用哪个目标系统动态链接器。
             </p>
           </li>
         </ul>
       </div>
       <p>
-        Binutils is installed first because the <span class=
-        "command"><strong>configure</strong></span> runs of both GCC and
-        Glibc perform various feature tests on the assembler and linker to
-        determine which software features to enable or disable. This is more
-        important than one might first realize. An incorrectly configured GCC
-        or Glibc can result in a subtly broken toolchain, where the impact of
-        such breakage might not show up until near the end of the build of an
-        entire distribution. A test suite failure will usually highlight this
-        error before too much additional work is performed.
+        Binutils 是首个安装的包，这是因为执行 GCC 和 Glibc 的 <span class="command"><strong>configure</strong></span> 时都将进行有关汇编器和链接器的多项特性测试，以判断允许或禁用哪些软件特性。其重要性可能更甚于最初的意识。对 GCC 或 Glibc 的错误配置可能导致工具链出现难以捉摸的问题，可能直到整个构建过程接近尾声时才会显现出这些问题。通常情况下，一次测试套件失败可在进行太多其它工作前突出该错误。
       </p>
       <p>
-        Binutils installs its assembler and linker in two locations,
-        <code class="filename">/tools/bin</code> and <code class=
-        "filename">/tools/$LFS_TGT/bin</code>. The tools in one location are
-        hard linked to the other. An important facet of the linker is its
-        library search order. Detailed information can be obtained from
-        <span class="command"><strong>ld</strong></span> by passing it the
-        <em class="parameter"><code>--verbose</code></em> flag. For example,
-        an <strong class="userinput"><code>ld --verbose | grep
-        SEARCH</code></strong> will illustrate the current search paths and
-        their order. It shows which files are linked by <span class=
-        "command"><strong>ld</strong></span> by compiling a dummy program and
-        passing the <em class="parameter"><code>--verbose</code></em> switch
-        to the linker. For example, <strong class="userinput"><code>gcc
-        dummy.c -Wl,--verbose 2&gt;&amp;1 | grep succeeded</code></strong>
-        will show all the files successfully opened during the linking.
+        Binutils 将其汇编器和链接器安装在两个地方，即 <code class="filename">/tools/bin</code> 和 <code class="filename">/tools/$LFS_TGT/bin</code>。一个地方的工具是另一个地方工具的硬链接。链接器的一个重要方面是它的库搜索顺序。可给 <span class="command"><strong>ld</strong></span> 传递参数 <em class="parameter"><code>--verbose</code></em> 获得详细信息。如，<strong class="userinput"><code>ld --verbose | grep SEARCH</code></strong> 可得到当前的搜索路径及其顺序。通过编译一个模拟程序并向链接器传递 <em class="parameter"><code>--verbose</code></em> 开关，可显示 <span class=        "command"><strong>ld</strong></span> 都链接了哪些文件。例如，<strong class="userinput"><code>gcc dummy.c -Wl,--verbose 2&gt;&amp;1 | grep succeeded</code></strong> 将显示链接过程中成功打开的所有文件。
       </p>
       <p>
-        The next package installed is GCC. An example of what can be seen
-        during its run of <span class=
-        "command"><strong>configure</strong></span> is:
+        下一个安装的包是 GCC。下面是运行 GCC 的 <span class="command"><strong>configure</strong></span> 的输出的一个例子：
       </p>
       <pre class="screen">
 <code class=
@@ -179,107 +103,50 @@
 checking what linker to use... /tools/i686-lfs-linux-gnu/bin/ld</code>
 </pre>
       <p>
-        This is important for the reasons mentioned above. It also
-        demonstrates that GCC's configure script does not search the PATH
-        directories to find which tools to use. However, during the actual
-        operation of <span class="command"><strong>gcc</strong></span>
-        itself, the same search paths are not necessarily used. To find out
-        which standard linker <span class=
-        "command"><strong>gcc</strong></span> will use, run: <strong class=
-        "userinput"><code>gcc -print-prog-name=ld</code></strong>.
+        基于前述原因，这很重要。它还说明了 GCC 的配置脚本并不会搜索 PATH 目录来寻找使用什么工具。不过，在  <span class="command"><strong>gcc</strong></span> 自身的实际运行中，并不需要使用同样的搜索路径。运行：<strong class= "userinput"><code>gcc -print-prog-name=ld</code></strong> 可获知 <span class="command"><strong>gcc</strong></span> 使用是何种标准链接器（译者注：<strong class= "userinput"><code>gcc -print-prog-name</code></strong> 这个命令是为了显示 gcc 使用的某些内部工具的绝对路径，但事实上，<span class="command"><strong>ld</strong></span> 并不是 GCC 的内部工具，因此这条命令实际上没什么用）。
       </p>
       <p>
-        Detailed information can be obtained from <span class=
-        "command"><strong>gcc</strong></span> by passing it the <em class=
-        "parameter"><code>-v</code></em> command line option while compiling
-        a dummy program. For example, <strong class="userinput"><code>gcc -v
-        dummy.c</code></strong> will show detailed information about the
-        preprocessor, compilation, and assembly stages, including
-        <span class="command"><strong>gcc</strong></span>'s included search
-        paths and their order.
+        在编译模拟程序时，向 <span class="command"><strong>gcc</strong></span> 传递命令行选项 <em class="parameter"><code>-v</code></em> 可获得详细信息。例如，<strong class="userinput"><code>gcc -v  dummy.c</code></strong> 将显示预处理器、编译和汇编阶段的详细信息，包括 <span class="command"><strong>gcc</strong></span> 的 include 搜索路径及其顺序。
       </p>
       <p>
-        Next installed are sanitized Linux API headers. These allow the
-        standard C library (Glibc) to interface with features that the Linux
-        kernel will provide.
+        下一个安装的包是经过净化的 Linux API 头文件。这些头文件可使得标准 C 库（Glibc）与 Linux 内核提供的特性进行交行交互。
       </p>
       <p>
-        The next package installed is Glibc. The most important
-        considerations for building Glibc are the compiler, binary tools, and
-        kernel headers. The compiler is generally not an issue since Glibc
-        will always use the compiler relating to the <em class=
-        "parameter"><code>--host</code></em> parameter passed to its
-        configure script, e.g. in our case, <span class=
-        "command"><strong>i686-lfs-linux-gnu-gcc</strong></span>. The binary
-        tools and kernel headers can be a bit more complicated. Therefore,
-        take no risks and use the available configure switches to enforce the
-        correct selections. After the run of <span class=
-        "command"><strong>configure</strong></span>, check the contents of
-        the <code class="filename">config.make</code> file in the
-        <code class="filename">glibc-build</code> directory for all important
-        details. Note the use of <em class=
-        "parameter"><code>CC="i686-lfs-gnu-gcc"</code></em> to control which
-        binary tools are used and the use of the <em class=
-        "parameter"><code>-nostdinc</code></em> and <em class=
-        "parameter"><code>-isystem</code></em> flags to control the
-        compiler's include search path. These items highlight an important
-        aspect of the Glibc package&mdash;it is very self-sufficient in terms
-        of its build machinery and generally does not rely on toolchain
-        defaults.
+        下一个安装的包是 Glibc。构建 Glibc 时，最重要的考量是编译器、二进制工具和内核头文件。由于 Glibc 总是使用传递给它的配置脚本的 <em class="parameter"><code>--host</code></em> 参数有关的编译器，如，在我们这个场景中是 <span class="command"><strong>i686-lfs-linux-gnu-gcc</strong></span>，因此编译器通常不是一个问题。二进制工具和内核头文件可能会更复杂一些。因此，请谨慎行事并利用可用的配置开关以强制使用正确的选择。<span class= "command"><strong>configure</strong></span> 运行完毕，目录 <code class="filename">glibc-build</code> 下的文件 <code class="filename">config.make</code> 包含有所有的重要详细。需要注意的是，<em class="parameter"><code>CC="i686-lfs-gnu-gcc"</code></em> 用来控制使用哪个二进制工具，<em class= "parameter"><code>-nostdinc</code></em> 和 <em class="parameter"><code>-isystem</code></em> 标志用来控制编译器的 include 搜索路径。这些条目强调了 Glibc 包的一个重要方面，即其构建机制是非常自给自足的，通常并不依赖默工具链的默认设置。
       </p>
       <p>
-        During the second pass of Binutils, we are able to utilize the
-        <em class="parameter"><code>--with-lib-path</code></em> configure
-        switch to control <span class="command"><strong>ld</strong></span>'s
-        library search path.
+        在第二遍编译 Binutils 过程中，我们能够利用配置开关 <em class="parameter"><code>--with-lib-path</code></em> 来控制 <span class="command"><strong>ld</strong></span> 的库搜索路径。
       </p>
       <p>
-        For the second pass of GCC, its sources also need to be modified to
-        tell GCC to use the new dynamic linker. Failure to do so will result
-        in the GCC programs themselves having the name of the dynamic linker
-        from the host system's <code class="filename">/lib</code> directory
-        embedded into them, which would defeat the goal of getting away from
-        the host. From this point onwards, the core toolchain is
-        self-contained and self-hosted. The remainder of the <a class="xref"
-        href="chapter05.html" title=
-        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Chapter 5</a>
-        packages all build against the new Glibc in <code class=
-        "filename">/tools</code>.
+        第二遍编译 GCC 时，也需要修改其源代码以告诉 GCC 使用新的动态链接器。如果不加修改，将会导致 GCC 自身的程序嵌入来自宿主系统目录 <code class="filename">/lib</code> 的动态链接器名称，这将破坏远离宿主系统的目标。正是基于前面的这个出发点，核心工具链是自包含和自托管的。<a class="xref" href="chapter05.html" title="第五章 构建临时系统"">第五章</a>其它的软件包都将在 <code class="filename">/tools</code> 中的新 Glibc 的基础上进行构建。
       </p>
       <p>
-        Upon entering the chroot environment in <a class="xref" href=
-        "../chapter06/chapter06.html" title=
-        "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Chapter
-        6</a>, the first major package to be installed is Glibc, due to its
-        self-sufficient nature mentioned above. Once this Glibc is installed
-        into <code class="filename">/usr</code>, we will perform a quick
-        changeover of the toolchain defaults, and then proceed in building
-        the rest of the target LFS system.
+        在进入<a class="xref" href="../chapter06/chapter06.html" title="第六章 安装基本的系统软件">第六章</a>中的 chroot 环境前，将安装的首个主要的软件包是 Glibc，这是因为它天生具有前面提及的自给自足特点。一旦将 Glibc 安装到 <code class="filename">/usr</code> 中，我们将快速改变工具链的默认设置，然后继续构建目标 LFS 系统的其余部分。
       </p>
     </div>
     <div class="navfooter">
       <ul>
         <li class="prev">
           <a accesskey="p" href="introduction.html" title=
-          "Introduction">Prev</a>
+          "简介">前一页</a>
           <p>
-            Introduction
+            简介
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="generalinstructions.html" title=
-          "General Compilation Instructions">Next</a>
+          "一般性编译说明">下一页</a>
           <p>
-            General Compilation Instructions
+            一般性编译说明
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第五章 构建临时系统">向上</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
