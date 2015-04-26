@@ -6,7 +6,7 @@ Translating by H-mudcup
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=utf-8" />
     <title>
-      1.1.&nbsp;How to Build an LFS System
+      1.1.&nbsp;如何构建一个 LFS 系统
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -19,26 +19,26 @@ Translating by H-mudcup
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;1.&nbsp;介绍
+        第一章&nbsp;简介
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="chapter01.html" title=
           "Introduction">上一页</a>
           <p>
-            介绍 
+            简介 
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="whatsnew.html" title=
-          "What's new since the last release">下一页</a>
+          "上次发布以来的更新">下一页</a>
           <p>
             上次发布以来的更新
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter01.html" title=
-          "Chapter&nbsp;1.&nbsp;Introduction">返回</a>
+          "第一章 简介">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
@@ -51,101 +51,89 @@ Translating by H-mudcup
         <a id="ch-intro-how" name="ch-intro-how"></a>1.1. 如何构建一个LFS系统
       </h1>
       <p>
-        LFS系统可以被一个已经安装好的Linux发行版（比如Debian、OpenMandriva、Fedora或OpenSUSE）构建。
-        这个已经存在的Linux系统（宿主）将被用作一个起始点来提供必要的程序，包括一个编译器，链接器和shell，用来构建新系统。要想
-        访问 这些工具请在安装发行版的过程中选择
-        <span class="quote">&ldquo;<span class="quote">development（开发）</span>&rdquo;</span>选项。
+        LFS系统需要在一个已经安装好的 Linux 发行版（比如 Debian、OpenMandriva、Fedora 或 OpenSUSE）中构建。这个已有的 Linux 系统（即宿主）作为构建新系统的起始点，提供了必要的程序，包括一个编译器、链接器和 shell。请在安装发行版的过程中选择
+        <span class="quote">&ldquo;<span class="quote">development（开发）</span>&rdquo;</span>选项以便使用这些开发工具。
       </p>
       <p>
-        你可能希望使用一个商业发行版的LiveCD，而不是在你的电脑上安装一个独立的发行版。
+        除了将一个独立发行版安装到你的电脑上之外，你也可以使用商业发行版的 LiveCD。
       </p>
       <p>
         本书的<a class="xref" href="../chapter02/chapter02.html" title=
-        "Chapter&nbsp;2.&nbsp;Preparing a New Partition">第二章</a> 
-        描述了如何创建一个的新Linux本地分区和文件系统。这就是新的LFS系统将要被编译和安装的地方
-        <a class="xref" href="../chapter03/chapter03.html" title=
-        "Chapter&nbsp;3.&nbsp;Packages and Patches">第三章</a> 
-        阐述了构建LFS系统需要下载的包和补丁以及如何把他们保存在新的文件系统里。 <a class="xref"
+        "第二章 准备分区">第二章</a>描述了如何创建一个的新 Linux 本地分区和文件系统，这就是编译和安装新的 LFS 系统的地方。<a class="xref" href="../chapter03/chapter03.html" title=
+        "第三章 软件包与补丁">第三章</a>介绍了构建LFS系统所需下载的软件包和补丁，以及如何把他们保存在新的文件系统里。 <a class="xref"
         href="../chapter04/chapter04.html" title=
-        "Chapter&nbsp;4.&nbsp;Final Preparations">第四章</a>
-         讨论了如何设置恰当的工作环境。请仔细阅读
-         <a class="xref" href="../chapter04/chapter04.html" title=
-        "Chapter&nbsp;4.&nbsp;Final Preparations">第四章</a>，因为它阐述了几个在你开始阅读 <a class="xref" href=
+        "第四章 最后的准备">第四章</a>讨论了如何设置恰当的工作环境。因为它阐述了几个需要注意的重要问题，在你按照<a class="xref" href=
         "../chapter05/chapter05.html" title=
-        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">第五章</a>
-        之后的内容之前需要注意的非常重要的问题
+        "第五章 构建一个临时文件系统">第五章</a>及之后的内容开始工作前，请仔细阅读<a class="xref" href="../chapter04/chapter04.html" title=
+        "第四章 最后的准备">第四章</a>。
       </p>
       <p>
         <a class="xref" href="../chapter05/chapter05.html" title=
-        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">第五章</a>
-        阐述了构成基本开发套件（即工具链）的大量的包的安装，在<a class="xref" href="../chapter06/chapter06.html"
-        title="Chapter&nbsp;6.&nbsp;Installing Basic System Software">第六章</a>中
-        将用这个开发套件构建真正的系统。其中一些包是为了解决无法直接使用的依赖&mdash;比如，你需要一个编译器来编译一个编译
+        "第五章 构建一个临时文件系统">第五章</a>阐述了构成基本开发套件（即工具链）的大量软件包的安装，在<a class="xref" href="../chapter06/chapter06.html"
+        title="第六章 安装基本的系统软件">第六章</a>中将用这个开发套件构建真正的系统。其中一些包是需要解决循环依赖——比如，你需要一个编译器来编译一个编译
         器。 
       </p>
       <p>
         <a class="xref" href="../chapter05/chapter05.html" title=
-        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">第五章</a>
-        还将向你展示如何构建第一遍的工具链，包括 Binutils 和 GCC
-        （第一遍基本上意味着这两的核心包将被重装）。下一步是构建 Glibc，即C语言库。Glibc
-        将被在第一遍里构建的工具链编译。然后，第二遍的工具链就被编译完了。这次，工具链将被动态连接到新建成的Glibc。
+        "第五章 构建一个临时文件系统">第五章</a>还将向你展示如何构建第一遍的工具链，包括 Binutils 和 GCC
+        （第一遍基本上就是重新安装这两个核心软件包）。下一步是构建 Glibc，即C语言库。Glibc
+        将用第一遍构建的工具链编译。然后，第二遍的工具链就被编译好了。这次，工具链将被动态连接到新建成的 Glibc。
          <a class="xref" href=
         "../chapter05/chapter05.html" title=
-        "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">第五章</a>
-        中剩余的包将被这个第二遍的工具链编译。当这些工作完成以后，LFS的安装就不会再依赖于宿主发行版了，除了正在运行的
-        内核。 
+        "第五章 构建一个临时文件系统">第五章</a>中剩余的包将用这个第二遍的工具链编译。当这些工作完成以后，LFS 的安装过程就不会再依赖于宿主发行版了，除了正在运行的内核。 
       </p>
       <p>
         把新系统从宿主发行版中分离出来的工作看起来可能有点多余。<a class="xref" href=
         "../chapter05/toolchaintechnotes.html" title=
-        "5.2.&nbsp;Toolchain Technical Notes">Section&nbsp;5.2,
-        &ldquo;工具链技术备注 &rdquo;</a>这
-        一部分提供了为什么要这么做的全技术详解。
+        "5.2.&nbsp;工具链技术备注">5.2 &ldquo;工具链技术备注&rdquo;</a>这一节给出了为什么要这么做的完整技术说明。
       </p>
       <p>
         In <a class="xref" href="../chapter06/chapter06.html" title=
-        "Chapter&nbsp;6.&nbsp;Installing Basic System Software">第六章</a>
-        ，完整的LFS系统将被构建完成。我们将使用<span class=
-        "command"><strong>chroot</strong></span> (change root改变根目录) 程序来进入一个虚拟的环境并启动一个新的shell，
-        这个shell的根目录将被设置到LFS分区里。这个过程非
-        常像是重启并引导内核把LFS分区挂载成根分区。系统并没有真正的重启，而是在使用
-        <span class="command"><strong>chroot</strong></span>，因为创建一个可启动的系统需要有一些目前还没必要有的额外工作。
-        使用它最大的好处是，它在运行过程中允许你在构建LFS的同时继续使用宿主系统。在等待包的编译过程中，你可以继续正常使用你的电脑。
+        "第六章 安装基本的系统软件">第六章</a>，会构建完整的 LFS 系统。我们将使用 <span class=
+        "command"><strong>chroot</strong></span> (change root 改变根目录) 程序来进入一个虚拟环境并启动一个新的 shell，这个 shell 的根目录将被指向到LFS分区。这个过程非常像是重启并让内核把 LFS 分区挂载为根分区。系统并没有真正的重启，而是在使用
+        <span class="command"><strong>chroot</strong></span> 实现的，因为创建一个可启动的系统还需要有一些目前尚未完成的额外工作。
+        使用“chroot”的最大好处是，它在运行过程中允许你在构建 LFS 的同时继续使用宿主系统。在等待包的编译过程中，你可以继续正常使用你的电脑。
       </p>
       <p>
-        为了完成安装，基本的系统配置方法在<a class="xref" href="../chapter07/chapter07.html" title=
-        "Chapter&nbsp;7.&nbsp;Basic System Configuration">第七章</a>，内核和 boot loader（启动引导程序）的设置方法在
+        为了完成安装，还需要<a class="xref" href="../chapter07/chapter07.html" title=
+        "第七章 基本系统配置">第七章</a>中的基本的系统配置方法，
         <a class="xref" href=
         "../chapter08/chapter08.html" title=
-        "Chapter&nbsp;8.&nbsp;Making the LFS System Bootable">第八章</a>。
+        "第八章 让 LFS 系统可引导">第八章</a>中的内核和启动引导程序的配置方法。
         <a class="xref" href="../chapter09/chapter09.html" title=
-        "Chapter&nbsp;9.&nbsp;The End">第九章</a>包含了用完本书以后继续使用LFS的一些建议。
-        在本书内的步骤完成之后，电脑就可以重启进入新的LFS系统了。 
+        "Chapter&nbsp;9.&nbsp;The End">第九章</a>包含了学完本书以后继续使用 LFS 的一些建议。在本书内的步骤完成之后，电脑就可以重启进入新的 LFS 系统了。 
       </p>
       <p>
-        流程大概就是这样。每一步的详细信息和包的描述都会在之后的章节里继续讨论。
-        一旦你开始这段LFS旅程，看起来混乱的事件将被理清，每一个都将对号入座。
+        流程大概就是这样。每一步的详细信息都会在之后的章节和软件包的描述里讨论。当你踏上这段 LFS 之旅，就会理清这些看起来很复杂的东西，每一个都将对号入座。
       </p>
     </div>
     <div class="navfooter">
+      <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/H-mudcup" target="_blank">H-mudcup</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
+            </div>
+        </div>
+      </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="chapter01.html" title=
           "Introduction">上一页</a>
           <p>
-            介绍 
+            简介 
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="whatsnew.html" title=
-          "What's new since the last release">下一页</a>
+          "上次发布以来的更新">下一页</a>
           <p>
             上次发布以来的更新 
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter01.html" title=
-          "Chapter&nbsp;1.&nbsp;Introduction">返回</a>
+          "第一章 简介">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
