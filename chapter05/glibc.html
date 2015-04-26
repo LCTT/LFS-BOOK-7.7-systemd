@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -18,30 +18,30 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;5.&nbsp;Constructing a Temporary System
+        第5章&nbsp;构建临时系统
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="linux-headers.html" title=
-          "Linux-3.19 API Headers">Prev</a>
+          "Linux-3.19 API 头文件">上一页</a>
           <p>
-            Linux-3.19 API Headers
+            Linux-3.19 API 头文件
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="gcc-libstdc++.html" title=
-          "Libstdc++-4.9.2">Next</a>
+          "Libstdc++-4.9.2">下一页</a>
           <p>
             Libstdc++-4.9.2
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第5章&nbsp;构建临时系统">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
@@ -51,19 +51,16 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Glibc package contains the main C library. This library
-          provides the basic routines for allocating memory, searching
-          directories, opening and closing files, reading and writing files,
-          string handling, pattern matching, arithmetic, and so on.
+            Glibc 软件包包括主要的 C 库。这个库提供了基本的内存分配、文件夹搜素、读写文件、字符串处理、模式匹配、算术等等例程。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间:</strong>
               <span class="segbody">3.9 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">所需磁盘空间:</strong>
               <span class="segbody">670 MB</span>
             </div>
           </div>
@@ -71,12 +68,10 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          5.7.1. Installation of Glibc
+          5.7.1. 安装 Glibc
         </h2>
         <p>
-          In some cases, particularly LFS 7.1, the rpc headers were not
-          installed properly. Test to see if they are installed in the host
-          system and install if they are not:
+            在某些情况下，尤其是 LFS 7.1，rpc(译注: Remote Procedure Calling, 远程过程调用) 头文件并没有正确安装。测试查看是否安装在了主机系统中，如果没有的话安装它：
         </p>
         <pre class="userinput">
 <kbd class="command">if [ ! -r /usr/include/rpc/types.h ]; then
@@ -85,7 +80,7 @@
 fi</kbd>
 </pre>
         <p>
-          Fix a regression in the package that affects 32-bit architectures:
+          修复软件包中一个会影响 32 位架构的回滚：
         </p>
         <pre class="userinput">
 <kbd class="command">sed -e '/ia32/s/^/1:/' \
@@ -93,15 +88,14 @@ fi</kbd>
     -i  sysdeps/i386/i686/multiarch/mempcpy_chk.S</kbd>
 </pre>
         <p>
-          The Glibc documentation recommends building Glibc outside of the
-          source directory in a dedicated build directory:
+            Glibc 手册建议在源文件夹之外的一个专用文件夹中编译 Glibc：
         </p>
         <pre class="userinput">
 <kbd class="command">mkdir -v ../glibc-build
 cd ../glibc-build</kbd>
 </pre>
         <p>
-          Next, prepare Glibc for compilation:
+            下一步，准备编译 Glibc：
         </p>
         <pre class="userinput">
 <kbd class="command">../glibc-2.21/configure                             \
@@ -117,7 +111,7 @@ cd ../glibc-build</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the configure options:</strong>
+            <strong>配置选项的含义:</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -126,10 +120,9 @@ cd ../glibc-build</kbd>
             </dt>
             <dd>
               <p>
-                The combined effect of these switches is that Glibc's build
-                system configures itself to cross-compile, using the
-                cross-linker and cross-compiler in <code class=
-                "filename">/tools</code>.
+                这些选项的组合效果是 Glibc 的构建系统配置它自己用
+                <code class=
+                "filename">/tools</code> 里面的交叉链接器和交叉编译器交叉编译自己。
               </p>
             </dd>
             <dt>
@@ -138,8 +131,7 @@ cd ../glibc-build</kbd>
             </dt>
             <dd>
               <p>
-                This builds the libraries without profiling information. Omit
-                this option if profiling on the temporary tools is necessary.
+                编译库但没有分析信息。如果临时工具分析信息是必要的话就省略这个选项。
               </p>
             </dd>
             <dt>
@@ -148,9 +140,7 @@ cd ../glibc-build</kbd>
             </dt>
             <dd>
               <p>
-                This tells Glibc to compile the library with support for
-                2.6.32 and later Linux kernels. Workarounds for older kernels
-                are not enabled.
+                这告诉 Glibc 编译能支持 2.6.32 以及之后 Linux 内核的库。不支持旧版本的内核。
               </p>
             </dd>
             <dt>
@@ -159,10 +149,7 @@ cd ../glibc-build</kbd>
             </dt>
             <dd>
               <p>
-                This tells Glibc to compile itself against the headers
-                recently installed to the tools directory, so that it knows
-                exactly what features the kernel has and can optimize itself
-                accordingly.
+                告诉 Glibc 在安装在 tools 文件夹中的头文件之上编译自己，因此它能知道内核有具体有什么功能，并基于此作出优化。
               </p>
             </dd>
             <dt>
@@ -171,17 +158,9 @@ cd ../glibc-build</kbd>
             </dt>
             <dd>
               <p>
-                The linker installed during <a class="xref" href=
+                在 <a class="xref" href=
                 "binutils-pass1.html" title=
-                "5.4.&nbsp;Binutils-2.25 - Pass 1">Section&nbsp;5.4,
-                &ldquo;Binutils-2.25 - Pass 1&rdquo;</a> was cross-compiled
-                and as such cannot be used until Glibc has been installed.
-                This means that the configure test for force-unwind support
-                will fail, as it relies on a working linker. The
-                libc_cv_forced_unwind=yes variable is passed in order to
-                inform <span class=
-                "command"><strong>configure</strong></span> that force-unwind
-                support is available without it having to run the test.
+                "5.4.&nbsp;Binutils-2.25 - 第1遍">5.4,&ldquo;Binutils-2.25 - 第1遍&rdquo;</a> 中安装的链接器是交叉编译的，在安装完 Glibc 之前不能使用。由于依赖于工作的链接器，这意味着 force-unwind 支持的配置测试会失败。将 libc_cv_forced_unwind=yes 变量传递进去告诉<span class="command"><strong>configure</strong></span> 命令 force-unwind 支持是可用的，不需要进行测试。
               </p>
             </dd>
             <dt>
@@ -190,10 +169,7 @@ cd ../glibc-build</kbd>
             </dt>
             <dd>
               <p>
-                Simlarly, we pass libc_cv_c_cleanup=yes through to the
-                <span class="command"><strong>configure</strong></span>
-                script so that the test is skipped and C cleanup handling
-                support is configured.
+                类似的，我们传递 libc_cv_c_cleanup=yes 到<span class="command"><strong>configure</strong></span> 脚本跳过测试就完成了 C 清理支持的配置。
               </p>
             </dd>
             <dt>
@@ -202,16 +178,13 @@ cd ../glibc-build</kbd>
             </dt>
             <dd>
               <p>
-                Simlarly, we pass libc_cv_ctors_header=yes through to the
-                <span class="command"><strong>configure</strong></span>
-                script so that the test is skipped and gcc constructor
-                support is configured.
+                类似的，我们传递 libc_cv_ctors_header=yes 到 <span class="command"><strong>configure</strong></span> 脚本跳过测试就完成了 gcc 构建器支持的配置。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          During this stage the following warning might appear:
+            在这个过程中，可能会出现下面的警告：
         </p>
         <div class="blockquote">
           <blockquote class="blockquote">
@@ -225,31 +198,26 @@ cd ../glibc-build</kbd>
           </blockquote>
         </div>
         <p>
-          The missing or incompatible <span class=
-          "command"><strong>msgfmt</strong></span> program is generally
-          harmless. This <span class="command"><strong>msgfmt</strong></span>
-          program is part of the Gettext package which the host distribution
-          should provide.
+            <span class=
+          "command"><strong>msgfmt</strong></span> 程序的缺失或者不兼容通常是无害的。这个 <span class="command"><strong>msgfmt</strong></span> 程序是 Gettext 软件包的一部分，主机发行版应该提供了。
         </p>
         <div class="admon note">
           <img alt="[Note]" src="../images/note.png" />
           <h3>
-            Note
+            注意
           </h3>
           <p>
-            There have been reports that this package may fail when building
-            as a "parallel make". If this occurs, rerun the make command with
-            a "-j1" option.
+            有报告说用 "parallel make" 编译这个软件包的时候会失败。如果出现这种情况，用 "-j1" 选项重新运行 make 命令。
           </p>
         </div>
         <p>
-          Compile the package:
+          编译软件包:
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          Install the package:
+          安装软件包:
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
@@ -257,13 +225,10 @@ cd ../glibc-build</kbd>
         <div class="admon caution">
           <img alt="[Caution]" src="../images/caution.png" />
           <h3>
-            Caution
+            警告
           </h3>
           <p>
-            At this point, it is imperative to stop and ensure that the basic
-            functions (compiling and linking) of the new toolchain are
-            working as expected. To perform a sanity check, run the following
-            commands:
+            到了这里，必须停下来确认新工具链的基本功能(编译和链接)都是像预期的那样正常工作。运行下面的命令进行全面的检查：
           </p>
           <pre class="userinput">
 <kbd class="command">echo 'main(){}' &gt; dummy.c
@@ -271,26 +236,21 @@ $LFS_TGT-gcc dummy.c
 readelf -l a.out | grep ': /tools'</kbd>
 </pre>
           <p>
-            If everything is working correctly, there should be no errors,
-            and the output of the last command will be of the form:
+            如果一切工作正常的话，这里应该没有错误，最后一个命令的输出形式会是：
           </p>
           <pre class="screen">
 <code class=
 "computeroutput">[Requesting program interpreter: /tools/lib/ld-linux.so.2]</code>
 </pre>
           <p>
-            Note that <code class="filename">/tools/lib</code>, or
-            <code class="filename">/tools/lib64</code> for 64-bit machines
-            appears as the prefix of the dynamic linker.
+            注意 <code class="filename">/tools/lib</code>、或者 64 位机器的
+            <code class="filename">/tools/lib64</code> 会以动态链接器的前缀出现。
           </p>
           <p>
-            If the output is not shown as above or there was no output at
-            all, then something is wrong. Investigate and retrace the steps
-            to find out where the problem is and correct it. This issue must
-            be resolved before continuing on.
+            如果输出不是像上面那样或者根本就没有输出，那么可能某些地方出错了。调查并回溯这些步骤，找出问题所在并改正它。在继续之前必须解决这个问题。
           </p>
           <p>
-            Once all is well, clean up the test files:
+            一旦一切都顺利，清理测试文件：
           </p>
           <pre class="userinput">
 <kbd class="command">rm -v dummy.c a.out</kbd>
@@ -299,49 +259,52 @@ readelf -l a.out | grep ': /tools'</kbd>
         <div class="admon note">
           <img alt="[Note]" src="../images/note.png" />
           <h3>
-            Note
+            注意
           </h3>
           <p>
-            Building Binutils in the section after next will serve as an
-            additional check that the toolchain has been built properly. If
-            Binutils fails to build, it is an indication that something has
-            gone wrong with the previous Binutils, GCC, or Glibc
-            installations.
+            在下一页之后编译 Binutils 章节时会再一次检查工具链是否正确编译。如果Binutils 编译失败，说明之前安装 Binutils、GCC、或者 Glibc 时某些地方出现了错误。
           </p>
         </div>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <p>
-          Details on this package are located in <a class="xref" href=
+            该软件包的详细信息在 <a class="xref" href=
           "../chapter06/glibc.html#contents-glibc" title=
-          "6.9.4.&nbsp;Contents of Glibc">Section&nbsp;6.9.4, &ldquo;Contents
-          of Glibc.&rdquo;</a>
+          "6.9.4.&nbsp;Glibc 的内容">6.9.4, &ldquo;Glibc 的内容&rdquo;</a>
         </p>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="linux-headers.html" title=
-          "Linux-3.19 API Headers">Prev</a>
+          "Linux-3.19 API 头文件">上一页</a>
           <p>
-            Linux-3.19 API Headers
+            Linux-3.19 API 头文件
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="gcc-libstdc++.html" title=
-          "Libstdc++-4.9.2">Next</a>
+          "Libstdc++-4.9.2">下一页</a>
           <p>
             Libstdc++-4.9.2
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第5章&nbsp;构建临时系统">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>

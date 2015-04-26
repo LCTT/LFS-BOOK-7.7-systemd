@@ -1,111 +1,82 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content=
-    "application/xhtml+xml; charset=utf-8" />
-    <title>
-      7.2.&nbsp;General Network Configuration
-    </title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
-    <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
-    <link rel="stylesheet" href="stylesheets/lfs-print.css" type="text/css"
-    media="print" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> 7.2.&nbsp;General Network Configuration </title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css">
+    <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+    <link rel="stylesheet" href="stylesheets/lfs-print.css"
+      type="text/css" media="print">
   </head>
   <body class="lfs" id="lfs-7.7-systemd">
     <div class="navheader">
-      <h4>
-        Linux From Scratch - Version 7.7-systemd
-      </h4>
-      <h3>
-        Chapter&nbsp;7.&nbsp;Basic System Configuration
-      </h3>
+      <h4> Linux From Scratch - Version 7.7-systemd </h4>
+      <h3> 第 7 章. 基本系统配置 </h3>
       <ul>
-        <li class="prev">
-          <a accesskey="p" href="introduction.html" title=
-          "Introduction">Prev</a>
-          <p>
-            Introduction
-          </p>
+        <li class="prev"> <a accesskey="p" href="introduction.html"
+            title="Introduction">上一页</a>
+          <p> 简介 </p>
         </li>
-        <li class="next">
-          <a accesskey="n" href="udev.html" title=
-          "Device and Module Handling on an LFS System">Next</a>
-          <p>
-            Device and Module Handling on an LFS System
-          </p>
+        <li class="next"> <a accesskey="n" href="udev.html"
+            title="Device and Module Handling on an LFS System">下一页</a>
+          <p> LFS 系统上的设备和模块管理 </p>
         </li>
-        <li class="up">
-          <a accesskey="u" href="chapter07.html" title=
-          "Chapter&nbsp;7.&nbsp;Basic System Configuration">Up</a>
+        <li class="up"> <a accesskey="u" href="chapter07.html"
+            title="Chapter&nbsp;7.&nbsp;Basic System Configuration">返回</a>
         </li>
-        <li class="home">
-          <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
-        </li>
+        <li class="home"> <a accesskey="h" href="../index.html"
+            title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
       </ul>
     </div>
-    <div class="sect1" lang="en" xml:lang="en">
-      <h1 class="sect1">
-        <a id="ch-scripts-network" name="ch-scripts-network"></a>7.2. General
-        Network Configuration
-      </h1>
-      <p>
-        This section only applies if a network card is to be configured.
-      </p>
-      <div class="sect2" lang="en" xml:lang="en">
-        <h2 class="sect2">
-          7.2.1. Network Interface Configuration Files
-        </h2>
-        <p>
-          Starting with version 209, systemd ships a network configuration
-          daemon called <span class=
-          "command"><strong>systemd-networkd</strong></span> which can be
-          used for basic network configuration.
+    <div class="sect1" xml:lang="en" lang="en">
+      <h1 class="sect1"> <a id="ch-scripts-network"
+          name="ch-scripts-network"></a>7.2. 通用网络配置 </h1>
+      <p> 本节仅在需要配置网卡时参考。</p>
+      <div class="sect2" xml:lang="en" lang="en">
+        <h2 class="sect2"> 7.2.1. 网络接口配置文件</h2>
+        <p> 从 systemd 版本 209 开始，提供了一个名为 <span class="command"><strong>systemd-networkd</strong></span>
+          命令用于处理基本的网络配置。</p>
+        <p> <span class="command"><strong>systemd-networkd</strong></span>
+          的配置文件可能在 <code class="filename">/usr/lib/systemd/network</code>
+          或 <code class="filename">/etc/systemd/network</code> 中，其中<code>
+          </code><code class="filename">/etc/systemd/network</code>
+          中的配置文件优先级更高。<br>
         </p>
-        <p>
-          Configuration files for <span class=
-          "command"><strong>systemd-networkd</strong></span> can be placed in
-          <code class="filename">/usr/lib/systemd/network</code> or
-          <code class="filename">/etc/systemd/network</code>. Note that files
-          in <code class="filename">/etc/systemd/network</code> have higher
-          priority than the ones in <code class=
-          "filename">/usr/lib/systemd/network</code>.
-        </p>
-        <p>
-          There are three types of configuration files: <code class=
-          "filename">.link</code>, <code class="filename">.netdev</code> and
-          <code class="filename">.network</code> files. For detailed
-          explanation about contents of the mentioned configuration files,
-          consult <code class="filename">systemd-link(5)</code>, <code class=
-          "filename">systemd-netdev(5)</code> and <code class=
-          "filename">systemd-network(5)</code> manual pages.
-        </p>
-        <div class="admon note">
-          <img alt="[Note]" src="../images/note.png" />
-          <h3>
-            Note
-          </h3>
-          <p>
-            Udev may assign network card interface names based on system
-            physical characteristics such as enp2s1. If you are not sure what
-            your interface name is, you can always run <span class=
-            "command"><strong>ip link</strong></span> after you have booted
-            your system.
+        <p>配置文件的类型有三种：<code class="filename">.link</code>，<code
+            class="filename">.netdev</code> 和 <code class="filename">.network</code>
+          。可以通过查阅 man 手册的<code> </code><code class="filename">systemd-link(5)</code>，<code
+            class="filename">systemd-netdev(5)</code> 和 <code
+            class="filename">systemd-network(5)</code> 获得更多信息</p>
+        <div class="admon note"> <img alt="[Note]"
+            src="../images/note.png">
+          <h3> 注意 </h3>
+          <p> udev 可能根据你的电脑的物理设备将网卡设置为不同的名称，比如有线网卡的名称可能是
+            enp3s0，而无线网卡的名称是 wlp0s20u9。如果你不能确定你的网卡名称，可以在系统启动后执行<strong>
+            </strong><span class="command"><strong>ip link</strong></span>
+            命令查看。<br>
+          </p>
+          <p>译者注：通过执行 ip link 命令，你应该能够取得类似以下的输出：</p>
+          <pre class="userinput"><kbd class="command">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default <br>    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00<br>2: <i>enp3s0</i>: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP mode DEFAULT<br>   group default qlen 1000<br>    link/ether fc:aa:14:2d:db:a1 brd ff:ff:ff:ff:ff:ff<br>3: <i>wlp0s20u9</i>: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP mode DORMANT group<br>   default qlen 1000<br>    link/ether 0c:82:68:52:85:57 brd ff:ff:ff:ff:ff:ff</kbd>
+</pre>
+          <p>其中斜体的部分就是物理网卡的名称。<br>
+          </p>
+          <p> 以下内容摘录于 <a
+href="https://wiki.archlinux.org/index.php/Network_Configuration_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">ArchLinux
+              wiki</a>：<br>
+          </p>
+          <p>译者注：通过执行 ip link 命令，你应该能够取得类似以下的输出：</p>
+          <p>对于有多块网卡的电脑，固定设备名称很重要。许多配置问题都是由于网络接口名称变化引起的。<br>
+            <br>
+            udev 负 责给设备命名。Systemd v197
+            引入了可预测的网络接口名称自动给网络设备分配静态名称，网络接口现在是以前 缀 en（以太网）、wl（WLAN）、或者
+            ww（WWAN）附上一个 自动生成的标识符，产生了一个类似于 enp0s25 的条目。<br>
           </p>
         </div>
         <div class="sect3">
-          <h3 class="sect3">
-            <a id="systemd-networkd-static" name=
-            "systemd-networkd-static"></a>7.2.1.1. Static IP Configuration
-          </h3>
-          <p>
-            The command below creates a basic configuration file for Static
-            IP setup:
-          </p>
-          <pre class="userinput">
-<kbd class=
-"command">cat &gt; /etc/systemd/network/10-static-eth0.network &lt;&lt; "EOF"
+          <h3 class="sect3"> <a id="systemd-networkd-static"
+              name="systemd-networkd-static"></a>7.2.1.1. 静态 IP 配置 </h3>
+          <p> 通过以下的命令创建静态 IP 的基本配置文件：</p>
+          <pre class="userinput"><kbd class="command">cat &gt; /etc/systemd/network/10-static-eth0.network &lt;&lt; "EOF"
 <code class="literal">[Match]
 Name=eth0
 
@@ -115,23 +86,13 @@ Gateway=192.168.0.1
 DNS=192.168.0.1</code>
 EOF</kbd>
 </pre>
-          <p>
-            More than one DNS entry can be specified in the configuration
-            file.
-          </p>
+          <p> 在配置文件中，可以指定多个 DNS 条目。</p>
         </div>
         <div class="sect3">
-          <h3 class="sect3">
-            <a id="systemd-networkd-dhcp" name=
-            "systemd-networkd-dhcp"></a>7.2.1.2. DHCP Configuration
-          </h3>
-          <p>
-            The command below creates a basic configuration file for DHCP
-            setup:
-          </p>
-          <pre class="userinput">
-<kbd class=
-"command">cat &gt; /etc/systemd/network/10-dhcp-eth0.network &lt;&lt; "EOF"
+          <h3 class="sect3"> <a id="systemd-networkd-dhcp"
+              name="systemd-networkd-dhcp"></a>7.2.1.2. DHCP 配置 </h3>
+          <p> 通过以下的命令创建 DHCP 的基本配置文件：</p>
+          <pre class="userinput"><kbd class="command">cat &gt; /etc/systemd/network/10-dhcp-eth0.network &lt;&lt; "EOF"
 <code class="literal">[Match]
 Name=eth0
 
@@ -139,221 +100,132 @@ Name=eth0
 DHCP=yes</code>
 EOF</kbd>
 </pre>
-          <p>
-            Note that <span class=
-            "command"><strong>systemd-networkd</strong></span> can only
-            handle DHCPv4. DHCPv6 support is a work in progress.
-          </p>
+          <p> 需要注意的是，当前 <span class="command"><strong>systemd-networkd</strong></span>
+            仅能够处理 DHCPv4。DHCPv6 的支持正在快马加鞭的筹划中。</p>
         </div>
       </div>
-      <div class="sect2" lang="en" xml:lang="en">
-        <h2 class="sect2">
-          <a id="resolv.conf" name="resolv.conf"></a>7.2.2. Creating the
-          /etc/resolv.conf File
-        </h2>
-        <p>
-          If the system is going to be connected to the Internet, it will
-          need some means of Domain Name Service (DNS) name resolution to
-          resolve Internet domain names to IP addresses, and vice versa. This
-          is best achieved by placing the IP address of the DNS server,
-          available from the ISP or network administrator, into <code class=
-          "filename">/etc/resolv.conf</code>.
-        </p>
-        <p>
-          If static <code class="filename">/etc/resolv.conf</code> is
-          desired, create it by running the following command:
-        </p>
-        <pre class="userinput">
-<kbd class="command">cat &gt; /etc/resolv.conf &lt;&lt; "EOF"
+      <div class="sect2" xml:lang="en" lang="en">
+        <h2 class="sect2"> <a id="resolv.conf" name="resolv.conf"></a>7.2.2.
+
+          建立 /etc/resolv.conf 文件 </h2>
+        <p> 如果你的系统需要连接到互联网，它需要利用 DNS 服务将互联网域名解析为实际的 IP 地址，反之亦然。最好的方法是将从
+          ISP 或者是网络管理员那里取得的 DNS 服务器地址填入<code> </code><code
+            class="filename">/etc/resolv.conf</code>。 </p>
+        <p> 如果需要静态的 <code class="filename">/etc/resolv.conf</code>
+          文件，请使用以下命令：</p>
+        <pre class="userinput"><kbd class="command">cat &gt; /etc/resolv.conf &lt;&lt; "EOF"
 <code class="literal"># Begin /etc/resolv.conf
 
 domain <em class="replaceable"><code>&lt;Your Domain Name&gt;</code></em>
-nameserver <em class=
-"replaceable"><code>&lt;IP address of your primary nameserver&gt;</code></em>
-nameserver <em class=
-"replaceable"><code>&lt;IP address of your secondary nameserver&gt;</code></em>
+nameserver <em class="replaceable"><code>&lt;IP address of your primary nameserver&gt;</code></em>
+nameserver <em class="replaceable"><code>&lt;IP address of your secondary nameserver&gt;</code></em>
 
 # End /etc/resolv.conf</code>
 EOF</kbd>
 </pre>
-        <p>
-          The <code class="varname">domain</code> statement can be omitted or
-          replaced with a <code class="varname">search</code> statement. See
-          the man page for resolv.conf for more details.
-        </p>
-        <p>
-          Replace <em class="replaceable"><code>&lt;IP address of the
-          nameserver&gt;</code></em> with the IP address of the DNS most
-          appropriate for the setup. There will often be more than one entry
-          (requirements demand secondary servers for fallback capability). If
-          you only need or want one DNS server, remove the second
-          <span class="emphasis"><em>nameserver</em></span> line from the
-          file. The IP address may also be a router on the local network.
-        </p>
-        <div class="admon note">
-          <img alt="[Note]" src="../images/note.png" />
-          <h3>
-            Note
-          </h3>
-          <p>
-            The Google Public IPv4 DNS addresses are 8.8.8.8 and 8.8.4.4.
+        <p> <code class="varname">domain</code> 声明可以忽略或者以 <code
+            class="varname">search</code> 声明替换。参考 man 手册的 resolv.conf
+          部分获得更多信息。</p>
+        <p> 其中，<em class="replaceable"><code>&lt;IP address of the
+              nameserver&gt;</code></em> 替换为最合适的 DNS 的 IP
+          地址。通常会有多个条目（需要备选服务器具有相关兼容性）。如果你只需要一台 DNS 服务器，请不要输入第二行 <span
+            class="emphasis"><em>nameserver</em></span> 的内容。该 IP
+          地址也可以是本地网络中的一台路由。</p>
+        <div class="admon note"> <img alt="[Note]"
+            src="../images/note.png">
+          <h3> 注意 </h3>
+          <p> Google 公开 IPv4 DNS 解析服务器地址为 8.8.8.8 和 8.8.4.4。<br>
+            （译者注：国内也有一些 IT 公司提供公开可用的 DNS 解析服务：<br>
+            114 DNS：114.114.114.114 和 114.114.115.115<br>
+            阿里 DNS：223.5.5.5 和 223.6.6.6<br>
+            百度 DNS：180.76.76.76<br>
+            OpenDNS：208.67.220.220）<br>
           </p>
         </div>
-        <p>
-          When using <span class=
-          "command"><strong>systemd-networkd</strong></span> for network
-          configuration, another daemon, <span class=
-          "command"><strong>systemd-resolved</strong></span>, is responsible
-          for creating the <code class="filename">/etc/resolv.conf</code>
-          file. It is, however, placed in a non-standard location which is
-          writable since early boot, so it is necessary to create a symlink
-          to it by running the following command:
-        </p>
-        <pre class="userinput">
-<kbd class=
-"command">ln -sfv /run/systemd/resolve/resolv.conf /etc/resolv.conf</kbd>
+        <p> 当使用 <span class="command"><strong>systemd-networkd</strong></span>
+          配置网络，另一个守护进程 <span class="command"><strong>systemd-resolved</strong></span>
+          将会创建<code> </code><code class="filename">/etc/resolv.conf</code>
+          文件。然后在早先版本中此文件的路径并不标准，假如出现此问题，你需要使用以下的命令创建到标准位置的链接：</p>
+        <pre class="userinput"><kbd class="command">ln -sfv /run/systemd/resolve/resolv.conf /etc/resolv.conf</kbd>
 </pre>
-        <p>
-          This is required if you are specifying DNS entries in <code class=
-          "filename">.network</code> files or using the built in DHCP client
-          to obtain DNS addresses.
-        </p>
+        <p> 对于在 <code class="filename">.network</code> 文件中指定了 DNS
+          或者使用内置 DHCP 客户端获得 DNS 这两种情况，必须要做如上操作。</p>
       </div>
-      <div class="sect2" lang="en" xml:lang="en">
-        <h2 class="sect2">
-          <a id="ch-scripts-hostname" name="ch-scripts-hostname"></a>7.2.3.
-          Configuring the system hostname
-        </h2>
-        <p>
-          During the boot process, the file <code class=
-          "filename">/etc/hostname</code> is used for establishing the
-          system's hostname.
-        </p>
-        <p>
-          Create the <code class="filename">/etc/hostname</code> file and
-          enter a hostname by running:
-        </p>
-        <pre class="userinput">
-<kbd class="command">echo "<em class=
-"replaceable"><code>&lt;lfs&gt;</code></em>" &gt; /etc/hostname</kbd>
+      <div class="sect2" xml:lang="en" lang="en">
+        <h2 class="sect2"> <a id="ch-scripts-hostname"
+            name="ch-scripts-hostname"></a>7.2.3. 配置系统主机名称 </h2>
+        <p> 在系统启动过程中，<code class="filename">/etc/hostname</code>
+          文件用于建立系统的主机名称。 </p>
+        <p> 通过以下命令建立 <code class="filename">/etc/hostname</code> 文件：</p>
+        <pre class="userinput"><kbd class="command">echo "<em class="replaceable"><code>&lt;lfs&gt;</code></em>" &gt; /etc/hostname</kbd>
 </pre>
-        <p>
-          <em class="replaceable"><code>&lt;lfs&gt;</code></em> needs to be
-          replaced with the name given to the computer. Do not enter the
-          Fully Qualified Domain Name (FQDN) here. That information is put in
-          the <code class="filename">/etc/hosts</code> file.
-        </p>
+        <p> <em class="replaceable"><code>&lt;lfs&gt;</code></em>
+          替换为你想要设置的名称。请不要输入 Fully Qualified Domain Name（FQDN），它应该在<code>
+          </code><code class="filename">/etc/hosts</code> 文件中。 </p>
       </div>
-      <div class="sect2" lang="en" xml:lang="en">
-        <h2 class="sect2">
-          <a id="ch-scripts-hosts" name="ch-scripts-hosts"></a>7.2.4.
-          Customizing the /etc/hosts File
-        </h2>
+      <div class="sect2" xml:lang="en" lang="en">
+        <h2 class="sect2"> <a id="ch-scripts-hosts"
+            name="ch-scripts-hosts"></a>7.2.4. 配置 /etc/hosts 文件 </h2>
         <p>
-          Decide on the IP address, fully-qualified domain name (FQDN), and
-          possible aliases for use in the <code class=
-          "filename">/etc/hosts</code> file. The syntax is:
-        </p>
-        <pre class="screen">
-<code class="literal">IP_address myhost.example.org aliases</code>
+          <meta http-equiv="content-type" content="text/html;
+            charset=UTF-8">
+          将确定IP地址、完整域名（Fully-Qualified Domain Name：FQDN）和可能的别名填入<code
+            class="filename">/etc/hosts</code> 文件中。语法是：</p>
+        <pre class="screen"><code class="literal">IP_address myhost.example.org aliases</code>
 </pre>
-        <p>
-          Unless the computer is to be visible to the Internet (i.e., there
-          is a registered domain and a valid block of assigned IP
-          addresses&mdash;most users do not have this), make sure that the IP
-          address is in the private network IP address range. Valid ranges
-          are:
-        </p>
-        <pre class="screen">
-<code class="literal">Private Network Address Range      Normal Prefix
+        <p> 除非当前电脑对互联网可见（即已经注册有域名且分配有效的 IP 段——放心吧，大多数用户都没有），否则请确保 IP
+          地址位于专有网络 IP 段。有效的范围是：</p>
+        <pre class="screen"><code class="literal">私人网络地址范围     		正常前缀
 10.0.0.1 - 10.255.255.254           8
 172.x.0.1 - 172.x.255.254           16
 192.168.y.1 - 192.168.y.254         24</code>
 </pre>
-        <p>
-          x can be any number in the range 16-31. y can be any number in the
-          range 0-255.
-        </p>
-        <p>
-          A valid private IP address could be 192.168.1.1. A valid FQDN for
-          this IP could be lfs.example.org.
-        </p>
-        <p>
-          Even if not using a network card, a valid FQDN is still required.
-          This is necessary for certain programs to operate correctly.
-        </p>
-        <p>
-          Create the <code class="filename">/etc/hosts</code> file by
-          running:
-        </p>
-        <pre class="userinput">
-<kbd class="command">cat &gt; /etc/hosts &lt;&lt; "EOF"
+        <p> x 为 16-31 之间的任意值。Y 为 0-255 之间的任意值。 </p>
+        <p> 有效的专有 IP 地址形如 192.168.1.1，有效的完整域名形如 lfs.example.org。</p>
+        <p> 就算没有网卡，也应该提供有效的完整域名，否则某些软件可能无法正常运行。 </p>
+        <p> 通过以下命令建立 <code class="filename">/etc/hosts</code> 文件：</p>
+        <pre class="userinput"><kbd class="command">cat &gt; /etc/hosts &lt;&lt; "EOF"
 <code class="literal"># Begin /etc/hosts (network card version)
 
 127.0.0.1 localhost
 ::1       localhost
-<em class="replaceable"><code>&lt;192.168.0.2&gt;</code></em> <em class=
-"replaceable"><code>&lt;HOSTNAME.example.org&gt;</code></em> <em class=
-"replaceable"><code>[alias1] [alias2] ...</code></em>
+<em class="replaceable"><code>&lt;192.168.0.2&gt;</code></em> <em class="replaceable"><code>&lt;HOSTNAME.example.org&gt;</code></em> <em class="replaceable"><code>[alias1] [alias2] ...</code></em>
 
 # End /etc/hosts (network card version)</code>
 EOF</kbd>
 </pre>
-        <p>
-          The <em class="replaceable"><code>&lt;192.168.0.2&gt;</code></em>
-          and <em class=
-          "replaceable"><code>&lt;HOSTNAME.example.org&gt;</code></em> values
-          need to be changed for specific uses or requirements (if assigned
-          an IP address by a network/system administrator and the machine
-          will be connected to an existing network). The optional alias
-          name(s) can be omitted.
-        </p>
-        <p>
-          If a network card is not going to be configured, create the
-          <code class="filename">/etc/hosts</code> file by running:
-        </p>
-        <pre class="userinput">
-<kbd class="command">cat &gt; /etc/hosts &lt;&lt; "EOF"
+        <p> <em class="replaceable"><code>&lt;192.168.0.2&gt;</code></em>
+          和<code><em> </em></code><em class="replaceable"><code>&lt;HOSTNAME.example.org&gt;</code></em>
+          应该更改为需要设置的值（如果此 IP 地址是由网络/系统管理员分配的且电脑可以连接到存在的网络）。别名可以省略。</p>
+        <p> 如果暂时不打算进行以上的配置，那直接运行下面的命令建立最普通的 <code class="filename">/etc/hosts</code>
+          文件：</p>
+        <pre class="userinput"><kbd class="command">cat &gt; /etc/hosts &lt;&lt; "EOF"
 <code class="literal"># Begin /etc/hosts (no network card version)
 
-127.0.0.1 <em class=
-"replaceable"><code>&lt;HOSTNAME.example.org&gt;</code></em> <em class=
-"replaceable"><code>&lt;HOSTNAME&gt;</code></em> localhost
+127.0.0.1 <em class="replaceable"><code>&lt;HOSTNAME.example.org&gt;</code></em> <em class="replaceable"><code>&lt;HOSTNAME&gt;</code></em> localhost
 ::1       localhost
 
 # End /etc/hosts (no network card version)</code>
 EOF</kbd>
 </pre>
-        <p>
-          The ::1 entry is the IPv6 counterpart of 127.0.0.1 and represents
-          the IPv6 loopback interface.
-        </p>
+        <p> ::1 为 IPv6 对应的 127.0.0.1，且为 IPv6 的回环接口。</p>
       </div>
     </div>
     <div class="navfooter">
       <ul>
-        <li class="prev">
-          <a accesskey="p" href="introduction.html" title=
-          "Introduction">Prev</a>
-          <p>
-            Introduction
-          </p>
+        <li class="prev"> <a accesskey="p" href="introduction.html"
+            title="Introduction">上一页</a>
+          <p> 简介 </p>
         </li>
-        <li class="next">
-          <a accesskey="n" href="udev.html" title=
-          "Device and Module Handling on an LFS System">Next</a>
-          <p>
-            Device and Module Handling on an LFS System
-          </p>
+        <li class="next"> <a accesskey="n" href="udev.html"
+            title="Device and Module Handling on an LFS System">下一页</a>
+          <p> LFS 系统上的设备和模块管理 </p>
         </li>
-        <li class="up">
-          <a accesskey="u" href="chapter07.html" title=
-          "Chapter&nbsp;7.&nbsp;Basic System Configuration">Up</a>
+        <li class="up"> <a accesskey="u" href="chapter07.html"
+            title="Chapter&nbsp;7.&nbsp;Basic System Configuration">返回</a>
         </li>
-        <li class="home">
-          <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
-        </li>
+        <li class="home"> <a accesskey="h" href="../index.html"
+            title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
       </ul>
     </div>
   </body>
