@@ -18,7 +18,7 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        第2章&nbsp;准备新分区
+        第二章&nbsp;准备新分区
       </h3>
       <ul>
         <li class="prev">
@@ -37,7 +37,7 @@
         </li>
         <li class="up">
           <a accesskey="u" href="chapter02.html" title=
-          "第2章&nbsp;准备新分区">返回</a>
+          "第二章&nbsp;准备新分区">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
@@ -50,7 +50,7 @@
         <a id="space-mounting" name="space-mounting"></a>2.4. 挂载新分区
       </h1>
       <p>
-        至此，文件系统已经创建妥当，下一步就是访问这些分区了。为此，需要将这些建立的分区挂载到选定的挂载点。本书假定的挂载点为 <code class="filename">/mnt/lfs</code>，这里，你可以根据喜好自行更改（译者注：这里强烈建 议，看这本书的读者就将挂载点设置为 /mnt/lfs 吧，这样在自行后面的命令时，大多数命令都无需做任何的修改）。
+        至此，文件系统已经创建妥当，下一步就是访问这些分区了。为此，需要将这些建立的分区挂载到选定的挂载点。本书假定的挂载点为 <code class="filename">/mnt/lfs</code>，这里，你可以根据喜好自行更改（译者注：这里强烈建议，看这本书的读者就将挂载点设置为 /mnt/lfs 吧，这样在自行后面的命令时，大多数命令都无需做任何的修改）。
       </p>
       <p>
         运行以下命令，将欲选定的挂载点设置为 <code class="envar">LFS</code> 环境变量赋值：
@@ -66,7 +66,7 @@ mount -v -t ext4 /dev/<em class="replaceable"><code>&lt;xxx&gt;</code></em> $LFS
 </pre>
       <p>
         此处 <em class="replaceable"><code>&lt;xxx&gt;</code></em>
-        用实际的设备名称代替（下同）。</em>。
+        用实际的设备名称代替（下同）</em>。
       </p>
       <p>
         如果 LFS 使用了多个分区，(比如、一个 <code class=
@@ -82,7 +82,7 @@ mount -v -t ext4 /dev/<em class="replaceable"><code>&lt;yyy&gt;</code></em> $LFS
         （译者注：挂载是有顺序的！假如需要挂载以下分区：/、/usr、/usr/bin，在挂载的时候，只能按照这样的顺序挂载，假如先挂载
         /，然后挂载 /usr/bin，再挂载 /usr 将会出错！）</p>
       <p>
-        需要注意的是挂载的时候请不要使用严格权限的参数(比如 <code class="option">nosuid</code> 或 <code class="option">nodev</code> 选项)。用不带任何参数的 <span class="command"><strong>mount</strong></span> 命令查看挂载的 LFS 分区具体使用了哪些参数。如果设置了 <code class="option">nosuid</code> 和/或 <code class="option">nodev</code> 参数，请重新挂载。
+        需要注意的是挂载的时候请不要使用过于严格的权限参数(比如 <code class="option">nosuid</code> 或 <code class="option">nodev</code> 选项)。用不带任何参数的 <span class="command"><strong>mount</strong></span> 命令查看挂载的 LFS 分区具体使用了哪些参数。如果设置了 <code class="option">nosuid</code> 及 <code class="option">nodev</code> 参数，请重新挂载。
       </p>
       <pre class="userinput"><kbd class="command">（译者注：使用不带任何参数的 mount 命令，可以得到类似如下的输出：<br>devtmpfs on /dev type devtmpfs (rw,relatime,size=500896k,nr_inodes=125224,mode=755)<br>其中，括号内的内容为挂载的参数<br>）</kbd>
 </pre>
@@ -94,7 +94,7 @@ mount -v -t ext4 /dev/<em class="replaceable"><code>&lt;yyy&gt;</code></em> $LFS
 "replaceable"><code>&lt;zzz&gt;</code></em></kbd>
 </pre>
       <p>
-        用<code class="systemitem">交换</code>分区的名字替换<em class="replaceable"><code>&lt;zzz&gt;</code></em>。
+        用 <code class="systemitem">swap</code> 分区的名字替换<em class="replaceable"><code>&lt;zzz&gt;</code></em>。
       </p>
       <p>
         到现在，所有的准备工作都做的差不多了，是时候下载软件包了。
@@ -105,7 +105,7 @@ mount -v -t ext4 /dev/<em class="replaceable"><code>&lt;yyy&gt;</code></em> $LFS
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
         </div>
@@ -126,7 +126,7 @@ mount -v -t ext4 /dev/<em class="replaceable"><code>&lt;yyy&gt;</code></em> $LFS
         </li>
         <li class="up">
           <a accesskey="u" href="chapter02.html" title=
-          "第2章&nbsp;准备新分区">返回</a>
+          "第 二章&nbsp;准备新分区">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=

@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=utf-8" />
     <title>
-      5.9.&nbsp;Binutils-2.25 - Pass 2
+      5.9.&nbsp;Binutils-2.25 - 第2遍
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -18,51 +18,50 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;5.&nbsp;Constructing a Temporary System
+        第5章&nbsp;构建临时系统
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="gcc-libstdc++.html" title=
-          "Libstdc++-4.9.2">Prev</a>
+          "Libstdc++-4.9.2">上一页</a>
           <p>
             Libstdc++-4.9.2
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="gcc-pass2.html" title=
-          "GCC-4.9.2 - Pass 2">Next</a>
+          "GCC-4.9.2 - 第2遍">下一页</a>
           <p>
-            GCC-4.9.2 - Pass 2
+            GCC-4.9.2 - 第2遍
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第5章&nbsp;构建临时系统">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-tools-binutils-pass2" name=
-        "ch-tools-binutils-pass2"></a>5.9. Binutils-2.25 - Pass 2
+        "ch-tools-binutils-pass2"></a>5.9. Binutils-2.25 - 第2遍
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Binutils package contains a linker, an assembler, and other
-          tools for handling object files.
+            Binutils 软件包包括一个链接器，汇编器和其它处理目标文件的工具。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间:</strong>
               <span class="segbody">1.0 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">所需磁盘空间:</strong>
               <span class="segbody">574 MB</span>
             </div>
           </div>
@@ -70,17 +69,17 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          5.9.1. Installation of Binutils
+          5.9.1. 安装 Binutils
         </h2>
         <p>
-          Create a separate build directory again:
+            再次新建一个单独的编译文件夹：
         </p>
         <pre class="userinput">
 <kbd class="command">mkdir -v ../binutils-build
 cd ../binutils-build</kbd>
 </pre>
         <p>
-          Prepare Binutils for compilation:
+          准备编译 Binutils:
         </p>
         <pre class="userinput">
 <kbd class="command">CC=$LFS_TGT-gcc                \
@@ -95,7 +94,7 @@ RANLIB=$LFS_TGT-ranlib         \
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the new configure options:</strong>
+            <strong>新配置选项的含义:</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -104,10 +103,7 @@ RANLIB=$LFS_TGT-ranlib         \
             </dt>
             <dd>
               <p>
-                Because this is really a native build of Binutils, setting
-                these variables ensures that the build system uses the
-                cross-compiler and associated tools instead of the ones on
-                the host system.
+                因为这是真正的原生编译 Binutils，设置这些变量能确保编译系统使用交叉编译器和相关的工具，而不是宿主系统中已有的。
               </p>
             </dd>
             <dt>
@@ -116,11 +112,8 @@ RANLIB=$LFS_TGT-ranlib         \
             </dt>
             <dd>
               <p>
-                This tells the configure script to specify the library search
-                path during the compilation of Binutils, resulting in
-                <code class="filename">/tools/lib</code> being passed to the
-                linker. This prevents the linker from searching through
-                library directories on the host.
+                这告诉配置脚本在编译 Binutils 的时候指定库搜索目录，结果是 <code class="filename">/tools/lib</code> 被
+                传递到链接器。这可以防止链接器搜索系统的库目录。
               </p>
             </dd>
             <dt>
@@ -129,31 +122,28 @@ RANLIB=$LFS_TGT-ranlib         \
             </dt>
             <dd>
               <p>
-                The sysroot feature enables the linker to find shared objects
-                which are required by other shared objects explicitly
-                included on the linker's command line. Without this, some
-                packages may not build successfully on some hosts.
+                sysroot 功能使链接器可以找到包括在其命令行中的其它共享对象明确需要的共享对象。
+                否则的话，在某些主机上一些软件包可能会编译不成功。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          Compile the package:
+          编译软件包:
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          Install the package:
+          安装软件包:
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
 </pre>
         <p>
-          Now prepare the linker for the <span class=
+            现在，为下一章的<span class=
           "quote">&ldquo;<span class=
-          "quote">Re-adjusting</span>&rdquo;</span> phase in the next
-          chapter:
+          "quote">再调整</span>&rdquo;</span>阶段逐步链接器：
         </p>
         <pre class="userinput">
 <kbd class="command">make -C ld clean
@@ -162,7 +152,7 @@ cp -v ld/ld-new /tools/bin</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the make parameters:</strong>
+            <strong>make 参数的含义:</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -171,8 +161,7 @@ cp -v ld/ld-new /tools/bin</kbd>
             </dt>
             <dd>
               <p>
-                This tells the make program to remove all compiled files in
-                the <code class="filename">ld</code> subdirectory.
+                告诉 make 程序移除所有 <code class="filename">ld</code> 子目录中编译过的文件。
               </p>
             </dd>
             <dt>
@@ -181,13 +170,10 @@ cp -v ld/ld-new /tools/bin</kbd>
             </dt>
             <dd>
               <p>
-                This option rebuilds everything in the <code class=
-                "filename">ld</code> subdirectory. Specifying the
-                <code class="envar">LIB_PATH</code> Makefile variable on the
-                command line allows us to override the default value of the
-                temporary tools and point it to the proper final path. The
-                value of this variable specifies the linker's default library
-                search path. This preparation is used in the next chapter.
+                这个选项重新编译<code class=
+                "filename">ld</code>子目录中的所有文件。在命令行中指定 Makefile 的<code class="envar">LIB_PATH</code>
+                    变量可以使我们能够重写临时工具的默认值并指向正确的最终路径。该变量的值指定链接器的默认库搜索路径。
+                    下一章中会用到这个准备。
               </p>
             </dd>
           </dl>
@@ -195,36 +181,44 @@ cp -v ld/ld-new /tools/bin</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <p>
-          Details on this package are located in <a class="xref" href=
+            该软件包的详细信息在<a class="xref" href=
           "../chapter06/binutils.html#contents-binutils" title=
-          "6.13.2.&nbsp;Contents of Binutils">Section&nbsp;6.13.2,
-          &ldquo;Contents of Binutils.&rdquo;</a>
+          "6.13.2.&nbsp;Binutils 的内容">6.13.2,
+          &ldquo;Binutils 的内容&rdquo;</a>
         </p>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="gcc-libstdc++.html" title=
-          "Libstdc++-4.9.2">Prev</a>
+          "Libstdc++-4.9.2">上一页</a>
           <p>
             Libstdc++-4.9.2
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="gcc-pass2.html" title=
-          "GCC-4.9.2 - Pass 2">Next</a>
+          "GCC-4.9.2 - 第2遍">下一页</a>
           <p>
-            GCC-4.9.2 - Pass 2
+            GCC-4.9.2 - 第2遍
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第5章&nbsp;构建临时系统">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
