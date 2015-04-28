@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=utf-8" />
     <title>
-      6.1.&nbsp;Introduction  -AI.Lion 正在翻译
+      6.1.&nbsp;介绍  -AI.Lion 正在翻译
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -18,96 +18,64 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第6章.&nbsp;安装基本系统软件
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="chapter06.html" title=
-          "Installing Basic System Software">Prev</a>
+          "Installing Basic System Software">上一页</a>
           <p>
-            Installing Basic System Software
+            安装基本系统软件
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="kernfs.html" title=
-          "Preparing Virtual Kernel File Systems">Next</a>
+          "Preparing Virtual Kernel File Systems">下一页</a>
           <p>
-            Preparing Virtual Kernel File Systems
+            准备虚拟内核文件系统
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第6章.&nbsp;安装基本系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-system-introduction" name="ch-system-introduction"></a>6.1.
-        Introduction
+        介绍
       </h1>
       <p>
-        In this chapter, we enter the building site and start constructing
-        the LFS system in earnest. That is, we chroot into the temporary mini
-        Linux system, make a few final preparations, and then begin
-        installing the packages.
+        在本章，我们进入“建筑工地”开始用心地建造LFS系统。也就是说，我们chroot进临时的迷你Linux系统，做些许最终的准备工作，然后开始安装软件包
       </p>
       <p>
-        The installation of this software is straightforward. Although in
-        many cases the installation instructions could be made shorter and
-        more generic, we have opted to provide the full instructions for
-        every package to minimize the possibilities for mistakes. The key to
-        learning what makes a Linux system work is to know what each package
-        is used for and why you (or the system) may need it.
+        安装软件是非常直接的。尽管在很多情形下安装说明可以更短、更通用，为了最小化可能出现的问题，我们选择提供为每一个软件包提供完整的安装说明。学习如何让Linux系统正常运作的关键是明白每一个软件包的用处和为什么你(或者系统)需要它。
       </p>
       <p>
-        We do not recommend using optimizations. They can make a program run
-        slightly faster, but they may also cause compilation difficulties and
-        problems when running the program. If a package refuses to compile
-        when using optimization, try to compile it without optimization and
-        see if that fixes the problem. Even if the package does compile when
-        using optimization, there is the risk it may have been compiled
-        incorrectly because of the complex interactions between the code and
-        build tools. Also note that the <code class="option">-march</code>
-        and <code class="option">-mtune</code> options using values not
-        specified in the book have not been tested. This may cause problems
-        with the toolchain packages (Binutils, GCC and Glibc). The small
-        potential gains achieved in using compiler optimizations are often
-        outweighed by the risks. First-time builders of LFS are encouraged to
-        build without custom optimizations. The subsequent system will still
-        run very fast and be stable at the same time.
+        我们不推荐使用优化。它可以让程序运行稍微快一点，但是同时也会造成编译困难和程序运行问题。如果一个软件包不能使用优化编译，尝试不用优化看看能否解决问题。即使软件包可以通过优化编译，由于代码与构建工具之间的复杂交互，它也有被错误编译的风险
+        如果你使用本书没有测试过的<code class="option">-march</code>
+        和 <code class="option">-mtune</code> 选项，那你要留心了。这可能导致工具链软件包错误(Binutils, GCC 和 Glibc)。使用编译优化的微小潜在好处相比风险来说往往被过分强调了。LFS的初学者最好不要使用优化编译。之后编译出的系统依然会又快又稳定。
       </p>
       <p>
-        The order that packages are installed in this chapter needs to be
-        strictly followed to ensure that no program accidentally acquires a
-        path referring to <code class="filename">/tools</code> hard-wired
-        into it. For the same reason, do not compile separate packages in
-        parallel. Compiling in parallel may save time (especially on dual-CPU
-        machines), but it could result in a program containing a hard-wired
-        path to <code class="filename">/tools</code>, which will cause the
-        program to stop working when that directory is removed.
+        本章软件包必须严格按照顺序安装，确保没有程序意外地硬链接到<code class="filename">/tools</code>目录。同样的原因，不要同时编译多个软件包。
+        同时编译多个软件包可以节省时间(特别是在多路CPU机器上)，但也会导致程序包含硬链接到<code class="filename">/tools</code>的路径。后果是当<code class="filename">/tools</code>被移除，程序就会停止运行。
       </p>
       <p>
-        Before the installation instructions, each installation page provides
-        information about the package, including a concise description of
-        what it contains, approximately how long it will take to build, and
-        how much disk space is required during this building process.
-        Following the installation instructions, there is a list of programs
-        and libraries (along with brief descriptions of these) that the
-        package installs.
+        每个安装页面都在安装说明之前提供了软件包相关信息，简要介绍了它包含哪些内容、粗略的构建时间，以及构建过程中需多大的磁盘空间。
+        安装说明下面是软件包安装的所有程序和库清单(带有简短的描述)。
       </p>
       <div class="admon note">
         <img alt="[Note]" src="../images/note.png" />
         <h3>
-          Note
+          注意
         </h3>
         <p>
-          The SBU values and required disk space includes test suite data for
-          all applicable packages in Chapter 6.
+          SBU值和所需磁盘空间包含第6章中所有可用软件包的测试组件数据
         </p>
       </div>
     </div>
@@ -115,25 +83,25 @@
       <ul>
         <li class="prev">
           <a accesskey="p" href="chapter06.html" title=
-          "Installing Basic System Software">Prev</a>
+          "Installing Basic System Software">上一页</a>
           <p>
-            Installing Basic System Software
+            安装基本系统软件
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="kernfs.html" title=
-          "Preparing Virtual Kernel File Systems">Next</a>
+          "Preparing Virtual Kernel File Systems">下一页</a>
           <p>
-            Preparing Virtual Kernel File Systems
+            准备虚拟内核文件系统
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第6章.&nbsp;安装基本系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
