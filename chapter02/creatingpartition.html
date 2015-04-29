@@ -20,7 +20,7 @@
           <p>在分区上创建文件系统</p>
         </li>
         <li class="up">
-          <a href="chapter02.html" title="第2章 准备新分区" accesskey="u">返回</a>
+          <a href="chapter02.html" title="第二章 准备新分区" accesskey="u">返回</a>
         </li>
         <li class="home">
           <a href="../index.html" title="Linux From Scratch - Version 7.7-systemd" accesskey="h">主页</a>
@@ -36,7 +36,7 @@
       </p>
       <p>由于编译过程中所需的内存（RAM）可能不足，需要使用一个小型的磁盘分区作为 <code class="systemitem">swap</code> 分区。内核会在此分区中储存较少使用的数据，从而为活动进程提供更多的内存。LFS 系统可以与宿主系统共用 <code class="systemitem">swap</code> 分区，这样就没有必要再新建一个了。
       </p>
-      <p>启动磁盘分区程序，如 <span class="command"><strong>cfdisk</strong></span> 或 <span class="command"><strong>fdISK</strong></span>，参数是新分区所在的磁盘名，例如主 IDE 硬盘中的分区叫做 <code class="filename">/dev/sda</code>。你需要创建一个 Linux 本地分区，并按需创建 <code class="systemitem">swap</code> 分区 。如果你还不知道如何使用这些程序，请参考 <code class="filename">cfdisk(8)</code> 或 <code class="filename">fdisk(8)</code>。
+      <p>启动磁盘分区程序，如 <span class="command"><strong>cfdisk</strong></span> 或 <span class="command"><strong>fdisk</strong></span>，参数是新分区所在的磁盘名，例如 IDE 主硬盘叫做 <code class="filename">/dev/sda</code>。你需要创建一个 Linux 本地分区，并按需创建 <code class="systemitem">swap</code> 分区 。如果你还不知道如何使用这些程序，请参考 <code class="filename">cfdisk(8)</code> 或 <code class="filename">fdisk(8)</code>。
       </p>
       <div class="admon note">
         <img alt="[注意]" src="../images/note.png">
@@ -44,7 +44,7 @@
         <p>对于有经验的用户，也可自行定制分区分案。新版 LFS 系统支持软 <a href="http://www.linuxfromscratch.org/blfs/view/systemd/postlfs/raid.html" class="ulink">RAID</a> 或 <a href="http://www.linuxfromscratch.org/blfs/view/systemd/postlfs/aboutlvm.html" class="ulink">LVM</a> 逻辑卷。然而，这些方案需要用到 <a href="http://www.linuxfromscratch.org/blfs/view/systemd/postlfs/initramfs.html" class="ulink">initramfs</a> ，而这涉及到比较复杂的话题。因此不建议首次尝试 LFS 的用户使用这样的分区方法。
         </p>
       </div>
-      <p>请记住新分区的位置（例如，<code class="filename">sda5</code> ）。这本书将称其为 LFS 分区。还需要记得 <code class="systemitem">swap</code> 分区的位置。这些名称将会在 <code class="filename">/etc/fstab</code> 文件中用到。
+      <p>请记住新分区的位置（例如，<code class="filename">sda5</code> ）。本书中将称其为 LFS 分区。还需要记住 <code class="systemitem">swap</code> 分区的位置。这些名称将会在 <code class="filename">/etc/fstab</code> 文件中用到。
       </p>
       <div class="sect2" lang="zh-Hans" xml:lang="en">
         <h2 class="sect2">2.2.1. 其它分区问题</h2>
@@ -66,12 +66,12 @@
         </div>
         <div class="sect3">
           <h3 class="sect3"> 2.2.1.3. 常用分区</h3>
-          <p>在分配磁盘时，有些分区不是必须但却值得你考虑。以下列表并不全面，仅供参考。
+          <p>在分配磁盘时，有些分区不是必须的，但却值得你考虑。以下列表并不全面，仅供参考。
           </p>
           <div class="itemizedlist">
             <ul>
               <li class="listitem">
-                <p>/boot 分区 - 强烈推荐。此分区用于存储内核和其他启动信息。为了减少大容量磁盘启动时的潜在问题，尽量将分区设为磁盘驱动器上第一个物理分区。100 MB 的空间就十分充裕了。
+                <p>/boot 分区 - 强烈推荐。此分区用于存储内核和其他启动信息。为了减少大容量磁盘启动时的潜在问题，尽量将该分区设为磁盘驱动器上第一个物理分区。100 MB 的空间就十分充裕了。
                 </p>
               </li>
               <li class="listitem">
@@ -83,7 +83,7 @@
                 </p>
               </li>
               <li class="listitem">
-                <p>/opt 分区 - 这个分区在 BLFS 中比较有用，因为像 Gnome 或 KDE 这样的大型安装包可以装在此分区中，而不需将文件塞到 /usr 分区。如果使用的话，5 到 10 GB 的空间就足够了。
+                <p>/opt 分区 - 这个分区在 BLFS 中比较有用，因为像 Gnome 或 KDE 这样的大型安装包可以装在此分区中，而不需要将文件塞到 /usr 分区。如果使用的话，5 到 10 GB 的空间就足够了。
                 </p>
               </li>
               <li class="listitem">
@@ -106,7 +106,7 @@
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/kevinSJ" target="_blank">kevinSJ</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a><a href="http://github.com/wxy" target="_blank">wxy</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/kevinSJ" target="_blank">kevinSJ</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
       </div>
@@ -121,7 +121,7 @@
           <p>在分区上创建文件系统</p>
         </li>
         <li class="up">
-          <a href="chapter02.html" title="第2章 准备新分区" accesskey="u">返回</a>
+          <a href="chapter02.html" title="第二章 准备新分区" accesskey="u">返回</a>
         </li>
         <li class="home">
           <a href="../index.html" title="Linux From Scratch - Version 7.7-systemd" accesskey="h">主页</a>

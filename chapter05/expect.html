@@ -18,28 +18,28 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;5.&nbsp;Constructing a Temporary System
+        第5章 构建临时系统
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="tcl.html" title="Tcl-8.6.3">Prev</a>
+          <a accesskey="p" href="tcl.html" title="Tcl-8.6.3">上一页</a>
           <p>
             Tcl-8.6.3
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="dejagnu.html" title="DejaGNU-1.5.2">Next</a>
+          <a accesskey="n" href="dejagnu.html" title="DejaGNU-1.5.2">下一页</a>
           <p>
             DejaGNU-1.5.2
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第5章 构建临时系统">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">首页</a>
         </li>
       </ul>
     </div>
@@ -49,17 +49,16 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Expect package contains a program for carrying out scripted
-          dialogues with other interactive programs.
+          Expect软件包包含一个实现用脚本和其他交互式程序进行对话的程序。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">估计构建时间：</strong>
               <span class="segbody">0.1 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">所需磁盘空间：</strong>
               <span class="segbody">4.6 MB</span>
             </div>
           </div>
@@ -67,21 +66,17 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          5.12.1. Installation of Expect
+          5.12.1. 安装Expect
         </h2>
         <p>
-          First, force Expect's configure script to use <code class=
-          "filename">/bin/stty</code> instead of a <code class=
-          "filename">/usr/local/bin/stty</code> it may find on the host
-          system. This will ensure that our test suite tools remain sane for
-          the final builds of our toolchain:
+          首先，强制Expect的configure配置脚本使用<code class="filename">/bin/stty</code>替代宿主机系统里可能存在的<code class="filename">/usr/local/bin/stty</code>。这样可以保证我们的测试套件工具在工具链的最后一次构建能够正常。
         </p>
         <pre class="userinput">
 <kbd class="command">cp -v configure{,.orig}
 sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
 </pre>
         <p>
-          Now prepare Expect for compilation:
+          现在配置Expect准备编译：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/tools       \
@@ -90,7 +85,7 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the configure options:</strong>
+            <strong>配置脚本参数的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -99,9 +94,7 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
             </dt>
             <dd>
               <p>
-                This ensures that the configure script finds the Tcl
-                installation in the temporary tools location instead of
-                possibly locating an existing one on the host system.
+                这个选项可以保证configure配置脚本会从临时工具目录里找Tcl的安装位置，而不是找到宿主机系统里可能现有的。
               </p>
             </dd>
             <dt>
@@ -110,45 +103,35 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
             </dt>
             <dd>
               <p>
-                This explicitly tells Expect where to find Tcl's internal
-                headers. Using this option avoids conditions where
-                <span class="command"><strong>configure</strong></span> fails
-                because it cannot automatically discover the location of
-                Tcl's headers.
+                这个选项会给Expect显示地指定Tcl内部头文件的位置。通过这个选项可以避免<span class="command"><strong>configure</strong></span>脚本不能自动发现Tcl头文件位置的情况。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          Build the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          Compilation is now complete. As discussed earlier, running the test
-          suite is not mandatory for the temporary tools here in this
-          chapter. To run the Expect test suite anyway, issue the following
-          command:
+          现在编译已经完成。之前说过，不要求为本章中所构建的临时工具运行测试套件。不过你仍然要测试Expect的话可以用下面的命令：
         </p>
         <pre class="userinput">
 <kbd class="command">make test</kbd>
 </pre>
         <p>
-          Note that the Expect test suite is known to experience failures
-          under certain host conditions that are not within our control.
-          Therefore, test suite failures here are not surprising and are not
-          considered critical.
+          请注意Expect测试套件已知在某些宿主机特定情况下有过失败的情况，我们还没有完全把握。不过，在这里测试套件运行失败并不奇怪，也不认为是关键问题。
         </p>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make SCRIPTS="" install</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the make parameter:</strong>
+            <strong>make参数的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -157,8 +140,7 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
             </dt>
             <dd>
               <p>
-                This prevents installation of the supplementary Expect
-                scripts, which are not needed.
+                这个变量可以避免安装额外的Expect脚本，没有必要。
               </p>
             </dd>
           </dl>
@@ -166,24 +148,23 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-expect" name="contents-expect"></a>5.12.2. Contents
-          of Expect
+          <a id="contents-expect" name="contents-expect"></a>5.12.2. Expect软件包内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed program:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">expect</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed library:</strong>
+              <strong class="segtitle">安装的库：</strong>
               <span class="segbody">libexpect-5.45.so</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简短描述
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -201,8 +182,7 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
                 </td>
                 <td>
                   <p>
-                    Communicates with other interactive programs according to
-                    a script
+                    基于脚本和其他交互式程序通信。
                   </p>
                 </td>
               </tr>
@@ -216,9 +196,7 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
                 </td>
                 <td>
                   <p>
-                    Contains functions that allow Expect to be used as a Tcl
-                    extension or to be used directly from C or C++ (without
-                    Tcl)
+                    包含一些函数允许Expect用作Tcl扩展或直接用于C/C++（不用Tcl）。
                   </p>
                 </td>
               </tr>
@@ -228,26 +206,34 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
       </div>
     </div>
     <div class="navfooter">
+      <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/</span>
+            </div>
+        </div>
+      </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="tcl.html" title="Tcl-8.6.3">Prev</a>
+          <a accesskey="p" href="tcl.html" title="Tcl-8.6.3">上一页</a>
           <p>
             Tcl-8.6.3
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="dejagnu.html" title="DejaGNU-1.5.2">Next</a>
+          <a accesskey="n" href="dejagnu.html" title="DejaGNU-1.5.2">下一页</a>
           <p>
             DejaGNU-1.5.2
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "Chapter&nbsp;5.&nbsp;Constructing a Temporary System">Up</a>
+          "第5章 构建临时系统">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">首页</a>
         </li>
       </ul>
     </div>
