@@ -1,4 +1,3 @@
-zpl1025 translating
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -6,7 +5,7 @@ zpl1025 translating
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=utf-8" />
     <title>
-      6.2.&nbsp;Preparing Virtual Kernel File Systems
+      6.2. 准备虚拟内核文件系统
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -19,65 +18,53 @@ zpl1025 translating
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第6章 安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="introduction.html" title=
-          "Introduction">Prev</a>
+          "简介">上一页</a>
           <p>
-            Introduction
+            简介
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="pkgmgt.html" title=
-          "Package Management">Next</a>
+          "安装包管理">下一页</a>
           <p>
-            Package Management
+            安装包管理
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第6章 安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">首页</a>
         </li>
       </ul>
     </div>
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
-        <a id="ch-system-kernfs" name="ch-system-kernfs"></a>6.2. Preparing
-        Virtual Kernel File Systems
+        <a id="ch-system-kernfs" name="ch-system-kernfs"></a>6.2. 
+        准备虚拟内核文件系统
       </h1>
       <p>
-        Various file systems exported by the kernel are used to communicate
-        to and from the kernel itself. These file systems are virtual in that
-        no disk space is used for them. The content of the file systems
-        resides in memory.
+        内核会挂载几个文件系统用于自己和用户空间程序交换信息。这些文件系统是虚拟的，并不占用实际磁盘空间，它们的内容会放在内存里。
       </p>
       <p>
-        Begin by creating directories onto which the file systems will be
-        mounted:
+        开始先创建将用来挂载文件系统的目录：
       </p>
       <pre class="userinput">
 <kbd class="command">mkdir -pv $LFS/{dev,proc,sys,run}</kbd>
 </pre>
       <div class="sect2" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.2.1. Creating Initial Device Nodes
+          6.2.1. 创建初始设备节点
         </h2>
         <p>
-          When the kernel boots the system, it requires the presence of a few
-          device nodes, in particular the <code class=
-          "filename">console</code> and <code class="filename">null</code>
-          devices. The device nodes must be created on the hard disk so that
-          they are available before <span class=
-          "command"><strong>udevd</strong></span> has been started, and
-          additionally when Linux is started with <em class=
-          "parameter"><code>init=/bin/bash</code></em>. Create the devices by
-          running the following commands:
+          在内核引导系统的时候，它依赖于几个设备节点，特别是<code class="filename">console</code>和<code class="filename">null</code>两个设备。这些设备节点需要创建在硬盘上，这样在<span class="command"><strong>udevd</strong></span> 启动之前它们也仍然有效，特别是在Linux使用<em class="parameter"><code>init=/bin/bash</code></em>参数启动的时候。运行下面的命令创建这几个设备节点：
         </p>
         <pre class="userinput">
 <kbd class="command">mknod -m 600 $LFS/dev/console c 5 1
@@ -87,23 +74,10 @@ mknod -m 666 $LFS/dev/null c 1 3</kbd>
       <div class="sect2" lang="en" xml:lang="en">
         <h2 class="sect2">
           <a id="ch-system-bindmount" name="ch-system-bindmount"></a>6.2.2.
-          Mounting and Populating /dev
+          挂载和激活/dev
         </h2>
         <p>
-          The recommended method of populating the <code class=
-          "filename">/dev</code> directory with devices is to mount a virtual
-          filesystem (such as <code class="systemitem">tmpfs</code>) on the
-          <code class="filename">/dev</code> directory, and allow the devices
-          to be created dynamically on that virtual filesystem as they are
-          detected or accessed. Device creation is generally done during the
-          boot process by Udev. Since this new system does not yet have Udev
-          and has not yet been booted, it is necessary to mount and populate
-          <code class="filename">/dev</code> manually. This is accomplished
-          by bind mounting the host system's <code class=
-          "filename">/dev</code> directory. A bind mount is a special type of
-          mount that allows you to create a mirror of a directory or mount
-          point to some other location. Use the following command to achieve
-          this:
+          通常激活<code class="filename">/dev</code>目录下设备的方式是在<code class="filename">/dev</code>目录挂载一个虚拟文件系统（比如<code class="systemitem">tmpfs</code>），然后允许在检测到设备或打开设备时在这个虚拟文件系统里动态创建设备节点。这个通常是在启动过程中由Udev完成。由于我们的新系统还没有Udev而且也没有被引导启动，有必要手动挂载和激活<code class="filename">/dev</code>目录。这可以通过绑定挂载宿主机系统的<code class="filename">/dev</code>目录实现。绑定挂载是一种特殊的挂载模式，它允许创建某个目录或挂载点的镜像到另外的位置。运行下面的命令来实现：
         </p>
         <pre class="userinput">
 <kbd class="command">mount -v --bind /dev $LFS/dev</kbd>
@@ -112,11 +86,10 @@ mknod -m 666 $LFS/dev/null c 1 3</kbd>
       <div class="sect2" lang="en" xml:lang="en">
         <h2 class="sect2">
           <a id="ch-system-kernfsmount" name=
-          "ch-system-kernfsmount"></a>6.2.3. Mounting Virtual Kernel File
-          Systems
+          "ch-system-kernfsmount"></a>6.2.3. 挂载虚拟文件系统
         </h2>
         <p>
-          Now mount the remaining virtual kernel filesystems:
+          现在挂载剩下的虚拟内核文件系统：
         </p>
         <pre class="userinput">
 <kbd class="command">mount -vt devpts devpts $LFS/dev/pts -o gid=5,mode=620
@@ -126,7 +99,7 @@ mount -vt tmpfs tmpfs $LFS/run</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the mount options for devpts:</strong>
+            <strong>devpts挂载选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -135,12 +108,7 @@ mount -vt tmpfs tmpfs $LFS/run</kbd>
             </dt>
             <dd>
               <p>
-                This ensures that all devpts-created device nodes are owned
-                by group ID 5. This is the ID we will use later on for the
-                <code class="systemitem">tty</code> group. We use the group
-                ID instead of a name, since the host system might use a
-                different ID for its <code class="systemitem">tty</code>
-                group.
+                这个选项会让devpts创建的所有设备节点属主的组ID都是5。这是我们待会将要指定给<code class="systemitem">tty</code>组的ID。现在我们先用ID代替组名，因为宿主机系统可能会为它的<code class="systemitem">tty</code>组分配了不同的ID。
               </p>
             </dd>
             <dt>
@@ -149,22 +117,13 @@ mount -vt tmpfs tmpfs $LFS/run</kbd>
             </dt>
             <dd>
               <p>
-                This ensures that all devpts-created device nodes have mode
-                0620 (user readable and writable, group writable). Together
-                with the option above, this ensures that devpts will create
-                device nodes that meet the requirements of grantpt(), meaning
-                the Glibc <span class=
-                "command"><strong>pt_chown</strong></span> helper binary
-                (which is not installed by default) is not necessary.
+                这个选项会让devpts创建的所有设备节点的属性是0620（属主用户可读写，组成员可写）。和上一个选项同时使用，可以保证devpts所创建的设备节点能满足grantpt()函数的要求，意味着不需要Glibc的<span class="command"><strong>pt_chown</strong></span>帮助程序（默认没有安装）了。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          In some host systems, <code class="filename">/dev/shm</code> is a
-          symbolic link to <code class="filename">/run/shm</code>. The /run
-          tmpfs was mounted above so in this case only a directory needs to
-          be created.
+          在某些宿主机系统里，<code class="filename">/dev/shm</code>是一个指向<code class="filename">/run/shm</code>的软链接。/run tmpfs已经在之前挂载了，所以在这里只需要创建一个目录。
         </p>
         <pre class="userinput">
 <kbd class="command">if [ -h $LFS/dev/shm ]; then
@@ -174,28 +133,36 @@ fi</kbd>
       </div>
     </div>
     <div class="navfooter">
+      <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/</span>
+            </div>
+        </div>
+      </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="introduction.html" title=
-          "Introduction">Prev</a>
+          "简介">上一页</a>
           <p>
-            Introduction
+            简介
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="pkgmgt.html" title=
-          "Package Management">Next</a>
+          "安装包管理">下一页</a>
           <p>
-            Package Management
+            安装包管理
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第6章 安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">首页</a>
         </li>
       </ul>
     </div>

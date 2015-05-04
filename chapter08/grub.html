@@ -1,175 +1,101 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content=
-    "application/xhtml+xml; charset=utf-8" />
-    <title>
-      8.4.&nbsp;Using GRUB to Set Up the Boot Process
-    </title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
-    <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
-    <link rel="stylesheet" href="stylesheets/lfs-print.css" type="text/css"
-    media="print" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> 8.4.&nbsp;Using GRUB to Set Up the Boot Process </title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css">
+    <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+    <link rel="stylesheet" href="stylesheets/lfs-print.css"
+      type="text/css" media="print">
   </head>
   <body class="lfs" id="lfs-7.7-systemd">
     <div class="navheader">
-      <h4>
-        Linux From Scratch - Version 7.7-systemd
-      </h4>
-      <h3>
-        Chapter&nbsp;8.&nbsp;Making the LFS System Bootable
-      </h3>
+      <h4> Linux From Scratch - Version 7.7-systemd </h4>
+      <h3> 第八章 让 LFS 系统可引导</h3>
       <ul>
-        <li class="prev">
-          <a accesskey="p" href="kernel.html" title="Linux-3.19">Prev</a>
-          <p>
-            Linux-3.19
-          </p>
+        <li class="prev"> <a accesskey="p" href="kernel.html"
+            title="Linux-3.19">上一页</a>
+          <p> Linux-3.19 </p>
         </li>
-        <li class="next">
-          <a accesskey="n" href="../chapter09/chapter09.html" title=
-          "The End">Next</a>
-          <p>
-            The End
-          </p>
+        <li class="next"> <a accesskey="n"
+            href="../chapter09/chapter09.html" title="The End">下一页</a>
+          <p> 尾声 </p>
         </li>
-        <li class="up">
-          <a accesskey="u" href="chapter08.html" title=
-          "Chapter&nbsp;8.&nbsp;Making the LFS System Bootable">Up</a>
-        </li>
-        <li class="home">
-          <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
-        </li>
+        <li class="up"> <a accesskey="u" href="chapter08.html"
+            title="Chapter&nbsp;8.&nbsp;Making the LFS System Bootable">返
+            回</a> </li>
+        <li class="home"> <a accesskey="h" href="../index.html"
+            title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
       </ul>
     </div>
-    <div class="wrap" lang="en" xml:lang="en">
-      <h1 class="sect1">
-        <a id="ch-bootable-grub" name="ch-bootable-grub"></a>8.4. Using GRUB
-        to Set Up the Boot Process
-      </h1>
-      <div class="sect2" lang="en" xml:lang="en">
-        <h2 class="sect2">
-          8.4.1. Introduction
-        </h2>
-        <div class="admon warning">
-          <img alt="[Warning]" src="../images/warning.png" />
-          <h3>
-            Warning
-          </h3>
-          <p>
-            Configuring GRUB incorrectly can render your system inoperable
-            without an alternate boot device such as a CD-ROM. This section
-            is not required to boot your LFS system. You may just want to
-            modify your current boot loader, e.g. Grub-Legacy, GRUB2, or
-            LILO.
-          </p>
+    <div class="wrap" xml:lang="en" lang="en">
+      <h1 class="sect1"> <a id="ch-bootable-grub"
+          name="ch-bootable-grub"></a>8.4. 使用 GRUB 设置启动过程 </h1>
+      <div class="sect2" xml:lang="en" lang="en">
+        <h2 class="sect2"> 8.4.1. 简介 </h2>
+        <div class="admon warning"> <img alt="[Warning]"
+            src="../images/warning.png">
+          <h3> 警告 </h3>
+          <p> 对 GRUB 进行错误的配置可能会导致在没有外置启动设备（某些USB设备，某些 CD-ROM
+            等）的情况下无法正常的启动。你可能仅仅需要修改当前正在使用的引导器（比如：Grub-Legacy，GRUB2或LILO
+            等）的配置。</p>
         </div>
-        <p>
-          Ensure that an emergency boot disk is ready to <span class=
-          "quote">&ldquo;<span class="quote">rescue</span>&rdquo;</span> the
-          computer if the computer becomes unusable (un-bootable). If you do
-          not already have a boot device, you can create one. In order for
-          the procedure below to work, you need to jump ahead to BLFS and
-          install <strong class="userinput"><code>xorriso</code></strong>
-          from the <a class="ulink" href=
-          "http://www.linuxfromscratch.org/blfs/view/systemd/multimedia/libisoburn.html">
-          libisoburn</a> package.
+        <p> 一定要确保你有一个可以引导的光盘或者是 U 盘以备不时之需，否则万一电脑真的不能启动谁都救不了你。如果你需要建
+          立可引导的设备，可以按照以下方法操作（跳转到 BLFS 从 <a class="ulink"
+href="http://www.linuxfromscratch.org/blfs/view/systemd/multimedia/libisoburn.html">libisoburn</a>
+          软件包安装 <strong class="userinput"><code>xorriso</code></strong>）。<br>
+          （译者注：其实你手头可以备一个其它发行版的 LiveCD
+          制作的可引导U盘，以备不时之需。Ubuntu、Fedora之类的都是上佳之选。）<br>
         </p>
-        <pre class="userinput">
-<kbd class="command">cd /tmp 
+        <pre class="userinput"><kbd class="command">cd /tmp 
 grub-mkrescue --output=grub-img.iso 
-xorriso -as cdrecord -v dev=/dev/cdrw blank=as_needed grub-img.iso</kbd>
-</pre>
+xorriso -as cdrecord -v dev=/dev/cdrw blank=as_needed grub-img.iso</kbd> <br></pre>
       </div>
-      <div class="sect2" lang="en" xml:lang="en">
-        <h2 class="sect2">
-          8.4.2. GRUB Naming Conventions
-        </h2>
-        <p>
-          GRUB uses its own naming structure for drives and partitions in the
-          form of <span class="emphasis"><em>(hdn,m)</em></span>, where
-          <span class="emphasis"><em>n</em></span> is the hard drive number
-          and <span class="emphasis"><em>m</em></span> is the partition
-          number. The hard drive number starts from zero, but the partition
-          number starts from one for normal partitions and five for extended
-          partitions. Note that this is different from earlier versions where
-          both numbers started from zero. For example, partition <code class=
-          "filename">sda1</code> is <span class=
-          "emphasis"><em>(hd0,1)</em></span> to GRUB and <code class=
-          "filename">sdb3</code> is <span class=
-          "emphasis"><em>(hd1,3)</em></span>. In contrast to Linux, GRUB does
-          not consider CD-ROM drives to be hard drives. For example, if using
-          a CD on <code class="filename">hdb</code> and a second hard drive
-          on <code class="filename">hdc</code>, that second hard drive would
-          still be <span class="emphasis"><em>(hd1)</em></span>.
+      <div class="sect2" xml:lang="en" lang="en">
+        <h2 class="sect2"> 8.4.2. GRUB 命名约定 </h2>
+        <p> GRUB 对于硬盘和分区自有一套命名规则（hdN,M），其中 N 是硬盘数，M 是分区号。硬盘数 N 从 0
+          开始计数，分区数需要区别对待——主分区从 1 开始计数而扩展分区从 5
+          开始计数。需要注意的是，和早期版本相比，计数方式都有所变化。例如，分区 <code class="filename">sda1</code>
+          是 <span class="emphasis"><em>(hd0,1)</em></span>，<code
+            class="filename">sdb3</code> 是 <span class="emphasis"><em>(hd1,3)</em></span>。Linux
+
+          下，并不将 CD-ROM 设备假想为硬盘。例如，就算已有 CD 设备挂载为<code> </code><code
+            class="filename">hdb</code>，第二块硬盘挂载为 <code class="filename">hdc</code>，GRUB
+
+          依旧将第二块硬盘称为<em> </em><span class="emphasis"><em>(hd1)。</em></span><br>
+          （译者注：为什么这里扩展分区从 5 计数，可以查看 mbr 的相关知识。早期版本的 GRUB
+          是什么计算磁盘和分区数，我忘记了，不过，大家就记住新的就好啦。）<br>
         </p>
       </div>
-      <div class="sect2" lang="en" xml:lang="en">
-        <h2 class="sect2">
-          8.4.3. Setting Up the Configuration
-        </h2>
+      <div class="sect2" xml:lang="en" lang="en">
+        <h2 class="sect2"> 8.4.3. 配置配置文件 </h2>
+        <p> GRUB 会将一些数据写入硬盘的第一个物理扇区。这一部分不属于任何一个操作系统，在启动时，该部分数据激活，然后寻找
+          Grub 的模块，Grub 模块的默认位置为 /boot/grub/。</p>
         <p>
-          GRUB works by writing data to the first physical track of the hard
-          disk. This area is not part of any file system. The programs there
-          access GRUB modules in the boot partition. The default location is
-          /boot/grub/.
+          一种建议是使用一个独立的小分区(建议大小100MB)专用于引导信息。那样的话，每一个发行版，不论是LFS还是其他的商业发行版，都能访问相同的引导
+          文件而且任何已经启动的系统都能访问它。如果你选择这么做，你需要挂载这个独立分区，移动所有的文件从当前的/boot目录(比如说
+          你上一节刚编译的Linux内核)到新的分区。你然后要卸载这个新分区，重新挂载它为/boot。如果你这么做，一定要更新/etc
+          /fstab<br>
         </p>
+        <p> 使用当前的 lfs 分区也没有什么问题，但是在配置多系统启动的时候有些不同。</p>
         <p>
-          The location of the boot partition is a choice of the user that
-          affects the configuration. One recommendation is to have a separate
-          small (suggested size is 100 MB) partition just for boot
-          information. That way each build, whether LFS or some commercial
-          distro, can access the same boot files and access can be made from
-          any booted system. If you choose to do this, you will need to mount
-          the separate partition, move all files in the current <code class=
-          "filename">/boot</code> directory (e.g. the linux kernel you just
-          built in the previous section) to the new partition. You will then
-          need to unmount the partition and remount it as <code class=
-          "filename">/boot</code>. If you do this, be sure to update
-          <code class="filename">/etc/fstab</code>.
-        </p>
-        <p>
-          Using the current lfs partition will also work, but configuration
-          for multiple systems is more difficult.
-        </p>
-        <p>
-          Using the above information, determine the appropriate designator
-          for the root partition (or boot partition, if a separate one is
-          used). For the following example, it is assumed that the root (or
-          separate boot) partition is <code class="filename">sda2</code>.
-        </p>
-        <p>
-          Install the GRUB files into <code class=
-          "filename">/boot/grub</code> and set up the boot track:
-        </p>
-        <div class="admon warning">
-          <img alt="[Warning]" src="../images/warning.png" />
-          <h3>
-            Warning
-          </h3>
-          <p>
-            The following command will overwrite the current boot loader. Do
-            not run the command if this is not desired, for example, if using
-            a third party boot manager to manage the Master Boot Record
-            (MBR).
-          </p>
+          从以上信息可知，需要确定根分区的磁盘位置（如果使用单独的分区，则需要知道引导分区的磁盘位置），以下假定根分区（或者是磁盘分区）是
+          <code class="filename">sda2</code>。</p>
+        <p> 将 GRUB&nbsp; 文件安装到 <code></code><code class="filename">/boot/grub</code>
+          然后设置启动扇区：</p>
+        <div class="admon warning"> <img alt="[Warning]"
+            src="../images/warning.png">
+          <h3> 警告 </h3>
+          <p> 以下命令将会覆盖已有的引导器。如无需要，请勿运行（比如已经有第三方引导器管理 MBR）。</p>
         </div>
-        <pre class="userinput">
-<kbd class="command">grub-install /dev/sda</kbd>
+        <pre class="userinput"><kbd class="command">grub-install /dev/sda</kbd>
 </pre>
       </div>
-      <div class="sect2" lang="en" xml:lang="en">
-        <h2 class="sect2">
-          <a id="grub-cfg" name="grub-cfg"></a>8.4.4. Creating the GRUB
-          Configuration File
-        </h2>
-        <p>
-          Generate <code class="filename">/boot/grub/grub.cfg</code>:
-        </p>
-        <pre class="userinput">
-<kbd class="command">cat &gt; /boot/grub/grub.cfg &lt;&lt; "EOF"
+      <div class="sect2" xml:lang="en" lang="en">
+        <h2 class="sect2"> <a id="grub-cfg" name="grub-cfg"></a>8.4.4.
+          建立 GRUB 配置文件</h2>
+        <p> 建立 <code class="filename">/boot/grub/grub.cfg</code>: </p>
+        <pre class="userinput"><kbd class="command">cat &gt; /boot/grub/grub.cfg &lt;&lt; "EOF"
 <code class="literal"># Begin /boot/grub/grub.cfg
 set default=0
 set timeout=5
@@ -182,69 +108,51 @@ menuentry "GNU/Linux, Linux 3.19-lfs-7.7-systemd" {
 }</code>
 EOF</kbd>
 </pre>
-        <div class="admon note">
-          <img alt="[Note]" src="../images/note.png" />
-          <h3>
-            Note
-          </h3>
-          <p>
-            From <span class="application">GRUB</span>'s perspective, the
-            kernel files are relative to the partition used. If you used a
-            separate /boot partition, remove /boot from the above
-            <span class="emphasis"><em>linux</em></span> line. You will also
-            need to change the <span class="emphasis"><em>set
-            root</em></span> line to point to the boot partition.
-          </p>
+        <div class="admon note"> <img alt="[Note]"
+            src="../images/note.png">
+          <h3> 注意 </h3>
+          <p> 从 <span class="application">GRUB
+              的角度看，内核文件相当于一个分区，所以，假如你使用单独的 /boot 分区，请不要在 </span><span
+              class="emphasis"><em>linux</em></span> 行添加 /boot。此外，还需要将
+            root 行指向 /boot 所在的实际分区。</p>
         </div>
-        <p>
-          GRUB is an extremely powerful program and it provides a tremendous
-          number of options for booting from a wide variety of devices,
-          operating systems, and partition types. There are also many options
-          for customization such as graphical splash screens, playing sounds,
-          mouse input, etc. The details of these options are beyond the scope
-          of this introduction.
-        </p>
-        <div class="admon caution">
-          <img alt="[Caution]" src="../images/caution.png" />
-          <h3>
-            Caution
-          </h3>
-          <p>
-            There is a command, <span class=
-            "application">grub-mkconfig</span>, that can write a
-            configuration file automatically. It uses a set of scripts in
-            /etc/grub.d/ and will destroy any customizations that you make.
-            These scripts are designed primarily for non-source distributions
-            and are not recommended for LFS. If you install a commercial
-            Linux distribution, there is a good chance that this program will
-            be run. Be sure to back up your grub.cfg file.
-          </p>
+        <p> GRUB
+          功能十分强大，它提供了大量的用于从种类繁多的设备和操作系统以及不同的分区类型启动的选项。此外还可以定制溅射屏幕、播放声音或者是鼠标等。很遗憾的
+          是，这些功能超出本文的范畴，我们一概不予讨论。</p>
+        <div class="admon caution"> <img alt="[Caution]"
+            src="../images/caution.png">
+          <h3> 慎重</h3>
+          <p> <span class="application">grub-mkconfig
+              命令可以自动建立配置文件。它使用位于</span> /etc/grub.d/
+            下的一组脚本且将会忽略用户的设置。这些命令主要用于那些非源码编译的发行版，所以不建议 LFS
+            用户使用此命令。如果你使用商业发行版，你可以试着运行这个命令（运行之前记得备份原来的 grub.cfg文件）。</p>
         </div>
       </div>
     </div>
     <div class="navfooter">
+      <div class="book">
+        <div class="titlepage">
+          <div class="author"> <span class="firstname">翻译团队：<a
+                href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+            <span class="surname">译者/校对：<a
+                href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a></span>
+          </div>
+        </div>
+      </div>
       <ul>
-        <li class="prev">
-          <a accesskey="p" href="kernel.html" title="Linux-3.19">Prev</a>
-          <p>
-            Linux-3.19
-          </p>
+        <li class="prev"> <a accesskey="p" href="kernel.html"
+            title="Linux-3.19">上一页</a>
+          <p> Linux-3.19 </p>
         </li>
-        <li class="next">
-          <a accesskey="n" href="../chapter09/chapter09.html" title=
-          "The End">Next</a>
-          <p>
-            The End
-          </p>
+        <li class="next"> <a accesskey="n"
+            href="../chapter09/chapter09.html" title="The End">下一页</a>
+          <p> 尾声 </p>
         </li>
-        <li class="up">
-          <a accesskey="u" href="chapter08.html" title=
-          "Chapter&nbsp;8.&nbsp;Making the LFS System Bootable">Up</a>
-        </li>
-        <li class="home">
-          <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
-        </li>
+        <li class="up"> <a accesskey="u" href="chapter08.html"
+            title="Chapter&nbsp;8.&nbsp;Making the LFS System Bootable">返
+            回</a> </li>
+        <li class="home"> <a accesskey="h" href="../index.html"
+            title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
       </ul>
     </div>
   </body>
