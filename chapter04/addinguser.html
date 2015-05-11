@@ -18,7 +18,7 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        第4章&nbsp;最后的准备工作
+        第四章&nbsp;最后的准备工作
       </h3>
       <ul>
         <li class="prev">
@@ -37,7 +37,7 @@
         </li>
         <li class="up">
           <a accesskey="u" href="chapter04.html" title=
-          "第4章&nbsp;最后的准备工作">返回</a>
+          "第四章&nbsp;最后的准备工作">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
@@ -51,12 +51,7 @@
         添加 LFS 用户
       </h1>
       <p>
-        当以 <code class="systemitem">root</code> 用户登录时，犯一个小错误可能会
-        破坏会摧毁系统。因此，我们建议在本章中以非特权用户编译软件包。你可以使用
-        你自己的用户名，但要容易建立一个干净的工作环境，新建一个名为 <code class=
-        "systemitem">lfs</code> 的用户作为新组(名字也是 <code class="systemitem">lfs</code>)的成员
-        并在安装过程中使用这个用户。以 <code class="systemitem">root</code> 用户运行以下命令来
-        添加新用户：
+        当以 <code class="systemitem">root</code> 用户登录时，犯一个小错误可能会破坏或摧毁整个系统。因此，我们建议在本章中以非特权用户编译软件包。你可以使用你自己的用户名，但要容易的话，就建立一个干净的工作环境，创建一个名为 <code class="systemitem">lfs</code> 的新用户作为新组（名字也是 <code class="systemitem">lfs</code> ）的成员，并在安装过程中使用这个用户。以 <code class="systemitem">root</code> 用户运行以下命令来添加新用户：
       </p>
       <pre class="userinput">
 <kbd class="command">groupadd lfs
@@ -64,7 +59,7 @@ useradd -s /bin/bash -g lfs -m -k /dev/null lfs</kbd>
 </pre>
       <div class="variablelist">
         <p class="title">
-          <strong>命令行选项的意思:</strong>
+          <strong>命令行选项的意思：</strong>
         </p>
         <dl class="variablelist">
           <dt>
@@ -73,7 +68,7 @@ useradd -s /bin/bash -g lfs -m -k /dev/null lfs</kbd>
           </dt>
           <dd>
             <p>
-                这使 <span class="command"><strong>bash</strong></span> 成为 <code class="systemitem">lfs</code> 用户的默认 shell。
+                把 <span class="command"><strong>bash</strong></span> 设置为 <code class="systemitem">lfs</code> 用户的默认 shell。
             </p>
           </dd>
           <dt>
@@ -91,7 +86,7 @@ useradd -s /bin/bash -g lfs -m -k /dev/null lfs</kbd>
           </dt>
           <dd>
             <p>
-                这为 <code class="systemitem">lfs</code> 用户创建主目录。
+                为 <code class="systemitem">lfs</code> 用户创建主目录。
             </p>
           </dd>
           <dt>
@@ -100,7 +95,7 @@ useradd -s /bin/bash -g lfs -m -k /dev/null lfs</kbd>
           </dt>
           <dd>
             <p>
-                这个参数通过改变输入位置为特别的空设备防止可能从一个框架目录(默认是 <code class="filename">/etc/skel</code>)复制文件。
+                这个参数通过改变输入位置为特殊的空（null）设备，以防止可能从一个模版目录中（默认是 <code class="filename">/etc/skel</code>）复制文件。
             </p>
           </dd>
           <dt>
@@ -115,13 +110,13 @@ useradd -s /bin/bash -g lfs -m -k /dev/null lfs</kbd>
         </dl>
       </div>
       <p>
-        以<code class="systemitem">lfs</code> 用户身份登录(以  <code class="systemitem">root</code> 身份登录切换到 <code class="systemitem">lfs</code> 用户时不要求 <code class="systemitem">lfs</code> 用户有一个密码)，给 <code class="systemitem">lfs</code> 用户一个密码：
+        要以 <code class="systemitem">lfs</code> 用户身份登录（以  <code class="systemitem">root</code> 身份登录切换到 <code class="systemitem">lfs</code> 用户时不要求 <code class="systemitem">lfs</code> 用户设置了密码），需要给 <code class="systemitem">lfs</code> 用户一个密码：
       </p>
       <pre class="userinput">
 <kbd class="command">passwd lfs</kbd>
 </pre>
       <p>
-        通过更改文件夹所有者为 <code class="systemitem">lfs</code> 为用户 <code class="systemitem">lfs</code> 赋予访问 <code class="filename">$LFS/tools</code> 文件夹的所有权限：
+        通过更改文件夹所有者为 <code class="systemitem">lfs</code>，为用户 <code class="systemitem">lfs</code> 赋予了访问 <code class="filename">$LFS/tools</code> 文件夹的所有权限：
       </p>
       <pre class="userinput">
 <kbd class="command">chown -v lfs $LFS/tools</kbd>
@@ -133,13 +128,13 @@ useradd -s /bin/bash -g lfs -m -k /dev/null lfs</kbd>
 <kbd class="command">chown -v lfs $LFS/sources</kbd>
 </pre>
       <p>
-        下一步，以 <code class="systemitem">lfs</code> 用户身份登录。这能通过一个虚拟控制台，显示控制器或者下面的切换用户命令完成：
+        下一步，以 <code class="systemitem">lfs</code> 用户身份登录。可以能通过一个虚拟控制台、显示控制器，或者下面的切换用户命令完成：
       </p>
       <pre class="userinput">
 <kbd class="command">su - lfs</kbd>
 </pre>
       <p>
-        <span class="quote">&ldquo;<span class="quote"><em class="parameter"><code>-</code></em></span>&rdquo;</span>指示 su 启动登录 shell，而不是一个非登录 shell。关于这两种 shell 类型的区别，可以在 <code class="filename">bash(1)</code> 和 <span class="command"><strong>info bash</strong></span> 中查看详细信息。
+        <span class="quote">这个 &ldquo;<span class="quote"><em class="parameter"><code>-</code></em></span>&rdquo;</span> 指示 su 启动登录 shell，而不是一个非登录 shell。关于这两种 shell 类型的区别，可以在 <code class="filename">bash(1)</code> 和 <span class="command"><strong>info bash</strong></span> 中查看详细信息。
       </p>
     </div>
     <div class="navfooter">
@@ -147,7 +142,7 @@ useradd -s /bin/bash -g lfs -m -k /dev/null lfs</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
         </div>
@@ -168,7 +163,7 @@ useradd -s /bin/bash -g lfs -m -k /dev/null lfs</kbd>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter04.html" title=
-          "第4章&nbsp;最后的准备工作">返回</a>
+          "第四章&nbsp;最后的准备工作">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
