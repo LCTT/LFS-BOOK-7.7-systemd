@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=utf-8" />
     <title>
-      3.1.&nbsp;Introduction
+      3.1.&nbsp;简介
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -18,7 +18,7 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        第3章 软件包与补丁
+        第三章 软件包与补丁
       </h3>
       <ul>
         <li class="prev">
@@ -36,7 +36,7 @@
         </li>
         <li class="up">
           <a accesskey="u" href="chapter03.html" title=
-          "第3章 软件包与补丁">返回</a>
+          "第三章 软件包与补丁">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
@@ -49,16 +49,16 @@
         <a id="materials-introduction" name="materials-introduction"></a>3.1. 简介
       </h1>
       <p>
-      本章包含一个需要下载的软件包列表，用来构建一个基本的Linux系统。所列出来的版本号对应着该软件的确定正常工作的版本，本书也是以应用为基础。我们强烈反对使用更新的版本，因为某个版本能用的编译指令可能并不适用于新版本。最新的软件包也可能会有问题而需要补丁。我们会在本书的开发版本中解决这些问题并固定下来。
+      本章列出了一个需要下载的软件包列表，它们用来构建一个基本的 Linux 系统。所列出来的版本号对应着该软件的确定可以正常工作的版本，本书是以它们为基础的。我们强烈反对使用更新一些的版本，因为某个版本能用的编译指令可能并不适用于新版本。最新的软件包也可能会有问题而需要做些修补。我们会在本书的开发版本中解决这些问题并固定下来。
       </p>
       <p>
-      下载位置可能不会一直有效。如果在本书发布后下载位置变了，Google（<a class="ulink" href="http://www.google.com/">http://www.google.com/</a>）提供的搜索引擎可以找到大多数软件包。如果搜不到，试试这里<a class="ulink" href="http://www.linuxfromscratch.org/lfs/packages.html#packages">http://www.linuxfromscratch.org/lfs/packages.html#packages</a>提到的其他下载地址。
+      下载位置可能不会一直有效。如果在本书发布后下载位置变了，Google（<a class="ulink" href="http://www.google.com/">http://www.google.com/</a>）提供的搜索引擎可以找到大多数软件包。如果搜不到，试试这里 <a class="ulink" href="http://www.linuxfromscratch.org/lfs/packages.html#packages">http://www.linuxfromscratch.org/lfs/packages.html#packages</a> 提到的其他下载地址。
       </p>
       <p>
-      下载好的软件包和补丁需要保存在某个地方方便在整个构建过程中都能有效访问。另外还需要一个工作目录用于解压源代码并执行编译。可以用目录<code class="filename">$LFS/sources</code>保存软件包和补丁，同时作为工作目录。通过使用这个目录，所有需要的元素都在LFS分区中，因此在构建过程中的所有阶段都可以访问。
+      下载好的软件包和补丁需要保存在某个地方，以方便在整个构建过程中都能有效访问。另外还需要一个工作目录用于解压源代码并执行编译。可以用目录 <code class="filename">$LFS/sources</code> 保存软件包和补丁，同时作为工作目录。放到这个目录，所有需要的元素都在 LFS 分区中，因此在构建过程中的所有阶段都可以访问。
       </p>
       <p>
-      在开始下载任务之前，先用<code class="systemitem">root</code>用户执行下面的命令创建这个目录：
+      在开始下载任务之前，先用 <code class="systemitem">root</code> 用户执行下面的命令创建这个目录：
       </p>
       <pre class="userinput">
 <kbd class="command">mkdir -v $LFS/sources</kbd>
@@ -70,14 +70,14 @@
 <kbd class="command">chmod -v a+wt $LFS/sources</kbd>
 </pre>
       <p>
-      下载所有软件包和补丁的一个简单方式是使用<a class="ulink" href="../wget-list">wget-list</a>作为<span class="command"><strong>wget</strong></span>的输入。例如：
+      下载所有软件包和补丁的一个简单方式是使用 <a class="ulink" href="../wget-list">wget-list</a> 作为 <span class="command"><strong>wget</strong></span> 的输入。例如：
       </p>
       <pre class="userinput">
 <kbd class=
 "command">wget --input-file=wget-list --continue --directory-prefix=$LFS/sources</kbd>
 </pre>
       <p>
-      另外，从LFS-7.0开始，多了一个单独的文件<a class="ulink" href="../md5sums">md5sums</a>，可以在正式开始前校验所有的文件是否都正确。将这个文件拷贝到<code class="filename">$LFS/sources</code>目录里并执行：
+      另外，从 LFS-7.0 开始，多了一个单独的文件 <a class="ulink" href="../md5sums">md5sums</a> ，可以在正式开始前校验所有的文件是否都正确。将这个文件拷贝到 <code class="filename">$LFS/sources</code> 目录里并执行：
       </p>
       <pre class="userinput">
 <kbd class="command">pushd $LFS/sources
@@ -110,7 +110,7 @@ popd</kbd>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter03.html" title=
-          "第3章 软件包与补丁">返回</a>
+          "第三章 软件包与补丁">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
