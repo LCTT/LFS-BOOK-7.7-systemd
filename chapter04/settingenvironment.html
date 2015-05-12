@@ -18,7 +18,7 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        第4章&nbsp;最后的准备工作
+        第四章&nbsp;最后的准备工作
       </h3>
       <ul>
         <li class="prev">
@@ -36,7 +36,7 @@
         </li>
         <li class="up">
           <a accesskey="u" href="chapter04.html" title=
-          "第4章&nbsp;最后的准备工作">返回</a>
+          "第四章&nbsp;最后的准备工作">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
@@ -50,7 +50,7 @@
         "ch-tools-settingenviron"></a>4.4. 设置环境
       </h1>
       <p>
-        通过为 <span class="command"><strong>bash</strong></span> shell 创建两个随机启动的文件设置好工作环境。当以 <code class="systemitem">lfs</code> 用户身份登录时，运行以下命令创建一个新的 <code class="filename">.bash_profile</code> 文件：
+        通过为 <span class="command"><strong>bash</strong></span> shell 创建两个开机启动的文件设置好工作环境。当以 <code class="systemitem">lfs</code> 用户身份登录时，运行以下命令创建一个新的 <code class="filename">.bash_profile</code> 文件：
       </p>
       <pre class="userinput">
 <kbd class="command">cat &gt; ~/.bash_profile &lt;&lt; "EOF"
@@ -59,24 +59,16 @@
 EOF</kbd>
 </pre>
       <p>
-        当以 <code class="systemitem">lfs</code> 用户身份登录时，初始 shell 通常是一个
-        先读取主机的 <code class=
-        "filename">/etc/profile</code> 文件(很可能包括一些设置和环境变量)然后是 <code class=
-        "filename">.bash_profile</code> 文件的 <span class=
-        "emphasis"><em>login</em></span> shell。
-            <code class="filename">.bash_profile</code> 文件中的 <span class=
-        "command"><strong>exec env -i.../bin/bash</strong></span> 命令用一个除了
-            <code class="envar">HOME</code>, <code class=
-        "envar">TERM</code>, 和 <code class="envar">PS1</code> 变量，完全空环境的 shell 代替 运行中的 shell。
-            这可以确保没有不必要的或者有潜在风险的环境变量从主机系统中泄露到构建环境。
-            这里使用的技巧达到了有一个干净环境的目标。
+        当以 <code class="systemitem">lfs</code> 用户身份登录时，初始 shell 通常是一个<span class=
+        "emphasis"><em>可登录的</em></span> shell，它先读取宿主机的 <code class=
+        "filename">/etc/profile</code> 文件（很可能包括一些设置和环境变量），然后是 <code class=
+        "filename">.bash_profile</code> 文件。<code class="filename">.bash_profile</code> 文件中的 <span class=
+        "command"><strong>exec env -i.../bin/bash</strong></span> 命令用一个除了 <code class="envar">HOME</code>、<code class=
+        "envar">TERM</code> 和 <code class="envar">PS1</code> 变量，完全空环境的 shell 代替运行中的 shell。这可以确保没有不必要的或者有潜在风险的环境变量从宿主机系统中泄露到构建环境。这里使用的技巧是为了有一个干净环境。
     
       </p>
       <p>
-        新的 shell 实例是一个<span class=
-        "emphasis"><em>非登录</em></span> shell，不会读取
-            <code class="filename">/etc/profile</code> 或者 <code class=
-        "filename">.bash_profile</code> 文件，而是读取 <code class="filename">.bashrc</code> 文件。
+        新的 shell 实例是一个<span class="emphasis"><em>非登录</em></span> shell，不会读取 <code class="filename">/etc/profile</code> 或者 <code class="filename">.bash_profile</code> 文件，而是读取 <code class="filename">.bashrc</code> 文件。
             现在创建 <code class="filename">.bashrc</code> 文件：
       </p>
       <pre class="userinput">
@@ -91,47 +83,32 @@ export LFS LC_ALL LFS_TGT PATH</code>
 EOF</kbd>
 </pre>
       <p>
-        <span class="command"><strong>set +h</strong></span> 命令关闭了
-        <span class="command"><strong>bash</strong></span> 的哈希功能。
-        哈希通常是一个有用的功能，<span class=
-        "command"><strong>bash</strong></span> 用一个哈希表来记录可执行文件的完整路径，
-            避免搜索 <code class=
-        "envar">PATH</code> 的时间然后又找到一个相同的可执行文件。
-        然而，新工具一安装后就要使用。通过关闭哈希功能，一个程序准备运行时 shell 总是会
-        搜索 <code class="envar">PATH</code>。如此，shell 能在新编译的工具可用时马上在文件夹 <code class=
-        "filename">$LFS/tools</code> 中找到，而不是记录相同程序在其它地方的之前版本。
+        <span class="command"><strong>set +h</strong></span> 命令关闭了 <span class="command"><strong>bash</strong></span>  的哈希功能。 哈希通常是一个有用的功能，<span class="command"><strong>bash</strong></span> 用一个哈希表来记录可执行文件的完整路径，以避免搜索 <code class="envar">PATH</code> 的时间和又找到一个相同的可执行文件。然而，新工具要一安装后就使用。通过关闭哈希功能，一个程序准备运行时 shell 总是会搜索 <code class="envar">PATH</code> 变量。如此，shell 能在新编译的工具可用时马上在文件夹 <code class="filename">$LFS/tools</code> 中找到，而不是记录相同程序在其它地方的之前版本。
       </p>
       <p>
-        设置用户文件新建掩码(umask)为 022 确保了新建的文件和目录只有它们自己的所有者可写，任何人
-        都可读和可执行(假定 <code class="function">open(2)</code> 系统调用使用的默认模式是新文件
-        使用 644 模式，文件夹使用 755 模式)。
+        设置用户文件新建掩码（umask）为 022 ，确保新建的文件和目录只有它们自己的所有者可写，任何人都可读和可执行(假定 <code class="function">open(2)</code> 系统调用使用的默认模式是新文件使用 644 模式，文件夹使用 755 模式)。
       </p>
       <p>
         <code class="envar">LFS</code> 变量应该设置为选定的挂载点。
       </p>
       <p>
-        <code class="envar">LC_ALL</code> 变量控制特定程序的本地化，使得它们的消息
-        能遵循指定国家的惯例。设置 <code class=
+        <code class="envar">LC_ALL</code> 变量控制特定程序的本地化，使得它们的消息能遵循特定国家的惯例。设置 <code class=
         "envar">LC_ALL</code> 为 <span class="quote">&ldquo;<span class=
         "quote">POSIX</span>&rdquo;</span> 或 <span class=
-        "quote">&ldquo;<span class="quote">C</span>&rdquo;</span>(两者是等价的)，确保 chroot 环境中
-            一切如期望的那样进行。
+        "quote">&ldquo;<span class="quote">C</span>&rdquo;</span>（两者是等价的），确保 chroot 环境中一切如期望的那样进行。
       </p>
       <p>
-        当编译我们的交叉编译器和链接器以及交叉编译我们的临时工具链时，<code class="envar">LFS_TGT</code>
-        变量设置了一个非默认，但兼容的机器说明。<a class="xref" href=
+        当编译我们的交叉编译器和链接器以及交叉编译我们的临时工具链时，<code class="envar">LFS_TGT</code>变量设置了一个非默认，但兼容的机器说明。<a class="xref" href=
         "../chapter05/toolchaintechnotes.html" title=
-        "5.2.&nbsp;工具链技术说明">5.2,
-        &ldquo;工具链技术说明&rdquo;</a>包含更多的信息。
+        "5.2.&nbsp;工具链技术说明">5.2,&ldquo;工具链技术说明&rdquo;</a>包含更多的信息。
       </p>
       <p>
-        把 <code class="filename">/tools/bin</code> 放在标准的 <code class="envar">PATH</code> 前面，
+        把 <code class="filename">/tools/bin</code> 放在标准的 <code class="envar">PATH</code> 变量前面，
         <a class="xref" href="../chapter05/chapter05.html" title=
-        "第5章&nbsp;构建临时系统">第 5 章</a> 中安装的软件一安装完成 shell
-        就会启用。这和关闭哈希功能一起，降低了在第 5 章环境中新程序可用时宿主机器使用旧程序的风险。
+        "第五章&nbsp;构建临时系统">第五章</a>中安装的软件一安装完成 shell 就可使用。这和关闭哈希功能一起，降低了在第五章环境中新程序可用时宿主机器使用旧程序的风险。
       </p>
       <p>
-        最后，启用刚才创建的用户配置文件为编译临时工具完全准备好环境：
+        最后，启用刚才创建的用户配置文件，为编译临时工具完全准备好环境：
       </p>
       <pre class="userinput">
 <kbd class="command">source ~/.bash_profile</kbd>
@@ -142,7 +119,7 @@ EOF</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
         </div>
@@ -162,7 +139,7 @@ EOF</kbd>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter04.html" title=
-          "第4章&nbsp;最后的准备工作">返回</a>
+          "第四章&nbsp;最后的准备工作">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
