@@ -1,4 +1,4 @@
-Translating by H-mudcup
+Translated by H-mudcup
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -19,30 +19,30 @@ Translating by H-mudcup
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        Chapter&nbsp;6.&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="autoconf.html" title=
-          "Autoconf-2.69">Prev</a>
+          "Autoconf-2.69">上一页</a>
           <p>
             Autoconf-2.69
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="diffutils.html" title=
-          "Diffutils-3.3">Next</a>
+          "Diffutils-3.3">下一页</a>
           <p>
             Diffutils-3.3
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
@@ -53,18 +53,16 @@ Translating by H-mudcup
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Automake package contains programs for generating Makefiles for
-          use with Autoconf.
+          软件包包含了生成可与 Autoconf 一同使用的 Makefile 的程序。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
-              <span class="segbody">less than 0.1 SBU (about 8.4 SBU with
-              tests)</span>
+              <strong class="segtitle">大概编译时间：</strong>
+              <span class="segbody">小于 0.1 SBU （加上测试大概有 8.4 SBU）</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">所需磁盘空间：</strong>
               <span class="segbody">109 MB</span>
             </div>
           </div>
@@ -72,27 +70,26 @@ Translating by H-mudcup
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.45.1. Installation of Automake
+          6.45.1.  Automake 的安装
         </h2>
         <p>
-          Prepare Automake for compilation:
+          Automake 编译前的准备：
         </p>
         <pre class="userinput">
 <kbd class=
 "command">./configure --prefix=/usr --docdir=/usr/share/doc/automake-1.15</kbd>
 </pre>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          There are a couple of tests that incorrectly link to the wrong
-          version of the flex library, so we temporarily work around the
-          problem. Also, using the -j4 make option speeds up the tests, even
-          on systems with only one processor, due to internal delays in
-          individual tests. To test the results, issue:
+          有些测试会错误的链接到 flex 库的错误版本，
+          所以我们暂时先解决这个问题。还有，由于每个单独的测试之间会有延迟，
+          即使是在只有一个处理器的系统上也要使用 -j4 编译选项提高测试的速度。
+          对结果的测试：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -100,7 +97,7 @@ Translating by H-mudcup
 make -j4 check</kbd>
 </pre>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
@@ -109,19 +106,19 @@ make -j4 check</kbd>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
           <a id="contents-automake" name="contents-automake"></a>6.45.2.
-          Contents of Automake
+          关于 Automake 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">aclocal, aclocal-1.15, automake,
               automake-1.15, compile, config.guess, config.sub, depcomp,
               install-sh, mdate-sh, missing, mkinstalldirs, py-compile, and
               ylwrap</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directories:</strong>
+              <strong class="segtitle">安装的目录：</strong>
               <span class="segbody">/usr/share/aclocal-1.15,
               /usr/share/automake-1.15, and
               /usr/share/doc/automake-1.15</span>
@@ -130,7 +127,7 @@ make -j4 check</kbd>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简短描述
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -148,9 +145,8 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    Generates <code class="filename">aclocal.m4</code> files
-                    based on the contents of <code class=
-                    "filename">configure.in</code> files
+                    基于 <code class="filename">configure.in</code> 文件的内容
+                    生成 <code class="filename">aclocal.m4</code> 文件
                   </p>
                 </td>
               </tr>
@@ -164,8 +160,8 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    A hard link to <span class=
-                    "command"><strong>aclocal</strong></span>
+                    到 <span class=
+                    "command"><strong>aclocal</strong></span> 的硬链接
                   </p>
                 </td>
               </tr>
@@ -179,16 +175,13 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    A tool for automatically generating <code class=
-                    "filename">Makefile.in</code> files from <code class=
-                    "filename">Makefile.am</code> files [To create all the
-                    <code class="filename">Makefile.in</code> files for a
-                    package, run this program in the top-level directory. By
-                    scanning the <code class="filename">configure.in</code>
-                    file, it automatically finds each appropriate
-                    <code class="filename">Makefile.am</code> file and
-                    generates the corresponding <code class=
-                    "filename">Makefile.in</code> file.]
+                    一个从 <code class="filename">Makefile.am</code> 文件
+                    自动生成 <code class="filename">Makefile.in</code> 文件的工具
+                    [要生成一个软件包里所有的 
+                    <code class="filename">Makefile.in</code> 文件，在最上层的目录运行这个程序。
+                   通过扫描 <code class="filename">configure.in</code>
+                    文件，它能自动找到每个对应的 <code class="filename">Makefile.am</code> 文件，
+                    并生成对应的 <code class="filename">Makefile.in</code> 文件。]
                   </p>
                 </td>
               </tr>
@@ -202,8 +195,8 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    A hard link to <span class=
-                    "command"><strong>automake</strong></span>
+                   到 <span class=
+                    "command"><strong>automake</strong></span> 的硬链接
                   </p>
                 </td>
               </tr>
@@ -217,7 +210,7 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    A wrapper for compilers
+                    包含了一些编译器
                   </p>
                 </td>
               </tr>
@@ -231,8 +224,7 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    A script that attempts to guess the canonical triplet for
-                    the given build, host, or target architecture
+                    试图估计已给出的构建、宿主或目标的结构的三段式命名的脚本
                   </p>
                 </td>
               </tr>
@@ -246,7 +238,7 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    A configuration validation subroutine script
+                    一个配置确认子程序脚本
                   </p>
                 </td>
               </tr>
@@ -260,9 +252,7 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    A script for compiling a program so that dependency
-                    information is generated in addition to the desired
-                    output
+                    一个在编译程序时除了输出必要信息还生成依赖信息的脚本
                   </p>
                 </td>
               </tr>
@@ -276,7 +266,7 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    A script that installs a program, script, or data file
+                    一个安装程序、脚本或数据文件的脚本
                   </p>
                 </td>
               </tr>
@@ -290,8 +280,7 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    A script that prints the modification time of a file or
-                    directory
+                    一个打印文件或目录被修改时间的脚本
                   </p>
                 </td>
               </tr>
@@ -305,8 +294,7 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    A script acting as a common stub for missing GNU programs
-                    during an installation
+                    一个在安装过程中表现为丢失 GNU 程序通用的存根的脚本
                   </p>
                 </td>
               </tr>
@@ -320,7 +308,7 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    A script that creates a directory tree
+                   一个创建目录树的脚本
                   </p>
                 </td>
               </tr>
@@ -334,8 +322,8 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    Compiles a Python program
-                  </p>
+                   编译一个 Python 程序
+                 </p>
                 </td>
               </tr>
               <tr>
@@ -348,7 +336,7 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    A wrapper for <span class=
+                    包含<span class=
                     "command"><strong>lex</strong></span> and <span class=
                     "command"><strong>yacc</strong></span>
                   </p>
@@ -360,28 +348,36 @@ make -j4 check</kbd>
       </div>
     </div>
     <div class="navfooter">
+    	<div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/H-mudcup" target="_blank">H-mudcup</a>/</span>
+            </div>
+        </div>
+      </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="autoconf.html" title=
-          "Autoconf-2.69">Prev</a>
+          "Autoconf-2.69">上一页</a>
           <p>
             Autoconf-2.69
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="diffutils.html" title=
-          "Diffutils-3.3">Next</a>
+          "Diffutils-3.3">下一页</a>
           <p>
             Diffutils-3.3
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
