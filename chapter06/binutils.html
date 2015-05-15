@@ -18,49 +18,48 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="file.html" title="File-5.22">Prev</a>
+          <a accesskey="p" href="file.html" title="File-5.22">上一页</a>
           <p>
             File-5.22
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="gmp.html" title="GMP-6.0.0a">Next</a>
+          <a accesskey="n" href="gmp.html" title="GMP-6.0.0a">下一页</a>
           <p>
             GMP-6.0.0a
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-system-binutils" name="ch-system-binutils"></a>6.13.
-        Binutils-2.25 ictlyh翻译中
+        Binutils-2.25
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Binutils package contains a linker, an assembler, and other
-          tools for handling object files.
+            Binutils 软件包包含一个链接器、一个汇编器、以及其它处理目标文件的工具。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间:</strong>
               <span class="segbody">2.2 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间:</strong>
               <span class="segbody">473 MB</span>
             </div>
           </div>
@@ -68,41 +67,37 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.13.1. Installation of Binutils
+          6.13.1. 安装 Binutils
         </h2>
         <p>
-          Verify that the PTYs are working properly inside the chroot
-          environment by performing a simple test:
+            通过一个简单测试验证 PTYs 能在 chroot 环境下正常工作：
         </p>
         <pre class="userinput">
 <kbd class="command">expect -c "spawn ls"</kbd>
 </pre>
         <p>
-          This command should output the following:
+            这个命令应该输出以下内容：
         </p>
         <pre class="screen">
 <code class="computeroutput">spawn ls</code>
 </pre>
         <p>
-          If, instead, the output includes the message below, then the
-          environment is not set up for proper PTY operation. This issue
-          needs to be resolved before running the test suites for Binutils
-          and GCC:
+            假如输出包括下面的信息，那么表示没有为 PTY 操作设置好环境。
+            在运行 Binutils 和 GCC 的测试套件之前需要解决这个问题：
         </p>
         <pre class="screen">
 <code class="computeroutput">The system has no more ptys.
 Ask your system administrator to create more.</code>
 </pre>
         <p>
-          The Binutils documentation recommends building Binutils outside of
-          the source directory in a dedicated build directory:
+            Binutils 指南建议在源文件目录之外一个专用的编译目录编译 Binutils：
         </p>
         <pre class="userinput">
 <kbd class="command">mkdir -v ../binutils-build
 cd ../binutils-build</kbd>
 </pre>
         <p>
-          Prepare Binutils for compilation:
+          准备编译 Binutils:
         </p>
         <pre class="userinput">
 <kbd class="command">../binutils-2.25/configure --prefix=/usr   \
@@ -110,14 +105,14 @@ cd ../binutils-build</kbd>
                            --disable-werror</kbd>
 </pre>
         <p>
-          Compile the package:
+          编译软件包:
         </p>
         <pre class="userinput">
 <kbd class="command">make tooldir=/usr</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the make parameter:</strong>
+            <strong>make 参数的含义:</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -126,17 +121,14 @@ cd ../binutils-build</kbd>
             </dt>
             <dd>
               <p>
-                Normally, the tooldir (the directory where the executables
-                will ultimately be located) is set to <code class=
-                "filename">$(exec_prefix)/$(target_alias)</code>. For
-                example, x86_64 machines would expand that to <code class=
-                "filename">/usr/x86_64-unknown-linux-gnu</code>. Because this
-                is a custom system, this target-specific directory in
-                <code class="filename">/usr</code> is not required.
-                <code class="filename">$(exec_prefix)/$(target_alias)</code>
-                would be used if the system was used to cross-compile (for
-                example, compiling a package on an Intel machine that
-                generates code that can be executed on PowerPC machines).
+                一般来说，tooldir (最终存放可执行文件的目录) 设置为
+                <code class="filename">$(exec_prefix)/$(target_alias)</code>。
+                例如，x86_64 机器会把它扩展为<code class=
+                "filename">/usr/x86_64-unknown-linux-gnu</code>。因为这是个
+                自定制的系统，并不需要 <code class="filename">/usr</code>
+                中的特定目标目录。如果系统用于交叉编译(例如，在 Intel 机器上
+                编译能生成在 PowerPC 机器上运行的代码的软件包)会使用
+                <code class="filename">$(exec_prefix)/$(target_alias)</code>。
               </p>
             </dd>
           </dl>
@@ -144,21 +136,20 @@ cd ../binutils-build</kbd>
         <div class="admon important">
           <img alt="[Important]" src="../images/important.png" />
           <h3>
-            Important
+            重要
           </h3>
           <p>
-            The test suite for Binutils in this section is considered
-            critical. Do not skip it under any circumstances.
+            该章节 Binutils 的测试套件至关重要，任何情况下都不能跳过。
           </p>
         </div>
         <p>
-          Test the results:
+          查看结果:
         </p>
         <pre class="userinput">
 <kbd class="command">make -k check</kbd>
 </pre>
         <p>
-          Install the package:
+          安装软件包:
         </p>
         <pre class="userinput">
 <kbd class="command">make tooldir=/usr install</kbd>
@@ -166,31 +157,30 @@ cd ../binutils-build</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-binutils" name="contents-binutils"></a>6.13.2.
-          Contents of Binutils
+          <a id="contents-binutils" name="contents-binutils"></a>6.13.2.Binutils 内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
+              <strong class="segtitle">安装的程序:</strong>
               <span class="segbody">addr2line, ar, as, c++filt, elfedit,
               gprof, ld, ld.bfd, nm, objcopy, objdump, ranlib, readelf, size,
               strings, and strip</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed libraries:</strong>
+              <strong class="segtitle">安装的库:</strong>
               <span class="segbody">libbfd.{a,so} and
               libopcodes.{a,so}</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directory:</strong>
+              <strong class="segtitle">安装目录:</strong>
               <span class="segbody">/usr/lib/ldscripts</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简短描述
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -208,11 +198,8 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Translates program addresses to file names and line
-                    numbers; given an address and the name of an executable,
-                    it uses the debugging information in the executable to
-                    determine which source file and line number are
-                    associated with the address
+                    转换程序地址为文件名称和行号；给定一个地址和可执行文件的名称，
+                    它使用可执行文件的调试信息判断和地址关联的源文件以及行号。
                   </p>
                 </td>
               </tr>
@@ -225,7 +212,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Creates, modifies, and extracts from archives
+                    创建、更改以及抽取归档文件。
                   </p>
                 </td>
               </tr>
@@ -238,8 +225,8 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    An assembler that assembles the output of <span class=
-                    "command"><strong>gcc</strong></span> into object files
+                    一个将<span class=
+                    "command"><strong>gcc</strong></span> 的输出汇编到目标文件的汇编器。
                   </p>
                 </td>
               </tr>
@@ -253,8 +240,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Used by the linker to de-mangle C++ and Java symbols and
-                    to keep overloaded functions from clashing
+                    链接器用来过滤 C++ 和 Java 符号以及防止重载函数冲突。
                   </p>
                 </td>
               </tr>
@@ -268,7 +254,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Updates the ELF header of ELF files
+                    更新 ELF 文件的 ELF 文件头
                   </p>
                 </td>
               </tr>
@@ -282,7 +268,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Displays call graph profile data
+                    显示调用关系图配置数据
                   </p>
                 </td>
               </tr>
@@ -295,9 +281,8 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    A linker that combines a number of object and archive
-                    files into a single file, relocating their data and tying
-                    up symbol references
+                    一个将多个目标文件和归档文件合并为单一文件，
+                    重定位数据以及绑定符号引用的链接器。
                   </p>
                 </td>
               </tr>
@@ -311,8 +296,8 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Hard link to <span class=
-                    "command"><strong>ld</strong></span>
+                    到 <span class=
+                    "command"><strong>ld</strong></span> 的硬链接。
                   </p>
                 </td>
               </tr>
@@ -325,7 +310,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Lists the symbols occurring in a given object file
+                    列出指定目标文件中出现的符号
                   </p>
                 </td>
               </tr>
@@ -339,7 +324,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Translates one type of object file into another
+                    转换某种类型的目标文件到另一种类型
                   </p>
                 </td>
               </tr>
@@ -353,10 +338,8 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Displays information about the given object file, with
-                    options controlling the particular information to
-                    display; the information shown is useful to programmers
-                    who are working on the compilation tools
+                    显示给定目标文件的信息，用选项控制要显示的特定信息；
+                    显示的信息使用编译工具的程序员非常有用。
                   </p>
                 </td>
               </tr>
@@ -370,10 +353,8 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Generates an index of the contents of an archive and
-                    stores it in the archive; the index lists all of the
-                    symbols defined by archive members that are relocatable
-                    object files
+                    生成归档文件内容的索引并保存到归档文件；索引列出了所有
+                    归档文件成员-可重定位的目标文件定义的符号。
                   </p>
                 </td>
               </tr>
@@ -387,7 +368,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Displays information about ELF type binaries
+                    显示 ELF 类型二进制文件的信息
                   </p>
                 </td>
               </tr>
@@ -401,8 +382,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Lists the section sizes and the total size for the given
-                    object files
+                    列出所给目标文件各部分大小和总的大小
                   </p>
                 </td>
               </tr>
@@ -416,12 +396,9 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Outputs, for each given file, the sequences of printable
-                    characters that are of at least the specified length
-                    (defaulting to four); for object files, it prints, by
-                    default, only the strings from the initializing and
-                    loading sections while for other types of files, it scans
-                    the entire file
+                    对每个给定文件，输出不低于指定长度(默认是4)的可打印字符序列；
+                    对于目标文件，它默认只打印初始化和引导部分的字符串，而对于
+                    其它类型的文件扫描整个文件。 
                   </p>
                 </td>
               </tr>
@@ -435,7 +412,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    Discards symbols from object files
+                    忽略目标文件中的符号
                   </p>
                 </td>
               </tr>
@@ -448,7 +425,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    The Binary File Descriptor library
+                    二进制文件描述库
                   </p>
                 </td>
               </tr>
@@ -461,11 +438,10 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    A library for dealing with opcodes&mdash;the <span class=
-                    "quote">&ldquo;<span class="quote">readable
-                    text</span>&rdquo;</span> versions of instructions for
-                    the processor; it is used for building utilities like
-                    <span class="command"><strong>objdump</strong></span>
+                    用于处理操作码&mdash;处理器指令的<span class=
+                    "quote">&ldquo;<span class="quote">可读文本</span>&rdquo;</span>版本
+                        的库；用于构建类似<span class="command"><strong>objdump</strong></span>
+                        的工具。
                   </p>
                 </td>
               </tr>
@@ -475,26 +451,34 @@ cd ../binutils-build</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="file.html" title="File-5.22">Prev</a>
+          <a accesskey="p" href="file.html" title="File-5.22">上一页</a>
           <p>
             File-5.22
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="gmp.html" title="GMP-6.0.0a">Next</a>
+          <a accesskey="n" href="gmp.html" title="GMP-6.0.0a">下一页</a>
           <p>
             GMP-6.0.0a
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
