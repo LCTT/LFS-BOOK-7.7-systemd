@@ -82,8 +82,7 @@
 <code class="computeroutput">spawn ls</code>
 </pre>
         <p>
-            假如输出包括下面的信息，那么表示没有为 PTY 操作设置好环境。
-            在运行 Binutils 和 GCC 的测试套件之前需要解决这个问题：
+            假如输出包括下面的信息，那么表示没有为 PTY 操作设置好环境。在运行 Binutils 和 GCC 的测试套件之前需要解决这个问题：
         </p>
         <pre class="screen">
 <code class="computeroutput">The system has no more ptys.
@@ -122,12 +121,9 @@ cd ../binutils-build</kbd>
             <dd>
               <p>
                 一般来说，tooldir (最终存放可执行文件的目录) 设置为
-                <code class="filename">$(exec_prefix)/$(target_alias)</code>。
-                例如，x86_64 机器会把它扩展为<code class=
-                "filename">/usr/x86_64-unknown-linux-gnu</code>。因为这是个
-                自定制的系统，并不需要 <code class="filename">/usr</code>
-                中的特定目标目录。如果系统用于交叉编译(例如，在 Intel 机器上
-                编译能生成在 PowerPC 机器上运行的代码的软件包)会使用
+                <code class="filename">$(exec_prefix)/$(target_alias)</code>。例如，x86_64 机器会把它扩展为<code class=
+                "filename">/usr/x86_64-unknown-linux-gnu</code>。因为这是个自定制的系统，并不需要 <code class="filename">/usr</code>
+                中的特定目标目录。如果系统用于交叉编译(例如，在 Intel 机器上编译能生成在 PowerPC 机器上运行的代码的软件包)会使用
                 <code class="filename">$(exec_prefix)/$(target_alias)</code>。
               </p>
             </dd>
@@ -180,7 +176,7 @@ cd ../binutils-build</kbd>
         </div>
         <div class="variablelist">
           <h3>
-            简短描述
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -198,8 +194,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    转换程序地址为文件名称和行号；给定一个地址和可执行文件的名称，
-                    它使用可执行文件的调试信息判断和地址关联的源文件以及行号。
+                    转换程序地址为文件名称和行号；给定一个地址和可执行文件的名称，它使用可执行文件的调试信息判断和地址关联的源文件以及行号。
                   </p>
                 </td>
               </tr>
@@ -268,7 +263,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    显示调用关系图配置数据
+                    显示调用关系图配置数据
                   </p>
                 </td>
               </tr>
@@ -281,8 +276,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    一个将多个目标文件和归档文件合并为单一文件，
-                    重定位数据以及绑定符号引用的链接器。
+                    一个将多个目标文件和归档文件合并为单一文件，重定位数据以及绑定符号引用的链接器。
                   </p>
                 </td>
               </tr>
@@ -338,8 +332,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    显示给定目标文件的信息，用选项控制要显示的特定信息；
-                    显示的信息使用编译工具的程序员非常有用。
+                    显示给定目标文件的信息，用选项控制要显示的特定信息；显示的信息使用编译工具的程序员非常有用。
                   </p>
                 </td>
               </tr>
@@ -353,8 +346,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    生成归档文件内容的索引并保存到归档文件；索引列出了所有
-                    归档文件成员-可重定位的目标文件定义的符号。
+                    生成归档文件内容的索引并保存到归档文件；索引列出了所有归档文件成员-可重定位的目标文件定义的符号。
                   </p>
                 </td>
               </tr>
@@ -396,9 +388,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    对每个给定文件，输出不低于指定长度(默认是4)的可打印字符序列；
-                    对于目标文件，它默认只打印初始化和引导部分的字符串，而对于
-                    其它类型的文件扫描整个文件。 
+                    对每个给定文件，输出不低于指定长度(默认是4)的可打印字符序列；对于目标文件，它默认只打印初始化和引导部分的字符串，而对于其它类型的文件扫描整个文件。 
                   </p>
                 </td>
               </tr>
