@@ -18,29 +18,29 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="adjusting.html" title=
-          "Adjusting the Toolchain">Prev</a>
+          "调整工具链">上一页</a>
           <p>
-            Adjusting the Toolchain
+            调整工具链
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="file.html" title="File-5.22">Next</a>
+          <a accesskey="n" href="file.html" title="File-5.22">下一页</a>
           <p>
             File-5.22
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
@@ -50,17 +50,16 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Zlib package contains compression and decompression routines
-          used by some programs.
+            Zlib 软件包包括一些程序所使用的压缩和解压缩例程。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
-              <span class="segbody">less than 0.1 SBU</span>
+              <strong class="segtitle">大概编译时间:</strong>
+              <span class="segbody">低于 0.1 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间:</strong>
               <span class="segbody">4.1 MB</span>
             </div>
           </div>
@@ -68,37 +67,37 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.11.1. Installation of Zlib
+          6.11.1. 安装 Zlib
         </h2>
         <p>
-          Prepare Zlib for compilation:
+          准备编译 Zlib:
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/usr</kbd>
 </pre>
         <p>
-          Compile the package:
+          编译软件包:
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          To test the results, issue:
+          输入命令查看结果：
         </p>
         <pre class="userinput">
 <kbd class="command">make check</kbd>
 </pre>
         <p>
-          Install the package:
+          安装软件包:
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
 </pre>
         <p>
-          The shared library needs to be moved to <code class=
-          "filename">/lib</code>, and as a result the <code class=
-          "filename">.so</code> file in <code class=
-          "filename">/usr/lib</code> will need to be recreated:
+            共享库需要移动到 <code class=
+          "filename">/lib</code>，因此需要重建 <code class=
+          "filename">/usr/lib</code> 里面的 <code class=
+          "filename">.so</code> 文件：
         </p>
         <pre class="userinput">
 <kbd class="command">mv -v /usr/lib/libz.so.* /lib
@@ -107,20 +106,19 @@ ln -sfv ../../lib/$(readlink /usr/lib/libz.so) /usr/lib/libz.so</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-zlib" name="contents-zlib"></a>6.11.2. Contents of
-          Zlib
+          <a id="contents-zlib" name="contents-zlib"></a>6.11.2. Zlib 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed libraries:</strong>
+              <strong class="segtitle">安装的库:</strong>
               <span class="segbody">libz.{a,so}</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -137,8 +135,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libz.so) /usr/lib/libz.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Contains compression and decompression functions used by
-                    some programs
+                    包括一些程序所使用的压缩和解压缩程序。
                   </p>
                 </td>
               </tr>
@@ -148,27 +145,35 @@ ln -sfv ../../lib/$(readlink /usr/lib/libz.so) /usr/lib/libz.so</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="adjusting.html" title=
-          "Adjusting the Toolchain">Prev</a>
+          "调整工具链">上一页</a>
           <p>
-            Adjusting the Toolchain
+            调整工具链
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="file.html" title="File-5.22">Next</a>
+          <a accesskey="n" href="file.html" title="File-5.22">下一页</a>
           <p>
             File-5.22
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
