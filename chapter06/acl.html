@@ -18,28 +18,28 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="attr.html" title="Attr-2.4.47">Prev</a>
+          <a accesskey="p" href="attr.html" title="Attr-2.4.47">上一页</a>
           <p>
             Attr-2.4.47
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="libcap.html" title="Libcap-2.24">Next</a>
+          <a accesskey="n" href="libcap.html" title="Libcap-2.24">下一页</a>
           <p>
             Libcap-2.24
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
@@ -49,18 +49,17 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Acl package contains utilities to administer Access Control
-          Lists, which are used to define more fine-grained discretionary
-          access rights for files and directories.
+            Acl 软件包包含管理访问控制列表的工具，访问控制列表用于
+            定义文件和目录更细粒度的自主访问权限。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间:</strong>
               <span class="segbody">0.1 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间:</strong>
               <span class="segbody">7.7 MB</span>
             </div>
           </div>
@@ -68,27 +67,25 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.22.1. Installation of Acl
+          6.22.1. 安装 Acl
         </h2>
         <p>
-          Modify the documentation directory so that it is a versioned
-          directory:
+          修改文件目录，使它成为版本目录：
         </p>
         <pre class="userinput">
 <kbd class=
 "command">sed -i -e 's|/@pkg_name@|&amp;-@pkg_version@|' include/builddefs.in</kbd>
 </pre>
         <p>
-          Fix some broken tests:
+            修复一些损坏的测试：
         </p>
         <pre class="userinput">
 <kbd class=
 "command">sed -i "s:| sed.*::g" test/{sbits-restore,cp,misc}.test</kbd>
 </pre>
         <p>
-          Additionally, fix a bug that causes <span class=
-          "command"><strong>getfacl -e</strong></span> to segfault on overly
-          long group name:
+            另外，修复一个超长组名称时会使 <span class=
+          "command"><strong>getfacl -e</strong></span> 出现段错误的 bug：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -96,38 +93,35 @@
     libacl/__acl_to_any_text.c</kbd>
 </pre>
         <p>
-          Prepare Acl for compilation:
+            准备编译 Acl：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/usr --libexecdir=/usr/lib</kbd>
 </pre>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          The Acl tests need to be run on a filesystem that supports access
-          controls after <span class="application">Coreutils</span> has been
-          built with the Acl libraries. If desired, return to this package
-          and run <span class="command"><strong>make -j1
-          tests</strong></span> after <span class=
-          "application">Coreutils</span> has been built later in this
-          chapter.
+            Acl 测试需要在用与 Acl 库一起构建 <span class="application">Coreutils</span>
+            后支持访问控制的文件系统上进行。如果需要的话，可以在本章后面构建完<span class=
+          "application">Coreutils</span> 之后回到这个软件包运行 <span class="command"><strong>make -j1
+          tests</strong></span> 进行测试。
         </p>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install install-dev install-lib
 chmod -v 755 /usr/lib/libacl.so</kbd>
 </pre>
         <p>
-          The shared library needs to be moved to <code class=
-          "filename">/lib</code>, and as a result the <code class=
-          "filename">.so</code> file in <code class=
-          "filename">/usr/lib</code> will need to be recreated:
+            需要移动共享库到<code class=
+          "filename">/lib</code>，因此需要重建 <code class=
+          "filename">/usr/lib</code> 中的 <code class=
+          "filename">.so</code> 文件：
         </p>
         <pre class="userinput">
 <kbd class="command">mv -v /usr/lib/libacl.so.* /lib
@@ -136,29 +130,28 @@ ln -sfv ../../lib/$(readlink /usr/lib/libacl.so) /usr/lib/libacl.so</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-acl" name="contents-acl"></a>6.22.2. Contents of
-          Acl
+          <a id="contents-acl" name="contents-acl"></a>6.22.2. Acl 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
-              <span class="segbody">chacl, getfacl, and setacl</span>
+              <strong class="segtitle">安装的程序:</strong>
+              <span class="segbody">chacl, getfacl, 以及 setacl</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed library:</strong>
+              <strong class="segtitle">安装的库:</strong>
               <span class="segbody">libacl.{a,so}</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directories:</strong>
-              <span class="segbody">/usr/include/acl and
+              <strong class="segtitle">安装目录:</strong>
+              <span class="segbody">/usr/include/acl 以及
               /usr/share/doc/acl-2.2.52</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -176,7 +169,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libacl.so) /usr/lib/libacl.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Changes the access control list of a file or directory
+                    更改文件或目录的访问控制列表
                   </p>
                 </td>
               </tr>
@@ -190,7 +183,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libacl.so) /usr/lib/libacl.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Gets file access control lists
+                    获取文件访问控制列表
                   </p>
                 </td>
               </tr>
@@ -204,7 +197,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libacl.so) /usr/lib/libacl.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Sets file access control lists
+                    设置文件访问控制列表
                   </p>
                 </td>
               </tr>
@@ -217,8 +210,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libacl.so) /usr/lib/libacl.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Contains the library functions for manipulating Access
-                    Control Lists
+                    包括用于管理访问控制列表的库函数
                   </p>
                 </td>
               </tr>
@@ -228,26 +220,34 @@ ln -sfv ../../lib/$(readlink /usr/lib/libacl.so) /usr/lib/libacl.so</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="attr.html" title="Attr-2.4.47">Prev</a>
+          <a accesskey="p" href="attr.html" title="Attr-2.4.47">上一页</a>
           <p>
             Attr-2.4.47
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="libcap.html" title="Libcap-2.24">Next</a>
+          <a accesskey="n" href="libcap.html" title="Libcap-2.24">下一页</a>
           <p>
             Libcap-2.24
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>

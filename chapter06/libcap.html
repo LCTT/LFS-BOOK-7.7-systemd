@@ -18,28 +18,28 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="acl.html" title="Acl-2.2.52">Prev</a>
+          <a accesskey="p" href="acl.html" title="Acl-2.2.52">上一页</a>
           <p>
             Acl-2.2.52
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="sed.html" title="Sed-4.2.2">Next</a>
+          <a accesskey="n" href="sed.html" title="Sed-4.2.2">下一页</a>
           <p>
             Sed-4.2.2
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
@@ -50,19 +50,17 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Libcap package implements the user-space interfaces to the
-          POSIX 1003.1e capabilities available in Linux kernels. These
-          capabilities are a partitioning of the all powerful root privilege
-          into a set of distinct privileges.
+            Libcap 软件包实现了到 Linux 内核可用的 POSIX 1003.1e 功能的用户空间接口。
+            这些功能将所有强大 root 权限划分为不同的权限组合。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间:</strong>
               <span class="segbody">less than 0.1 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间:</strong>
               <span class="segbody">1.8 MB</span>
             </div>
           </div>
@@ -70,19 +68,19 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.23.1. Installation of Libcap
+          6.23.1. 安装 Libcap
         </h2>
         <p>
-          Compile the package:
+          编译软件包
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          This package does not come with a test suite.
+            这个软件包没有测试套件。
         </p>
         <p>
-          Install the package:
+          按软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make RAISE_SETFCAP=no prefix=/usr install
@@ -90,7 +88,7 @@ chmod -v 755 /usr/lib/libcap.so</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the make option:</strong>
+            <strong>make 选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -99,19 +97,18 @@ chmod -v 755 /usr/lib/libcap.so</kbd>
             </dt>
             <dd>
               <p>
-                This parameter skips trying to use <span class=
-                "command"><strong>setcap</strong></span> on itself. This
-                avoids an installation error if the kernel or file system
-                does not support extended capabilities.
+                这个选项跳过尝试对自身使用 <span class=
+                "command"><strong>setcap</strong></span>。这可以避免
+                 内核或文件系统不支持扩展功能时出现安装错误。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          The shared library needs to be moved to <code class=
-          "filename">/lib</code>, and as a result the <code class=
-          "filename">.so</code> file in <code class=
-          "filename">/usr/lib</code> will need to be recreated:
+           需要移动共享库到<code class=
+          "filename">/lib</code>，因此需要重建 <code class=
+          "filename">/usr/lib</code> 中的 <code class=
+          "filename">.so</code> 文件：
         </p>
         <pre class="userinput">
 <kbd class="command">mv -v /usr/lib/libcap.so.* /lib
@@ -120,25 +117,24 @@ ln -sfv ../../lib/$(readlink /usr/lib/libcap.so) /usr/lib/libcap.so</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-libcap" name="contents-libcap"></a>6.23.2. Contents
-          of Libcap
+          <a id="contents-libcap" name="contents-libcap"></a>6.23.2. Libcap 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
-              <span class="segbody">capsh, getcap, getpcaps, and
+              <strong class="segtitle">安装的程序:</strong>
+              <span class="segbody">capsh, getcap, getpcaps, 以及
               setcap</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed library:</strong>
+              <strong class="segtitle">安装的库:</strong>
               <span class="segbody">libcap.{a,so}</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -156,8 +152,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libcap.so) /usr/lib/libcap.so</kbd>
                 </td>
                 <td>
                   <p>
-                    A shell wrapper to explore and constrain capability
-                    support
+                    使用和控制功能支持的 shell 封装
                   </p>
                 </td>
               </tr>
@@ -171,7 +166,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libcap.so) /usr/lib/libcap.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Examines file capabilities
+                    检查文件功能
                   </p>
                 </td>
               </tr>
@@ -185,7 +180,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libcap.so) /usr/lib/libcap.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Displays the capabilities on the queried process(es)
+                    显示查询进程的功能
                   </p>
                 </td>
               </tr>
@@ -198,8 +193,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libcap.so) /usr/lib/libcap.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Contains the library functions for manipulating POSIX
-                    1003.1e capabilities
+                    包括用于管理 POSIX 1003.1e 功能的库函数
                   </p>
                 </td>
               </tr>
@@ -209,26 +203,34 @@ ln -sfv ../../lib/$(readlink /usr/lib/libcap.so) /usr/lib/libcap.so</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="acl.html" title="Acl-2.2.52">Prev</a>
+          <a accesskey="p" href="acl.html" title="Acl-2.2.52">上一页</a>
           <p>
             Acl-2.2.52
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="sed.html" title="Sed-4.2.2">Next</a>
+          <a accesskey="n" href="sed.html" title="Sed-4.2.2">下一页</a>
           <p>
             Sed-4.2.2
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
