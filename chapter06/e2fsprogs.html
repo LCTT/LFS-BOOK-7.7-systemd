@@ -48,14 +48,13 @@
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-system-e2fsprogs" name="ch-system-e2fsprogs"></a>6.28.
-        E2fsprogs-1.42.12  ictlyh翻译中
+        E2fsprogs-1.42.12
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The E2fsprogs package contains the utilities for handling the
-          <code class="systemitem">ext2</code> file system. It also supports
-          the <code class="systemitem">ext3</code> and <code class=
-          "systemitem">ext4</code> journaling file systems.
+            E2fsprogs 软件包包含用于处理 <code class="systemitem">ext2</code>
+            文件系统的工具。它也支持 <code class="systemitem">ext3</code> 和 <code class=
+          "systemitem">ext4</code> 日志文件系统。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -72,10 +71,10 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.28.1. Installation of E2fsprogs
+          6.28.1. 安装 E2fsprogs
         </h2>
         <p>
-          First, fix a potential security issue identified upstream:
+            首先，修复上游识别的一个潜在安全问题：
         </p>
         <pre class="userinput">
 <kbd class="command">sed -e '/int.*old_desc_blocks/s/int/blk64_t/' \
@@ -83,15 +82,14 @@
     -i lib/ext2fs/closefs.c</kbd>
 </pre>
         <p>
-          The E2fsprogs documentation recommends that the package be built in
-          a subdirectory of the source tree:
+            E2fsprogs 文档建议在源目录树的一个子目录中编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">mkdir -v build
 cd build</kbd>
 </pre>
         <p>
-          Prepare E2fsprogs for compilation:
+            准备编译 E2fsprogs：
         </p>
         <pre class="userinput">
 <kbd class="command">LIBS=-L/tools/lib                    \
@@ -108,8 +106,7 @@ PKG_CONFIG_PATH=/tools/lib/pkgconfig \
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the environment variable and configure
-            options:</strong>
+            <strong>环境变量和配置选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -118,10 +115,9 @@ PKG_CONFIG_PATH=/tools/lib/pkgconfig \
             </dt>
             <dd>
               <p>
-                These variables enable e2fsprogs to be built using the
-                <a class="xref" href="../chapter05/util-linux.html" title=
-                "5.33.&nbsp;Util-linux-2.26">Section&nbsp;5.33,
-                &ldquo;Util-linux-2.26&rdquo;</a> package built earlier.
+                这些变量使得使用之前 <a class="xref" href="../chapter05/util-linux.html" title=
+                "5.33.&nbsp;Util-linux-2.26">章节&nbsp;5.33,
+                &ldquo;Util-linux-2.26&rdquo;</a> 构建的软件包编译 e2fsprogs。
               </p>
             </dd>
             <dt>
@@ -131,15 +127,12 @@ PKG_CONFIG_PATH=/tools/lib/pkgconfig \
             </dt>
             <dd>
               <p>
-                Certain programs (such as the <span class=
-                "command"><strong>e2fsck</strong></span> program) are
-                considered essential programs. When, for example,
-                <code class="filename">/usr</code> is not mounted, these
-                programs still need to be available. They belong in
-                directories like <code class="filename">/lib</code> and
-                <code class="filename">/sbin</code>. If this option is not
-                passed to E2fsprogs' configure, the programs are installed
-                into the <code class="filename">/usr</code> directory.
+                有些程序(例如 <span class=
+                "command"><strong>e2fsck</strong></span>) 认为很重要。
+                    比如，当 <code class="filename">/usr</code> 没有挂载的时候，
+                    仍然要求这些程序可用。它们在类似 <code class="filename">/lib</code> 和
+                <code class="filename">/sbin</code> 的目录中。如果没有传递这个参数到 E2fsprogs
+                的配置文件，程序就会被安装在 <code class="filename">/usr</code> 目录。
               </p>
             </dd>
             <dt>
@@ -148,8 +141,7 @@ PKG_CONFIG_PATH=/tools/lib/pkgconfig \
             </dt>
             <dd>
               <p>
-                This creates the shared libraries which some programs in this
-                package use.
+                创建该软件包中一些程序会使用的共享库。
               </p>
             </dd>
             <dt>
@@ -158,77 +150,69 @@ PKG_CONFIG_PATH=/tools/lib/pkgconfig \
             </dt>
             <dd>
               <p>
-                This prevents E2fsprogs from building and installing the
-                <code class="systemitem">libuuid</code> and <code class=
-                "systemitem">libblkid</code> libraries, the <code class=
-                "systemitem">uuidd</code> daemon, and the <span class=
-                "command"><strong>fsck</strong></span> wrapper, as Util-Linux
-                installs more recent versions.
+                这会阻止 E2fsprogs 编译和安装 <code class="systemitem">libuuid</code> 和 <code class=
+                "systemitem">libblkid</code> 库、 <code class=
+                "systemitem">uuidd</code> 守护进程、 以及 <span class=
+                "command"><strong>fsck</strong></span> 封装包。因为 Util-Linux 安装了更新的版本，
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          To set up and run the test suite we need to first link some
-          libraries from /tools/lib to a location where the test programs
-          look. To run the tests, issue:
+            要设置和运行测试套件，我们首先需要把 /tools/lib 中的一些库链接到
+            测试程序查找的位置。输入命令运行测试：
         </p>
         <pre class="userinput">
 <kbd class="command">ln -sfv /tools/lib/lib{blk,uu}id.so.1 lib
 make LD_LIBRARY_PATH=/tools/lib check</kbd>
 </pre>
         <p>
-          One of the E2fsprogs tests will attempt to allocate 256 MB of
-          memory. If you do not have significantly more RAM than this, be
-          sure to enable sufficient swap space for the test. See <a class=
+            E2fsprogs 的其中一个测试程序会试图分配 256M 的内存。如果你没有比这更多的 RAM，
+            确保为测试启用了足够的交换空间。阅读 <a class=
           "xref" href="../chapter02/creatingfilesystem.html" title=
-          "2.3.&nbsp;Creating a File System on the Partition">Section&nbsp;2.3,
-          &ldquo;Creating a File System on the Partition&rdquo;</a> and
+          "2.3.&nbsp;在分区上创建文件系统">章节&nbsp;2.3,
+          &ldquo;在分区上创建文件系统&rdquo;</a> 以及
           <a class="xref" href="../chapter02/mounting.html" title=
-          "2.4.&nbsp;Mounting the New Partition">Section&nbsp;2.4,
-          &ldquo;Mounting the New Partition&rdquo;</a> for details on
-          creating and enabling swap space.
+          "2.4.&nbsp;挂载新分区">章节&nbsp;2.4,
+          &ldquo;挂载新分区&rdquo;</a> 查看创建和启用交换空间的详细信息。
         </p>
         <p>
-          Install the binaries, documentation, and shared libraries:
+            安装二进制文件、文档以及共享库：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
 </pre>
         <p>
-          Install the static libraries and headers:
+            安装静态库和头文件：
         </p>
         <pre class="userinput">
 <kbd class="command">make install-libs</kbd>
 </pre>
         <p>
-          Make the installed static libraries writable so debugging symbols
-          can be removed later:
+            使安装的静态库可写，以便后面可以移除调试符号：
         </p>
         <pre class="userinput">
 <kbd class=
 "command">chmod -v u+w /usr/lib/{libcom_err,libe2p,libext2fs,libss}.a</kbd>
 </pre>
         <p>
-          This package installs a gzipped <code class="filename">.info</code>
-          file but doesn't update the system-wide <code class=
-          "filename">dir</code> file. Unzip this file and then update the
-          system <code class="filename">dir</code> file using the following
-          commands.
+            该软件包安装了一个 gzip 压缩的 <code class="filename">.info</code>
+            文件但并没有更新全系统 <code class=
+          "filename">dir</code> 文件。解压该文件并用下面的命令更新全系统 <code class=
+          "filename">dir</code> 文件。
         </p>
         <pre class="userinput">
 <kbd class="command">gunzip -v /usr/share/info/libext2fs.info.gz
 install-info --dir-file=/usr/share/info/dir /usr/share/info/libext2fs.info</kbd>
 </pre>
         <p>
-          If desired, create and install some additional documentation by
-          issuing the following commands:
+            如果需要的话，用下面的命令创建和安装一些额外的文档：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -239,8 +223,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-e2fsprogs" name="contents-e2fsprogs"></a>6.28.2.
-          Contents of E2fsprogs
+          <a id="contents-e2fsprogs" name="contents-e2fsprogs"></a>6.28.2. E2fsprogs 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -250,19 +233,19 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
               dumpe2fs,e2freefrag, e2fsck, e2image, e2label, e2undo,
               e4defrag, filefrag, fsck.ext2, fsck.ext3, fsck.ext4,
               fsck.ext4dev, logsave, lsattr, mk_cmds, mke2fs, mkfs.ext2,
-              mkfs.ext3, mkfs.ext4, mkfs.ext4dev, resize2fs, and
+              mkfs.ext3, mkfs.ext4, mkfs.ext4dev, resize2fs, 以及
               tune2fs</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed libraries:</strong>
+              <strong class="segtitle">安装的库：</strong>
               <span class="segbody">libcom_err.{a,so}, libe2p.{a,so},
-              libext2fs.{a,so}, libquota.a, and libss.{a,so}</span>
+              libext2fs.{a,so}, libquota.a, 和 libss.{a,so}</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directories:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/usr/include/e2p, /usr/include/et,
               /usr/include/ext2fs, /usr/include/quota, /usr/include/ss,
-              /usr/share/et, and /usr/share/ss</span>
+              /usr/share/et, 和 /usr/share/ss</span>
             </div>
           </div>
         </div>
@@ -286,8 +269,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Searches a device (usually a disk partition) for bad
-                    blocks
+                    搜索设备(通常是一个磁盘分区)损坏的块
                   </p>
                 </td>
               </tr>
@@ -301,11 +283,10 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Changes the attributes of files on an <code class=
-                    "systemitem">ext2</code> file system; it also changes
-                    <code class="systemitem">ext3</code> file systems, the
-                    journaling version of <code class=
-                    "systemitem">ext2</code> file systems
+                    更改 <code class=
+                    "systemitem">ext2</code> 文件系统中文件的属性；它也可以更改
+                    <code class="systemitem">ext3</code> 文件系统，<code class=
+                    "systemitem">ext2</code> 文件系统的日志版本
                   </p>
                 </td>
               </tr>
@@ -319,10 +300,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    An error table compiler; it converts a table of
-                    error-code names and messages into a C source file
-                    suitable for use with the <code class=
-                    "filename">com_err</code> library
+                    错误表编译器；它将错误代码名称和信息表转换为适用于 <code class=
+                    "filename">com_err</code> 库的 C 源文件。
                   </p>
                 </td>
               </tr>
@@ -336,9 +315,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    A file system debugger; it can be used to examine and
-                    change the state of an <code class=
-                    "systemitem">ext2</code> file system
+                    文件系统调试器；可用于检查和更改 <code class=
+                    "systemitem">ext2</code> 文件系统的状态
                   </p>
                 </td>
               </tr>
@@ -352,8 +330,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Prints the super block and blocks group information for
-                    the file system present on a given device
+                    为指定设备上的文件系统打印超级块和块组信息
                   </p>
                 </td>
               </tr>
@@ -367,7 +344,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Reports free space fragmentation information
+                    报告空闲空间碎片信息
                   </p>
                 </td>
               </tr>
@@ -381,9 +358,9 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Is used to check, and optionally repair <code class=
-                    "systemitem">ext2</code> file systems and <code class=
-                    "systemitem">ext3</code> file systems
+                    用于检查或者修复 <code class=
+                    "systemitem">ext2</code> 文件系统和 <code class=
+                    "systemitem">ext3</code> 文件系统
                   </p>
                 </td>
               </tr>
@@ -397,8 +374,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Is used to save critical <code class=
-                    "systemitem">ext2</code> file system data to a file
+                    用于保存重要 <code class=
+                    "systemitem">ext2</code> 文件系统数据到文件中
                   </p>
                 </td>
               </tr>
@@ -412,9 +389,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Displays or changes the file system label on the
-                    <code class="systemitem">ext2</code> file system present
-                    on a given device
+                    为指定设备上的 <code class="systemitem">ext2</code>
+                    文件系统显示或更改文件系统标签
                   </p>
                 </td>
               </tr>
@@ -428,9 +404,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Replays the undo log undo_log for an ext2/ext3/ext4
-                    filesystem found on a device [This can be used to undo a
-                    failed operation by an e2fsprogs program.]
+                    为设备上发现的 ext2/ext3/ext4 文件系统重做 undo 日志 undo_log
+                    [这可用于取消一个 e2fsprogs 程序的失败操作。]
                   </p>
                 </td>
               </tr>
@@ -444,7 +419,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Online defragmenter for ext4 filesystems
+                    ext4 文件系统的在线碎片整理程序
                   </p>
                 </td>
               </tr>
@@ -458,8 +433,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Reports on how badly fragmented a particular file might
-                    be
+                    报告一个文件可能的碎片化程度
                   </p>
                 </td>
               </tr>
@@ -473,9 +447,9 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    By default checks <code class="systemitem">ext2</code>
-                    file systems and is a hard link to <span class=
-                    "command"><strong>e2fsck</strong></span>
+                    默认检查 <code class="systemitem">ext2</code>
+                    文件系统，是到 <span class=
+                    "command"><strong>e2fsck</strong></span> 的硬链接
                   </p>
                 </td>
               </tr>
@@ -489,9 +463,9 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    By default checks <code class="systemitem">ext3</code>
-                    file systems and is a hard link to <span class=
-                    "command"><strong>e2fsck</strong></span>
+                    默认检查 <code class="systemitem">ext3</code>
+                    文件系统，是到 <span class=
+                    "command"><strong>e2fsck</strong></span> 的硬链接
                   </p>
                 </td>
               </tr>
@@ -505,9 +479,9 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    By default checks <code class="systemitem">ext4</code>
-                    file systems and is a hard link to <span class=
-                    "command"><strong>e2fsck</strong></span>
+                    默认检查 <code class="systemitem">ext4</code>
+                    文件系统，是到 <span class=
+                    "command"><strong>e2fsck</strong></span> 的硬链接
                   </p>
                 </td>
               </tr>
@@ -521,9 +495,9 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    By default checks <code class="systemitem">ext4</code>
-                    development file systems and is a hard link to
-                    <span class="command"><strong>e2fsck</strong></span>
+                    默认检查 <code class="systemitem">ext4</code>
+                    文件系统，是到 <span class=
+                    "command"><strong>e2fsck</strong></span> 的硬链接
                   </p>
                 </td>
               </tr>
@@ -537,7 +511,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Saves the output of a command in a log file
+                    在日志文件中保存命令的输出
                   </p>
                 </td>
               </tr>
@@ -551,8 +525,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Lists the attributes of files on a second extended file
-                    system
+                    列出二级扩展文件系统中一个文件的属性
                   </p>
                 </td>
               </tr>
@@ -566,9 +539,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Converts a table of command names and help messages into
-                    a C source file suitable for use with the <code class=
-                    "filename">libss</code> subsystem library
+                    将命令名称和帮助信息表转换为适用于 <code class=
+                    "filename">libss</code> 子系统库的 C 源文件
                   </p>
                 </td>
               </tr>
@@ -582,9 +554,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Creates an <code class="systemitem">ext2</code> or
-                    <code class="systemitem">ext3</code> file system on the
-                    given device
+                    在指定设备上创建 <code class="systemitem">ext2</code> 或
+                    <code class="systemitem">ext3</code> 文件系统
                   </p>
                 </td>
               </tr>
@@ -598,9 +569,9 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    By default creates <code class="systemitem">ext2</code>
-                    file systems and is a hard link to <span class=
-                    "command"><strong>mke2fs</strong></span>
+                    默认创建 <code class="systemitem">ext2</code>
+                    文件系统，是到 <span class=
+                    "command"><strong>mke2fs</strong></span> 的硬链接
                   </p>
                 </td>
               </tr>
@@ -614,9 +585,9 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    By default creates <code class="systemitem">ext3</code>
-                    file systems and is a hard link to <span class=
-                    "command"><strong>mke2fs</strong></span>
+                    默认创建 <code class="systemitem">ext3</code>
+                    文件系统，是到 <span class=
+                    "command"><strong>mke2fs</strong></span> 的硬链接
                   </p>
                 </td>
               </tr>
@@ -630,9 +601,9 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    By default creates <code class="systemitem">ext4</code>
-                    file systems and is a hard link to <span class=
-                    "command"><strong>mke2fs</strong></span>
+                    默认创建 <code class="systemitem">ext4</code>
+                    文件系统，是到 <span class=
+                    "command"><strong>mke2fs</strong></span> 的硬链接
                   </p>
                 </td>
               </tr>
@@ -646,9 +617,9 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    By default creates <code class="systemitem">ext4</code>
-                    development file systems and is a hard link to
-                    <span class="command"><strong>mke2fs</strong></span>
+                    默认创建 <code class="systemitem">ext4</code>
+                    开发文件系统，是到 <span class=
+                    "command"><strong>mke2fs</strong></span> 的硬链接
                   </p>
                 </td>
               </tr>
@@ -662,11 +633,10 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to create a <code class="filename">lost+found</code>
-                    directory on an <code class="systemitem">ext2</code> file
-                    system; it pre-allocates disk blocks to this directory to
-                    lighten the task of <span class=
-                    "command"><strong>e2fsck</strong></span>
+                    用于在 <code class="systemitem">ext2</code> 文件系统上创建
+                    <code class="filename">lost+found</code> 目录，为了减轻
+                    <span class=
+                    "command"><strong>e2fsck</strong></span> 任务预先为目录分配磁盘块
                   </p>
                 </td>
               </tr>
@@ -680,8 +650,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Can be used to enlarge or shrink an <code class=
-                    "systemitem">ext2</code> file system
+                    用于扩展或压缩 <code class=
+                    "systemitem">ext2</code> 文件系统
                   </p>
                 </td>
               </tr>
@@ -695,8 +665,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Adjusts tunable file system parameters on an <code class=
-                    "systemitem">ext2</code> file system
+                    调整 <code class=
+                    "systemitem">ext2</code> 文件系统上的可调文件系统参数
                   </p>
                 </td>
               </tr>
@@ -709,7 +679,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    The common error display routine
+                    常用错误显示例程
                   </p>
                 </td>
               </tr>
@@ -721,11 +691,10 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                   </p>
                 </td>
                 <td>
-                  <p>
-                    Used by <span class=
+                  <p><span class=
                     "command"><strong>dumpe2fs</strong></span>, <span class=
-                    "command"><strong>chattr</strong></span>, and
-                    <span class="command"><strong>lsattr</strong></span>
+                    "command"><strong>chattr</strong></span>, 以及
+                    <span class="command"><strong>lsattr</strong></span> 所使用
                   </p>
                 </td>
               </tr>
@@ -738,9 +707,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Contains routines to enable user-level programs to
-                    manipulate an <code class="systemitem">ext2</code> file
-                    system
+                    包含使用户层程序可以操作 <code class="systemitem">ext2</code>
+                    文件系统的例程
                   </p>
                 </td>
               </tr>
@@ -753,8 +721,7 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                 </td>
                 <td>
                   <p>
-                    Provides an interface for creating and updating quota
-                    files and ext4 superblock fields
+                    为创建和更新配置文件和 ext4 超级域提供接口
                   </p>
                 </td>
               </tr>
@@ -766,9 +733,8 @@ install-info --dir-file=/usr/share/info/dir /usr/share/info/com_err.info</kbd>
                   </p>
                 </td>
                 <td>
-                  <p>
-                    Used by <span class=
-                    "command"><strong>debugfs</strong></span>
+                  <p><span class=
+                    "command"><strong>debugfs</strong></span> 所使用
                   </p>
                 </td>
               </tr>
