@@ -47,11 +47,11 @@
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-system-procps" name="ch-system-procps"></a>6.27.
-        Procps-ng-3.3.10  ictlyh翻译中
+        Procps-ng-3.3.10
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Procps-ng package contains programs for monitoring processes.
+            Procps-ng 软件包包含监视进程的程序。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -68,10 +68,10 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.27.1. Installation of Procps-ng
+          6.27.1. 安装 Procps-ng
         </h2>
         <p>
-          Now prepare procps-ng for compilation:
+            准备编译 procps-ng：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/usr                            \
@@ -83,7 +83,7 @@
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the configure options:</strong>
+            <strong>配置选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -92,23 +92,22 @@
             </dt>
             <dd>
               <p>
-                This switch disables building the <span class=
-                "command"><strong>kill</strong></span> command that will be
-                installed by the Util-linux package.
+                该选项取消编译已经由 Util-linux 软件包安装了的
+                <span class=
+                "command"><strong>kill</strong></span> 命令。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          The test suite needs some custom modifications for LFS. Remove the
-          test that fails when scripting does not use a tty device. To run
-          the test suite, run the following commands:
+            对于 LFS，测试套件需要自定义某些更改。移除当脚本不使用 tty 设备时失败的测试。
+            用下面的命令运行测试套件：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -116,14 +115,14 @@
 make check</kbd>
 </pre>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
 </pre>
         <p>
-          Finally, move essential files to a location that can be found if
-          <code class="filename">/usr</code> is not mounted.
+            最后，移动重要文件到如果 <code class="filename">/usr</code> 
+            没有挂载但仍可以找到的位置。
         </p>
         <pre class="userinput">
 <kbd class="command">mv -v /usr/bin/pidof /bin
@@ -133,23 +132,22 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-procps" name="contents-procps"></a>6.27.2. Contents
-          of Procps-ng
+          <a id="contents-procps" name="contents-procps"></a>6.27.2. Procps-ng 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">free, pgrep, pidof, pkill, pmap, ps,
-              pwdx, slabtop, sysctl, tload, top, uptime, vmstat, w, and
+              pwdx, slabtop, sysctl, tload, top, uptime, vmstat, w, 和
               watch</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed library:</strong>
+              <strong class="segtitle">安装的库：</strong>
               <span class="segbody">libprocps.so</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directories:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/usr/include/proc and
               /usr/share/doc/procps-ng-3.3.10</span>
             </div>
@@ -157,7 +155,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -175,8 +173,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Reports the amount of free and used memory (both physical
-                    and swap memory) in the system
+                    报告系统中空闲和使用的内存容量(包括物理和交换内存)
                   </p>
                 </td>
               </tr>
@@ -190,8 +187,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Looks up processes based on their name and other
-                    attributes
+                    根据名称和其它属性查找进程
                   </p>
                 </td>
               </tr>
@@ -205,7 +201,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Reports the PIDs of the given programs
+                    报告指定程序的 PIDs
                   </p>
                 </td>
               </tr>
@@ -219,8 +215,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Signals processes based on their name and other
-                    attributes
+                    根据名称和其它属性处理信号
                   </p>
                 </td>
               </tr>
@@ -234,7 +229,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Reports the memory map of the given process
+                    报告指定进程的内存映射
                   </p>
                 </td>
               </tr>
@@ -247,7 +242,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Lists the current running processes
+                    列出正在运行的进程
                   </p>
                 </td>
               </tr>
@@ -261,7 +256,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Reports the current working directory of a process
+                    报告进程的当前工作目录
                   </p>
                 </td>
               </tr>
@@ -275,8 +270,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Displays detailed kernel slap cache information in real
-                    time
+                    实时显示内核 slab 缓存信息(译者注，关于内核 slab 缓存，可以查看<a href="http://en.wikipedia.org/wiki/Slab_allocation">Wiki</a>)
                   </p>
                 </td>
               </tr>
@@ -290,7 +284,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Modifies kernel parameters at run time
+                    运行时修改内核参数
                   </p>
                 </td>
               </tr>
@@ -304,7 +298,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Prints a graph of the current system load average
+                    打印当前系统平均负荷曲线图
                   </p>
                 </td>
               </tr>
@@ -317,9 +311,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Displays a list of the most CPU intensive processes; it
-                    provides an ongoing look at processor activity in real
-                    time
+                    显示最 CPU 密集型进程列表；它可以实时连续查看处理器活动
                   </p>
                 </td>
               </tr>
@@ -333,8 +325,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Reports how long the system has been running, how many
-                    users are logged on, and the system load averages
+                    报告系统运行时间、登录用户数目以及系统平均负荷
                   </p>
                 </td>
               </tr>
@@ -348,9 +339,8 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Reports virtual memory statistics, giving information
-                    about processes, memory, paging, block Input/Output (IO),
-                    traps, and CPU activity
+                    报告虚拟内存统计信息、给出关于进程、内存、分页、块输入/输出(IO)、
+                    陷阱以及 CPU 活动的信息
                   </p>
                 </td>
               </tr>
@@ -363,8 +353,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Shows which users are currently logged on, where, and
-                    since when
+                    显示当前登录的用户、以及登录时间和地点
                   </p>
                 </td>
               </tr>
@@ -378,9 +367,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Runs a given command repeatedly, displaying the first
-                    screen-full of its output; this allows a user to watch
-                    the output change over time
+                    重复运行指定命令，显示输出的第一全屏；这允许用户查看随着时间的输出变化
                   </p>
                 </td>
               </tr>
@@ -393,8 +380,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Contains the functions used by most programs in this
-                    package
+                    包含该软件包大部分程序使用的函数
                   </p>
                 </td>
               </tr>
@@ -404,6 +390,14 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="psmisc.html" title="Psmisc-22.21">上一页</a>
