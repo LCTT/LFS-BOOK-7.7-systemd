@@ -45,11 +45,11 @@
     </div>
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
-        <a id="ch-system-bison" name="ch-system-bison"></a>6.33. Bison-3.0.4 ictlyh翻译中
+        <a id="ch-system-bison" name="ch-system-bison"></a>6.33. Bison-3.0.4
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Bison package contains a parser generator.
+            Bison 软件包包含一个语法生成器。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -66,23 +66,23 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.33.1. Installation of Bison
+          6.33.1. 安装 Bison
         </h2>
         <p>
-          Prepare Bison for compilation:
+          准备编译 Bison：
         </p>
         <pre class="userinput">
 <kbd class=
 "command">./configure --prefix=/usr --docdir=/usr/share/doc/bison-3.0.4</kbd>
 </pre>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          To test the results (about 0.5 SBU), issue:
+            用以下命令测试结果(大约 0.5 SBU)：
         </p>
         <pre class="userinput">
 <kbd class="command">make check</kbd>
@@ -96,28 +96,27 @@
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-bison" name="contents-bison"></a>6.33.2. Contents
-          of Bison
+          <a id="contents-bison" name="contents-bison"></a>6.33.2. Bison 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
-              <span class="segbody">bison and yacc</span>
+              <strong class="segtitle">安装的程序：</strong>
+              <span class="segbody">bison 和 yacc</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed library:</strong>
+              <strong class="segtitle">安装的库：</strong>
               <span class="segbody">liby.a</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directory:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/usr/share/bison</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -135,9 +134,8 @@
                 </td>
                 <td>
                   <p>
-                    Generates, from a series of rules, a program for
-                    analyzing the structure of text files; Bison is a
-                    replacement for Yacc (Yet Another Compiler Compiler)
+                    根据一系列规则生成用于分析文本结构的程序；Bison
+                    是 Yacc(Yet Another Compiler Compiler) 的替代品。
                   </p>
                 </td>
               </tr>
@@ -151,13 +149,13 @@
                 </td>
                 <td>
                   <p>
-                    A wrapper for <span class=
-                    "command"><strong>bison</strong></span>, meant for
-                    programs that still call <span class=
-                    "command"><strong>yacc</strong></span> instead of
-                    <span class="command"><strong>bison</strong></span>; it
-                    calls <span class="command"><strong>bison</strong></span>
-                    with the <em class="parameter"><code>-y</code></em>
+                    <span class=
+                    "command"><strong>bison</strong></span>
+                        的封装，用于仍然调用 <span class=
+                    "command"><strong>yacc</strong></span> 而不是
+                       <span class="command"><strong>bison</strong></span>
+                       的程序；它用 <em class="parameter"><code>-y</code></em>
+                       选项调用 <span class="command"><strong>bison</strong></span>
                     option
                   </p>
                 </td>
@@ -171,11 +169,9 @@
                 </td>
                 <td>
                   <p>
-                    The Yacc library containing implementations of
-                    Yacc-compatible <code class="function">yyerror</code> and
-                    <code class="function">main</code> functions; this
-                    library is normally not very useful, but POSIX requires
-                    it
+                    Yacc 库包含和 Yacc兼容的 <code class="function">yyerror</code> 和
+                    <code class="function">main</code> 程序的实现；这个库并不是很有用，
+                    但是 POSIX 要求有它
                   </p>
                 </td>
               </tr>

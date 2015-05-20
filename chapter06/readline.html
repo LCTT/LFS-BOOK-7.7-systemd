@@ -46,12 +46,11 @@
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-system-readline" name="ch-system-readline"></a>6.35.
-        Readline-6.3 ictlyh翻译中
+        Readline-6.3
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Readline package is a set of libraries that offers command-line
-          editing and history capabilities.
+            Readline 软件包是提供命令行编辑和历史功能的库的集合。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -68,43 +67,42 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.35.1. Installation of Readline
+          6.35.1. 安装 Readline
         </h2>
         <p>
-          First install some patches to fix various bugs that have been
-          addressed upstream:
+            首先安装补丁修复一些上游标记的 bug：
         </p>
         <pre class="userinput">
 <kbd class=
 "command">patch -Np1 -i ../readline-6.3-upstream_fixes-3.patch</kbd>
 </pre>
         <p>
-          Reinstalling Readline will cause the old libraries to be moved to
-          &lt;libraryname&gt;.old. While this is normally not a problem, in
-          some cases it can trigger a linking bug in <span class=
-          "command"><strong>ldconfig</strong></span>. This can be avoided by
-          issuing the following two seds:
+            重装 Readline 会使旧的库移动到 &lt;libraryname&gt;.old。
+            通常来说这并不是什么问题，但一些情况下可能引起
+            <span class=
+          "command"><strong>ldconfig</strong></span> 链接错误。可以通过
+            下面的两个 sed 命令避免这个问题：
         </p>
         <pre class="userinput">
 <kbd class="command">sed -i '/MV.*old/d' Makefile.in
 sed -i '/{OLDSUFF}/c:' support/shlib-install</kbd>
 </pre>
         <p>
-          Prepare Readline for compilation:
+          准备编译 Readline：
         </p>
         <pre class="userinput">
 <kbd class=
 "command">./configure --prefix=/usr --docdir=/usr/share/doc/readline-6.3</kbd>
 </pre>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make SHLIB_LIBS=-lncurses</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the make option:</strong>
+            <strong>make 选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -113,25 +111,24 @@ sed -i '/{OLDSUFF}/c:' support/shlib-install</kbd>
             </dt>
             <dd>
               <p>
-                This option forces Readline to link against the <code class=
-                "filename">libncurses</code> (really, <code class=
-                "filename">libncursesw</code>) library.
+                该选项强制 Readline 链接到 <code class=
+                "filename">libncurses</code> (实际上， <code class=
+                "filename">libncursesw</code>) 库。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          This package does not come with a test suite.
+            该软件包没有测试套件。
         </p>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make SHLIB_LIBS=-lncurses install</kbd>
 </pre>
         <p>
-          Now move the dynamic libraries to a more appropriate location and
-          fix up some symbolic links:
+            现在移动动态库到更合适的位置并修正一些符号链接：
         </p>
         <pre class="userinput">
 <kbd class="command">mv -v /usr/lib/lib{readline,history}.so.* /lib
@@ -139,7 +136,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libreadline.so) /usr/lib/libreadline.so
 ln -sfv ../../lib/$(readlink /usr/lib/libhistory.so ) /usr/lib/libhistory.so</kbd>
 </pre>
         <p>
-          If desired, install the documentation:
+            如果需要的话，安装帮助文档：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -148,26 +145,25 @@ ln -sfv ../../lib/$(readlink /usr/lib/libhistory.so ) /usr/lib/libhistory.so</kb
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-readline" name="contents-readline"></a>6.35.2.
-          Contents of Readline
+          <a id="contents-readline" name="contents-readline"></a>6.35.2. Readline 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed libraries:</strong>
-              <span class="segbody">libhistory.{a,so} and
+              <strong class="segtitle">安装的库：</strong>
+              <span class="segbody">libhistory.{a,so} 和
               libreadline.{a,so}</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directories:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/usr/include/readline,
-              /usr/share/readline, and /usr/share/doc/readline-6.3</span>
+              /usr/share/readline, 和 /usr/share/doc/readline-6.3</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -184,8 +180,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libhistory.so ) /usr/lib/libhistory.so</kb
                 </td>
                 <td>
                   <p>
-                    Provides a consistent user interface for recalling lines
-                    of history
+                    为重新查看历史行提供一致的用户界面
                   </p>
                 </td>
               </tr>
@@ -198,8 +193,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libhistory.so ) /usr/lib/libhistory.so</kb
                 </td>
                 <td>
                   <p>
-                    Aids in the consistency of user interface across discrete
-                    programs that need to provide a command line interface
+                    在多种需要提供命令行接口的程序之间保持用户接口一致性
                   </p>
                 </td>
               </tr>

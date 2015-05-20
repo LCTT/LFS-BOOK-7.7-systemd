@@ -45,11 +45,11 @@
     </div>
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
-        <a id="ch-system-grep" name="ch-system-grep"></a>6.34. Grep-2.21 ictlyh翻译中
+        <a id="ch-system-grep" name="ch-system-grep"></a>6.34. Grep-2.21
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Grep package contains programs for searching through files.
+            Grep 软件包包含用于在文件中搜索的程序。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -66,35 +66,35 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.34.1. Installation of Grep
+          6.34.1. 安装 Grep
         </h2>
         <p>
-          First fix a potential security issue identified upstream:
+            首先修复上游标记的潜在安全问题：
         </p>
         <pre class="userinput">
 <kbd class=
 "command">sed -i -e '/tp++/a  if (ep &lt;= tp) break;' src/kwset.c</kbd>
 </pre>
         <p>
-          Prepare Grep for compilation:
+          准备编译 Grep ：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/usr --bindir=/bin</kbd>
 </pre>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          To test the results, issue:
+            用以下命令测试结果：
         </p>
         <pre class="userinput">
 <kbd class="command">make check</kbd>
 </pre>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
@@ -102,20 +102,19 @@
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-grep" name="contents-grep"></a>6.34.2. Contents of
-          Grep
+          <a id="contents-grep" name="contents-grep"></a>6.34.2. Grep 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
-              <span class="segbody">egrep, fgrep, and grep</span>
+              <strong class="segtitle">安装的程序：</strong>
+              <span class="segbody">egrep, fgrep, 和 grep</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -133,7 +132,7 @@
                 </td>
                 <td>
                   <p>
-                    Prints lines matching an extended regular expression
+                    打印匹配扩展正则表达式的行
                   </p>
                 </td>
               </tr>
@@ -147,7 +146,7 @@
                 </td>
                 <td>
                   <p>
-                    Prints lines matching a list of fixed strings
+                    打印匹配固定字符串列表的行
                   </p>
                 </td>
               </tr>
@@ -161,7 +160,7 @@
                 </td>
                 <td>
                   <p>
-                    Prints lines matching a basic regular expression
+                    打印匹配基本正则表达式的行
                   </p>
                 </td>
               </tr>
