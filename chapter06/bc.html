@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -18,28 +18,28 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="bash.html" title="Bash-4.3.30">Prev</a>
+          <a accesskey="p" href="bash.html" title="Bash-4.3.30">上一页</a>
           <p>
             Bash-4.3.30
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="libtool.html" title="Libtool-2.4.6">Next</a>
+          <a accesskey="n" href="libtool.html" title="Libtool-2.4.6">下一页</a>
           <p>
             Libtool-2.4.6
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
@@ -49,17 +49,16 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Bc package contains an arbitrary precision numeric processing
-          language.
+            Bc 软件包包括一个任意精度数值处理的语言。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间：</strong>
               <span class="segbody">0.1 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间：</strong>
               <span class="segbody">4.0 MB</span>
             </div>
           </div>
@@ -67,16 +66,16 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.37.1. Installation of Bc
+          6.37.1. 安装 Bc
         </h2>
         <p>
-          First, fix some minor memory leaks in the code:
+            首先，修复代码中一些小的内存泄露：
         </p>
         <pre class="userinput">
 <kbd class="command">patch -Np1 -i ../bc-1.06.95-memory_leak-1.patch</kbd>
 </pre>
         <p>
-          Prepare Bc for compilation:
+            准备编译 Bc：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/usr           \
@@ -86,7 +85,7 @@
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the configure options:</strong>
+            <strong>配置选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -95,30 +94,27 @@
             </dt>
             <dd>
               <p>
-                This option tells Bc to use the <code class=
-                "filename">readline</code> library that is already installed
-                on the system rather than using its own readline version.
+                该选项告诉 Bc 使用系统中已经安装的 <code class=
+                "filename">readline</code> 库而不是使用自带的 readline 版本。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          To test bc, run the commands below. There is quite a bit of output,
-          so you may want to redirect it to a file. There are a very small
-          percentage of tests (10 of 12,144) that will indicate a roundoff
-          error at the last digit.
+            运行下面的命令来测试 bc。这会输出好多内容，因此你可能希望重定向到一个文件。
+            测试用会有很小的比例(10 of 12,144)说最后一位数字有舍入误差。
         </p>
         <pre class="userinput">
 <kbd class="command">echo "quit" | ./bc/bc -l Test/checklib.b</kbd>
 </pre>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
@@ -126,19 +122,19 @@
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-bc" name="contents-bc"></a>6.37.2. Contents of Bc
+          <a id="contents-bc" name="contents-bc"></a>6.37.2. Bc 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
-              <span class="segbody">bc and dc</span>
+              <strong class="segtitle">安装的程序</strong>
+              <span class="segbody">bc 和 dc</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -155,7 +151,7 @@
                 </td>
                 <td>
                   <p>
-                    is a command line calculator
+                    一个命令行计算器
                   </p>
                 </td>
               </tr>
@@ -168,7 +164,7 @@
                 </td>
                 <td>
                   <p>
-                    is a reverse-polish command line calculator
+                    逆波兰命令行计算器
                   </p>
                 </td>
               </tr>
@@ -178,26 +174,34 @@
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="bash.html" title="Bash-4.3.30">Prev</a>
+          <a accesskey="p" href="bash.html" title="Bash-4.3.30">上一页</a>
           <p>
             Bash-4.3.30
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="libtool.html" title="Libtool-2.4.6">Next</a>
+          <a accesskey="n" href="libtool.html" title="Libtool-2.4.6">下一页</a>
           <p>
             Libtool-2.4.6
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
