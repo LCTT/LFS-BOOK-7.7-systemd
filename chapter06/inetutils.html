@@ -18,48 +18,48 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="expat.html" title="Expat-2.1.0">Prev</a>
+          <a accesskey="p" href="expat.html" title="Expat-2.1.0">上一页</a>
           <p>
             Expat-2.1.0
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="perl.html" title="Perl-5.20.2">Next</a>
+          <a accesskey="n" href="perl.html" title="Perl-5.20.2">下一页</a>
           <p>
             Perl-5.20.2
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-system-inetutils" name="ch-system-inetutils"></a>6.41.
-        Inetutils-1.9.2 ictlyh翻译中
+        Inetutils-1.9.2
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Inetutils package contains programs for basic networking.
+            Inetutils 软件包包含基本的网络程序。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间：</strong>
               <span class="segbody">0.4 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间：</strong>
               <span class="segbody">34 MB</span>
             </div>
           </div>
@@ -67,19 +67,19 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.41.1. Installation of Inetutils
+          6.41.1. 安装 Inetutils
         </h2>
         <p>
-          Create a definition to allow the <span class=
-          "command"><strong>ifconfig</strong></span> program to build
-          properly:
+            创建一个定义使 <span class=
+          "command"><strong>ifconfig</strong></span>
+            程序能正确编译：
         </p>
         <pre class="userinput">
 <kbd class=
 "command">echo '#define PATH_PROCNET_DEV "/proc/net/dev"' &gt;&gt; ifconfig/system/linux.h </kbd>
 </pre>
         <p>
-          Prepare Inetutils for compilation:
+            准备编译 Inetutils：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/usr        \
@@ -90,7 +90,7 @@
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the configure options:</strong>
+            <strong>配置选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -99,11 +99,10 @@
             </dt>
             <dd>
               <p>
-                This option prevents Inetutils from installing the
-                <span class="command"><strong>logger</strong></span> program,
-                which is used by scripts to pass messages to the System Log
-                Daemon. Do not install it because Util-linux installs a more
-                recent version.
+                该选项防止 Inetutils 安装
+                <span class="command"><strong>logger</strong></span>
+                程序，脚本使用该程序传递消息到系统日志守护进程。因为
+                Util-linux 安装了一个更新版本因此不能安装这个。
               </p>
             </dd>
             <dt>
@@ -112,11 +111,11 @@
             </dt>
             <dd>
               <p>
-                This option disables the building of the Inetutils
-                <span class="command"><strong>whois</strong></span> client,
-                which is out of date. Instructions for a better <span class=
-                "command"><strong>whois</strong></span> client are in the
-                BLFS book.
+                该选项禁用编译过时的 Inetutils
+                <span class="command"><strong>whois</strong></span>
+                客户端。BLFS 指南中有更好的 <span class=
+                "command"><strong>whois</strong></span>
+                    客户端说明。
               </p>
             </dd>
             <dt>
@@ -125,37 +124,34 @@
             </dt>
             <dd>
               <p>
-                This disables the installation of the various network servers
-                included as part of the Inetutils package. These servers are
-                deemed not appropriate in a basic LFS system. Some are
-                insecure by nature and are only considered safe on trusted
-                networks. Note that better replacements are available for
-                many of these servers.
+                禁用安装作为 Inetutils 软件包一部分的多种网络服务程序。
+                这些服务程序被认为不适用于基础的 LFS 系统。一些本来就不安全，
+                只在可信网络中才认为安全。注意这些服务程序有更好的可用替代品。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          To test the results, issue:
+            用以下命令测试结果：
         </p>
         <pre class="userinput">
 <kbd class="command">make check</kbd>
 </pre>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
 </pre>
         <p>
-          Move some programs so they are available if <code class=
-          "filename">/usr</code> is not accessible:
+            移动一些程序使得 <code class=
+          "filename">/usr</code> 不可访问时仍保持可用：
         </p>
         <pre class="userinput">
 <kbd class="command">mv -v /usr/bin/{hostname,ping,ping6,traceroute} /bin
@@ -164,22 +160,21 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-inetutils" name="contents-inetutils"></a>6.41.2.
-          Contents of Inetutils
+          <a id="contents-inetutils" name="contents-inetutils"></a>6.41.2. Inetutils 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">ftp, ifconfig, hostname, ping, ping6,
-              rcp, rexec, rlogin, rsh, talk, telnet, tftp, and
+              rcp, rexec, rlogin, rsh, talk, telnet, tftp, 和
               traceroute</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -196,7 +191,7 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
                 </td>
                 <td>
                   <p>
-                    Is the file transfer protocol program
+                    文件传输协议程序
                   </p>
                 </td>
               </tr>
@@ -210,7 +205,7 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
                 </td>
                 <td>
                   <p>
-                    Manages network interfaces
+                    管理网络接口
                   </p>
                 </td>
               </tr>
@@ -224,7 +219,7 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
                 </td>
                 <td>
                   <p>
-                    Reports or sets the name of the host
+                    报告或设置主机名称
                   </p>
                 </td>
               </tr>
@@ -238,8 +233,7 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
                 </td>
                 <td>
                   <p>
-                    Sends echo-request packets and reports how long the
-                    replies take
+                    发送请求应答包并报告响应用时
                   </p>
                 </td>
               </tr>
@@ -253,8 +247,8 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
                 </td>
                 <td>
                   <p>
-                    A version of <span class=
-                    "command"><strong>ping</strong></span> for IPv6 networks
+                    用于 IPv6 网络的 <span class=
+                    "command"><strong>ping</strong></span> 版本
                   </p>
                 </td>
               </tr>
@@ -267,7 +261,7 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
                 </td>
                 <td>
                   <p>
-                    Performs remote file copy
+                    进行远程文件复制
                   </p>
                 </td>
               </tr>
@@ -281,7 +275,7 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
                 </td>
                 <td>
                   <p>
-                    Executes commands on a remote host
+                    在远程主机运行命令
                   </p>
                 </td>
               </tr>
@@ -295,7 +289,7 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
                 </td>
                 <td>
                   <p>
-                    Performs remote login
+                    进行远程登录
                   </p>
                 </td>
               </tr>
@@ -308,7 +302,7 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
                 </td>
                 <td>
                   <p>
-                    Runs a remote shell
+                    运行远程 shell
                   </p>
                 </td>
               </tr>
@@ -322,7 +316,7 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
                 </td>
                 <td>
                   <p>
-                    Is used to chat with another user
+                    用于和另一个用户交互
                   </p>
                 </td>
               </tr>
@@ -336,7 +330,7 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
                 </td>
                 <td>
                   <p>
-                    An interface to the TELNET protocol
+                    TELNET 协议接口
                   </p>
                 </td>
               </tr>
@@ -350,7 +344,7 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
                 </td>
                 <td>
                   <p>
-                    A trivial file transfer program
+                    简单文件传输程序
                   </p>
                 </td>
               </tr>
@@ -364,9 +358,8 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
                 </td>
                 <td>
                   <p>
-                    Traces the route your packets take from the host you are
-                    working on to another host on a network, showing all the
-                    intermediate hops (gateways) along the way
+                    跟踪从你的工作主机发送到另一个网络上的主机的数据包通过的路径，
+                    显示中间通过的跳(网关)
                   </p>
                 </td>
               </tr>
@@ -376,26 +369,34 @@ mv -v /usr/bin/ifconfig /sbin</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="expat.html" title="Expat-2.1.0">Prev</a>
+          <a accesskey="p" href="expat.html" title="Expat-2.1.0">上一页</a>
           <p>
             Expat-2.1.0
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="perl.html" title="Perl-5.20.2">Next</a>
+          <a accesskey="n" href="perl.html" title="Perl-5.20.2">下一页</a>
           <p>
             Perl-5.20.2
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
