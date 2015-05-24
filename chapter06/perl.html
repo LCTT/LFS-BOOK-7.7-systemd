@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -18,30 +18,30 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
           <a accesskey="p" href="inetutils.html" title=
-          "Inetutils-1.9.2">Prev</a>
+          "Inetutils-1.9.2">上一页</a>
           <p>
             Inetutils-1.9.2
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="xml-parser.html" title=
-          "XML::Parser-2.44">Next</a>
+          "XML::Parser-2.44">下一页</a>
           <p>
             XML::Parser-2.44
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
@@ -51,17 +51,16 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Perl package contains the Practical Extraction and Report
-          Language.
+            Perl 软件包包含实用信息抽取与报告语言。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间：</strong>
               <span class="segbody">6.5 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间：</strong>
               <span class="segbody">301 MB</span>
             </div>
           </div>
@@ -69,34 +68,31 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.42.1. Installation of Perl
+          6.42.1. 安装 Perl
         </h2>
         <p>
-          First create a basic <code class="filename">/etc/hosts</code> file
-          to be referenced in one of Perl's configuration files as well as
-          the optional test suite:
+            首先创建其中一个 Perl 配置文件和可选测试套件引用的基本
+            <code class="filename">/etc/hosts</code> 文件：
         </p>
         <pre class="userinput">
 <kbd class=
 "command">echo "127.0.0.1 localhost $(hostname)" &gt; /etc/hosts</kbd>
 </pre>
         <p>
-          This version of Perl now builds the Compress::Raw::Zlib and
-          Compress::Raw::BZip2 modules. By default Perl will use an internal
-          copy of the sources for the build. Issue the following command so
-          that Perl will use the libraries installed on the system:
+            该版本的 Perl 会编译 Compress::Raw::Zlib 和
+          Compress::Raw::BZip2 模块。Perl 默认会使用内部的源码用于构建。
+          用以下的命令使 Perl 使用系统中已安装的库：
         </p>
         <pre class="userinput">
 <kbd class="command">export BUILD_ZLIB=False
 export BUILD_BZIP2=0</kbd>
 </pre>
         <p>
-          To have full control over the way Perl is set up, you can remove
-          the <span class="quote">&ldquo;<span class=
-          "quote">-des</span>&rdquo;</span> options from the following
-          command and hand-pick the way this package is built. Alternatively,
-          use the command exactly as below to use the defaults that Perl
-          auto-detects:
+            为了能完全控制 Perl 的设置，你可以在下面的命令中移除
+            <span class="quote">&ldquo;<span class=
+          "quote">-des</span>&rdquo;</span>
+          选项并手动设置编译该软件包的方式。相应的，
+          用下面完全相同的命令使 Perl 使用自动检测到的：
         </p>
         <pre class="userinput">
 <kbd class="command">sh Configure -des -Dprefix=/usr                 \
@@ -108,7 +104,7 @@ export BUILD_BZIP2=0</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the configure options:</strong>
+            <strong>配置选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -117,9 +113,9 @@ export BUILD_BZIP2=0</kbd>
             </dt>
             <dd>
               <p>
-                This ensures <span class=
-                "command"><strong>perl</strong></span> knows how to tell
-                packages where they should install their perl modules.
+                这确保 <span class=
+                "command"><strong>perl</strong></span> 知道如何通知软件包
+                    它们应该在哪里安装它们的 perl 模块。
               </p>
             </dd>
             <dt>
@@ -129,9 +125,9 @@ export BUILD_BZIP2=0</kbd>
             </dt>
             <dd>
               <p>
-                This ensures that <strong class=
-                "userinput"><code>less</code></strong> is used instead of
-                <strong class="userinput"><code>more</code></strong>.
+                这确保使用 <strong class=
+                "userinput"><code>less</code></strong> 而不是
+                <strong class="userinput"><code>more</code></strong>。
               </p>
             </dd>
             <dt>
@@ -141,10 +137,9 @@ export BUILD_BZIP2=0</kbd>
             </dt>
             <dd>
               <p>
-                Since Groff is not installed yet, <span class=
-                "command"><strong>Configure</strong></span> thinks that we do
-                not want man pages for Perl. Issuing these parameters
-                overrides this decision.
+                由于 Groff 还没有安装，<span class=
+                "command"><strong>Configure</strong></span> 会认为我们不希望
+                    为Perl 安装 man 手册。用这些参数重写该决策。
               </p>
             </dd>
             <dt>
@@ -153,25 +148,25 @@ export BUILD_BZIP2=0</kbd>
             </dt>
             <dd>
               <p>
-                Build a shared libperl needed by some perl modules.
+                编译某些 perl 模块需要的共享 libperl。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          To test the results (approximately 2.5 SBU), issue:
+            用以下命令测试结果(大概 2.5 SBU)：
         </p>
         <pre class="userinput">
 <kbd class="command">make -k test</kbd>
 </pre>
         <p>
-          Install the package and clean up:
+            安装软件包并清理：
         </p>
         <pre class="userinput">
 <kbd class="command">make install
@@ -180,36 +175,34 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-perl" name="contents-perl"></a>6.42.2. Contents of
-          Perl
+          <a id="contents-perl" name="contents-perl"></a>6.42.2. Perl 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">a2p, c2ph, config_data, corelist, cpan,
               cpan2dist, cpanp, cpanp-run-perl, enc2xs, find2perl, h2ph,
-              h2xs, instmodsh, json_pp, libnetcfg, perl, perl5.20.2 (link to
-              perl), perlbug, perldoc, perlivp, perlthanks (link to perlbug),
+              h2xs, instmodsh, json_pp, libnetcfg, perl, perl5.20.2 (链接到
+              perl), perlbug, perldoc, perlivp, perlthanks (链接到 perlbug),
               piconv, pl2pm, pod2html, pod2latex, pod2man, pod2text,
-              pod2usage, podchecker, podselect, prove, psed (link to s2p),
-              pstruct (link to c2ph), ptar, ptardiff, ptargrep, s2p, shasum,
-              splain, xsubpp, and zipdetails</span>
+              pod2usage, podchecker, podselect, prove, psed (链接到 s2p),
+              pstruct (链接到 c2ph), ptar, ptardiff, ptargrep, s2p, shasum,
+              splain, xsubpp, 和 zipdetails</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed libraries:</strong>
-              <span class="segbody">Several hundred which cannot all be
-              listed here</span>
+              <strong class="segtitle">安装的库：</strong>
+              <span class="segbody">几百个，不能在这完整列出</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directory:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/usr/lib/perl5</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -226,7 +219,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Translates awk to Perl
+                    转换 awk 到 Perl
                   </p>
                 </td>
               </tr>
@@ -240,8 +233,9 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Dumps C structures as generated from <span class=
+                    转储正如 <span class=
                     "command"><strong>cc -g -S</strong></span>
+                        生成的 C 结构体
                   </p>
                 </td>
               </tr>
@@ -255,7 +249,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Queries or changes configuration of Perl modules
+                    Perl 模块查询或更改配置
                   </p>
                 </td>
               </tr>
@@ -269,7 +263,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    A commandline frontend to Module::CoreList
+                    Module::CoreList 的命令行前端
                   </p>
                 </td>
               </tr>
@@ -283,8 +277,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Interact with the Comprehensive Perl Archive Network
-                    (CPAN) from the command line
+                    用命令行与综合 Perl 归档网络(Comprehensive Perl Archive Network,CPAN) 交互
                   </p>
                 </td>
               </tr>
@@ -298,7 +291,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    The CPANPLUS distribution creator
+                    CPANPLUS 发行构建器
                   </p>
                 </td>
               </tr>
@@ -312,7 +305,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    The CPANPLUS launcher
+                    CPANPLUS 启动器
                   </p>
                 </td>
               </tr>
@@ -326,8 +319,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Perl script that is used to enable flushing of the output
-                    buffer after each write in spawned processes
+                    用于启用输出进程每次写后清空输出缓冲的 Perl 脚本
                   </p>
                 </td>
               </tr>
@@ -341,8 +333,8 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Builds a Perl extension for the Encode module from either
-                    Unicode Character Mappings or Tcl Encoding Files
+                    从 Unicode 字符映射或 Tcl 编码文件为 Encode 模块
+                    编译 Perl 扩展
                   </p>
                 </td>
               </tr>
@@ -356,8 +348,8 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Translates <span class=
-                    "command"><strong>find</strong></span> commands to Perl
+                    转换 <span class=
+                    "command"><strong>find</strong></span> 命令到 Perl
                   </p>
                 </td>
               </tr>
@@ -371,8 +363,8 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Converts <code class="filename">.h</code> C header files
-                    to <code class="filename">.ph</code> Perl header files
+                    转换 <code class="filename">.h</code> C 头文件为
+                    <code class="filename">.ph</code> Perl 头文件
                   </p>
                 </td>
               </tr>
@@ -386,8 +378,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Converts <code class="filename">.h</code> C header files
-                    to Perl extensions
+                    转换 <code class="filename">.h</code> C 头文件为 Perl 扩展
                   </p>
                 </td>
               </tr>
@@ -401,8 +392,8 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Shell script for examining installed Perl modules, and
-                    can even create a tarball from an installed module
+                    用于检查安装的 Perl 模块的 shell 脚本，甚至能从一个安装的
+                    模块中创建 tar 包
                   </p>
                 </td>
               </tr>
@@ -416,7 +407,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Converts data between certain input and output formats
+                    在特定输入输出格式之间转换数据
                   </p>
                 </td>
               </tr>
@@ -430,8 +421,8 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Can be used to configure the <code class=
-                    "filename">libnet</code> Perl module
+                    可用于配置 <code class=
+                    "filename">libnet</code> Perl 模块
                   </p>
                 </td>
               </tr>
@@ -445,11 +436,11 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Combines some of the best features of C, <span class=
+                    将 C, <span class=
                     "command"><strong>sed</strong></span>, <span class=
-                    "command"><strong>awk</strong></span> and <span class=
-                    "command"><strong>sh</strong></span> into a single
-                    swiss-army language
+                    "command"><strong>awk</strong></span> 以及 <span class=
+                    "command"><strong>sh</strong></span> 一些最好的特性结合到一个单一的
+                        强大语言
                   </p>
                 </td>
               </tr>
@@ -463,8 +454,9 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    A hard link to <span class=
+                    到 <span class=
                     "command"><strong>perl</strong></span>
+                        的硬链接
                   </p>
                 </td>
               </tr>
@@ -478,8 +470,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to generate bug reports about Perl, or the modules
-                    that come with it, and mail them
+                    用于生成关于 Perl、或者一起发布的模块的 bug 报告，并用邮件通知
                   </p>
                 </td>
               </tr>
@@ -493,9 +484,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Displays a piece of documentation in pod format that is
-                    embedded in the Perl installation tree or in a Perl
-                    script
+                    用嵌入到 Perl 安装目录或 Perl 脚本中的 pod 格式显示文档
                   </p>
                 </td>
               </tr>
@@ -509,9 +498,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    The Perl Installation Verification Procedure; it can be
-                    used to verify that Perl and its libraries have been
-                    installed correctly
+                    Perl安装验证程序；能用于验证 Perl 和它的库是否正确安装
                   </p>
                 </td>
               </tr>
@@ -525,8 +512,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to generate thank you messages to mail to the Perl
-                    developers
+                    用于生成发送到 Perl 开发者的感谢邮件
                   </p>
                 </td>
               </tr>
@@ -540,7 +526,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    A Perl version of the character encoding converter
+                    Perl 版本的字符编码转换程序
                     <span class="command"><strong>iconv</strong></span>
                   </p>
                 </td>
@@ -555,9 +541,9 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    A rough tool for converting Perl4 <code class=
-                    "filename">.pl</code> files to Perl5 <code class=
-                    "filename">.pm</code> modules
+                    用于将 Perl4 <code class=
+                    "filename">.pl</code> 文件转换为 Perl5 <code class=
+                    "filename">.pm</code> 模块的工具
                   </p>
                 </td>
               </tr>
@@ -571,7 +557,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Converts files from pod format to HTML format
+                    将文件从 pod 格式转换为 HTML 格式
                   </p>
                 </td>
               </tr>
@@ -585,7 +571,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Converts files from pod format to LaTeX format
+                    将文件从 pod 格式转换为 LaTeX 格式
                   </p>
                 </td>
               </tr>
@@ -599,7 +585,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Converts pod data to formatted *roff input
+                    将 pod 格式数据转换为格式化的 *roff 输入
                   </p>
                 </td>
               </tr>
@@ -613,7 +599,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Converts pod data to formatted ASCII text
+                    将 pod 数据转换为格式化的 ASCII 文本
                   </p>
                 </td>
               </tr>
@@ -627,7 +613,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Prints usage messages from embedded pod docs in files
+                    从文件中嵌入的 pod 文档显示使用信息
                   </p>
                 </td>
               </tr>
@@ -641,7 +627,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Checks the syntax of pod format documentation files
+                    检查 pod 格式的文档文件语法
                   </p>
                 </td>
               </tr>
@@ -655,7 +641,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Displays selected sections of pod documentation
+                    显示 pod 文档选中的章节
                   </p>
                 </td>
               </tr>
@@ -669,8 +655,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Command line tool for running tests against the
-                    Test::Harness module
+                    运行对 Test::Harness 模块测试的命令行工具
                   </p>
                 </td>
               </tr>
@@ -684,7 +669,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    A Perl version of the stream editor <span class=
+                    Perl 版本的流编辑器 <span class=
                     "command"><strong>sed</strong></span>
                   </p>
                 </td>
@@ -699,8 +684,9 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Dumps C structures as generated from <span class=
-                    "command"><strong>cc -g -S</strong></span> stabs
+                    转储正如 <span class=
+                    "command"><strong>cc -g -S</strong></span>
+                        生成的 C 结构体
                   </p>
                 </td>
               </tr>
@@ -714,8 +700,8 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    A <span class="command"><strong>tar</strong></span>-like
-                    program written in Perl
+                    用 Perl 写的类似 <span class="command"><strong>tar</strong></span>
+                    的程序
                   </p>
                 </td>
               </tr>
@@ -729,8 +715,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    A Perl program that compares an extracted archive with an
-                    unextracted one
+                    用于比较提取的文档和未提取的 Perl 程序
                   </p>
                 </td>
               </tr>
@@ -744,8 +729,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    A Perl program that applies pattern matching to the
-                    contents of files in a tar archive
+                    用于对 tar 归档文件中的内容进行模式匹配的 Perl 程序
                   </p>
                 </td>
               </tr>
@@ -758,8 +742,8 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Translates <span class=
-                    "command"><strong>sed</strong></span> scripts to Perl
+                    转换 <span class=
+                    "command"><strong>sed</strong></span> 脚本到 Perl
                   </p>
                 </td>
               </tr>
@@ -773,7 +757,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Prints or checks SHA checksums
+                    打印或检查 SHA 校验码
                   </p>
                 </td>
               </tr>
@@ -787,7 +771,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Is used to force verbose warning diagnostics in Perl
+                    用于 Perl 中的强制冗长警告诊断
                   </p>
                 </td>
               </tr>
@@ -801,7 +785,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Converts Perl XS code into C code
+                    转换 Perl XS 代码为 C 代码
                   </p>
                 </td>
               </tr>
@@ -815,8 +799,7 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
                 </td>
                 <td>
                   <p>
-                    Displays details about the internal structure of a Zip
-                    file
+                    显示 Zip 文件内部结构的详细信息
                   </p>
                 </td>
               </tr>
@@ -826,28 +809,36 @@ unset BUILD_ZLIB BUILD_BZIP2</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
           <a accesskey="p" href="inetutils.html" title=
-          "Inetutils-1.9.2">Prev</a>
+          "Inetutils-1.9.2">上一页</a>
           <p>
             Inetutils-1.9.2
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="xml-parser.html" title=
-          "XML::Parser-2.44">Next</a>
+          "XML::Parser-2.44">下一页</a>
           <p>
             XML::Parser-2.44
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
