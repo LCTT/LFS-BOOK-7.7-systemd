@@ -9,7 +9,7 @@
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
-    <link rel="stylesheet" href="stylesheets/lfs-print.css" type="text/css"
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type="text/css"
     media="print" />
   </head>
   <body class="lfs" id="lfs-7.7-systemd">
@@ -84,8 +84,7 @@ mount -v -t ext4 /dev/<em class="replaceable"><code>&lt;yyy&gt;</code></em> $LFS
       <p>
         需要注意的是挂载的时候请不要使用过于严格的权限参数(比如 <code class="option">nosuid</code> 或 <code class="option">nodev</code> 选项)。用不带任何参数的 <span class="command"><strong>mount</strong></span> 命令查看挂载的 LFS 分区具体使用了哪些参数。如果设置了 <code class="option">nosuid</code> 及 <code class="option">nodev</code> 参数，请重新挂载。
       </p>
-      <pre class="userinput"><kbd class="command">（译者注：使用不带任何参数的 mount 命令，可以得到类似如下的输出：<br>devtmpfs on /dev type devtmpfs (rw,relatime,size=500896k,nr_inodes=125224,mode=755)<br>其中，括号内的内容为挂载的参数<br>）</kbd>
-</pre>
+      <p>（译者注：使用不带任何参数的 mount 命令，可以得到类似如下的输出： <code class="option">devtmpfs on /dev type devtmpfs (rw,relatime,size=500896k,nr_inodes=125224,mode=755) </code>其中，括号内的内容为挂载的参数。）</p>
       <p>
         如果你正在使用<code class="systemitem">交换</code>分区，用 <span class="command"><strong>swapon</strong></span> 命令确保它已经启用。
       </p>

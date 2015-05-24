@@ -5,11 +5,11 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=utf-8" />
     <title>
-      5.4.&nbsp;Binutils-2.25 - 第1遍
+      5.4.&nbsp;Binutils-2.25 - 第一遍
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
-    <link rel="stylesheet" href="stylesheets/lfs-print.css" type="text/css"
+    <link rel="stylesheet" href="../stylesheets/lfs-print.css" type="text/css"
     media="print" />
   </head>
   <body class="lfs" id="lfs-7.7-systemd">
@@ -52,7 +52,7 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-            Binutils 软件包包括一个链接器，汇编器和其它处理目标文件的工具。
+            Binutils 软件包包括了一个链接器、汇编器和其它处理目标文件的工具。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -77,30 +77,24 @@
             注意
           </h3>
           <p>
-            返回前面章节重新阅读注意事项。了解标记重要的注意事项能在后面帮你节省很多问题。
+            返回前面章节重新阅读注意事项。了解标记为重要的注意事项能在后面帮你节省很多问题。
           </p>
         </div>
         <p>
-            首先编译 Binutils 软件包很重要，因为 Glibc 和 GCC 会对可用的链接器和
-            汇编器执行各种测试以决定启用它们自己的哪些功能。
+            第一个编译 Binutils 软件包很重要，因为 Glibc 和 GCC 会对可用的链接器和汇编器执行各种测试以决定启用它们自己的哪些功能。
         </p>
         <p>
             Binutils 手册建议在源码目录之外一个专门的编译目录里面编译 Binutils：
         </p>
-        <pre class="userinput">
-<kbd class="command">mkdir -v ../binutils-build
-cd ../binutils-build</kbd>
-</pre>
+        <pre class="userinput"><kbd class="command">mkdir -v ../binutils-build
+cd ../binutils-build</kbd></pre>
         <div class="admon note">
-          <img alt="[Note]" src="../images/note.png" />
+          <img alt="[注意]" src="../images/note.png" />
           <h3>
             注意
           </h3>
           <p>
-            为了能使用本书中其余部分列出的 SBU 值，测量从配置到包括第一次安装在内的编译时间。
-            为了轻松的做到这点，用类似 <strong class="userinput"><code>time { ./configure ... &amp;&amp;
-            ... &amp;&amp; make install; }</code></strong> 的命令包装 <span class=
-            "command"><strong>time</strong></span> 命令。
+            为了衡量在本书中其余部分所使用 SBU 值，我们要测量一下这个软件包从配置到包括第一次安装在内的编译时间。为了轻松的做到这点，用类似 <strong class="userinput"><code>time { ./configure ... &amp;&amp;... &amp;&amp; make install; }</code></strong> 的方式将命令包装在 <span class="command"><strong>time</strong></span> 命令中。
           </p>
         </div>
         <div class="admon note">
@@ -109,7 +103,7 @@ cd ../binutils-build</kbd>
             注意
           </h3>
           <p>
-            第五章中大概编译 SBU 值和所需磁盘空间不包括测试套件数据。
+            第五章中大概编译的 SBU 值和所需磁盘空间不包括测试套件数据。
           </p>
         </div>
         <p>
@@ -126,7 +120,7 @@ cd ../binutils-build</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>配置选项的含义:</strong>
+            <strong>配置选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -144,7 +138,7 @@ cd ../binutils-build</kbd>
             </dt>
             <dd>
               <p>
-                用于交叉编译，告诉编译系统需要 $LFS 的目标系统库。
+                用于交叉编译，告诉编译系统在 $LFS 中查找所需的目标系统库。
               </p>
             </dd>
             <dt>
@@ -153,7 +147,7 @@ cd ../binutils-build</kbd>
             </dt>
             <dd>
               <p>
-                指定配置链接器应该使用的库路径。
+                指定需要配置使用的链接器的库路径。
               </p>
             </dd>
             <dt>
@@ -162,12 +156,7 @@ cd ../binutils-build</kbd>
             </dt>
             <dd>
               <p>
-                因为<code class=
-                "envar">LFS_TGT</code> 变量中的机器描述和<span class=
-                "command"><strong>config.guess</strong></span> 脚本返回的值略有不同，
-                    这个选项会告诉 <span class=
-                "command"><strong>configure</strong></span> 脚本调整 Binutils 的编译系统
-                    编译一个交叉链接器。
+                因为 <code class= "envar">LFS_TGT</code> 变量中的机器描述和 <span class="command"><strong>config.guess</strong></span> 脚本返回的值略有不同，这个选项会告诉 <span class="command"><strong>configure</strong></span> 脚本调整 Binutils 的编译系统来编译一个交叉链接器。
               </p>
             </dd>
             <dt>
@@ -176,7 +165,7 @@ cd ../binutils-build</kbd>
             </dt>
             <dd>
               <p>
-                这会禁止国际化，因为国际化对临时工具来说没有必要。
+                这会禁止国际化（i18n），因为国际化对临时工具来说没有必要。
               </p>
             </dd>
             <dt>
@@ -185,7 +174,7 @@ cd ../binutils-build</kbd>
             </dt>
             <dd>
               <p>
-                这会防止有来自主机编译器的警告事件时停止编译。
+                这会防止来自宿主编译器的警告事件导致停止编译。
               </p>
             </dd>
           </dl>
@@ -194,21 +183,16 @@ cd ../binutils-build</kbd>
             继续编译软件包：
         </p>
         <pre class="userinput">
-<kbd class="command">make</kbd>
-</pre>
+        <kbd class="command">make</kbd></pre>
         <p>
-            现在编译完成了。通常现在我们会运行测试套件，但在这初期测试套件框架
-            (Tcl,Expect, 和 DejaGNU) 还没有就绪。在此进行测试的好处是很小的，
-            因为第一遍编译的程序很快会被第二遍的代替。
+            现在编译完成了。通常现在我们会运行测试套件，但在这个初期阶段，测试套件框架（Tcl、Expect 和 DejaGNU） 还没有就绪。在此进行测试的好处不多，因为第一遍编译的程序很快会被第二遍的代替。
         </p>
         <p>
             如果是在 x86_64 上编译，创建符号链接，以确保工具链的完整性：
         </p>
-        <pre class="userinput">
-<kbd class="command">case $(uname -m) in
+        <pre class="userinput"><kbd class="command">case $(uname -m) in
   x86_64) mkdir -v /tools/lib &amp;&amp; ln -sv lib /tools/lib64 ;;
-esac</kbd>
-</pre>
+esac</kbd></pre>
         <p>
           安装软件包:
         </p>
@@ -219,8 +203,7 @@ esac</kbd>
       <div class="content" lang="en" xml:lang="en">
         <p>
             该软件包的详细信息在 <a class="xref" href="../chapter06/binutils.html#contents-binutils" title=
-          "6.13.2.&nbsp;Binutils 的内容">6.13.2,
-          &ldquo;Binutils 的内容。&rdquo;</a>
+          "6.13.2.&nbsp;Binutils 的内容">6.13.2,&ldquo;Binutils 的内容&rdquo;</a>中。
         </p>
       </div>
     </div>
@@ -229,7 +212,7 @@ esac</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
         </div>
@@ -245,7 +228,7 @@ esac</kbd>
           <a accesskey="n" href="gcc-pass1.html" title=
           "GCC-4.9.2 - 第1遍">下一页</a>
           <p>
-            GCC-4.9.2 - 第1遍
+            GCC-4.9.2 - 第一遍
           </p>
         </li>
         <li class="up">
