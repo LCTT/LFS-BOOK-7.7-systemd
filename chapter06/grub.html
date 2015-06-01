@@ -18,48 +18,48 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="xz.html" title="Xz-5.2.0">Prev</a>
+          <a accesskey="p" href="xz.html" title="Xz-5.2.0">上一页</a>
           <p>
             Xz-5.2.0
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="less.html" title="Less-458">Next</a>
+          <a accesskey="n" href="less.html" title="Less-458">下一页</a>
           <p>
             Less-458
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-system-grub" name="ch-system-grub"></a>6.54.
-        GRUB-2.02~beta2  ictlyh翻译中
+        GRUB-2.02~beta2
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The GRUB package contains the GRand Unified Bootloader.
+            GRUB 软件包包含多重启动管理器(GRand Unified Bootloader)。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间：</strong>
               <span class="segbody">0.8 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间</strong>
               <span class="segbody">170 MB</span>
             </div>
           </div>
@@ -67,10 +67,10 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.54.1. Installation of GRUB
+          6.54.1. 安装 GRUB
         </h2>
         <p>
-          Prepare GRUB for compilation:
+          准备编译 GRUB for：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/usr          \
@@ -82,7 +82,7 @@
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the new configure options:</strong>
+            <strong>新配置选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -91,8 +91,7 @@
             </dt>
             <dd>
               <p>
-                This allows the build to complete with warnings introduced by
-                more recent Flex versions.
+                允许忽视更新版本 Flex 提示的警告以完成构建。
               </p>
             </dd>
             <dt>
@@ -102,43 +101,40 @@
             </dt>
             <dd>
               <p>
-                These options minimize what is built by disabling features
-                and testing programs not needed for LFS.
+                这些选项通过停用 LFS 不需要的功能和测试程序最小化构建。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          This package does not come with a test suite.
+          该软件包没有测试套件。
         </p>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
 </pre>
         <p>
-          Using GRUB to make your LFS system bootable will be discussed in
-          <a class="xref" href="../chapter08/grub.html" title=
-          "8.4.&nbsp;Using GRUB to Set Up the Boot Process">Section&nbsp;8.4,
-          &ldquo;Using GRUB to Set Up the Boot Process&rdquo;</a>.
+            会在 <a class="xref" href="../chapter08/grub.html" title=
+          "8.4.&nbsp;使用 GRUB 设置启动过程程序">章节 8.4,
+        &ldquo;使用 GRUB 设置启动过程&rdquo;</a> 介绍通过 GRUB 启动你的 LFS 系统。
         </p>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-gRUB" name="contents-gRUB"></a>6.54.2. Contents of
-          GRUB
+          <a id="contents-gRUB" name="contents-gRUB"></a>6.54.2. GRUB 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">grub-bios-setup, grub-editenv,
               grub-fstest, grub-install, grub-kbdcomp, grub-menulst2cfg,
               grub-mkconfig, grub-mkimage, grub-mklayout, grub-mknetdir,
@@ -147,7 +143,7 @@
               grub-script-check, grub-set-default, grub-sparc64-setup</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directories:</strong>
+              <strong class="segtitle">安装目录</strong>
               <span class="segbody">/usr/lib/grub, /etc/grub.d,
               /usr/share/grub, /boot/grub</span>
             </div>
@@ -155,7 +151,7 @@
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -173,7 +169,7 @@
                 </td>
                 <td>
                   <p>
-                    Is a helper program for grub-install
+                    grub-install 的帮助程序
                   </p>
                 </td>
               </tr>
@@ -187,7 +183,7 @@
                 </td>
                 <td>
                   <p>
-                    A tool to edit the environment block
+                    编辑环境块的工具
                   </p>
                 </td>
               </tr>
@@ -201,7 +197,7 @@
                 </td>
                 <td>
                   <p>
-                    Tool to debug the filesystem driver
+                    调试文件系统驱动的工具
                   </p>
                 </td>
               </tr>
@@ -215,7 +211,7 @@
                 </td>
                 <td>
                   <p>
-                    Install GRUB on your drive
+                    在你的驱动器上安装 GRUB
                   </p>
                 </td>
               </tr>
@@ -229,8 +225,7 @@
                 </td>
                 <td>
                   <p>
-                    Script that converts an xkb layout into one recognized by
-                    GRUB
+                    转换 xkb 布局为 GRUB 可识别样式的脚本
                   </p>
                 </td>
               </tr>
@@ -244,9 +239,10 @@
                 </td>
                 <td>
                   <p>
-                    Converts a GRUB Legacy <code class=
-                    "filename">menu.lst</code> into a <code class=
-                    "filename">grub.cfg</code> for use with GRUB 2
+                    为和 GRUB 2一起使用，转换引导装载程序(GRUB Legacy)
+                    <code class=
+                    "filename">menu.lst</code> 为 <code class=
+                    "filename">grub.cfg</code> 
                   </p>
                 </td>
               </tr>
@@ -260,7 +256,7 @@
                 </td>
                 <td>
                   <p>
-                    Generate a grub config file
+                    生成 grub 配置文件
                   </p>
                 </td>
               </tr>
@@ -274,7 +270,7 @@
                 </td>
                 <td>
                   <p>
-                    Make a bootable image of GRUB
+                    创建 GRUB 可启动镜像
                   </p>
                 </td>
               </tr>
@@ -288,7 +284,7 @@
                 </td>
                 <td>
                   <p>
-                    Generates a GRUB keyboard layout file
+                    生成 GRUB 键盘布局文件
                   </p>
                 </td>
               </tr>
@@ -302,7 +298,7 @@
                 </td>
                 <td>
                   <p>
-                    Prepares a GRUB netboot directory
+                    准备一个 GRUB 网络启动目录
                   </p>
                 </td>
               </tr>
@@ -316,8 +312,7 @@
                 </td>
                 <td>
                   <p>
-                    Generates an encrypted PBKDF2 password for use in the
-                    boot menu
+                    生成一个用于启动菜单的加密 PBKDF2 密码
                   </p>
                 </td>
               </tr>
@@ -331,7 +326,7 @@
                 </td>
                 <td>
                   <p>
-                    Makes a system pathname relative to its root
+                    生成相对于根目录的系统路径名称
                   </p>
                 </td>
               </tr>
@@ -345,8 +340,7 @@
                 </td>
                 <td>
                   <p>
-                    Make a bootable image of GRUB suitable for a floppy disk
-                    or CDROM/DVD
+                    创建适用于软盘或 CDROM/DVD 的可启动 GRUB 镜像
                   </p>
                 </td>
               </tr>
@@ -360,7 +354,7 @@
                 </td>
                 <td>
                   <p>
-                    Generates a standalone image
+                    生成一个单独镜像
                   </p>
                 </td>
               </tr>
@@ -374,7 +368,7 @@
                 </td>
                 <td>
                   <p>
-                    Is a helper program that prints the path of a GRUB device
+                    打印 GRUB 设备路径的帮助程序
                   </p>
                 </td>
               </tr>
@@ -388,7 +382,7 @@
                 </td>
                 <td>
                   <p>
-                    Probe device information for a given path or device
+                    对指定路径或设备检测设备信息
                   </p>
                 </td>
               </tr>
@@ -402,8 +396,7 @@
                 </td>
                 <td>
                   <p>
-                    Sets the default boot entry for GRUB for the next boot
-                    only
+                    只为下次启动设置默认 GRUB 启动选项
                   </p>
                 </td>
               </tr>
@@ -417,7 +410,7 @@
                 </td>
                 <td>
                   <p>
-                    Checks GRUB configuration script for syntax errors
+                    检查 GRUB 配置脚本是否有语法错误
                   </p>
                 </td>
               </tr>
@@ -431,7 +424,7 @@
                 </td>
                 <td>
                   <p>
-                    Sets the default boot entry for GRUB
+                    为 GRUB 设置默认启动选项
                   </p>
                 </td>
               </tr>
@@ -445,7 +438,7 @@
                 </td>
                 <td>
                   <p>
-                    Is a helper program for grub-setup
+                    grub-setup 的帮助程序
                   </p>
                 </td>
               </tr>
@@ -455,26 +448,34 @@
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="xz.html" title="Xz-5.2.0">Prev</a>
+          <a accesskey="p" href="xz.html" title="Xz-5.2.0">上一页</a>
           <p>
             Xz-5.2.0
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="less.html" title="Less-458">Next</a>
+          <a accesskey="n" href="less.html" title="Less-458">下一页</a>
           <p>
             Less-458
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>

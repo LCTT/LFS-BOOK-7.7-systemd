@@ -18,47 +18,47 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="grub.html" title="GRUB-2.02~beta2">Prev</a>
+          <a accesskey="p" href="grub.html" title="GRUB-2.02~beta2">上一页</a>
           <p>
             GRUB-2.02~beta2
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="gzip.html" title="Gzip-1.6">Next</a>
+          <a accesskey="n" href="gzip.html" title="Gzip-1.6">下一页</a>
           <p>
             Gzip-1.6
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
-        <a id="ch-system-less" name="ch-system-less"></a>6.55. Less-458 ictlyh翻译中
+        <a id="ch-system-less" name="ch-system-less"></a>6.55. Less-458
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Less package contains a text file viewer.
+            Less 软件包包含一个文本文件查看器。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
-              <span class="segbody">less than 0.1 SBU</span>
+              <strong class="segtitle">大概编译时间：</strong>
+              <span class="segbody">少于 0.1 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间：</strong>
               <span class="segbody">4.1 MB</span>
             </div>
           </div>
@@ -66,17 +66,17 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.55.1. Installation of Less
+          6.55.1. 安装 Less
         </h2>
         <p>
-          Prepare Less for compilation:
+          准备编译 Less：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/usr --sysconfdir=/etc</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the configure options:</strong>
+            <strong>配置选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -85,24 +85,24 @@
             </dt>
             <dd>
               <p>
-                This option tells the programs created by the package to look
-                in <code class="filename">/etc</code> for the configuration
-                files.
+                该选项告诉软件包创建的程序在
+                <code class="filename">/etc</code>
+                中查找配置文件。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          This package does not come with a test suite.
+          该软件包没有测试套件：
         </p>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
@@ -110,20 +110,19 @@
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-less" name="contents-less"></a>6.55.2. Contents of
-          Less
+          <a id="contents-less" name="contents-less"></a>6.55.2. Less 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
-              <span class="segbody">less, lessecho, and lesskey</span>
+              <strong class="segtitle">安装的程序：</strong>
+              <span class="segbody">less, lessecho, 和 lesskey</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -141,9 +140,7 @@
                 </td>
                 <td>
                   <p>
-                    A file viewer or pager; it displays the contents of the
-                    given file, letting the user scroll, find strings, and
-                    jump to marks
+                    文件查看器或分页器；显示指定文件的内容，允许用户滚动、查找字符串以及跳转到标记。
                   </p>
                 </td>
               </tr>
@@ -157,10 +154,9 @@
                 </td>
                 <td>
                   <p>
-                    Needed to expand meta-characters, such as <span class=
-                    "emphasis"><em>*</em></span> and <span class=
-                    "emphasis"><em>?</em></span>, in filenames on Unix
-                    systems
+                    在 Unix 系统文件名中扩展元字符，例如<span class=
+                    "emphasis"><em>*</em></span> 和 <span class=
+                    "emphasis"><em>?</em></span>
                   </p>
                 </td>
               </tr>
@@ -174,8 +170,9 @@
                 </td>
                 <td>
                   <p>
-                    Used to specify the key bindings for <span class=
+                    用于指定绑定到 <span class=
                     "command"><strong>less</strong></span>
+                        的键
                   </p>
                 </td>
               </tr>
@@ -185,26 +182,34 @@
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="grub.html" title="GRUB-2.02~beta2">Prev</a>
+          <a accesskey="p" href="grub.html" title="GRUB-2.02~beta2">上一页</a>
           <p>
             GRUB-2.02~beta2
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="gzip.html" title="Gzip-1.6">Next</a>
+          <a accesskey="n" href="gzip.html" title="Gzip-1.6">下一页</a>
           <p>
             Gzip-1.6
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
