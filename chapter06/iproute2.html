@@ -18,49 +18,48 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="gzip.html" title="Gzip-1.6">Prev</a>
+          <a accesskey="p" href="gzip.html" title="Gzip-1.6">上一页</a>
           <p>
             Gzip-1.6
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="kbd.html" title="Kbd-2.0.2">Next</a>
+          <a accesskey="n" href="kbd.html" title="Kbd-2.0.2">下一页</a>
           <p>
             Kbd-2.0.2
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-system-iproute2" name="ch-system-iproute2"></a>6.57.
-        IPRoute2-3.19.0 ictlyh翻译中
+        IPRoute2-3.19.0
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The IPRoute2 package contains programs for basic and advanced
-          IPV4-based networking.
+            IPRoute2 软件包包含基本和高级的基于 IPV4 网络的程序。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间：</strong>
               <span class="segbody">0.1 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间：</strong>
               <span class="segbody">10.6 MB</span>
             </div>
           </div>
@@ -68,19 +67,19 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.57.1. Installation of IPRoute2
+          6.57.1. 安装 IPRoute2
         </h2>
         <p>
-          The <span class="command"><strong>arpd</strong></span> binary
-          included in this package is dependent on Berkeley DB. Because
-          <span class="command"><strong>arpd</strong></span> is not a very
-          common requirement on a base Linux system, remove the dependency on
-          Berkeley DB by applying the commands below. If the <span class=
-          "command"><strong>arpd</strong></span> binary is needed,
-          instructions for compiling Berkeley DB can be found in the BLFS
-          Book at <a class="ulink" href=
+            该软件包包含的二进制程序 <span class="command"><strong>arpd</strong></span>
+            依赖于 Berkeley DB。由于 <span class="command"><strong>arpd</strong></span>
+            在基础 Linux 系统中通常并不需要，因此可以用以下命令移除对 Berkeley DB 的依赖。
+            如果确实需要 <span class=
+          "command"><strong>arpd</strong></span>，
+            可以在 BLFS 指南的
+            <a class="ulink" href=
           "http://www.linuxfromscratch.org/blfs/view/systemd/server/databases.html#db">
-          http://www.linuxfromscratch.org/blfs/view/systemd/server/databases.html#db</a>.
+          http://www.linuxfromscratch.org/blfs/view/systemd/server/databases.html#db</a>
+          找到编译 Berkeley DB 的说明。
         </p>
         <pre class="userinput">
 <kbd class="command">sed -i '/^TARGETS/s@arpd@@g' misc/Makefile
@@ -88,23 +87,23 @@ sed -i /ARPD/d Makefile
 sed -i 's/arpd.8//' man/man8/Makefile</kbd>
 </pre>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          This package comes with a test suite, but due to assumptions it
-          makes, it is not possible to reliably run these tests from within
-          the chroot environment. If you wish to run these tests after
-          booting into your new LFS system, ensure you enable <code class=
-          "filename">/proc/config.gz</code> support in your kernel ("General
-          setup" -&gt; "Enable access to .config through /proc/config.gz"
-          [CONFIG_IKCONFIG_PROC]), then run 'make alltests' from the
-          <code class="filename">testsuite/</code> subdirectory.
+            该软件包有测试套件，由于它的前天要求，一般不可能在
+            chroot 环境中运行这些测试。如果你希望在进入你的 LFS
+            系统后再运行这些测试，确保在你的的内核("常规设置
+          " -&gt; "通过 /proc/config.gz 启用到 .config 的访问"
+          [CONFIG_IKCONFIG_PROC]) 中启用了 <code class=
+          "filename">/proc/config.gz</code> 支持，然后在
+          <code class="filename">testsuite/</code>
+          子目录运行 'make alltests' 命令。
         </p>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make DOCDIR=/usr/share/doc/iproute2-3.19.0 install</kbd>
@@ -112,27 +111,26 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-iproute2" name="contents-iproute2"></a>6.57.2.
-          Contents of IPRoute2
+          <a id="contents-iproute2" name="contents-iproute2"></a>6.57.2. IPRoute2 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
-              <span class="segbody">bridge, ctstat (link to lnstat), genl,
+              <strong class="segtitle">安装的程序：</strong>
+              <span class="segbody">bridge, ctstat (链接到 lnstat), genl,
               ifcfg, ifstat, ip, lnstat, nstat, routef, routel, rtacct,
-              rtmon, rtpr, rtstat (link to lnstat), ss, and tc</span>
+              rtmon, rtpr, rtstat (链接到 lnstat), ss, 和 tc</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directories:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/etc/iproute2, /usr/lib/tc,
-              /usr/share/doc/iproute2-3.19.0, and /usr/lib/tc</span>
+              /usr/share/doc/iproute2-3.19.0, 和 /usr/lib/tc</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -150,7 +148,7 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    Configures network bridges
+                    配置网桥
                   </p>
                 </td>
               </tr>
@@ -164,7 +162,7 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    Connection status utility
+                    连接状态工具
                   </p>
                 </td>
               </tr>
@@ -188,13 +186,14 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    A shell script wrapper for the <span class=
-                    "command"><strong>ip</strong></span> command [Note that
-                    it requires the <span class=
-                    "command"><strong>arping</strong></span> and <span class=
-                    "command"><strong>rdisk</strong></span> programs from the
-                    iputils package found at <a class="ulink" href=
-                    "http://www.skbuff.net/iputils/">http://www.skbuff.net/iputils/</a>.]
+                    <span class=
+                    "command"><strong>ip</strong></span>
+                        命令的 shell 脚本封装 [注意它需要 iputils
+                        软件包中的 <span class=
+                    "command"><strong>arping</strong></span> 和 <span class=
+                    "command"><strong>rdisk</strong></span> 程序，可以在 <a class="ulink" href=
+                    "http://www.skbuff.net/iputils/">http://www.skbuff.net/iputils/</a>
+                    找到 iputils 软件包。]
                   </p>
                 </td>
               </tr>
@@ -208,8 +207,7 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    Shows the interface statistics, including the amount of
-                    transmitted and received packets by interface
+                    显示接口统计信息，包括接口发送和接收的包的数目
                   </p>
                 </td>
               </tr>
@@ -222,53 +220,44 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    The main executable. It has several different functions:
+                    主要的可执行程序。它有多种不同功能：
                   </p>
                   <p>
                     <span class="command"><strong>ip link <em class=
                     "replaceable"><code>&lt;device&gt;</code></em></strong></span>
-                    allows users to look at the state of devices and to make
-                    changes
+                        允许用户查看设备状态或更改
                   </p>
                   <p>
                     <span class="command"><strong>ip addr</strong></span>
-                    allows users to look at addresses and their properties,
-                    add new addresses, and delete old ones
+                    允许用户查看地址和属性、增加新地址、删除旧地址
                   </p>
                   <p>
                     <span class="command"><strong>ip neighbor</strong></span>
-                    allows users to look at neighbor bindings and their
-                    properties, add new neighbor entries, and delete old ones
+                    允许用户查看邻居和它们的特性、增加新邻居、删除旧邻居
                   </p>
                   <p>
                     <span class="command"><strong>ip rule</strong></span>
-                    allows users to look at the routing policies and change
-                    them
+                    允许用户查看路由策略并更改
                   </p>
                   <p>
                     <span class="command"><strong>ip route</strong></span>
-                    allows users to look at the routing table and change
-                    routing table rules
+                    允许用户查看路由表并更改路由表规则
                   </p>
                   <p>
                     <span class="command"><strong>ip tunnel</strong></span>
-                    allows users to look at the IP tunnels and their
-                    properties, and change them
+                    允许用户查看 IP 隧道及其特性、并进行更改
                   </p>
                   <p>
                     <span class="command"><strong>ip maddr</strong></span>
-                    allows users to look at the multicast addresses and their
-                    properties, and change them
+                    允许用户查看多播地址及其特性、并进行更改
                   </p>
                   <p>
                     <span class="command"><strong>ip mroute</strong></span>
-                    allows users to set, change, or delete the multicast
-                    routing
+                    允许用户设置、更改或删除多播路由
                   </p>
                   <p>
                     <span class="command"><strong>ip monitor</strong></span>
-                    allows users to continuously monitor the state of
-                    devices, addresses and routes
+                    允许用户持续监视设置、地址和路由状态
                   </p>
                 </td>
               </tr>
@@ -282,10 +271,9 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    Provides Linux network statistics; it is a generalized
-                    and more feature-complete replacement for the old
+                    提供 Linux 网络统计信息；是更通用、功能更完备的替代旧
                     <span class="command"><strong>rtstat</strong></span>
-                    program
+                    的程序
                   </p>
                 </td>
               </tr>
@@ -299,7 +287,7 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    Shows network statistics
+                    显示网络统计信息
                   </p>
                 </td>
               </tr>
@@ -313,9 +301,8 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    A component of <span class="command"><strong>ip
-                    route</strong></span>. This is for flushing the routing
-                    tables
+                    <span class="command"><strong>ip
+                    route</strong></span> 的组件。用于清空路由表
                   </p>
                 </td>
               </tr>
@@ -329,9 +316,8 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    A component of <span class="command"><strong>ip
-                    route</strong></span>. This is for listing the routing
-                    tables
+                    <span class="command"><strong>ip
+                    route</strong></span> 的组件。用于列出路由表
                   </p>
                 </td>
               </tr>
@@ -345,8 +331,8 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    Displays the contents of <code class=
-                    "filename">/proc/net/rt_acct</code>
+                    显示 <code class=
+                    "filename">/proc/net/rt_acct</code> 的内容
                   </p>
                 </td>
               </tr>
@@ -360,7 +346,7 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    Route monitoring utility
+                    路由监视工具
                   </p>
                 </td>
               </tr>
@@ -374,8 +360,8 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    Converts the output of <span class="command"><strong>ip
-                    -o</strong></span> back into a readable form
+                    转换 <span class="command"><strong>ip
+                    -o</strong></span> 输出为可读形式
                   </p>
                 </td>
               </tr>
@@ -389,7 +375,7 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    Route status utility
+                    路由状态工具
                   </p>
                 </td>
               </tr>
@@ -402,9 +388,8 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    Similar to the <span class=
-                    "command"><strong>netstat</strong></span> command; shows
-                    active connections
+                    类似于 <span class=
+                    "command"><strong>netstat</strong></span> 命令；显示活动连接
                   </p>
                 </td>
               </tr>
@@ -417,30 +402,28 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
                 </td>
                 <td>
                   <p>
-                    Traffic Controlling Executable; this is for Quality Of
-                    Service (QOS) and Class Of Service (COS) implementations
+                    拥塞控制可执行程序；用于实现服务质量(Quality Of Service,QOS)和服务等级(Class Of Service,COS)
                   </p>
                   <p>
                     <span class="command"><strong>tc qdisc</strong></span>
-                    allows users to setup the queueing discipline
+                    允许用户设置排队规则
                   </p>
                   <p>
                     <span class="command"><strong>tc class</strong></span>
-                    allows users to setup classes based on the queuing
-                    discipline scheduling
+                    允许用户基于排队规则调度策略设置等级
                   </p>
                   <p>
                     <span class="command"><strong>tc
-                    estimator</strong></span> allows users to estimate the
-                    network flow into a network
+                    estimator</strong></span>
+                    允许用户估计到一个网络的网络流量
                   </p>
                   <p>
                     <span class="command"><strong>tc filter</strong></span>
-                    allows users to setup the QOS/COS packet filtering
+                    允许用户设置 QOS/COS 包过滤
                   </p>
                   <p>
                     <span class="command"><strong>tc policy</strong></span>
-                    allows users to setup the QOS/COS policies
+                    允许用户设置 QOS/COS 策略
                   </p>
                 </td>
               </tr>
@@ -450,26 +433,34 @@ sed -i 's/arpd.8//' man/man8/Makefile</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="gzip.html" title="Gzip-1.6">Prev</a>
+          <a accesskey="p" href="gzip.html" title="Gzip-1.6">上一页</a>
           <p>
             Gzip-1.6
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="kbd.html" title="Kbd-2.0.2">Next</a>
+          <a accesskey="n" href="kbd.html" title="Kbd-2.0.2">下一页</a>
           <p>
             Kbd-2.0.2
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
