@@ -50,8 +50,7 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Kbd package contains key-table files, console fonts, and
-          keyboard utilities.
+            Kbd 软件包包含键表文件、控制台字体和键盘工具。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -68,33 +67,31 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.58.1. Installation of Kbd
+          6.58.1. 安装 Kbd
         </h2>
         <p>
-          The behaviour of the Backspace and Delete keys is not consistent
-          across the keymaps in the Kbd package. The following patch fixes
-          this issue for i386 keymaps:
+            在 Kbd 软件包中退格键(Backspace)和删除键(Delete)的行为和键映射并不一致。
+            下面的补丁修复了 i386 键映射中的这个问题：
         </p>
         <pre class="userinput">
 <kbd class="command">patch -Np1 -i ../kbd-2.0.2-backspace-1.patch</kbd>
 </pre>
         <p>
-          After patching, the Backspace key generates the character with code
-          127, and the Delete key generates a well-known escape sequence.
+            打补丁后，退格键生成编码为 127 的字符，删除键会生成一个著名的转义序列。
         </p>
         <p>
-          Remove the redundant <span class=
-          "command"><strong>resizecons</strong></span> program (it requires
-          the defunct svgalib to provide the video mode files - for normal
-          use <span class="command"><strong>setfont</strong></span> sizes the
-          console appropriately) together with its manpage.
+            移除冗余的 <span class=
+          "command"><strong>resizecons</strong></span>
+            程序(它要求功能不全的 svglib 提供视频模式文件 - 用于正常使用
+            <span class="command"><strong>setfont</strong></span>
+            设置控制台字体大小)以及帮助手册。
         </p>
         <pre class="userinput">
 <kbd class="command">sed -i 's/\(RESIZECONS_PROGS=\)yes/\1no/g' configure
 sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in</kbd>
 </pre>
         <p>
-          Prepare Kbd for compilation:
+          准备编译 Kbd：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -102,7 +99,7 @@ sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the configure options:</strong>
+            <strong>配置选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -111,27 +108,25 @@ sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in</kbd>
             </dt>
             <dd>
               <p>
-                This option prevents the vlock utility from being built, as
-                it requires the PAM library, which isn't available in the
-                chroot environment.
+                该选项防止编译 vlock 工具，因为它要求 chroot 环境中不可用的 PAM 库。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          To test the results, issue:
+          用以下命令测试结果：
         </p>
         <pre class="userinput">
 <kbd class="command">make check</kbd>
 </pre>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
@@ -139,19 +134,16 @@ sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in</kbd>
         <div class="admon note">
           <img alt="[Note]" src="../images/note.png" />
           <h3>
-            Note
+            注意
           </h3>
           <p>
-            For some languages (e.g., Belarusian) the Kbd package doesn't
-            provide a useful keymap where the stock <span class=
-            "quote">&ldquo;<span class="quote">by</span>&rdquo;</span> keymap
-            assumes the ISO-8859-5 encoding, and the CP1251 keymap is
-            normally used. Users of such languages have to download working
-            keymaps separately.
+            由于通常使用的 CP1251 键映射假设使用 ISO-8859-5 编码，Kbd
+            软件包不能为某些语言(例如 Belarusian) 提供可用的键映射。
+            使用这样的语言需要单独下载能工作的键映射。
           </p>
         </div>
         <p>
-          If desired, install the documentation:
+            如果需要的话，安装帮助文档：
         </p>
         <pre class="userinput">
 <kbd class="command">mkdir -v       /usr/share/doc/kbd-2.0.2
@@ -160,32 +152,31 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-kbd" name="contents-kbd"></a>6.58.2. Contents of
-          Kbd
+          <a id="contents-kbd" name="contents-kbd"></a>6.58.2. Kbd 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">chvt, deallocvt, dumpkeys, fgconsole,
               getkeycodes, kbdinfo, kbd_mode, kbdrate, loadkeys, loadunimap,
-              mapscrn, openvt, psfaddtable (link to psfxtable), psfgettable
-              (link to psfxtable), psfstriptable (link to psfxtable),
+              mapscrn, openvt, psfaddtable (链接到 psfxtable), psfgettable
+              (链接到 psfxtable), psfstriptable (链接到 psfxtable),
               psfxtable, setfont, setkeycodes, setleds, setmetamode,
-              showconsolefont, showkey, unicode_start, and
+              showconsolefont, showkey, unicode_start, 和
               unicode_stop</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directories:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/usr/share/consolefonts,
-              /usr/share/consoletrans, /usr/share/keymaps, and
+              /usr/share/consoletrans, /usr/share/keymaps, 和
               /usr/share/unimaps</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -203,7 +194,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Changes the foreground virtual terminal
+                    更改前台虚拟终端
                   </p>
                 </td>
               </tr>
@@ -217,7 +208,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Deallocates unused virtual terminals
+                    重新分配未使用的虚拟终端
                   </p>
                 </td>
               </tr>
@@ -231,7 +222,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Dumps the keyboard translation tables
+                    转储键盘转换表
                   </p>
                 </td>
               </tr>
@@ -245,7 +236,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Prints the number of the active virtual terminal
+                    输出活动虚拟终端的数目
                   </p>
                 </td>
               </tr>
@@ -259,7 +250,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Prints the kernel scancode-to-keycode mapping table
+                    输出内核扫描码到键码的映射表
                   </p>
                 </td>
               </tr>
@@ -273,7 +264,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Obtains information about the status of a console
+                    获取关于某个终端的状态信息
                   </p>
                 </td>
               </tr>
@@ -287,7 +278,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Reports or sets the keyboard mode
+                    报告或设置键盘模式
                   </p>
                 </td>
               </tr>
@@ -301,7 +292,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Sets the keyboard repeat and delay rates
+                    设置键盘重复和延迟速度
                   </p>
                 </td>
               </tr>
@@ -315,7 +306,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Loads the keyboard translation tables
+                    加载键盘转换表
                   </p>
                 </td>
               </tr>
@@ -329,7 +320,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Loads the kernel unicode-to-font mapping table
+                    加载内核 Unicode 到字体映射表
                   </p>
                 </td>
               </tr>
@@ -343,10 +334,10 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    An obsolete program that used to load a user-defined
-                    output character mapping table into the console driver;
-                    this is now done by <span class=
+                    用于加载用户定义的输出字符映射表到控制台驱动的过时程序；现在通过
+                    <span class=
                     "command"><strong>setfont</strong></span>
+                        完成
                   </p>
                 </td>
               </tr>
@@ -360,7 +351,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Starts a program on a new virtual terminal (VT)
+                    在一个新的虚拟终端(VT)启动程序
                   </p>
                 </td>
               </tr>
@@ -374,7 +365,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Adds a Unicode character table to a console font
+                    添加 Unicode 字符表到控制台字体
                   </p>
                 </td>
               </tr>
@@ -388,8 +379,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Extracts the embedded Unicode character table from a
-                    console font
+                    从控制台字体抽取嵌入的 Unicode 字符表
                   </p>
                 </td>
               </tr>
@@ -403,8 +393,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Removes the embedded Unicode character table from a
-                    console font
+                    从控制台字体移除嵌入的 Unicode 字符表
                   </p>
                 </td>
               </tr>
@@ -418,7 +407,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Handles Unicode character tables for console fonts
+                    为控制台字体处理 Unicode 字符表
                   </p>
                 </td>
               </tr>
@@ -432,8 +421,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Changes the Enhanced Graphic Adapter (EGA) and Video
-                    Graphics Array (VGA) fonts on the console
+                    更改控制台的增强图形适配器(Enhanced Graphic Adapter,EGA)和视频图形阵列(Video Graphics Array,VGA)的字体
                   </p>
                 </td>
               </tr>
@@ -447,8 +435,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Loads kernel scancode-to-keycode mapping table entries;
-                    this is useful if there are unusual keys on the keyboard
+                    加载内核扫描码到键码映射表条目；键盘上有异常键时非常有用
                   </p>
                 </td>
               </tr>
@@ -462,7 +449,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Sets the keyboard flags and Light Emitting Diodes (LEDs)
+                    设置键盘标记和发光二极管(Light Emitting Diodes,LEDs)
                   </p>
                 </td>
               </tr>
@@ -476,7 +463,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Defines the keyboard meta-key handling
+                    定义键盘元键处理
                   </p>
                 </td>
               </tr>
@@ -490,7 +477,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Shows the current EGA/VGA console screen font
+                    显示当前 EGA/VGA 控制台屏幕字体
                   </p>
                 </td>
               </tr>
@@ -504,8 +491,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Reports the scancodes, keycodes, and ASCII codes of the
-                    keys pressed on the keyboard
+                    报告键盘上按键的扫描码、键码以及 ASCII 码
                   </p>
                 </td>
               </tr>
@@ -519,10 +505,8 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Puts the keyboard and console in UNICODE mode [Don't use
-                    this program unless your keymap file is in the ISO-8859-1
-                    encoding. For other encodings, this utility produces
-                    incorrect results.]
+                    设置键盘和控制台为 UNICODE 模式[别用该程序，除非你的键映射文件是
+                    ISO-8859-1 编码。对于其它编码，该工具会输出错误结果。]
                   </p>
                 </td>
               </tr>
@@ -536,7 +520,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    Reverts keyboard and console from UNICODE mode
+                    从 UNICODE 模式恢复键盘和控制台为原来模式
                   </p>
                 </td>
               </tr>
