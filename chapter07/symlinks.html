@@ -11,21 +11,21 @@
   <body class="lfs" id="lfs-7.7-systemd">
     <div class="navheader">
       <h4> Linux From Scratch - Version 7.7-systemd </h4>
-      <h3> Chapter&nbsp;7.&nbsp;Basic System Configuration </h3>
+      <h3> 第七章 基本系统配置 </h3>
       <ul>
         <li class="prev"> <a accesskey="p" href="udev.html"
-            title="Device and Module Handling on an LFS System">上一页</a>
+            title="LFS 系统上的设备和模块处理">上一页</a>
           <p> LFS 系统上的设备和模块处理 </p>
         </li>
         <li class="next"> <a accesskey="n" href="clock.html"
-            title="Configuring the system clock">下一页</a>
-          <p> Configuring the system clock </p>
+            title="配置系统时间">下一页</a>
+          <p> 配置系统时间 </p>
         </li>
         <li class="up"> <a accesskey="u" href="chapter07.html"
-            title="Chapter&nbsp;7.&nbsp;Basic System Configuration">返回</a>
+            title="第七章 基本系统配置">返回</a>
         </li>
         <li class="home"> <a accesskey="h" href="../index.html"
-            title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
+            title="Linux From Scratch - Version 7.7-systemd">首页</a> </li>
       </ul>
     </div>
     <div class="sect1" xml:lang="en" lang="en">
@@ -47,8 +47,7 @@ href="http://www.linuxfromscratch.org/blfs/view/systemd/postlfs/devices.html">BL
         <p> 对于你所有的硬件，都有可能遇到此问题（尽管此问题可能在你当前的 Linux 发行版上不存在），在 <code></code><code
             class="filename">/sys/class</code> 或 <code class="filename">/sys/block</code>
           目录下找到对应目录，比如，显卡可能的路径为 <code class="filename">/sys/class/video4linux/video<em
-              class="replaceable"><code>X</code></em></code>。找到该设备的唯一设备标
-          识（usually, vendor and product IDs and/or serial numbers work）：</p>
+              class="replaceable"><code>X</code></em></code>。找到该设备的唯一设备标识（通常，厂商和产品 ID 以及/或 序列号会有用）：</p>
         <pre class="userinput"><kbd class="command">udevadm info -a -p /sys/class/video4linux/video0</kbd>
 </pre>
         <p> 然后通过写入规则建立符号链接：</p>
@@ -71,18 +70,18 @@ EOF</kbd>
     <div class="navfooter">
       <ul>
         <li class="prev"> <a accesskey="p" href="udev.html"
-            title="Device and Module Handling on an LFS System">上一页</a>
+            title="LFS 系统上的设备和模块处理">上一页</a>
           <p> LFS 系统上的设备和模块处理 </p>
         </li>
         <li class="next"> <a accesskey="n" href="clock.html"
-            title="Configuring the system clock">下一页</a>
-          <p> Configuring the system clock </p>
+            title="配置系统时间">下一页</a>
+          <p> 配置系统时间 </p>
         </li>
         <li class="up"> <a accesskey="u" href="chapter07.html"
-            title="Chapter&nbsp;7.&nbsp;Basic System Configuration">返回</a>
+            title="第七章 基本系统配置">返回</a>
         </li>
         <li class="home"> <a accesskey="h" href="../index.html"
-            title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
+            title="Linux From Scratch - Version 7.7-systemd">首页</a> </li>
       </ul>
     </div>
   </body>
