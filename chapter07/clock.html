@@ -1,4 +1,3 @@
-zpl1025
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -50,32 +49,29 @@ zpl1025
 LOCAL</code>
 EOF</kbd>
 </pre>
-      <p> If <code class="filename">/etc/adjtime</code> isn't present
-        at first boot, <span class="command"><strong>systemd-timedated</strong></span>
-        will assume that hardware clock is set to UTC and adjust the
-        file according to that. </p>
-      <p> You can also use the <span class="command"><strong>timedatectl</strong></span>
-        utility to tell <span class="command"><strong>systemd-timedated</strong></span>
-        if your hardware clock is set to UTC or local time: </p>
+      <p> 如果第一次启动时 <code class="filename">/etc/adjtime</code> 文件不存在，<span class="command"><strong>systemd-timedated</strong></span> 会认为硬件时钟设置成 UTC 并且以此调整该文件。
+      </p>
+      <p> 你也可以使用 <span class="command"><strong>timedatectl</strong></span> 程序来告诉 <span class="command"><strong>systemd-timedated</strong></span> 你的硬件时钟是 UTC 还是本地时间：
+      </p>
       <pre class="userinput"><kbd class="command">timedatectl set-local-rtc 1</kbd>
 </pre>
-      <p> <span class="command"><strong>timedatectl</strong></span> can
-        also be used to change system time and time zone. </p>
-      <p> To change your current system time, issue: </p>
+      <p> <span class="command"><strong>timedatectl</strong></span> 也可以用来更改系统时间和时区。
+      </p>
+      <p> 要更改当前系统时间，使用下面的命令：</p>
       <pre class="userinput"><kbd class="command">timedatectl set-time YYYY-MM-DD HH:MM:SS</kbd>
 </pre>
-      <p> Hardware clock will also be updated accordingly. </p>
-      <p> To change your current time zone, issue: </p>
+      <p> 硬件时钟也会相应更新。</p>
+      <p> 要更改当前时区，使用下面命令：</p>
       <pre class="userinput"><kbd class="command">timedatectl set-timezone TIMEZONE</kbd>
 </pre>
-      <p> You can get list of available time zones by running: </p>
+      <p> 你可以通过运行下面命令查看可用时区列表：</p>
       <pre class="userinput"><kbd class="command">timedatectl list-timezones</kbd>
 </pre>
       <div class="admon note"> <img alt="[Note]"
           src="../images/note.png">
-        <h3> Note </h3>
-        <p> Please note that <span class="command"><strong>timedatectl</strong></span>
-          command can be used only on a system booted with systemd. </p>
+        <h3> 注意 </h3>
+        <p> 请注意 <span class="command"><strong>timedatectl</strong></span> 命令只能用于通过 systemd 引导的系统。
+	</p>
       </div>
       <div class="sect2" xml:lang="en" lang="en">
         <h2 class="sect2"> 7.5.1. 网络时间同步</h2>
