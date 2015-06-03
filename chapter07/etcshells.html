@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title> 7.9.&nbsp;Creating the /etc/shells File </title>
+    <title> 7.9. 建立 /etc/shells 文件 </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css">
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
     <link rel="stylesheet" href="../stylesheets/lfs-print.css"
@@ -12,22 +12,22 @@
     <div class="navheader">
       <h4> Linux From Scratch - Version 7.7-systemd </h4>
       <h3> </h3>
-      <h3>第 7 章. 基本系统配置</h3>
+      <h3>第七章 基本系统配置</h3>
       <h3> </h3>
       <ul>
         <li class="prev"> <a accesskey="p" href="inputrc.html"
-            title="Creating the /etc/inputrc File">上一页</a>
+            title="建立 /etc/inputrc 文件">上一页</a>
           <p> 建立 /etc/inputrc 文件 </p>
         </li>
         <li class="next"> <a accesskey="n" href="systemd-custom.html"
-            title="Systemd Usage and Configuration">下一页</a>
+            title="Systemd 的用法与配置">下一页</a>
           <p> Systemd 的用法与配置 </p>
         </li>
         <li class="up"> <a accesskey="u" href="chapter07.html"
-            title="Chapter&nbsp;7.&nbsp;Basic System Configuration">返回</a>
+            title="第七章 基本系统配置">返回</a>
         </li>
         <li class="home"> <a accesskey="h" href="../index.html"
-            title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
+            title="Linux From Scratch - Version 7.7-systemd">首页</a> </li>
       </ul>
     </div>
     <div class="sect1" xml:lang="en" lang="en">
@@ -37,11 +37,8 @@
         的列表文件。应用程序通过读取它可以知道需要使用的 shell 是否有效。每行指定一个可用的 shell，且需要为绝对路径。</p>
       <p> 例如，当非特权用户想要使用<strong> </strong><span class="command"><strong>chsh</strong></span>
         命令更改自己登录所用的 shell 时。如果命令没有在 /etc/shell 中找到，那么将会拒绝更改。</p>
-      <p> It is a requirement for applications such as <span
-          class="application">GDM</span> which does not populate the
-        face browser if it can't find <code class="filename">/etc/shells</code>,
-        or FTP daemons which traditionally disallow access to users with
-        shells not included in this file. </p>
+      <p> 这个文件对于某些程序来说是必需的，比如 <span class="application">GDM</span> 在找不到 <code class="filename">/etc/shells</code> 时就不会放置浏览器，还有 FTP 守护进程通常会禁止使用不在这个文件里列出终端的用户登录。
+      </p>
       <pre class="root"><kbd class="command">cat &gt; /etc/shells &lt;&lt; "EOF"
 <code class="literal"># Begin /etc/shells
 
@@ -56,18 +53,18 @@ EOF</kbd>
     <div class="navfooter">
       <ul>
         <li class="prev"> <a accesskey="p" href="inputrc.html"
-            title="Creating the /etc/inputrc File">上一页</a>
+            title="建立 /etc/inputrc 文件">上一页</a>
           <p> 建立 /etc/inputrc 文件 </p>
         </li>
         <li class="next"> <a accesskey="n" href="systemd-custom.html"
-            title="Systemd Usage and Configuration">下一页t</a>
+            title="Systemd 的用法与配置">下一页</a>
           <p> Systemd 的用法与配置 </p>
         </li>
         <li class="up"> <a accesskey="u" href="chapter07.html"
-            title="Chapter&nbsp;7.&nbsp;Basic System Configuration">返回</a>
+            title="第七章 基本系统配置">返回</a>
         </li>
         <li class="home"> <a accesskey="h" href="../index.html"
-            title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
+            title="Linux From Scratch - Version 7.7-systemd">首页</a> </li>
       </ul>
     </div>
   </body>
