@@ -1,4 +1,3 @@
-zpl1025
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -26,7 +25,7 @@ zpl1025
             title="第七章 基本系统配置">返回</a>
         </li>
         <li class="home"> <a accesskey="h" href="../index.html"
-            title="Linux From Scratch - Version 7.7-systemd">首页</a> </li>
+            title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
       </ul>
     </div>
     <div class="sect1" xml:lang="en" lang="en">
@@ -89,195 +88,81 @@ zpl1025
               class="command"><strong>udevd</strong></span>
             将会建立到设备节点文件的额外符号链接，这有可能更改其权限，所有者，所在组，或者是更改 <span
               class="command"><strong>udevd</strong></span> 内建接口（名称）。</p>
-          <p> The rules in these three directories are numbered in a
-            similar fashion to the LFS-Bootscripts package and all three
-            directories are merged together. If <span class="command"><strong>udevd</strong></span>
-            can't find a rule for the device it is creating, it will
-            leave the permissions and ownership at whatever <code
-              class="systemitem">devtmpfs</code> used initially. </p>
+          <p> 这三个目录下的规则都像 LFS-Bootscripts 包那样标有数字，所有三个目录都会统一到一起。 如果 <span class="command"><strong>udevd</strong></span> 找不到和所创建设备相应的规则，它会保留 <code class="systemitem">devtmpfs</code> 里初始化时使用过的权限和属主。
+	  </p>
         </div>
         <div class="sect3">
-          <h3 class="sect3"> 7.3.2.3. Module Loading </h3>
-          <p> Device drivers compiled as modules may have aliases built
-            into them. Aliases are visible in the output of the <span
-              class="command"><strong>modinfo</strong></span> program
-            and are usually related to the bus-specific identifiers of
-            devices supported by a module. For example, the <span
-              class="emphasis"><em>snd-fm801</em></span> driver supports
-            PCI devices with vendor ID 0x1319 and device ID 0x0801, and
-            has an alias of <span class="quote">“<span class="quote">pci:v00001319d00000801sv*sd*bc04sc01i*</span>”</span>.
-            For most devices, the bus driver exports the alias of the
-            driver that would handle the device via <code
-              class="systemitem">sysfs</code>. E.g., the <code
-              class="filename">/sys/bus/pci/devices/0000:00:0d.0/modalias</code>
-            file might contain the string <span class="quote">“<span
-                class="quote">pci:v00001319d00000801sv00001319sd00001319bc04sc01i00</span>”</span>.
-            The default rules provided with Udev will cause <span
-              class="command"><strong>udevd</strong></span> to call out
-            to <span class="command"><strong>/sbin/modprobe</strong></span>
-            with the contents of the <code class="envar">MODALIAS</code>
-            uevent environment variable (which should be the same as the
-            contents of the <code class="filename">modalias</code> file
-            in sysfs), thus loading all modules whose aliases match this
-            string after wildcard expansion. </p>
-          <p> In this example, this means that, in addition to <span
-              class="emphasis"><em>snd-fm801</em></span>, the obsolete
-            (and unwanted) <span class="emphasis"><em>forte</em></span>
-            driver will be loaded if it is available. See below for ways
-            in which the loading of unwanted drivers can be prevented. </p>
-          <p> The kernel itself is also able to load modules for network
-            protocols, filesystems and NLS support on demand. </p>
+          <h3 class="sect3"> 7.3.2.3. 加载模块 </h3>
+          <p> 编译成模块的设备驱动可能会包含别名。别名可以通过 <span class="command"><strong>modinfo</strong></span> 打印出来查看，一般是模块支持的特定总线的设备描述符。举个例子，驱动 <span class="emphasis"><em>snd-fm801</em></span> 支持厂商 ID 为 0x1319 以及设备 ID 为 0x0801 的设备，它包含一个 <span class="quote">“<span class="quote">pci:v00001319d00000801sv*sd*bc04sc01i*</span>”</span> 的别名，总线驱动导出该驱动别名并通过 <code class="systemitem">sysfs</code> 处理相关设备。例如，文件 <code class="filename">/sys/bus/pci/devices/0000:00:0d.0/modalias</code> 应该会包含字符串 <span class="quote">“<span class="quote">pci:v00001319d00000801sv00001319sd00001319bc04sc01i00</span>”</span>。Udev 采用的默认规则会让 <span class="command"><strong>udevd</strong></span> 根据 uevent 环境变量 <code class="envar">MODALIAS</code> 的内容（它应该和 sysfs 里的 <code class="filename">modalias</code> 文件内容一样）调用 <span class="command"><strong>/sbin/modprobe</strong></span>，这样就可以加载在通配符扩展后能和这个字符串一致的所有模块。
+	  </p>
+          <p> 在这个例子里，意味着，除了 <span class="emphasis"><em>snd-fm801</em></span> 之外，一个已经废弃的（不是我们所希望的）驱动 <span class="emphasis"><em>forte</em></span> 如果存在的话也会被加载。下面有几种可以避免加载多余驱动的方式。
+	  </p>
+	  <p> 内核本身也能够根据需要加载网络协议，文件系统以及 NLS 支持模块。
+	  </p>
         </div>
         <div class="sect3">
-          <h3 class="sect3"> 7.3.2.4. Handling Hotpluggable/Dynamic
-            Devices </h3>
-          <p> When you plug in a device, such as a Universal Serial Bus
-            (USB) MP3 player, the kernel recognizes that the device is
-            now connected and generates a uevent. This uevent is then
-            handled by <span class="command"><strong>udevd</strong></span>
-            as described above. </p>
+          <h3 class="sect3"> 7.3.2.4. 处理热插拔/动态设备</h3>
+          <p> 在你插入一个设备时，例如一个通用串行总线（USB）MP3 播放器，内核检测到设备已连接就会生成一个 uevent。这个 uevent 随后会被上面所说的 <span class="command"><strong>udevd</strong></span> 处理。
+	  </p>
         </div>
       </div>
       <div class="sect2" xml:lang="en" lang="en">
-        <h2 class="sect2"> 7.3.3. Problems with Loading Modules and
-          Creating Devices </h2>
-        <p> There are a few possible problems when it comes to
-          automatically creating device nodes. </p>
+        <h2 class="sect2"> 7.3.3. 加载模块和创建设备时可能碰到的问题 </h2>
+        <p> 在自动创建设备节点时可能会碰到一些问题。 </p>
         <div class="sect3">
-          <h3 class="sect3"> 7.3.3.1. A kernel module is not loaded
-            automatically </h3>
-          <p> Udev will only load a module if it has a bus-specific
-            alias and the bus driver properly exports the necessary
-            aliases to <code class="systemitem">sysfs</code>. In other
-            cases, one should arrange module loading by other means.
-            With Linux-3.19, Udev is known to load properly-written
-            drivers for INPUT, IDE, PCI, USB, SCSI, SERIO, and FireWire
-            devices. </p>
-          <p> To determine if the device driver you require has the
-            necessary support for Udev, run <span class="command"><strong>modinfo</strong></span>
-            with the module name as the argument. Now try locating the
-            device directory under <code class="filename">/sys/bus</code>
-            and check whether there is a <code class="filename">modalias</code>
-            file there. </p>
-          <p> If the <code class="filename">modalias</code> file exists
-            in <code class="systemitem">sysfs</code>, the driver
-            supports the device and can talk to it directly, but doesn't
-            have the alias, it is a bug in the driver. Load the driver
-            without the help from Udev and expect the issue to be fixed
-            later. </p>
-          <p> If there is no <code class="filename">modalias</code>
-            file in the relevant directory under <code class="filename">/sys/bus</code>,
-            this means that the kernel developers have not yet added
-            modalias support to this bus type. With Linux-3.19, this is
-            the case with ISA busses. Expect this issue to be fixed in
-            later kernel versions. </p>
-          <p> Udev is not intended to load <span class="quote">“<span
-                class="quote">wrapper</span>”</span> drivers such as <span
-              class="emphasis"><em>snd-pcm-oss</em></span> and
-            non-hardware drivers such as <span class="emphasis"><em>loop</em></span>
-            at all. </p>
+          <h3 class="sect3"> 7.3.3.1. 内核模块没有自动加载</h3>
+          <p> Udev 只会加载包含有特定总线别名而且已经被总线驱动导出到 <code class="systemitem">sysfs</code> 下的模块。在其他情况下，你应该考虑用其他方式加载模块。采用 Linux-3.19，Udev 可以加载编写合适的 INPUT、IDE、PCI、USB、SCSI、SERIO 和 FireWire 设备驱动。
+	  </p>
+          <p> 要确定你希望加载的驱动是否支持 Udev，可以用模块名字作为参数运行 <span class="command"><strong>modinfo</strong></span>。然后查看 <code class="filename">/sys/bus</code> 下的设备目录里是否有个 <code class="filename">modalias</code> 文件。
+	  </p>
+          <p> 如果在 <code class="systemitem">sysfs</code> 下能找到 <code class="filename">modalias</code> 文件，那么就能驱动这个设备并可以直接操作它，但是如果该文件里没有包含设备别名，那意味着这个驱动有问题。我们可以先尝试不依靠 Udev 直接加载驱动，等这个问题以后解决。
+	  </p>
+          <p> 如果在 <code class="filename">/sys/bus</code> 下的相应目录里没有 <code class="filename">modalias</code> 的话，意味着内核开发人员还没有为这个总线类型增加 modalias 支持。使用 Linux-3.19 内核，应该是 ISA 总线的问题。希望这个可以在后面的内核版本里得到解决。
+	  </p>
+          <p> Udev 不会尝试加载类似 <span class="emphasis"><em>snd-pcm-oss</em></span><span class="quote"> 这样的“<span class="quote">封装</span>”</span>驱动，也不会加载类似 <span class="emphasis"><em>loop</em></span> 这样的非硬件驱动。
+	  </p>
         </div>
         <div class="sect3">
-          <h3 class="sect3"> 7.3.3.2. A kernel module is not loaded
-            automatically, and Udev is not intended to load it </h3>
-          <p> If the <span class="quote">“<span class="quote">wrapper</span>”</span>
-            module only enhances the functionality provided by some
-            other module (e.g., <span class="emphasis"><em>snd-pcm-oss</em></span>
-            enhances the functionality of <span class="emphasis"><em>snd-pcm</em></span>
-            by making the sound cards available to OSS applications),
-            configure <span class="command"><strong>modprobe</strong></span>
-            to load the wrapper after Udev loads the wrapped module. To
-            do this, add a <span class="quote">“<span class="quote">softdep</span>”</span>
-            line in any <code class="filename">/etc/modprobe.d/<em
-                class="replaceable"><code>&lt;filename&gt;</code></em>.conf</code>
-            file. For example: </p>
+          <h3 class="sect3"> 7.3.3.2. 内核驱动没有自动加载，Udev 也没有尝试加载</h3>
+          <p> 如果是 <span class="quote">“<span class="quote">封装</span>”</span> 模块只是强化其他模块的功能（比如，<span class="emphasis"><em>snd-pcm-oss</em></span> 模块通过允许 OSS 应用直接访问声卡的方式加强了 <span class="emphasis"><em>snd-pcm</em></span> 模块的功能），需要配置 <span class="command"><strong>modprobe</strong></span> 在 Udev 加载硬件驱动模块后再加载相应的封装模块。可以在任意 <code class="filename">/etc/modprobe.d/<em class="replaceable"><code>&lt;filename&gt;</code></em>.conf</code>文件里增加一行 <span class="quote">“<span class="quote">softdep</span>”</span>，例如：
+	  </p>
           <pre class="screen"><code class="literal">softdep snd-pcm post: snd-pcm-oss</code>
 </pre>
-          <p> Note that the <span class="quote">“<span class="quote">softdep</span>”</span>
-            command also allows <code class="literal">pre:</code>
-            dependencies, or a mixture of both <code class="literal">pre:</code>
-            and <code class="literal">post:</code>. See the <code
-              class="filename">modprobe.d(5)</code> manual page for more
-            information on <span class="quote">“<span class="quote">softdep</span>”</span>
-            syntax and capabilities. </p>
-          <p> If the module in question is not a wrapper and is useful
-            by itself, configure the <span class="command"><strong>modules</strong></span>
-            bootscript to load this module on system boot. To do this,
-            add the module name to the <code class="filename">/etc/sysconfig/modules</code>
-            file on a separate line. This works for wrapper modules too,
-            but is suboptimal in that case. </p>
+          <p> 请注意 <span class="quote">“<span class="quote">softdep</span>”</span> 也支持 <code class="literal">pre:</code> 的依赖方式，或者混合 <code class="literal">pre:</code> 和 <code class="literal">post:</code>。查看 <code class="filename">modprobe.d(5)</code> 手册了解更多关于 <span class="quote">“<span class="quote">softdep</span>”</span> 语法和功能的信息。
+	  </p>
+          <p> 如果问题模块不是一个封装而且也是有用的，配置 <span class="command"><strong>modules</strong></span> 开机脚本在引导系统的时候加载模块。这样需要把模块名字添加到 <code class="filename">/etc/sysconfig/modules</code> 文件里的单独一行。这个也可以用于封装模块，但是只是备用方式。
+	  </p>
         </div>
         <div class="sect3">
-          <h3 class="sect3"> 7.3.3.3. Udev loads some unwanted module </h3>
-          <p> Either don't build the module, or blacklist it in a <code
-              class="filename">/etc/modprobe.d/blacklist.conf</code>
-            file as done with the <span class="emphasis"><em>forte</em></span>
-            module in the example below: </p>
+          <h3 class="sect3"> 7.3.3.3. Udev 加载了一些无用模块 </h3>
+          <p> 要么不要编译该模块，或者把它加入到模块黑名单 <code class="filename">/etc/modprobe.d/blacklist.conf</code> 里，像下面的例子里屏蔽了 <span class="emphasis"><em>forte</em></span> 模块：
+	  </p>
           <pre class="screen"><code class="literal">blacklist forte</code>
 </pre>
-          <p> Blacklisted modules can still be loaded manually with the
-            explicit <span class="command"><strong>modprobe</strong></span>
-            command. </p>
+          <p> 被屏蔽的模块仍然可以用 <span class="command"><strong>modprobe</strong></span> 强行加载。
+	  </p>
         </div>
         <div class="sect3">
-          <h3 class="sect3"> 7.3.3.4. Udev creates a device incorrectly,
-            or makes a wrong symlink </h3>
-          <p> This usually happens if a rule unexpectedly matches a
-            device. For example, a poorly-writen rule can match both a
-            SCSI disk (as desired) and the corresponding SCSI generic
-            device (incorrectly) by vendor. Find the offending rule and
-            make it more specific, with the help of the <span
-              class="command"><strong>udevadm info</strong></span>
-            command. </p>
+          <h3 class="sect3"> 7.3.3.4. Udev 创建了错误的设备节点，或错误的软链接</h3>
+          <p> 这个情况通常是因为设备匹配错误。例如，一条写的不好的规则可能同时匹配到 SCSI 磁盘（希望加载的）和对应厂商的 SCSI 通用设备（错误的）。找出这条问题规则，并通过 <span class="command"><strong>udevadm info</strong></span> 命令的帮助改得更具体一些。
+	  </p>
         </div>
         <div class="sect3">
-          <h3 class="sect3"> 7.3.3.5. Udev rule works unreliably </h3>
-          <p> This may be another manifestation of the previous problem.
-            If not, and your rule uses <code class="systemitem">sysfs</code>
-            attributes, it may be a kernel timing issue, to be fixed in
-            later kernels. For now, you can work around it by creating a
-            rule that waits for the used <code class="systemitem">sysfs</code>
-            attribute and appending it to the <code class="filename">/etc/udev/rules.d/10-wait_for_sysfs.rules</code>
-            file (create this file if it does not exist). Please notify
-            the LFS Development list if you do so and it helps. </p>
+          <h3 class="sect3"> 7.3.3.5. Udev 规则工作不可靠</h3>
+          <p> 这可能是上个问题的另一种表现形式。如果不是，而且你的规则使用了 <code class="systemitem">sysfs</code> 特性，那可能是内核时序问题，希望在后面版本内核里能解决。目前的话，你可以暂时建立一条规则等待使用的 <code class="systemitem">sysfs</code> 特性，并附加到 <code class="filename">/etc/udev/rules.d/10-wait_for_sysfs.rules</code> 文件里（如果没有这个文件就创建一个）。如果你碰到这种情形请通知 LFS 开发邮件列表，这个对我们有帮助。
+	  </p>
         </div>
         <div class="sect3">
-          <h3 class="sect3"> 7.3.3.6. Udev does not create a device </h3>
-          <p> Further text assumes that the driver is built statically
-            into the kernel or already loaded as a module, and that you
-            have already checked that Udev doesn't create a misnamed
-            device. </p>
-          <p> Udev has no information needed to create a device node if
-            a kernel driver does not export its data to <code
-              class="systemitem">sysfs</code>. This is most common with
-            third party drivers from outside the kernel tree. Create a
-            static device node in <code class="filename">/lib/udev/devices</code>
-            with the appropriate major/minor numbers (see the file <code
-              class="filename">devices.txt</code> inside the kernel
-            documentation or the documentation provided by the third
-            party driver vendor). The static device node will be copied
-            to <code class="filename">/dev</code> by the <span
-              class="command"><strong>udev</strong></span> bootscript. </p>
+          <h3 class="sect3"> 7.3.3.6. Udev 没有创建设备</h3>
+          <p> 后面的内容会假设驱动已经静态编译进内核或已经作为模块加载，而且你也已经确认 Udev 没有创建相应的设备节点。
+	  </p>
+          <p> 如果内核驱动没有将自己的数据导出到 <code class="systemitem">sysfs</code> 里，Udev 就没有相关信息来创建设备节点。这通常发生在内核树之外的第三方驱动里。我们可以使用合适的主/副设备数字 ID（查看内核文档里或第三方驱动厂商提供的文档里的 <code class="filename">devices.txt</code> 文件） 在 <code class="filename">/lib/udev/devices</code> 目录里创建一个静态设备节点。这个静态设备节点随后会被 <span class="command"><strong>udev</strong></span> 引导脚本复制到 <code class="filename">/dev</code> 里。
+	  </p>
         </div>
         <div class="sect3">
-          <h3 class="sect3"> 7.3.3.7. Device naming order changes
-            randomly after rebooting </h3>
-          <p> This is due to the fact that Udev, by design, handles
-            uevents and loads modules in parallel, and thus in an
-            unpredictable order. This will never be <span class="quote">“<span
-                class="quote">fixed</span>”</span>. You should not rely
-            upon the kernel device names being stable. Instead, create
-            your own rules that make symlinks with stable names based on
-            some stable attributes of the device, such as a serial
-            number or the output of various *_id utilities installed by
-            Udev. See <a class="xref" href="symlinks.html"
-              title="7.4.&nbsp;Creating Custom Symlinks to Devices">Section&nbsp;7.4,
-
-
-              “Creating Custom Symlinks to Devices”</a> and <a
-              class="xref" href="network.html" title="7.2.&nbsp;General
-              Network Configuration">Section&nbsp;7.2, “General Network
-              Configuration”</a> for examples. </p>
+          <h3 class="sect3"> 7.3.3.7. 设备名称顺序在重启后随机改变</h3>
+          <p> 这是因为 Udev 被设计成并行处理 uevents 并加载模块，所以是不可预期的顺序。这个不会<span class="quote">“<span class="quote">修复</span>”</span>。你不应该依赖稳定的内核模块名称。而是，在检测到设备的稳定特征，比如序列号或 Udev 安装的一些 *_id 应用的输出，来判断设备的稳定名称，之后创建自己的规则生成相应的软链接。可以参考 <a class="xref" href="symlinks.html" title="7.4.&nbsp;创建自定义符号连接设备">7.4, “创建自定义符号连接设备”</a>和<a class="xref" href="network.html" title="7.2.&nbsp;通用网络设置">7.2, “通用网络设置”</a>。
+	  </p>
         </div>
       </div>
       <div class="sect2" xml:lang="en" lang="en">
@@ -315,7 +200,7 @@ href="http://www.kernel.org/pub/linux/kernel/people/mochel/doc/papers/ols-2005/m
             title="第七章 基本系统配置">返回</a>
         </li>
         <li class="home"> <a accesskey="h" href="../index.html"
-            title="Linux From Scratch - Version 7.7-systemd">首页</a> </li>
+            title="Linux From Scratch - Version 7.7-systemd">主页</a> </li>
       </ul>
     </div>
   </body>
