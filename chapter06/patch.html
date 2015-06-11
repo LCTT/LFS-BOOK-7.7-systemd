@@ -18,50 +18,50 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="make.html" title="Make-4.1">Prev</a>
+          <a accesskey="p" href="make.html" title="Make-4.1">上一页</a>
           <p>
             Make-4.1
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="systemd.html" title="Systemd-219">Next</a>
+          <a accesskey="n" href="systemd.html" title="Systemd-219">下一页</a>
           <p>
             Systemd-219
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
-        <a id="ch-system-patch" name="ch-system-patch"></a>6.62. Patch-2.7.4 ictlyh 翻译中
+        <a id="ch-system-patch" name="ch-system-patch"></a>6.62. Patch-2.7.4
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Patch package contains a program for modifying or creating
-          files by applying a <span class="quote">&ldquo;<span class=
-          "quote">patch</span>&rdquo;</span> file typically created by the
-          <span class="command"><strong>diff</strong></span> program.
+            Patch 软件包包含一个通过打<span class="quote">&ldquo;<span class=
+          "quote">补丁</span>&rdquo;</span>创建或修改文件的程序，补丁文件通常由
+          <span class="command"><strong>diff</strong></span>
+          程序生成。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间：</strong>
               <span class="segbody">0.2 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间</strong>
               <span class="segbody">11.6 MB</span>
             </div>
           </div>
@@ -69,28 +69,28 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.62.1. Installation of Patch
+          6.62.1. 安装 Patch
         </h2>
         <p>
-          Prepare Patch for compilation:
+          准备编译 Patch：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/usr</kbd>
 </pre>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          To test the results, issue:
+          用以下命令测试结果：
         </p>
         <pre class="userinput">
 <kbd class="command">make check</kbd>
 </pre>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
@@ -98,20 +98,19 @@
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-patch" name="contents-patch"></a>6.62.2. Contents
-          of Patch
+          <a id="contents-patch" name="contents-patch"></a>6.62.2. Patch 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed program:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">patch</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -129,13 +128,9 @@
                 </td>
                 <td>
                   <p>
-                    Modifies files according to a patch file [A patch file is
-                    normally a difference listing created with the
+                    根据补丁文件修改文件[补丁文件通常是由
                     <span class="command"><strong>diff</strong></span>
-                    program. By applying these differences to the original
-                    files, <span class=
-                    "command"><strong>patch</strong></span> creates the
-                    patched versions.]
+                    程序产生的差异列表。通过对源文件应用这些差异生成打补丁后的版本。]
                   </p>
                 </td>
               </tr>
@@ -145,26 +140,34 @@
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="make.html" title="Make-4.1">Prev</a>
+          <a accesskey="p" href="make.html" title="Make-4.1">上一页</a>
           <p>
             Make-4.1
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="systemd.html" title="Systemd-219">Next</a>
+          <a accesskey="n" href="systemd.html" title="Systemd-219">下一页</a>
           <p>
             Systemd-219
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>

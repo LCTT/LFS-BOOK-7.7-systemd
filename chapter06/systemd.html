@@ -18,49 +18,48 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="patch.html" title="Patch-2.7.4">Prev</a>
+          <a accesskey="p" href="patch.html" title="Patch-2.7.4">上一页</a>
           <p>
             Patch-2.7.4
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="dbus.html" title="D-Bus-1.8.16">Next</a>
+          <a accesskey="n" href="dbus.html" title="D-Bus-1.8.16">下一页</a>
           <p>
             D-Bus-1.8.16
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
     <div class="wrap" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-system-systemd" name="ch-system-systemd"></a>6.63.
-        Systemd-219 ictlyh 翻译中
+        Systemd-219
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The systemd package contains programs for controlling the startup,
-          running, and shutdown of the system.
+            systemd 软件包包含用于控制启动、运行和关闭系统的程序。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间：</strong>
               <span class="segbody">2.1 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间</strong>
               <span class="segbody">815 MB</span>
             </div>
           </div>
@@ -68,11 +67,11 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.63.1. Installation of systemd
+          6.63.1.安装 systemd
         </h2>
         <p>
-          First, create a file to allow systemd to build when using
-          Util-Linux built in Chapter 5 and disable LTO by default:
+            首先创建文件使得当使用第五章中编译的
+            Util-Linux 以及停用默认的 LTO 时能顺利编译 systemd：
         </p>
         <pre class="userinput">
 <kbd class="command">cat &gt; config.cache &lt;&lt; "EOF"
@@ -87,34 +86,35 @@ cc_cv_CFLAGS__flto=no</code>
 EOF</kbd>
 </pre>
         <p>
-          LTO is disabled by default because it causes <span class=
-          "command"><strong>systemd</strong></span> and other auxiliary
-          programs to link to <code class="filename">libgcc_s.so</code>,
-          slows the build down and makes the compiled code larger.
+            默认要停用 LTO 是因为它会使
+            <span class=
+          "command"><strong>systemd</strong></span>
+            以及其它辅助程序链接到
+            <code class="filename">libgcc_s.so</code>、导致编译速度下降以及编译后代码量更大。
         </p>
         <p>
-          Additionally, fix a build error when using Util-Linux built in
-          Chapter 5:
+            另外，修复一个使用第五章中编译的 Util-Linux 时的编译错误：
         </p>
         <pre class="userinput">
 <kbd class="command">sed -i "s:blkid/::" $(grep -rl "blkid/blkid.h")</kbd>
 </pre>
         <p>
-          Apply the following patch so that compat <span class=
-          "command"><strong>pkg-config</strong></span> files get installed
-          without installing compat libs which are useless on LFS:
+            应用下面的补丁使得安装 compat
+            <span class=
+          "command"><strong>pkg-config</strong></span>
+            文件但不安装在 LFS 中没有用的 compat 库：
         </p>
         <pre class="userinput">
 <kbd class="command">patch -Np1 -i ../systemd-219-compat-1.patch</kbd>
 </pre>
         <p>
-          Disable a test case that always fails:
+            停用一个总是失败的测试例程：
         </p>
         <pre class="userinput">
 <kbd class="command">sed -i "s:test/udev-test.pl ::g" Makefile.in</kbd>
 </pre>
         <p>
-          Prepare systemd for compilation:
+          准备编译 systemd：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -137,7 +137,7 @@ EOF</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the configure options:</strong>
+            <strong>配置选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -146,9 +146,9 @@ EOF</kbd>
             </dt>
             <dd>
               <p>
-                This switch tells the build system to use the <code class=
-                "filename">config.cache</code> file which was created
-                earlier.
+                该选项告诉编译系统使用之前创建的
+                <code class=
+                "filename">config.cache</code> 文件。
               </p>
             </dd>
             <dt>
@@ -157,8 +157,7 @@ EOF</kbd>
             </dt>
             <dd>
               <p>
-                These switches ensure that core programs and shared libraries
-                are installed in the subdirectories of the root partition.
+                这些选项确保核心程序以及共享库安装到根目录的子目录中。
               </p>
             </dd>
             <dt>
@@ -167,9 +166,8 @@ EOF</kbd>
             </dt>
             <dd>
               <p>
-                This switch ensures that systemd will work on systems where
-                /bin, /lib and /sbin directories are not symlinks to their
-                /usr counterparts.
+                该选项确保系统中  /bin、/lib 和 /sbin 目录没有到
+                /usr 对应位置的符号链接时 systemd 仍能正常工作。
               </p>
             </dd>
             <dt>
@@ -178,8 +176,7 @@ EOF</kbd>
             </dt>
             <dd>
               <p>
-                These switches disable optional features because LFS does not
-                provide their dependencies.
+                这些选项停用 LFS 没有提供所需依赖的可用功能。
               </p>
             </dd>
             <dt>
@@ -188,10 +185,8 @@ EOF</kbd>
             </dt>
             <dd>
               <p>
-                This switch prevents installation of systemd services
-                responsible for setting up the system for the first time.
-                They are not useful for LFS because everything is done
-                manually.
+                该选项防止安装系统初次启动时会进行设置的 systemd 服务。由于
+                LFS 中所有都要手动设置，它们并无用处。
               </p>
             </dd>
             <dt>
@@ -200,11 +195,10 @@ EOF</kbd>
             </dt>
             <dd>
               <p>
-                This switch prevents installation of a systemd unit that runs
-                <span class="command"><strong>ldconfig</strong></span> at
-                boot, making the boot time longer. Remove it if the described
-                feature is desired, even though it's not useful for source
-                distributions such as LFS.
+                该选项防止安装启动时会运行
+                <span class="command"><strong>ldconfig</strong></span>
+                而导致启动时间过长的 systemd 单元。尽管对于类似 LFS
+                之类的源发行版并无用处，如果需要改功能的话可以移除这个选项。
               </p>
             </dd>
             <dt>
@@ -213,11 +207,9 @@ EOF</kbd>
             </dt>
             <dd>
               <p>
-                This switch prevents installation of systemd services
-                responsible for setting up the <code class=
-                "filename">/etc/group</code> and <code class=
-                "filename">/etc/passwd</code> files. Both files were created
-                early in this chapter.
+                该选项防止安装设置 <code class=
+                "filename">/etc/group</code> 和 <code class=
+                "filename">/etc/passwd</code> 文件的 systemd 服务。本章前面章节中已经创建了这两个文件。
               </p>
             </dd>
             <dt>
@@ -226,24 +218,22 @@ EOF</kbd>
             </dt>
             <dd>
               <p>
-                These switches ensure that D-Bus configuration files get
-                installed in the correct locations.
+                这些选项确保 D-Bus 配置文件安装到了正确的位置。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make LIBRARY_PATH=/tools/lib</kbd>
 </pre>
         <p>
-          This package has a test suite, but it can only be run after the
-          package has been installed.
+            该软件包有个测试套件，但只能在安装后运行。
         </p>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make LD_LIBRARY_PATH=/tools/lib install</kbd>
@@ -256,14 +246,13 @@ EOF</kbd>
 "command">mv -v /usr/lib/libnss_{myhostname,mymachines,resolve}.so.2 /lib</kbd>
 </pre>
         <p>
-          Remove an unnecessary directory:
+            移除一个不必要的目录：
         </p>
         <pre class="userinput">
 <kbd class="command">rm -rfv /usr/lib/rpm</kbd>
 </pre>
         <p>
-          Create the Sysvinit compatibility symlinks, so systemd is used as
-          the default init system:
+            创建和 Sysvinit 兼容的符号链接，使得 systemd 作为默认的启动系统：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -273,9 +262,9 @@ done
 ln -sfv ../lib/systemd/systemd /sbin/init</kbd>
 </pre>
         <p>
-          Remove a reference to a non-existent group and fix a configuration
-          file so it doesn't cause <span class=
-          "command"><strong>systemd-tmpfiles</strong></span> to fail at boot:
+            移除一个到不存在组的引用并修复一个配置文件使得启动时不会导致
+            <span class=
+          "command"><strong>systemd-tmpfiles</strong></span> 失败：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -283,19 +272,16 @@ ln -sfv ../lib/systemd/systemd /sbin/init</kbd>
 sed -i "/pam.d/d" /usr/lib/tmpfiles.d/etc.conf</kbd>
 </pre>
         <p>
-          Create the <code class="filename">/etc/machine-id</code> file
-          needed by <span class=
-          "command"><strong>systemd-journald</strong></span>:
+            创建 <span class=
+          "command"><strong>systemd-journald</strong></span>
+            需要的 <code class="filename">/etc/machine-id</code> 文件：
         </p>
         <pre class="userinput">
 <kbd class="command">systemd-machine-id-setup</kbd>
 </pre>
         <p>
-          Since the testsuite largely depends on the host system kernel
-          configuration, some tests may fail. It also needs a modification in
-          order not to look for a program that will be installed by
-          Util-Linux package later in this chapter. To test the results,
-          issue:
+            由于测试套件高度依赖于宿主系统的内核配置，一些测试很可能失败。另外还需要
+            做些更改使得不会查找本章后面 Util-Linux 软件包安装的一个程序。用以下命令测试结果：
         </p>
         <pre class="userinput">
 <kbd class="command">sed -i "s:minix:ext4:g" src/test/test-path-util.c
@@ -304,13 +290,12 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-systemd" name="contents-systemd"></a>6.63.2.
-          Contents of systemd
+          <a id="contents-systemd" name="contents-systemd"></a>6.63.2. systemd 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">bootctl, busctl, coredumpctl, halt,
               hostnamectl, init, journalctl, kernel-install, localectl,
               loginctl, machinectl, networkctl, poweroff, reboot, runlevel,
@@ -320,17 +305,17 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
               systemd-inhibit, systemd-machine-id-setup, systemd-notify,
               systemd-nspawn, systemd-path, systemd-run,
               systemd-stdio-bridge, systemd-tmpfiles,
-              systemd-tty-ask-password-agent, telinit, timedatectl, and
+              systemd-tty-ask-password-agent, telinit, timedatectl, 和
               udevadm</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed libraries:</strong>
+              <strong class="segtitle">安装的库：</strong>
               <span class="segbody">libnss_myhostname.so.2,
-              libnss_mymachines.so.2, libnss_resolve.so.2, libsystemd.so, and
+              libnss_mymachines.so.2, libnss_resolve.so.2, libsystemd.so, 和
               libudev.so</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directories:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/etc/binfmt.d, /etc/init.d, /etc/kernel,
               /etc/modules-load.d, /etc/sysctl.d, /etc/systemd,
               /etc/tmpfiles.d, /etc/udev, /etc/xdg/systemd, /lib/systemd,
@@ -338,14 +323,14 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
               /usr/lib/kernel, /usr/lib/modules-load.d, /usr/lib/sysctl.d,
               /usr/lib/systemd, /usr/lib/tmpfiles.d,
               /usr/share/doc/systemd-219, /usr/share/factory,
-              /usr/share/systemd, /var/lib/systemd, and
+              /usr/share/systemd, /var/lib/systemd, 和
               /var/log/journal</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -363,7 +348,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    used to query the firmware and boot manager settings
+                    用于查询固件和启动管理设置
                   </p>
                 </td>
               </tr>
@@ -377,7 +362,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to introspect and monitor the D-Bus bus
+                    用于自检和监控 D-Bus 总线
                   </p>
                 </td>
               </tr>
@@ -391,7 +376,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to retrieve coredumps from the systemd Journal
+                    用于检索 systemd 日志生成的核心转储
                   </p>
                 </td>
               </tr>
@@ -405,13 +390,14 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Normally invokes <span class=
-                    "command"><strong>shutdown</strong></span> with the
-                    <em class="parameter"><code>-h</code></em> option, except
-                    when already in run-level 0, then it tells the kernel to
-                    halt the system; it notes in the file <code class=
-                    "filename">/var/log/wtmp</code> that the system is being
-                    brought down
+                    通常调用带
+                    <em class="parameter"><code>-h</code></em>
+                    参数的 <span class=
+                    "command"><strong>shutdown</strong></span>
+                        命令，除非已经是运行等级 0，然后告诉内核暂停系统；它会在
+                        <code class=
+                    "filename">/var/log/wtmp</code>
+                    文件中标记正准备关闭系统。
                   </p>
                 </td>
               </tr>
@@ -425,8 +411,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to query and change the system hostname and related
-                    settings
+                    用于查询或更改系统名称以及相关的设置
                   </p>
                 </td>
               </tr>
@@ -440,9 +425,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    The first process to be started when the kernel has
-                    initialized the hardware which takes over the boot
-                    process and starts all the proceses it is instructed to
+                    内核初始化硬件后接管引导程序而启动的第一个进程，它会启动设置的其它进程。
                   </p>
                 </td>
               </tr>
@@ -456,7 +439,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to query the contents of the systemd Journal
+                    用于查询 systemd 日志的内容
                   </p>
                 </td>
               </tr>
@@ -470,8 +453,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to add and remove kernel and initramfs images to and
-                    from /boot
+                    用于向/从 /boot 中添加或移除 内核以及 initramfs 镜像
                   </p>
                 </td>
               </tr>
@@ -485,8 +467,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to query and change the system locale and keyboard
-                    layout settings
+                    用于查询和更改系统地区和键盘布局设置
                   </p>
                 </td>
               </tr>
@@ -500,8 +481,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to introspect and control the state of the systemd
-                    Login Manager
+                    用于自检和控制 systemd 登录管理器的状态
                   </p>
                 </td>
               </tr>
@@ -515,8 +495,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to introspect and control the state of the systemd
-                    Virtual Machine and Container Registration Manager
+                    用于自检和控制 systemd 虚拟机和容器注册管理器的状态
                   </p>
                 </td>
               </tr>
@@ -530,8 +509,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to introspect the state of the network links as seen
-                    by systemd-networkd
+                    用于检查 systemd-networkd 所看到的网络链接状态
                   </p>
                 </td>
               </tr>
@@ -545,8 +523,8 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Tells the kernel to halt the system and switch off the
-                    computer (see <span class=
+                    告诉内核暂停系统并关闭计算机
+                    (查看 <span class=
                     "command"><strong>halt</strong></span>)
                   </p>
                 </td>
@@ -561,7 +539,8 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Tells the kernel to reboot the system (see <span class=
+                    告诉内核重启系统
+                    (查看 <span class=
                     "command"><strong>halt</strong></span>)
                   </p>
                 </td>
@@ -576,9 +555,9 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Reports the previous and the current run-level, as noted
-                    in the last run-level record in <code class=
-                    "filename">/var/run/utmp</code>
+                    报告之前和当期的运行等级、即
+                    <code class=
+                    "filename">/var/run/utmp</code> 文件中的最后一个运行等级记录
                   </p>
                 </td>
               </tr>
@@ -592,8 +571,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Brings the system down in a secure way, signaling all
-                    processes and notifying all logged-in users
+                    以安全的方式关闭系统、向所有进程发送信号并通知所有登录的用户
                   </p>
                 </td>
               </tr>
@@ -607,8 +585,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to introspect and control the state of the systemd
-                    system and service manager
+                    用于自检和控制 systemd 系统和服务管理器的状态
                   </p>
                 </td>
               </tr>
@@ -622,8 +599,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to determine system boot-up performance of the
-                    current boot
+                    用于确定当前引导中的系统启动性能
                   </p>
                 </td>
               </tr>
@@ -637,9 +613,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to query a system password or passphrase from the
-                    user, using a question message specified on the command
-                    line
+                    通过命令行中的问题消息用于向用户查询系统密码或口令
                   </p>
                 </td>
               </tr>
@@ -653,8 +627,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to connect STDOUT and STDERR of a process with the
-                    Journal
+                    用于连接进程日志的 STDOUT 和 STDERR
                   </p>
                 </td>
               </tr>
@@ -668,8 +641,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Recursively shows the contents of the selected Linux
-                    control group hierarchy in a tree
+                    以树的形式递归显示指定 Linux 控制组层次结构的内容
                   </p>
                 </td>
               </tr>
@@ -683,9 +655,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Shows the top control groups of the local Linux control
-                    group hierarchy, ordered by their CPU, memory and disk
-                    I/O load
+                   按照 CPU、内存和磁盘 I/O 负载的顺序显示本地 Linux 控制组层次结构的顶层控制组
                   </p>
                 </td>
               </tr>
@@ -699,9 +669,8 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to identify and compare configuration files in
-                    <code class="filename">/etc</code> that override default
-                    counterparts in <code class="filename">/usr</code>
+                    用于识别和比较 <code class="filename">/etc</code> 中覆盖
+                    <code class="filename">/usr</code> 对应部分的配置文件
                   </p>
                 </td>
               </tr>
@@ -715,7 +684,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Detects execution in a virtualized environment
+                    在虚拟化环境中检测执行情况
                   </p>
                 </td>
               </tr>
@@ -729,8 +698,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to escape strings for inclusion in systemd unit
-                    names
+                    用于在 systemd 单元名称中包含转义字符串
                   </p>
                 </td>
               </tr>
@@ -744,7 +712,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to manage hardware database (hwdb)
+                    用户管理硬件数据库(hwdb)
                   </p>
                 </td>
               </tr>
@@ -758,8 +726,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to execute a program with a shutdown, sleep or idle
-                    inhibitor lock taken
+                    用于在关机、睡眠或空闲休眠锁时执行程序
                   </p>
                 </td>
               </tr>
@@ -774,10 +741,9 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used by system installer tools to initialize the machine
-                    ID stored in <code class=
-                    "filename">/etc/machine-id</code> at install time with a
-                    randomly generated ID
+                    启动时系统安装程序用随机生成的 ID 初始化保存到
+                    <code class=
+                    "filename">/etc/machine-id</code> 的机器 ID
                   </p>
                 </td>
               </tr>
@@ -791,8 +757,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used by daemon scripts to notify the init system about
-                    status changes
+                    守护进程脚本用于通知 init 系统状态更改
                   </p>
                 </td>
               </tr>
@@ -806,8 +771,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to run a command or OS in a light-weight namespace
-                    container
+                    用于在轻量级容器空间中运行命令或操作系统
                   </p>
                 </td>
               </tr>
@@ -821,7 +785,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to query system and user paths
+                    用于查询系统和用户路径
                   </p>
                 </td>
               </tr>
@@ -835,8 +799,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to create and start a transient .service or a .scope
-                    unit and run the specified command in it
+                    用于创建并运行一个临时 .service 或 .scope 单元并在其中运行指定命令
                   </p>
                 </td>
               </tr>
@@ -850,10 +813,10 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Creates, deletes and cleans up volatile and temporary
-                    files and directories, based on the configuration file
-                    format and location specified in <code class=
-                    "filename">tmpfiles.d</code> directories
+                    基于配置文件格式和
+                    <code class=
+                    "filename">tmpfiles.d</code>
+                    指定的位置创建、删除以及清理易变的和临时文件和目录
                   </p>
                 </td>
               </tr>
@@ -868,7 +831,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to list or process pending systemd password requests
+                    用于列出或执行正在等待的 systemd 密码请求
                   </p>
                 </td>
               </tr>
@@ -882,8 +845,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Tells <span class="command"><strong>init</strong></span>
-                    which run-level to change to
+                    告诉 <span class="command"><strong>init</strong></span> 要更改的运行等级
                   </p>
                 </td>
               </tr>
@@ -897,8 +859,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to query and change the system clock and its
-                    settings
+                    用于查询和更改系统时间和设置
                   </p>
                 </td>
               </tr>
@@ -912,10 +873,8 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    Generic Udev administration tool: controls the udevd
-                    daemon, provides info from the Udev database, monitors
-                    uevents, waits for uevents to finish, tests Udev
-                    configuration, and triggers uevents for a given device
+                    通用 Udev 管理工具：控制 udevd 守护进程、从 Udev 数据库提供信息、
+                    监控 uevent、等待 uevent 完成、检测 Udev 配置、为指定设备触发 uevents
                   </p>
                 </td>
               </tr>
@@ -928,7 +887,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    systemd utility library
+                    systemd 工具库
                   </p>
                 </td>
               </tr>
@@ -941,7 +900,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    A library to access Udev device information
+                    用于获取 Udev 设备信息的库
                   </p>
                 </td>
               </tr>
@@ -951,26 +910,34 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="patch.html" title="Patch-2.7.4">Prev</a>
+          <a accesskey="p" href="patch.html" title="Patch-2.7.4">上一页</a>
           <p>
             Patch-2.7.4
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="dbus.html" title="D-Bus-1.8.16">Next</a>
+          <a accesskey="n" href="dbus.html" title="D-Bus-1.8.16">下一页</a>
           <p>
             D-Bus-1.8.16
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
