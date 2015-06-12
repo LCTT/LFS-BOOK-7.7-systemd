@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -18,29 +18,29 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="systemd.html" title="Systemd-219">Prev</a>
+          <a accesskey="p" href="systemd.html" title="Systemd-219">上一页</a>
           <p>
             Systemd-219
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="util-linux.html" title=
-          "Util-linux-2.26">Next</a>
+          "Util-linux-2.26">下一页</a>
           <p>
             Util-linux-2.26
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
@@ -50,23 +50,19 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          D-Bus is a message bus system, a simple way for applications to
-          talk to one another. D-Bus supplies both a system daemon (for
-          events such as "new hardware device added" or "printer queue
-          changed") and a per-user-login-session daemon (for general IPC
-          needs among user applications). Also, the message bus is built on
-          top of a general one-to-one message passing framework, which can be
-          used by any two applications to communicate directly (without going
-          through the message bus daemon).
+            D-Bus 是一个消息总线系统，应用之间相互通信的简单方式。D-Bus
+            支持系统守护进程(例如添加新硬件设备或打印队列更改事件)和每个用户的登录会话守护进程
+            (例如用户应用程序之间的一般进程间通信)。另外，消息总线在通用一对一消息传递框架之上构建，
+            该框架使得任意两个应用可以直接通信(而不需要通过消息总线守护进程)。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间：</strong>
               <span class="segbody">0.4 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间：</strong>
               <span class="segbody">43 MB</span>
             </div>
           </div>
@@ -74,10 +70,10 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.64.1. Installation of D-Bus
+          6.64.1. 安装 D-Bus
         </h2>
         <p>
-          Prepare D-Bus for compilation:
+          准备编译 D-Bus：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/usr                       \
@@ -88,7 +84,7 @@
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the configure options:</strong>
+            <strong>配置选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -97,43 +93,47 @@
             </dt>
             <dd>
               <p>
-                This specifies the location of the ConsoleKit auth directory.
+                该选项指定 ConsoleKit 验证目录的位置。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          This package does come with a testsuite, but it requires several
-          packages that are not included in LFS. Instructions for running the
-          testsuite can be found in the BLFS book at <a class="ulink" href=
+            该软件包没有测试套件，但要求 LFS 中没有的几个软件包。运行测试套件的命令可以在
+            BLFS 指南
+            <a class="ulink" href=
           "http://www.linuxfromscratch.org/blfs/view/systemd/general/dbus.html">
-          http://www.linuxfromscratch.org/blfs/view/systemd/general/dbus.html</a>.
+          http://www.linuxfromscratch.org/blfs/view/systemd/general/dbus.html</a>
+          中找到。
         </p>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
 </pre>
         <p>
-          The shared library needs to be moved to <code class=
-          "filename">/lib</code>, and as a result the <code class=
-          "filename">.so</code> file in <code class=
-          "filename">/usr/lib</code> will need to be recreated:
+            需要移动共享库到
+            <code class=
+          "filename">/lib</code>，因此需要重建
+          <code class=
+          "filename">/usr/lib</code>
+          中的 <code class=
+          "filename">.so</code> 文件：
         </p>
         <pre class="userinput">
 <kbd class="command">mv -v /usr/lib/libdbus-1.so.* /lib
 ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so</kbd>
 </pre>
         <p>
-          Create a symlink, so that D-Bus and systemd can use the same
-          <code class="filename">machine-id</code> file:
+            创建符号链接，使得 D-Bus 和 systemd 可以使用相同的
+          <code class="filename">machine-id</code> 文件：
         </p>
         <pre class="userinput">
 <kbd class="command">ln -sfv /etc/machine-id /var/lib/dbus</kbd>
@@ -141,32 +141,31 @@ ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-dbus" name="contents-dbus"></a>6.64.2. Contents of
-          D-Bus
+          <a id="contents-dbus" name="contents-dbus"></a>6.64.2. D-Bus 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">dbus-cleanup-sockets, dbus-daemon,
-              dbus-launch, dbus-monitor, dbus-run-session, dbus-send, and
+              dbus-launch, dbus-monitor, dbus-run-session, dbus-send, 和
               dbus-uuidgen</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed libraries:</strong>
+              <strong class="segtitle">安装的库：</strong>
               <span class="segbody">libdbus-1.{a,so}</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directories:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/etc/dbus-1, /usr/include/dbus-1.0,
               /usr/lib/dbus-1.0, /usr/share/dbus-1,
-              /usr/share/doc/dbus-1.8.16, and /var/lib/dbus</span>
+              /usr/share/doc/dbus-1.8.16, 和 /var/lib/dbus</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+           简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -184,7 +183,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to clean up leftover sockets in a directory
+                    用于清理目录中残留的套接字
                   </p>
                 </td>
               </tr>
@@ -198,7 +197,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so</kbd>
                 </td>
                 <td>
                   <p>
-                    The D-Bus message bus daemon
+                    D-Bus 消息总线守护进程
                   </p>
                 </td>
               </tr>
@@ -212,9 +211,8 @@ ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Starts <span class=
-                    "command"><strong>dbus-daemon</strong></span> from a
-                    shell script
+                   从 shell 脚本启动 <span class=
+                    "command"><strong>dbus-daemon</strong></span>
                   </p>
                 </td>
               </tr>
@@ -228,7 +226,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Monitors messages passing through a D-Bus message bus
+                    监控 D-Bus 消息总线中传送的消息
                   </p>
                 </td>
               </tr>
@@ -242,10 +240,9 @@ ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Starts a session bus instance of <span class=
-                    "command"><strong>dbus-daemon</strong></span> from a
-                    shell script and starts a specified program in that
-                    session
+                    从 shell 脚本中启动一个 <span class=
+                    "command"><strong>dbus-daemon</strong></span>
+                        会话总线实例并在会话中启动指定程序
                   </p>
                 </td>
               </tr>
@@ -259,7 +256,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Sends a message to a D-Bus message bus
+                    发送消息到 D-Bus 消息总线
                   </p>
                 </td>
               </tr>
@@ -273,7 +270,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Generates a universally unique ID
+                    生成一个通用唯一 ID
                   </p>
                 </td>
               </tr>
@@ -286,8 +283,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so</kbd>
                 </td>
                 <td>
                   <p>
-                    Contains API functions used to communicate with the D-Bus
-                    message bus
+                    包含用于和 D-Bus 消息总线交互的 API 函数
                   </p>
                 </td>
               </tr>
@@ -299,25 +295,25 @@ ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so</kbd>
     <div class="navfooter">
       <ul>
         <li class="prev">
-          <a accesskey="p" href="systemd.html" title="Systemd-219">Prev</a>
+          <a accesskey="p" href="systemd.html" title="Systemd-219">上一页</a>
           <p>
             Systemd-219
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="util-linux.html" title=
-          "Util-linux-2.26">Next</a>
+          "Util-linux-2.26">下一页</a>
           <p>
             Util-linux-2.26
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
