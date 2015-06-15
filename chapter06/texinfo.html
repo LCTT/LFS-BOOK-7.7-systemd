@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -18,28 +18,28 @@
         Linux From Scratch - Version 7.7-systemd
       </h4>
       <h3>
-        Chapter&nbsp;6.&nbsp;Installing Basic System Software
+        第六章&nbsp;安装基本的系统软件
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="tar.html" title="Tar-1.28">Prev</a>
+          <a accesskey="p" href="tar.html" title="Tar-1.28">上一页</a>
           <p>
             Tar-1.28
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="vim.html" title="Vim-7.4">Next</a>
+          <a accesskey="n" href="vim.html" title="Vim-7.4">下一页</a>
           <p>
             Vim-7.4
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
@@ -50,17 +50,16 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          The Texinfo package contains programs for reading, writing, and
-          converting info pages.
+            Texinfo 软件包包含用于读、写以及转换信息页的程序。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Approximate build time:</strong>
+              <strong class="segtitle">大概编译时间：</strong>
               <span class="segbody">0.5 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Required disk space:</strong>
+              <strong class="segtitle">需要磁盘空间：</strong>
               <span class="segbody">109 MB</span>
             </div>
           </div>
@@ -68,41 +67,41 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          6.68.1. Installation of Texinfo
+          6.68.1. 安装 Texinfo
         </h2>
         <p>
-          Prepare Texinfo for compilation:
+          准备编译 Texinfo：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/usr</kbd>
 </pre>
         <p>
-          Compile the package:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          To test the results, issue:
+            用以下命令测试结果：
         </p>
         <pre class="userinput">
 <kbd class="command">make check</kbd>
 </pre>
         <p>
-          Install the package:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
 </pre>
         <p>
-          Optionally, install the components belonging in a TeX installation:
+            可选地安装 TeX 中的组件：
         </p>
         <pre class="userinput">
 <kbd class="command">make TEXMF=/usr/share/texmf install-tex</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>The meaning of the make parameter:</strong>
+            <strong>make 参数的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -111,22 +110,21 @@
             </dt>
             <dd>
               <p>
-                The <code class="envar">TEXMF</code> makefile variable holds
-                the location of the root of the TeX tree if, for example, a
-                TeX package will be installed later.
+                如果后面会安装 TeX 软件包，
+                <code class="envar">TEXMF</code> makefile 变量保存了作为
+                TeX 树根的位置
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          The Info documentation system uses a plain text file to hold its
-          list of menu entries. The file is located at <code class=
-          "filename">/usr/share/info/dir</code>. Unfortunately, due to
-          occasional problems in the Makefiles of various packages, it can
-          sometimes get out of sync with the info pages installed on the
-          system. If the <code class="filename">/usr/share/info/dir</code>
-          file ever needs to be recreated, the following optional commands
-          will accomplish the task:
+          该信息文档系统使用一个纯文本文件来存放菜单条目清单。文件保存在
+          <code class=
+          "filename">/usr/share/info/dir</code>。
+          不幸的是，由于不同软件包 Makefile
+          的偶然问题，有时候会和系统中安装的信息页不同步。如果需要重建
+          <code class="filename">/usr/share/info/dir</code>
+          文件，下面的可选命令能完成任务：
         </p>
         <pre class="userinput">
 <kbd class="command">pushd /usr/share/info
@@ -139,26 +137,25 @@ popd</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-texinfo" name="contents-texinfo"></a>6.68.2.
-          Contents of Texinfo
+          <a id="contents-texinfo" name="contents-texinfo"></a>6.68.2. Texinfo 的内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">Installed programs:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">info, infokey, install-info, makeinfo
-              (link to texi2any), pdftexi2dvi, pod2texi, texi2any, texi2dvi,
-              texi2pdf, and texindex</span>
+              (链接到 texi2any), pdftexi2dvi, pod2texi, texi2any, texi2dvi,
+              texi2pdf, 和 texindex</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">Installed directory:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/usr/share/texinfo</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -176,12 +173,10 @@ popd</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to read info pages which are similar to man pages,
-                    but often go much deeper than just explaining all the
-                    available command line options [For example, compare
-                    <span class="command"><strong>man bison</strong></span>
-                    and <span class="command"><strong>info
-                    bison</strong></span>.]
+                    用于读取和 man 页面相似的信息页，但和只是解释所有可用命令行选项相比更加深入，
+                    [例如比较 <span class="command"><strong>man bison</strong></span>
+                    和 <span class="command"><strong>info
+                    bison</strong></span>]
                   </p>
                 </td>
               </tr>
@@ -195,8 +190,7 @@ popd</kbd>
                 </td>
                 <td>
                   <p>
-                    Compiles a source file containing Info customizations
-                    into a binary format
+                    编译包含自定义 Info 的源文件为二进制格式
                   </p>
                 </td>
               </tr>
@@ -210,9 +204,9 @@ popd</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to install info pages; it updates entries in the
-                    <span class="command"><strong>info</strong></span> index
-                    file
+                    用于安装信息页；它会更新
+                    <span class="command"><strong>info</strong></span>
+                    索引文件中的条目
                   </p>
                 </td>
               </tr>
@@ -226,8 +220,7 @@ popd</kbd>
                 </td>
                 <td>
                   <p>
-                    Translates the given Texinfo source documents into info
-                    pages, plain text, or HTML
+                    翻译给定的 Texinfo 源文档为信息页、纯文本或 HTML
                   </p>
                 </td>
               </tr>
@@ -241,8 +234,7 @@ popd</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to format the given Texinfo document into a Portable
-                    Document Format (PDF) file
+                    用于格式化给定的 Texinfo 文档为 PDF 文件
                   </p>
                 </td>
               </tr>
@@ -256,7 +248,7 @@ popd</kbd>
                 </td>
                 <td>
                   <p>
-                    Converts Pod to Texinfo format
+                    转换 Pod 为 Texinfo 格式
                   </p>
                 </td>
               </tr>
@@ -270,8 +262,7 @@ popd</kbd>
                 </td>
                 <td>
                   <p>
-                    Translate Texinfo source documentation to various other
-                    formats
+                    翻译 Texinfo 源文档为多种其它格式
                   </p>
                 </td>
               </tr>
@@ -285,8 +276,7 @@ popd</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to format the given Texinfo document into a
-                    device-independent file that can be printed
+                    用于格式化给定 Texinfo 文档为可打印的设备无关文件
                   </p>
                 </td>
               </tr>
@@ -300,8 +290,7 @@ popd</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to format the given Texinfo document into a Portable
-                    Document Format (PDF) file
+                    用于格式化给定 Texinfo 文档为 PDF 文件
                   </p>
                 </td>
               </tr>
@@ -315,7 +304,7 @@ popd</kbd>
                 </td>
                 <td>
                   <p>
-                    Used to sort Texinfo index files
+                    用于对 Texinfo 索引文件进行排序
                   </p>
                 </td>
               </tr>
@@ -325,26 +314,34 @@ popd</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="tar.html" title="Tar-1.28">Prev</a>
+          <a accesskey="p" href="tar.html" title="Tar-1.28">上一页</a>
           <p>
             Tar-1.28
           </p>
         </li>
         <li class="next">
-          <a accesskey="n" href="vim.html" title="Vim-7.4">Next</a>
+          <a accesskey="n" href="vim.html" title="Vim-7.4">下一页</a>
           <p>
             Vim-7.4
           </p>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "Chapter&nbsp;6.&nbsp;Installing Basic System Software">Up</a>
+          "第六章&nbsp;安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
-          "Linux From Scratch - Version 7.7-systemd">Home</a>
+          "Linux From Scratch - Version 7.7-systemd">主页</a>
         </li>
       </ul>
     </div>
