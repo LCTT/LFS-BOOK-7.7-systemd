@@ -131,7 +131,7 @@ cd ../glibc-build</kbd>
             </dt>
             <dd>
               <p>
-                编译库但没有分析信息。如果临时工具分析信息是必要的话就省略这个选项。
+                编译库但不包含分析信息。如果临时工具需要分析信息则忽略此选项。
               </p>
             </dd>
             <dt>
@@ -140,7 +140,7 @@ cd ../glibc-build</kbd>
             </dt>
             <dd>
               <p>
-                这告诉 Glibc 编译能支持 2.6.32 以及之后 Linux 内核的库。不支持旧版本的内核。
+                这告诉 Glibc 编译能支持 Linux 2.6.32 以及之后的内核库。更早的内核版本不受支持。
               </p>
             </dd>
             <dt>
@@ -149,7 +149,7 @@ cd ../glibc-build</kbd>
             </dt>
             <dd>
               <p>
-                告诉 Glibc 在安装在 tools 文件夹中的头文件之上编译自己，因此它能知道内核有具体有什么功能，并基于此作出优化。
+                告诉 Glibc 利用刚刚安装在 tools 文件夹中的头文件编译自身，此能够根据内核的具体特性提供更好的优化。
               </p>
             </dd>
             <dt>
@@ -169,7 +169,7 @@ cd ../glibc-build</kbd>
             </dt>
             <dd>
               <p>
-                类似的，我们传递 libc_cv_c_cleanup=yes 到<span class="command"><strong>configure</strong></span> 脚本跳过测试就完成了 C 清理支持的配置。
+                类似的，我们传递 libc_cv_c_cleanup=yes 到 <span class="command"><strong>configure</strong></span> 脚本跳过测试就完成了 C 清理支持的配置。
               </p>
             </dd>
             <dt>
@@ -262,7 +262,7 @@ readelf -l a.out | grep ': /tools'</kbd>
             注意
           </h3>
           <p>
-            在下一页之后编译 Binutils 章节时会再一次检查工具链是否正确编译。如果Binutils 编译失败，说明之前安装 Binutils、GCC、或者 Glibc 时某些地方出现了错误。
+            在后面的编译 Binutils 章节时会再一次检查工具链是否正确编译。如果 Binutils 编译失败，说明之前安装 Binutils、GCC、或者 Glibc 时某些地方出现了错误。
           </p>
         </div>
       </div>
@@ -279,7 +279,7 @@ readelf -l a.out | grep ': /tools'</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,</span>
             </div>
         </div>
         </div>
