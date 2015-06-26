@@ -49,7 +49,7 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          Expect软件包包含一个实现用脚本和其他交互式程序进行对话的程序。
+          Expect 软件包包含一个实现用脚本和其他交互式程序进行对话的程序。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -66,17 +66,18 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          5.12.1. 安装Expect
+          5.12.1. 安装 Expect
         </h2>
         <p>
-          首先，强制Expect的configure配置脚本使用<code class="filename">/bin/stty</code>替代宿主机系统里可能存在的<code class="filename">/usr/local/bin/stty</code>。这样可以保证我们的测试套件工具在工具链的最后一次构建能够正常。
+          首先，强制 Expect 的 configure 配置脚本使用 <code class="filename">/bin/stty</code> 替代宿主机系统里可能存在的
+          <code class="filename">/usr/local/bin/stty</code>。这样可以保证我们的测试套件工具在工具链的最后一次构建能够正常。
         </p>
         <pre class="userinput">
 <kbd class="command">cp -v configure{,.orig}
 sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
 </pre>
         <p>
-          现在配置Expect准备编译：
+          现在配置 Expect 准备编译：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/tools       \
@@ -94,7 +95,8 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
             </dt>
             <dd>
               <p>
-                这个选项可以保证configure配置脚本会从临时工具目录里找Tcl的安装位置，而不是找到宿主机系统里可能现有的。
+                这个选项可以保证 configure 配置脚本会从临时工具目录里找 Tcl 的安装位置，
+                而不是在宿主机系统中寻找。
               </p>
             </dd>
             <dt>
@@ -103,7 +105,8 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
             </dt>
             <dd>
               <p>
-                这个选项会给Expect显示地指定Tcl内部头文件的位置。通过这个选项可以避免<span class="command"><strong>configure</strong></span>脚本不能自动发现Tcl头文件位置的情况。
+                这个选项会给 Expect 显式地指定 Tcl 内部头文件的位置。通过这个选项可以避免
+                <span class="command"><strong>configure</strong></span> 脚本不能自动发现 Tcl 头文件位置的情况。
               </p>
             </dd>
           </dl>
@@ -115,13 +118,15 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          现在编译已经完成。之前说过，不要求为本章中所构建的临时工具运行测试套件。不过你仍然要测试Expect的话可以用下面的命令：
+          现在编译已经完成。之前说过，不要求为本章中所构建的临时工具运行测试套件。
+          不过你仍然要测试 Expect 的话可以用下面的命令：
         </p>
         <pre class="userinput">
 <kbd class="command">make test</kbd>
 </pre>
         <p>
-          请注意Expect测试套件已知在某些宿主机特定情况下有过失败的情况，我们还没有完全把握。不过，在这里测试套件运行失败并不奇怪，也不认为是关键问题。
+          请注意 Expect 测试套件已知在某些宿主机特定情况下有过失败的情况，
+          我们还没有完全把握。不过，在这里测试套件运行失败并不奇怪，也不认为是关键问题。
         </p>
         <p>
           安装软件包：
@@ -140,7 +145,7 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
             </dt>
             <dd>
               <p>
-                这个变量可以避免安装额外的Expect脚本，没有必要。
+                这个变量可以避免安装额外的 Expect 脚本，没有必要。
               </p>
             </dd>
           </dl>
@@ -148,7 +153,7 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-expect" name="contents-expect"></a>5.12.2. Expect软件包内容
+          <a id="contents-expect" name="contents-expect"></a>5.12.2. Expect 软件包内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -196,7 +201,7 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
                 </td>
                 <td>
                   <p>
-                    包含一些函数允许Expect用作Tcl扩展或直接用于C/C++（不用Tcl）。
+                    包含一些函数允许 Expect 用作 Tcl 扩展或直接用于 C/C++（不用 Tcl）。
                   </p>
                 </td>
               </tr>
@@ -210,7 +215,7 @@ sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/</span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a></span>
             </div>
         </div>
       </div>

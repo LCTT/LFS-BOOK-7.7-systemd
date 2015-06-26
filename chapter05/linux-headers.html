@@ -51,7 +51,7 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-            Linux API 头文件(在 linux-3.19.tar.xz)展示了供 Glibc 使用的内核 API。
+            Linux API 头文件(在 linux-3.19.tar.xz 中)展示了供 Glibc 使用的内核 API。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -71,19 +71,18 @@
           5.6.1. 安装 Linux API 头文件
         </h2>
         <p>
-            Linux 内核需要展示供系统 C 库(在 LFS 中是 Glibc)使用的
-            应用程序编程接口(API)。这通过在 Linux 内核源代码 tar 包
-            中包括一些 C 头文件来完成。
+            Linux 内核需要展示供系统 C 库(在 LFS 中是 Glibc)使用的应用程序编程接口(API)。
+            这通过在 Linux 内核源代码 tar 包中包括一些 C 头文件来完成。
         </p>
         <p>
-          确认这里没有陈旧的文件以及对之前操作没有依赖：
+          确认这里没有陈旧的文件且不依赖于之前的操作：
         </p>
         <pre class="userinput">
 <kbd class="command">make mrproper</kbd>
 </pre>
         <p>
-            从源代码中提取用户可见的内核头文件。把他们保存在一个临时本地文件夹中
-            然后复制到所需的位置，因为解压过程会移除目标文件夹任何已有的文件。
+            从源代码中提取用户可见的内核头文件。把他们保存在一个临时本地文件夹中然后复制到所需的位置，
+            因为解压过程会移除目标文件夹中任何已有的文件。
         </p>
         <pre class="userinput">
 <kbd class="command">make INSTALL_HDR_PATH=dest headers_install
@@ -104,7 +103,7 @@
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a></span>
             </div>
         </div>
         </div>

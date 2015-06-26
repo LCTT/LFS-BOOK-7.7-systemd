@@ -50,7 +50,7 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          Ncurses软件包包含与终端无关的处理字符界面的库。
+          Ncurses 软件包包含与终端无关的处理字符界面的库。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -67,10 +67,10 @@
       </div>
       <div class="installation" lang="en" xml:lang="en">
         <h2 class="sect2">
-          5.15.1. 安装Ncurses
+          5.15.1. 安装 Ncurses
         </h2>
         <p>
-          配置Ncurses准备编译：
+          配置 Ncurses 准备编译：
         </p>
         <pre class="userinput">
 <kbd class="command">./configure --prefix=/tools \
@@ -91,7 +91,8 @@
             </dt>
             <dd>
               <p>
-                这个选项会保证Ncurse不会编译对宿主机系统里可能存在的Ada编译器的支持，而这在我们<span class="command"><strong>chroot</strong></span>切换环境后就不再可用。
+                这个选项会保证 Ncurse 不会编译对宿主机系统里可能存在的 Ada 编译器的支持，
+                而这在我们 <span class="command"><strong>chroot</strong></span> 切换环境后就不再可用。
               </p>
             </dd>
             <dt>
@@ -100,7 +101,9 @@
             </dt>
             <dd>
               <p>
-                这个选项会告诉Ncurses安装它的头文件到<code class="filename">/tools/include</code>目录，而不是<code class="filename">/tools/include/ncurses</code>目录，保证其他软件包可以正常找到Ncurses的头文件。
+                这个选项会告诉 Ncurses 安装它的头文件到 <code class="filename">/tools/include</code> 目录，
+                而不是 <code class="filename">/tools/include/ncurses</code> 目录，
+                保证其他软件包可以正常找到 Ncurses 的头文件。
               </p>
             </dd>
             <dt>
@@ -109,7 +112,10 @@
             </dt>
             <dd>
               <p>
-                这个选项会控制编译宽字符库（比如，<code class="filename">libncursesw.so.5.9</code>）而不是默认的普通库（比如，<code class="filename">libncurses.so.5.9</code>）。这些宽字符库在多字节和传统的8位环境下使用，而普通库只能用于8位环境。宽字符库和普通库的源代码是兼容的，单并不是二进制兼容。
+                这个选项会控制编译宽字符库（比如，<code class="filename">libncursesw.so.5.9</code>）
+                而不是默认的普通库（比如，<code class="filename">libncurses.so.5.9</code>）。
+                这些宽字符库在多字节和传统的 8 位环境下使用，而普通库只能用于 8 位环境。
+                宽字符库和普通库的源代码是兼容的，但并不是二进制兼容。
               </p>
             </dd>
           </dl>
@@ -121,7 +127,8 @@
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          这个软件包有测试套件，但是只有在安装后才能执行。测试用例在<code class="filename">test/</code>目录里。查看该目录下的<code class="filename">README</code>文件了解更多细节。
+          这个软件包有测试套件，但是只有在安装后才能执行。测试用例在 <code class="filename">test/</code> 目录里。
+          查看该目录下的 <code class="filename">README</code> 文件了解更多细节。
         </p>
         <p>
           安装软件包：
@@ -143,7 +150,7 @@
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/</span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a></span>
             </div>
         </div>
       </div>

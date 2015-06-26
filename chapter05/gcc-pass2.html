@@ -51,7 +51,7 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          GCC软件包包含GNU编译器集合，其中有 C 和 C++ 编译器。
+          GCC 软件包包含 GNU 编译器集合，其中有 C 和 C++ 编译器。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -71,13 +71,13 @@
           5.10.1. 安装 GCC
         </h2>
         <p>
-            我们第一次编译 GCC 的时候安装了一些内部系统头文件。其中的一个<code class=
-          "filename">limits.h</code> 会反过来包括对应的系统头文件<code class="filename">limits.h</code>，
+            我们第一次编译 GCC 的时候安装了一些内部系统头文件。其中的一个 <code class=
+          "filename">limits.h</code> 会反过来包括对应的系统头文件 <code class="filename">limits.h</code>，
             在我们的例子中，是 <code class="filename">/tools/include/limits.h</code>。但是，第一次编译 gcc
             的时候 <code class=
           "filename">/tools/include/limits.h</code> 并不存在，因此 GCC 安装的内部头文件只是部分的自包含文件，
-          并不包括系统头文件的扩展功能。这足以编译临时 libc，但是这次编译 GCC 要求完整的内部头文件。使用和正常
-          情况下 GCC 编译系统使用的相同的命令创建一个完整版本的内部头文件：
+          并不包括系统头文件的扩展功能。这足以编译临时 libc，但是这次编译 GCC 要求完整的内部头文件。
+          使用和正常情况下 GCC 编译系统使用的相同的命令创建一个完整版本的内部头文件：
         </p>
         <pre class="userinput">
 <kbd class="command">cat gcc/limitx.h gcc/glimits.h gcc/limity.h &gt; \
@@ -171,9 +171,9 @@ RANLIB=$LFS_TGT-ranlib                             \
             <dd>
               <p>
                 对于原生编译的 GCC，默认是做一个“引导”构建。这不仅会编译 GCC，而且会多次编译。
-                它用第一次编译的程序去第二次编译自己，然后同样进行第三次。比较第二次和第三次迭代
-                确保它可以完美复制自身。这也意味着已经成功编译。但是，LFS 的构建方法应该提供一个
-                稳定的编译器，而不需要每次都重新引导。
+                它用第一次编译的程序去第二次编译自己，然后同样进行第三次。
+                比较第二次和第三次迭代确保它可以完美复制自身。这也意味着已经成功编译。
+                但是，LFS 的构建方法能够提供一个稳定的编译器，而不需要每次都重新引导。
               </p>
             </dd>
           </dl>
@@ -191,10 +191,10 @@ RANLIB=$LFS_TGT-ranlib                             \
 <kbd class="command">make install</kbd>
 </pre>
         <p>
-            创建一个符号链接作为画龙点睛。很多程序和脚本执行 <span class="command"><strong>cc</strong></span>
-            而不是 <span class="command"><strong>gcc</strong></span>来保持程序的通用性，因而在所有并不总是
-            安装了 GNU C 编译器的 Unix 类型的系统上都可以使用。运行 <span class="command"><strong>cc</strong></span>
-            使得系统管理员不用考虑要安装那种 C 编译器：
+            作为画龙点睛，这里创建一个符号链接。很多程序和脚本执行 <span class="command"><strong>cc</strong></span>
+            而不是 <span class="command"><strong>gcc</strong></span>来保持程序的通用性，
+            因而在所有并不总是安装了 GNU C 编译器的 Unix 类型的系统上都可以使用。
+            运行 <span class="command"><strong>cc</strong></span> 使得系统管理员不用考虑要安装那种 C 编译器：
         </p>
         <pre class="userinput">
 <kbd class="command">ln -sv gcc /tools/bin/cc</kbd>
@@ -259,7 +259,7 @@ readelf -l a.out | grep ': /tools'</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a></span>
             </div>
         </div>
         </div>
