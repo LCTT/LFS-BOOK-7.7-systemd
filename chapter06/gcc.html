@@ -241,7 +241,7 @@ readelf -l a.out | grep ': /lib'</kbd>
  /usr/include</code>
 </pre>
         <p>
-            同意，注意你的目标三元组后面的目录名称可能和上面的不同，取决于你的架构。
+            同时，注意你的目标三元组后面的目录名称可能和上面的不同，取决于你的架构。
         </p>
         <div class="admon note">
           <img alt="[Note]" src="../images/note.png" />
@@ -334,8 +334,8 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</kbd>
           <div class="seglistitem">
             <div class="seg">
               <strong class="segtitle">安装的程序:</strong>
-              <span class="segbody">c++, cc (link to gcc), cpp, g++, gcc,
-              gcc-ar, gcc-nm, gcc-ranlib, and gcov</span>
+              <span class="segbody">c++, cc (链接到 gcc), cpp, g++, gcc,
+              gcc-ar, gcc-nm, gcc-ranlib, 和 gcov</span>
             </div>
             <div class="seg">
               <strong class="segtitle">安装的库:</strong>
@@ -343,12 +343,12 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</kbd>
               libgcc.a, libgcc_eh.a, libgcc_s.so, libgcov.a, libgomp.{a,so},
               libiberty.a, libitm.{a,so}, liblto_plugin.so,
               libquadmath.{a,so}, libssp.{a,so}, libssp_nonshared.a,
-              libstdc++.{a,so}, libsupc++.a, and libtsan.{a,so}</span>
+              libstdc++.{a,so}, libsupc++.a, 和 libtsan.{a,so}</span>
             </div>
             <div class="seg">
               <strong class="segtitle">安装目录:</strong>
               <span class="segbody">/usr/include/c++, /usr/lib/gcc,
-              /usr/libexec/gcc, and /usr/share/gcc-4.9.2</span>
+              /usr/libexec/gcc, 和 /usr/share/gcc-4.9.2</span>
             </div>
           </div>
         </div>
@@ -439,7 +439,7 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</kbd>
                   <p>
                     增加语句到命令行的 <span class=
                     "command"><strong>ar</strong></span> 的封装。这个程序只用于添加
-                        "链接时间优化" 在默认编译选择中不起作用
+                        "链接时间优化"，在默认编译选择中不起作用
                   </p>
                 </td>
               </tr>
@@ -455,7 +455,7 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</kbd>
                   <p>
                     增加语句到命令行的 <span class=
                     "command"><strong>nm</strong></span> 的封装。这个程序只用于添加
-                        "链接时间优化" 在默认编译选择中不起作用
+                        "链接时间优化"，在默认编译选择中不起作用
                   </p>
                 </td>
               </tr>
@@ -471,7 +471,7 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</kbd>
                   <p>
                     增加语句到命令行的 <span class=
                     "command"><strong>ranlib</strong></span> 的封装。这个程序只用于添加
-                        "链接时间优化" 在默认编译选择中不起作用
+                        "链接时间优化"，在默认编译选择中不起作用
                   </p>
                 </td>
               </tr>
@@ -526,7 +526,7 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</kbd>
                 </td>
                 <td>
                   <p>
-                    指示 GCC 启用分析是该库会被链接到一个程序中 
+                    指示 GCC 启用分析时该库会被链接到一个程序中 
                   </p>
                 </td>
               </tr>
@@ -556,7 +556,7 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</kbd>
                     <span class="command"><strong>getopt</strong></span>,
                     <span class="command"><strong>obstack</strong></span>,
                     <span class="command"><strong>strerror</strong></span>,
-                    <span class="command"><strong>strtol</strong></span>, and
+                    <span class="command"><strong>strtol</strong></span>, 和
                     <span class="command"><strong>strtoul</strong></span>
                   </p>
                 </td>
@@ -636,7 +636,7 @@ mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib</kbd>
                 </td>
                 <td>
                   <p>
-                    Thread Sanitizer 运行时库
+                    Thread Sanitizer（译者注：数据速率检测工具，包括一个编译器指令模块和运行时库） 运行时库
                   </p>
                 </td>
               </tr>

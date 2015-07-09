@@ -65,8 +65,9 @@
 mount -v -t ext4 /dev/<em class="replaceable"><code>&lt;xxx&gt;</code></em> $LFS</kbd>	<font color="#999999"># 将 /dev/<em class="replaceable"><code>&lt;xxx&gt;</code></em> 挂载到 $LFS</font>
 </pre>
       <p>
+		(译者注：如果重启设备，可能进入后发现 /mnt/lfs 目录下没有内容，这是只需要再次挂载 /dev/&lt;xxx&gt; 到 /mnt/lfs。
         此处 <em class="replaceable"><code>&lt;xxx&gt;</code></em>
-        用实际的设备名称代替（下同）</em>。
+        用实际的设备名称代替 - 下同）</em>。
       </p>
       <p>
         如果 LFS 使用了多个分区，(比如、一个 <code class=
