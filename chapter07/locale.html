@@ -155,18 +155,15 @@ EOF</kbd>
       <p> <span class="quote">“<span class="quote">C</span>”</span>
         （默认）和<span class="quote">“<span class="quote">en_US</span>”</span>（推
         荐美国英语用户使用）这两种区域设置有所不同。<span class="quote">“<span class="quote">C</span>”</span>
-        使用 US-ASCII 7 位字符集，and treats bytes with the high bit set as
-        invalid characters. That's why, e.g., the <span class="command"><strong>ls</strong></span>
-        command substitutes them with question marks in that locale.
-        同样，如果你想要使用 Mutt 或 Pine 发送包含有类似字符的邮件，将会得到如下消息：非 RFC 兼容字符（the
-        charset in the outgoing mail is indicated as <span
-          class="quote">“<span class="quote">unknown 8-bit</span>”</span>）。
+        使用 US-ASCII 7 位字符集，并把设置了最高位的字节作为无效字符。这就是为什么类似
+		<span class="command"><strong>ls</strong></span> 的命令本地化时会用疑问号代替。
+        同样，如果你想要使用 Mutt 或 Pine 发送包含有类似字符的邮件，将会得到如下消息：非 RFC 兼容字符（发送邮件中的字符集为
+		<span class="quote">“<span class="quote">unknown 8-bit</span>”</span>）。
         所以，如果你一定以及肯定一定不会用到 8 位的字符，那你可以仅使用<span class="quote">“<span
             class="quote">C</span>”</span>。</p>
-      <p> 不少程序还不支持 UTF-8 区域设置（译者注：作者，你确定你不是在瞎说？）。Work is in progress to
-        document and, if possible, fix such problems, see <a
+      <p> 不少程序还不支持 UTF-8 区域设置。我们正在完善文档并修复类似问题，可以查看 <a
           class="ulink"
-href="http://www.linuxfromscratch.org/blfs/view/systemd/introduction/locale-issues.html">http://www.linuxfromscratch.org/blfs/view/systemd/introduction/locale-issues.html</a>.
+href="http://www.linuxfromscratch.org/blfs/view/systemd/introduction/locale-issues.html">http://www.linuxfromscratch.org/blfs/view/systemd/introduction/locale-issues.html</a>。
       </p>
     </div>
     <div class="navfooter">

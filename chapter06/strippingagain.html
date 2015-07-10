@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=utf-8" />
     <title>
-      6.71.&nbsp;再次去除无用内容
+      6.71.&nbsp;再次清理无用内容
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -61,7 +61,7 @@
         命令之前，对当前状态的 LFS 系统进行备份是个好主意。
       </p>
       <p>
-        在进行瘦身之前，格外注意确保要删除的二进制文件没有正在运行。如果用
+        在进行清理无用内容之前，格外注意确保要删除的二进制文件没有正在运行。如果用
         <a class="xref" href="chroot.html" title=
         "6.4.&nbsp;进入 Chroot 环境">章节&nbsp;6.4,
     &ldquo;进入 Chroot 环境,&rdquo;</a>
@@ -87,8 +87,7 @@
     -exec /tools/bin/strip --strip-debug '{}' ';'</kbd>
 </pre>
       <p>
-        会报告很大数目的文件不能识别它们的格式。可以安全地忽略这些警告。
-        这些警告标示这些文件是脚本而不是二进制文件。
+        会报告很大数目的文件不能识别它们的格式。可以安全地忽略这些警告。这些警告表示这些文件是脚本而不是二进制文件。
       </p>
     </div>
     <div class="navfooter">

@@ -72,8 +72,8 @@
           5.5.1. 安装交叉编译的 GCC
         </h2>
         <p>
-            现在 GCC 需要 GMP、 MPFR 和 MPC 软件包。在你的主机发行版中可能并不包括这些软件包，
-            它们将和 GCC 一起编译。解压每个软件包到 GCC 源文件夹并重命名解压后的文件夹，以便 GCC
+            现在 GCC 需要 GMP、 MPFR 和 MPC 软件包。在你的主机发行版中可能并不包括这些软件包，它们将和
+            GCC 一起编译。解压每个软件包到 GCC 源文件夹并重命名解压后的文件夹，以便 GCC
             编译过程中能自动使用这些软件：
         </p>
         <div class="admon note">
@@ -82,9 +82,9 @@
             注意
           </h3>
           <p>
-            有些读者对本章节内容存在误解。和之前章节中介绍的(<a class="xref" href=
-        "generalinstructions.html#buildinstr">软件包编译指南</a>)一样，过程都是相同的。
-        首先从源文件夹中解压 gcc tar 包 然后进入到创建的文件夹中。然后才可以执行下面的指令。
+            有些读者对本章节内容存在误解。和之前章节中介绍的（<a class="xref" href=
+        "generalinstructions.html#buildinstr">软件包编译指南</a>）一样，过程都是相同的。首先从源文件夹中解压
+        gcc tar 包 然后进入到创建的文件夹中。然后才可以执行下面的指令。
           </p>
         </div>
         <pre class="userinput">
@@ -97,8 +97,8 @@ mv -v mpc-1.0.2 mpc</kbd>
 </pre>
         <p>
             下面的指令将会修改 GCC 默认的动态链接器为安装在 <code class=
-          "filename">/tools</code> 文件夹中的。它也会从 GCC 的 include 搜索路径
-          中移除 <code class=
+          "filename">/tools</code> 文件夹中的。它也会从 GCC 的 include
+          搜索路径中移除 <code class=
           "filename">/usr/include</code>。执行：
         </p>
         <pre class="userinput">
@@ -117,32 +117,29 @@ do
 done</kbd>
 </pre>
         <p>
-          如果上面的看起来难以理解，让我们分开来看一下吧。
-          首先我们找到 <code class=
+          如果上面的看起来难以理解，让我们分开来看一下吧。首先我们找到 <code class=
           "filename">gcc/config</code> 文件夹下的所有命名为
           <code class="filename">linux.h</code>, <code class=
           "filename">linux64.h</code> 或 <code class=
-          "filename">sysv4.h</code> 的文件。对于找到的每个文件，
-          我们把它复制到相同名称的文件，但增加了后缀 <span class=
-          "quote">&ldquo;<span class="quote">.orig</span>&rdquo;</span>。
-            然后第一个 sed 表达式在每个 <span class="quote">&ldquo;<span class=
+          "filename">sysv4.h</code> 的文件。对于找到的每个文件，我们把它复制到相同名称的文件，但增加了后缀
+          <span class=
+          "quote">&ldquo;<span class="quote">.orig</span>&rdquo;</span>。然后第一个
+            sed 表达式在每个 <span class="quote">&ldquo;<span class=
           "quote">/lib/ld</span>&rdquo;</span>, <span class=
           "quote">&ldquo;<span class="quote">/lib64/ld</span>&rdquo;</span>
           或 <span class="quote">&ldquo;<span class=
           "quote">/lib32/ld</span>&rdquo;</span> 实例前面增加<span class=
-          "quote">&ldquo;<span class="quote">/tools</span>&rdquo;</span>，
-            第二个 sed 表达式替换 <span class=
-          "quote">&ldquo;<span class="quote">/usr</span>&rdquo;</span> 的硬编码实例。
-         然后，我们添加这改变默认 startfile 前缀到文件末尾的定义语句。注意 <span class="quote">&ldquo;<span class=
+          "quote">&ldquo;<span class="quote">/tools</span>&rdquo;</span>，第二个
+            sed 表达式替换 <span class=
+          "quote">&ldquo;<span class="quote">/usr</span>&rdquo;</span> 的硬编码实例。然后，我们添加这改变默认
+            startfile 前缀到文件末尾的定义语句。注意 <span class="quote">&ldquo;<span class=
           "quote">/tools/lib/</span>&rdquo;</span> 后面的 <span class=
-          "quote">&ldquo;<span class="quote">/</span>&rdquo;</span> 是必须的。
-          最后，我们用 <span class="command"><strong>touch</strong></span> 更新复制文件的时间戳。
-          当与 <span class="command"><strong>cp -u</strong></span> 一起使用时，可以防止命令被无意中
-          运行两次造成对原始文件意外的更改。
+          "quote">&ldquo;<span class="quote">/</span>&rdquo;</span> 是必须的。最后，我们用
+            <span class="command"><strong>touch</strong></span> 更新复制文件的时间戳。当与
+            <span class="command"><strong>cp -u</strong></span> 一起使用时，可以防止命令被无意中运行两次造成对原始文件意外的更改。
         </p>
         <p>
-            GCC 不能正确检测栈保护，这会导致编译 Glibc-2.21 时出现问题，用下面的命令
-            修复这个问题：
+            GCC 不能正确检测栈保护，这会导致编译 Glibc-2.21 时出现问题，用下面的命令修复这个问题：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -194,8 +191,7 @@ cd ../gcc-build</kbd>
             </dt>
             <dd>
               <p>
-                由于还没有可用的 C 库，这确保编译 libgcc 时 定义了常数 inhibit_libc。
-                这可以防止编译任何需要 libc 支持的代码。
+                由于还没有可用的 C 库，这确保编译 libgcc 时定义了常数 inhibit_libc。这可以防止编译任何需要 libc 支持的代码。
               </p>
             </dd>
             <dt>
@@ -204,8 +200,7 @@ cd ../gcc-build</kbd>
             </dt>
             <dd>
               <p>
-                创建一个完成的交叉编译器的时候，GCC 要求标准头文件和目标系统兼容。
-                对于我们的目的来说，不需要这些头文件。这个选项可以防止 GCC 查找它们。
+                创建一个完成的交叉编译器的时候，GCC 要求标准头文件和目标系统兼容。对于我们的目的来说，不需要这些头文件。这个选项可以防止 GCC 查找它们。
               </p>
             </dd>
             <dt>
@@ -226,10 +221,10 @@ cd ../gcc-build</kbd>
             <dd>
               <p>
                 GCC 默认会在<code class=
-                "filename">/usr/include</code> 中查找系统头文件。和 sysroot 选项一起使用，
-                会转换为<code class="filename">$LFS/usr/include</code>。在后面两个章节中头文件会被安装到
-                <code class="filename">$LFS/tools/include</code>。这个选项确保 gcc 能正确找到它们。
-                第二次编译 GCC 时，同样的选项可以保证不会去寻找主机系统的头文件。
+                "filename">/usr/include</code> 中查找系统头文件。和 sysroot
+                选项一起使用，会转换为 <code class="filename">$LFS/usr/include</code>。在后面两个章节中头文件会被安装到
+                <code class="filename">$LFS/tools/include</code>。这个选项确保 gcc 能正确找到它们。第二次编译
+                GCC 时，同样的选项可以保证不会去寻找主机系统的头文件。
               </p>
             </dd>
             <dt>
@@ -284,8 +279,7 @@ cd ../gcc-build</kbd>
 <kbd class="command">make</kbd>
 </pre>
         <p>
-            现在编译完成了。在这里，通常会运行测试套件，但正如前面提到的，测试套件框架还没有准备好。
-            在此进行测试的并没有太多好处，因为第一遍编译的程序很快会被取代。
+            现在编译完成了。在这里，通常会运行测试套件，但正如前面提到的，测试套件框架还没有准备好。在此进行测试的并没有太多好处，因为第一遍编译的程序很快会被取代。
         </p>
         <p>
           安装软件包:
@@ -298,7 +292,7 @@ cd ../gcc-build</kbd>
         <p>
             该软件包的详细信息在 <a class="xref" href=
           "../chapter06/gcc.html#contents-gcc" title=
-          "6.17.2.&nbsp;GCC 的内容">Section&nbsp;6.17.2, &ldquo;GCC 的内容&rdquo;</a>。
+          "6.17.2.&nbsp;GCC  软件包内容">Section&nbsp;6.17.2, &ldquo;GCC  软件包内容&rdquo;</a>。
         </p>
       </div>
     </div>
@@ -328,7 +322,7 @@ cd ../gcc-build</kbd>
         </li>
         <li class="up">
           <a accesskey="u" href="chapter05.html" title=
-          "第五章&nbsp;构建临时系统">Up</a>
+          "第五章&nbsp;构建临时系统">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=

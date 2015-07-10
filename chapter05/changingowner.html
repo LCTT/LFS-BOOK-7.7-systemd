@@ -22,16 +22,16 @@
       </h3>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="stripping.html" title="瘦身">上一页</a>
+          <a accesskey="p" href="stripping.html" title="清理无用内容">上一页</a>
           <p>
-            瘦身
+            清理无用内容
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="../part3.html" title=
-          "构建LFS系统">下一页</a>
+          "构建 LFS 系统">下一页</a>
           <p>
-            构建LFS系统
+            构建 LFS 系统
           </p>
         </li>
         <li class="up">
@@ -55,20 +55,20 @@
           注意
         </h3>
         <p>
-          本书以后部分的命令都必须以<code class="systemitem">root</code>用户身份执行而不再是<code class="systemitem">lfs</code>用户。另外，再次确认下<code class="envar">$LFS</code>变量在<code class="systemitem">root</code>用户环境下也有定义。
+          本书以后部分的命令都必须以 <code class="systemitem">root</code> 用户身份执行而不再是 <code class="systemitem">lfs</code> 用户。另外，再次确认下 <code class="envar">$LFS</code> 变量在 <code class="systemitem">root</code> 用户环境下也有定义。
         </p>
       </div>
       <p>
-        当前，<code class="filename">$LFS/tools</code>目录属于<code class="systemitem">lfs</code>用户，这是一个只存在于宿主系统上的帐号。如果继续保持<code class="filename">$LFS/tools</code>目录的现状，其中的文件将属于一个没有相关联帐号的用户ID。这很危险，因为随后创建的用户有可能会分配到相同的用户ID，从而变成<code class="filename">$LFS/tools</code>目录及其中所有文件的属主，以致留下恶意操作这些文件的可能。
+        当前，<code class="filename">$LFS/tools</code> 目录属于 <code class="systemitem">lfs</code> 用户，这是一个只存在于宿主系统上的帐号。如果继续保持 <code class="filename">$LFS/tools</code> 目录的现状，其中的文件将属于一个没有相关联帐号的用户ID。这很危险，因为随后创建的用户有可能会分配到相同的用户ID，从而变成 <code class="filename">$LFS/tools</code> 目录及其中所有文件的属主，以致留下恶意操作这些文件的可能。
       </p>
       <p>
-        为了解决这个问题，你可以在随后新的LFS系统里创建<code class="filename">/etc/passwd</code>文件时增加一个<code class="systemitem">lfs</code>用户，并注意给它分配和宿主系统里相同的用户和组ID。不过更好的方式是，通过下面的命令将<code class="filename">$LFS/tools</code>目录的属主改为<code class="systemitem">root</code>用户：
+        为了解决这个问题，你可以在随后新的 LFS 系统里创建 <code class="filename">/etc/passwd</code> 文件时增加一个 <code class="systemitem">lfs</code> 用户，并注意给它分配和宿主系统里相同的用户和组ID。不过更好的方式是，通过下面的命令将 <code class="filename">$LFS/tools</code> 目录的属主改为 <code class="systemitem">root</code> 用户：
       </p>
       <pre class="userinput">
 <kbd class="command">chown -R root:root $LFS/tools</kbd>
 </pre>
       <p>
-        尽管<code class="filename">$LFS/tools</code>目录可以在LFS系统构建完成后删除，但仍然可以保留下来用于构建额外的<span class="emphasis"><em>相同版本</em></span>LFS系统。备份<code class="filename">$LFS/tools</code>目录到底有多少好处取决于你个人。
+        尽管 <code class="filename">$LFS/tools</code> 目录可以在 LFS 系统构建完成后删除，但仍然可以保留下来用于构建额外的<span class="emphasis"><em>相同版本</em></span> LFS 系统。备份 <code class="filename">$LFS/tools</code> 目录到底有多少好处取决于你个人。
       </p>
       <div class="admon caution">
         <img alt="[Caution]" src="../images/caution.png" />
@@ -76,7 +76,7 @@
           警告
         </h3>
         <p>
-          如果你想保留临时工具用来构建新的LFS系统，<span class="emphasis"><em>现在</em></span>就要备份好。本书随后第六章中的指令将对当前的工具做些调整，导致在构建新系统时会失效。
+          如果你想保留临时工具用来构建新的 LFS 系统，<span class="emphasis"><em>现在</em></span>就要备份好。本书随后第六章中的指令将对当前的工具做些调整，导致在构建新系统时会失效。
         </p>
       </div>
     </div>
@@ -85,22 +85,22 @@
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/</span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/<a href="http://github.com/ictlyh" target="_blank">ictlyh</a></span>
             </div>
         </div>
       </div>
       <ul>
         <li class="prev">
-          <a accesskey="p" href="stripping.html" title="瘦身">上一页</a>
+          <a accesskey="p" href="stripping.html" title="清理无用内容">上一页</a>
           <p>
-            瘦身
+            清理无用内容
           </p>
         </li>
         <li class="next">
           <a accesskey="n" href="../part3.html" title=
-          "构建LFS系统">下一页</a>
+          "构建 LFS 系统">下一页</a>
           <p>
-            构建LFS系统
+            构建 LFS 系统
           </p>
         </li>
         <li class="up">
