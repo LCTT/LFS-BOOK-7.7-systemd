@@ -278,6 +278,65 @@ chmod -v 600  /var/log/btmp</kbd>
           文件 <code class="filename">/run/utmp</code> 会记录当前已登录的用户。这个文件会在启动脚本中动态创建。
         </p>
       </div>
+	<p>注：下面的注意事项为译者根据第五章添加。</p>
+		<div class="admon important">
+              <img alt="[重要]" src="../images/important.png" />
+              <h3>
+                重要
+              </h3>
+              <p>
+                再次强调构建过程：
+              </p>
+              <div class="orderedlist">
+                <ol class="compact">
+                  <li class="listitem">
+                    <p>
+                        把所有源文件和补丁放到 chroot 环境可访问的目录，例如 <code class="filename">/mnt/lfs/sources/</code>。但是千万<span class="emphasis"><em>不能</em></span>把源文件放在 <code class="filename">/mnt/lfs/tools/</code> 中。
+                    </p>
+                  </li>
+                  <li class="listitem">
+                    <p>
+                        进入到源文件目录。
+                    </p>
+                  </li>
+                  <li class="listitem">
+                    <p>
+                      <a id="buildinstr" name="buildinstr"></a>对于每个软件包:
+                    </p>
+                    <div class="orderedlist">
+                      <ol class="compact">
+                        <li class="listitem">
+                          <p>
+                            用 <span class="command"><strong>tar</strong></span> 程序解压要编译的软件包。
+                          </p>
+                        </li>
+                        <li class="listitem">
+                          <p>
+                            进入到解压后创建的目录中。
+                          </p>
+                        </li>
+                        <li class="listitem">
+                          <p>
+                            根据指南说明编译软件包。
+                          </p>
+                        </li>
+                        <li class="listitem">
+                          <p>
+                            回退到源文件目录。
+                          </p>
+                        </li>
+                        <li class="listitem">
+                          <p>
+                            除非特别说明，删除解压出来的目录和所有编译过程中生成的 <code class="filename"><em class=
+                            "replaceable"><code>&lt;package&gt;</code></em>-build</code> 目录。
+                          </p>
+                        </li>
+                      </ol>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
     </div>
     <div class="navfooter">
       <div class="book">

@@ -72,9 +72,7 @@
           6.7.1. Installation of Linux API 头文件
         </h2>
         <p>
-          Linux 内核需要提供一个应用编程接口（API）供系统的 C 库（LFS 中的 Glibc）调用。这是通过
-          This is done by way of sanitizing various C header files that are
-          shipped in the Linux kernel source tarball.
+          Linux 内核需要提供一个应用编程接口（API）供系统的 C 库（LFS 中的 Glibc）调用。这通过消除 Linux 内核源码包中的多个 C 头文件实现。
         </p>
         <p>
           为了确保在之前的动作里没有留下旧文件和依赖关系：
@@ -83,7 +81,7 @@
 <kbd class="command">make mrproper</kbd>
 </pre>
         <p>
-          现在要从源代码里解出用户可见内核头文件。因为解压过程会删除目标目录下所有文件，所以会先输出到一个本地中间目录后再拷贝到需要的地方。而且里面还有一些隐藏文件是给内核开发人员用的，而 LFS 不需要，所以会将它们从中间目录里删除。
+          现在要从源代码里解压出用户可见的内核头文件。因为解压过程会删除目标目录下所有文件，所以我们会先输出到一个本地中间目录后再拷贝到需要的地方。而且里面还有一些隐藏文件是给内核开发人员用的，而 LFS 不需要，所以会将它们从中间目录里删除。
         </p>
         <pre class="userinput">
 <kbd class="command">make INSTALL_HDR_PATH=dest headers_install
@@ -119,7 +117,7 @@ find dest/include \( -name .install -o -name ..install.cmd \) -delete
         </div>
         <div class="variablelist">
           <h3>
-            Short Descriptions
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>

@@ -173,18 +173,18 @@ cd ../glibc-build</kbd>
             </li>
             <li class="listitem">
               <p>
-                以为测试的时候还没有网络，测试项 posix/tst-getaddrinfo4 和 posix/tst-getaddrinfo5 将总是失败。
+                因为测试的时候还没有网络，测试项 posix/tst-getaddrinfo4 和 posix/tst-getaddrinfo5 将总是失败。
               </p>
             </li>
             <li class="listitem">
               <p>
-                其他已知的在某些架构平台上会失败的测试项是 malloc/tst-malloc-usable 和 nptl/tst-cleanupx4。
+                其它已知的在某些架构平台上会失败的测试项是 malloc/tst-malloc-usable 和 nptl/tst-cleanupx4。
               </p>
             </li>
           </ul>
         </div>
         <p>
-          虽然只是无关紧要的打印信息，在安装 Glibc 时会抱怨找不到 <code class="filename">/etc/ld.so.conf</code> 文件。下面的方式可以避免这个警告：
+          在安装 Glibc 时会抱怨找不到 <code class="filename">/etc/ld.so.conf</code> 文件，这只是无关紧要的输出信息。下面的方式可以避免这个警告：
         </p>
         <pre class="userinput">
 <kbd class="command">touch /etc/ld.so.conf</kbd>
@@ -248,13 +248,12 @@ localedef -i zh_CN -f GB18030 zh_CN.GB18030</kbd>
           另外，安装适合你自己国家、语言和字符集的语言环境。
         </p>
         <p>
-          或者，也可以一次性安装在 <code class="filename">glibc-2.21/localedata/SUPPORTED</code> 文件里列出的所有语言环境（将包括以上列出的所有语言环境以及更多的多），执行下面这个非常耗时的命令：
+          或者，也可以一次性安装在 <code class="filename">glibc-2.21/localedata/SUPPORTED</code> 文件里列出的所有语言环境（包括以上列出的所有语言环境以及其它更多），执行下面这个非常耗时的命令：
         </p>
         <pre class="userinput">
 <kbd class="command">make localedata/install-locales</kbd>
 </pre>
-        <p>
-          然后几乎不可能的，你需要的语言环境在 <code class="filename">glibc-2.21/localedata/SUPPORTED</code> 文件中没有列出来，可以使用 <span class="command"><strong>localedef</strong></span> 命令创建和安装。
+        <p>你需要的语言环境在 <code class="filename">glibc-2.21/localedata/SUPPORTED</code> 文件中没有列出来几乎是不可能的，但如果真的没有可以使用 <span class="command"><strong>localedef</strong></span> 命令创建和安装。
         </p>
       </div>
       <div class="configuration" lang="en" xml:lang="en">
@@ -262,7 +261,7 @@ localedef -i zh_CN -f GB18030 zh_CN.GB18030</kbd>
           <a id="conf-glibc" name="conf-glibc"></a>6.9.2. Configuring Glibc
         </h2>
         <p>
-          尽管 Glibc 在文件 <code class="filename">/etc/nsswitch.conf</code> 丢失或损坏的情况下会创建默认的，我们需要手动创建  文件，因为 Glibc 的默认文件在网络环境下工作时有问题。另外，也需要设置一下时区。
+          尽管 Glibc 在文件 <code class="filename">/etc/nsswitch.conf</code> 丢失或损坏的情况下会创建默认的，我们需要手动该创建文件，因为 Glibc 的默认文件在网络环境下工作时有问题。另外，也需要设置一下时区。
         </p>
         <p>
           运行下面的命令创建一个新文件 <code class="filename">/etc/nsswitch.conf</code>：
@@ -317,8 +316,8 @@ unset ZONEINFO</kbd>
             </dt>
             <dd>
               <p>
-                这样将创建 posix 标准时区，没有时间补偿。一般将它们同时放在 <code class="filename">zoneinfo</code> 和 <code class=
-                "filename">zoneinfo/posix</code> 目录下。另外需要将 POSIX 标准时区放到<code class="filename">zoneinfo</code> 目录下，否则会有很多测试套件将报错。在嵌入式平台，如果存储空间紧张而且你也不准备更新时区，也可以不用 <code class="filename">posix</code> 目录从而节省 1.9MB，但是一些应用程序或测试套件也许会出错。
+                这会创建没有时间补偿的 posix 标准时区。一般将它们同时放在 <code class="filename">zoneinfo</code> 和 <code class=
+                "filename">zoneinfo/posix</code> 目录下。另外需要将 POSIX 标准时区放到<code class="filename">zoneinfo</code> 目录下，否则很多测试套件会报错。在嵌入式平台，如果存储空间紧张而且你也不准备更新时区，也可以不用 <code class="filename">posix</code> 目录从而节省 1.9MB，但是一些应用程序或测试套件也许会出错。
               </p>
             </dd>
             <dt>
@@ -327,7 +326,7 @@ unset ZONEINFO</kbd>
             </dt>
             <dd>
               <p>
-                这个会创建 right 时区，包含时间补偿。在嵌入式平台，空间比较紧张而且你也不打算更新时区或者不需要准确时间，你可以忽略 <code class="filename">right</code> 目录从而节省 1.9MB。
+                这会创建包含时间补偿的 right 时区。在嵌入式平台，空间比较紧张而且你也不打算更新时区或者不需要准确时间，你可以忽略 <code class="filename">right</code> 目录从而节省 1.9MB。
               </p>
             </dd>
             <dt>
@@ -336,7 +335,7 @@ unset ZONEINFO</kbd>
             </dt>
             <dd>
               <p>
-                这个会创建 <code class="filename">posixrules</code> 文件。我们使用纽约是因为 POSIX 要求夏令时规则与 US 标准一致。
+                这会创建 <code class="filename">posixrules</code> 文件。我们使用纽约是因为 POSIX 要求夏令时规则与 US 标准一致。
               </p>
             </dd>
           </dl>
@@ -348,7 +347,7 @@ unset ZONEINFO</kbd>
 <kbd class="command">tzselect</kbd>
 </pre>
         <p>
-          在问了几个关于位置的问题后，脚本会输出所在时区的名字（比如 <span class="emphasis"><em>America/Edmonton</em></span>）。在 <code class="filename">/usr/share/zoneinfo</code> 文件中也有其他一些可用时区，比如 <span class="emphasis"><em>Canada/Eastern</em></span> 或 <span class="emphasis"><em>EST5EDT</em></span>，并没有被脚本列出来但也是可以使用的。
+          在询问了几个关于位置的问题后，脚本会输出所在时区的名字（比如 <span class="emphasis"><em>America/Edmonton</em></span>）。在 <code class="filename">/usr/share/zoneinfo</code> 文件中也有其它一些可用时区，比如 <span class="emphasis"><em>Canada/Eastern</em></span> 或 <span class="emphasis"><em>EST5EDT</em></span>，这些时区并没有被脚本列出来但也是可以使用的。
         </p>
         <p>
           然后运行下面的命令创建 <code class="filename">/etc/localtime</code> 文件：
@@ -393,7 +392,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
       </div>
       <div class="content" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="contents-glibc" name="contents-glibc"></a>6.9.4. Glibc 的内容
+          <a id="contents-glibc" name="contents-glibc"></a>6.9.4. Glibc 软件包内容
         </h2>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -402,7 +401,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
               <span class="segbody">catchsegv, gencat, getconf, getent,
               iconv, iconvconfig, ldconfig, ldd, lddlibc4, locale, localedef,
               makedb, mtrace, nscd, pcprofiledump, pldd, rpcgen, sln,
-              sotruss, sprof, tzselect, xtrace, zdump, and zic</span>
+              sotruss, sprof, tzselect, xtrace, zdump, 和 zic</span>
             </div>
             <div class="seg">
               <strong class="segtitle">安装的库：</strong>
@@ -414,7 +413,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
               libnss_hesiod.so, libnss_nis.so, libnss_nisplus.so,
               libpcprofile.so, libpthread.{a,so}, libpthread_nonshared.a,
               libresolv.{a,so}, librpcsvc.a, librt.{a,so}, libthread_db.so,
-              and libutil.{a,so}</span>
+              和 libutil.{a,so}</span>
             </div>
             <div class="seg">
               <strong class="segtitle">安装的目录：</strong>
@@ -428,13 +427,13 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
               /usr/include/rpc, /usr/include/rpcsvc, /usr/include/sys,
               /usr/lib/audit, /usr/lib/gconv, /usr/lib/locale,
               /usr/libexec/getconf, /usr/share/i18n, /usr/share/zoneinfo,
-              /var/cache/nscd, and /var/lib/nss_db</span>
+              /var/cache/nscd, 和 /var/lib/nss_db</span>
             </div>
           </div>
         </div>
         <div class="variablelist">
           <h3>
-            简短描述
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -902,10 +901,8 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    Linking in this module forces error handling rules for
-                    math functions as defined by the Institute of Electrical
-                    and Electronic Engineers (IEEE). The default is POSIX.1
-                    error handling
+					链接该模块会强制使用电气与电子工程师协会（Institute of Electrical
+                    and Electronic Engineers，IEEE) 定义的数学函数错误处理规则。默认的是 POSIX.1 错误处理。
                   </p>
                 </td>
               </tr>

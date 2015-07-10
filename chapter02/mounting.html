@@ -50,10 +50,10 @@
         <a id="space-mounting" name="space-mounting"></a>2.4. 挂载新分区
       </h1>
       <p>
-        至此，文件系统已经创建妥当，下一步就是访问这些分区了。为此，需要将这些建立的分区挂载到选定的挂载点。本书假定的挂载点为 <code class="filename">/mnt/lfs</code>，这里，你可以根据喜好自行更改（译者注：这里强烈建议，看这本书的读者就将挂载点设置为 /mnt/lfs 吧，这样在自行后面的命令时，大多数命令都无需做任何的修改）。
+        至此，文件系统已经创建妥当，下一步就是访问这些分区了。为此，需要将这些建立的分区挂载到选定的挂载点。本书假定的挂载点为 <code class="filename">/mnt/lfs</code>，这里，你可以根据喜好自行更改（译者注：这里强烈建议，看这本书的读者就将挂载点设置为 /mnt/lfs 吧，这样在运行后面的命令时，大多数命令都无需做任何的修改）。
       </p>
       <p>
-        运行以下命令，将欲选定的挂载点设置为 <code class="envar">LFS</code> 环境变量赋值：
+        运行以下命令，将欲选定的挂载点设置为 <code class="envar">LFS</code> 环境变量的值：
       </p>
       <pre class="userinput">
 <kbd class="command">export LFS=/mnt/lfs</kbd>
@@ -65,11 +65,12 @@
 mount -v -t ext4 /dev/<em class="replaceable"><code>&lt;xxx&gt;</code></em> $LFS</kbd>	<font color="#999999"># 将 /dev/<em class="replaceable"><code>&lt;xxx&gt;</code></em> 挂载到 $LFS</font>
 </pre>
       <p>
+		(译者注：如果重启设备，可能进入后发现 /mnt/lfs 目录下没有内容，这是只需要再次挂载 /dev/&lt;xxx&gt; 到 /mnt/lfs。
         此处 <em class="replaceable"><code>&lt;xxx&gt;</code></em>
-        用实际的设备名称代替（下同）</em>。
+        用实际的设备名称代替 - 下同）</em>。
       </p>
       <p>
-        如果 LFS 使用了多个分区，(比如、一个 <code class=
+        如果 LFS 使用了多个分区，(比如：一个 <code class=
         "filename">/</code>，一个 <code class=
         "filename">/usr</code>)，用下面的命令挂载它们：
       </p>

@@ -49,13 +49,11 @@
         调整工具链
       </h1>
       <p>
-        现在最后的 C 语言库已经装好了，是时候调整工具链，
-        让新编译的程序链接到这些新的库上。
+        现在最后的 C 语言库已经装好了，是时候调整工具链,让新编译的程序链接到这些新的库上。
       </p>
       <p>
-        首先，备份First,<code class="filename">/tools</code> 连接器，然后
-        用我们在第五章调整过的链接器代替它。我们还会创建一个链接，连接到 <code class=
-        "filename">/tools/$(gcc -dumpmachine)/bin</code>的副本：
+        首先,备份 <code class="filename">/tools</code> 连接器，然后用我们在第五章调整过的链接器代替它。我们还会创建一个链接，链接到
+		<code class="filename">/tools/$(gcc -dumpmachine)/bin</code>的副本：
       </p>
       <pre class="userinput">
 <kbd class="command">mv -v /tools/bin/{ld,ld-old}
@@ -90,7 +88,7 @@ cc dummy.c -v -Wl,--verbose &amp;&gt; dummy.log
 readelf -l a.out | grep ': /lib'</kbd>
 </pre>
       <p>
-        应该没有任何错误，上条命令的输出应该是（不同的平台上的动态连接器可能名字不同）：
+        如果没有任何错误，上条命令的输出应该是（不同的平台上的动态链接器可能名字不同）：
       </p>
       <pre class="screen">
 <code class=

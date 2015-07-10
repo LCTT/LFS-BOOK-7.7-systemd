@@ -60,7 +60,7 @@
           注意
         </h3>
         <p>
-          在继续之前，请留意工作平台的名称，它通常称作目标系统三段式名称。目标系统三段式名称可通过运行脚本 <span class="command"><strong>config.guess</strong></span> 简单获得，许多软件的源码包都附带有该脚本[LCTT 译注：目标系统三段式名称描述了代码运行的平台，是GNU 构建系统中的一个核心概念，形如 i686-pc-gnu-linux。它包含三个字段：CPU家族/型号的名称（如 i686）、供应商（pc）和操作系统名称（如 gnu-linux）。更详细的信息请参阅 http://wiki.osdev.org/Target_Triplet]。解开 Binutils 源码包，执行其中的脚本：<strong class="userinput"><code>./config.guess</code></strong> 并查看其输出。例如，对于一个现代的 32 位英特尔处理器，其输出很可能为 <span class="emphasis"><em>i686-pc-linux-gnu</em></span>。
+          在继续之前，请留意工作平台的名称，它通常称作目标系统三段式名称。目标系统三段式名称可通过运行脚本 <span class="command"><strong>config.guess</strong></span> 简单获得，许多软件的源码包都附带有该脚本（译者注：目标系统三段式名称描述了代码运行的平台，是GNU 构建系统中的一个核心概念，形如 i686-pc-gnu-linux。它包含三个字段：CPU家族/型号的名称（如 i686）、供应商（pc）和操作系统名称（如 gnu-linux）。更详细的信息请参阅 http://wiki.osdev.org/Target_Triplet）。解压 Binutils 源码包，执行其中的脚本：<strong class="userinput"><code>./config.guess</code></strong> 并查看其输出。例如，对于一个现代的 32 位英特尔处理器，其输出很可能为 <span class="emphasis"><em>i686-pc-linux-gnu</em></span>。
         </p>
         <p>
           还请留意平台的动态链接器的名称，它通常被称为动态加载器（不要与 Binutils 中的标准链接器 <span class="command"><strong>ld</strong></span> 混淆）。该动态链接器由 Glibc 提供，它寻找并加载程序所需的共享库，为程序运行作准备，并运行它。对于 32 位英特尔的机器，动态链接器的名称为 <code class="filename">ld-linux.so.2</code>。判断动态链接器的一个可靠方法是检查宿主系统中的任意一个二进制文件，执行：<strong class="userinput"><code>readelf -l &lt;二进制文件名&gt; | grep interpreter</code></strong> 且查看其输出。可在 Glibc 源码树的根目录下的 <code class="filename">shlib-versions</code> 文件中找到所有平台的权威参考。
