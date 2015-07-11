@@ -49,7 +49,7 @@
         <a id="ch-bootable-fstab" name="ch-bootable-fstab"></a>8.2. 创建 /etc/fstab 文件
       </h1>
       <p>
-        <code class="filename">/etc/fstab</code> 文件的作用是让其它程序确定存储设备的默认挂载点、挂载参数和检查信息（例如完整性检测）。仿照以下格式新建一个 File System TABle（fstab）文件：
+        <code class="filename">/etc/fstab</code> 文件的作用是让其它程序确定存储设备的默认挂载点、挂载参数和检查信息（例如完整性检测）。仿照以下格式新建一个 file system table（fstab）文件：
       </p>
       <pre class="userinput">
 <kbd class="command">cat &gt; /etc/fstab &lt;&lt; "EOF"
@@ -72,7 +72,7 @@ EOF</kbd>
         <em class="replaceable"><code>&lt;yyy&gt;</code></em> 和 <em class=
         "replaceable"><code>&lt;fff&gt;</code></em> 请使用适当的值替换。例如
         <code class="filename">sda2</code>，<code class="filename">sda5</code>
-        和 <code class="systemitem">ext4</code>。关于第六列字段的含义，请查看
+        和 <code class="systemitem">ext4</code>。关于文件中六个字段的含义，请查看
         <span class="command"><strong>man 5 fstab</strong></span>（译者注：fsck 列的数值来决定需要检查的文件系统的检查顺序。允许的数字是0, 1, 和2。根目录应当获得最高的优先权 1, 其它所有需要被检查的设备设置为 2。0 表示设备不会被 fsck 所检查。）。
       </p>
       <p>
@@ -85,7 +85,7 @@ EOF</kbd>
 "literal">noauto,user,quiet,showexec,iocharset=gbk,codepage=936</code>
 </pre>
       <p>
-        对于 zh-CN.UTF-8 用户的对应选项是：
+        对于 zh_CN.UTF-8 用户的对应选项是：
       </p>
       <pre class="screen">
 <code class=
@@ -135,7 +135,7 @@ EOF</kbd>
         如果有输出内容，则代表选项可用。
       </p>
       <p>
-        注意：Logical Volume Management (LVM) 分区不可使用 <code class="option">barrier</code> 选项。
+        注意：基于 Logical Volume Management (LVM) 的分区不可使用 <code class="option">barrier</code> 选项。
       </p>
     </div>
     <div class="navfooter">
@@ -143,7 +143,7 @@ EOF</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/wxy" target="_blank">wxy</a>,<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/zpl1025" target="_blank">zpl1025</a></span>
             </div>
         </div>
       </div>

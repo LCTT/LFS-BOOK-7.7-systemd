@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title> 7.6.&nbsp;Configuring the Linux Console </title>
+    <title> 7.6.&nbsp;配置 Linux 控制台 </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css">
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
     <link rel="stylesheet" href="../stylesheets/lfs-print.css"
@@ -20,10 +20,6 @@
         <li class="next"> <a accesskey="n" href="locale.html"
             title="系统区域设置">下一页</a>
           <p> 系统区域设置 </p>
-          <p>
-            <meta http-equiv="content-type" content="text/html;
-              charset=UTF-8">
-          </p>
         </li>
         <li class="up"> <a accesskey="u" href="chapter07.html"
             title="第七章 基本系统配置">返回</a>
@@ -37,13 +33,13 @@
           name="ch-scripts-console"></a>7.6. 配置 Linux 控制台 </h1>
       <p> <font color="#ff0000"><b><big>（译者注：对于中文用户，因为大部分用户的键盘布局都是标准 us
               键盘，所以大可忽略此文件的配置）</big></b></font></p>
-      <p>本节将会讨论如何配置<strong> </strong><span class="command"><strong>systemd-vconsole-setup</strong></span>
+      <p>本节将会讨论如何配置 <span class="command"><strong>systemd-vconsole-setup</strong></span>
         系统服务，包括配置控制台字体和控制台的键盘映射。</p>
       <p> <span class="command"><strong>systemd-vconsole-setup</strong></span>
         服务读取 <code class="filename">/etc/vconsole.conf</code>
         中的配置信息，确定使用的键盘类型和屏幕的字体。<a class="ulink"
           href="http://www.tldp.org/HOWTO/HOWTO-INDEX/other-lang.html">http://www.tldp.org/HOWTO/HOWTO-INDEX/other-lang.html</a>
-        页面有很多其它语言的“HOWTO”内容可以给你很多帮助。 <span class="command"><strong>localectl
+        页面有很多其它语言的 “HOWTO” 内容可以给你很多帮助。 <span class="command"><strong>localectl
             list-keymaps</strong></span> 可以列举出所有可用的终端键盘布局。<code
           class="filename">/usr/share/consolefonts</code> 目录提供了所有可用的字体。
       </p>
@@ -88,7 +84,7 @@ EOF</kbd>
       <div class="admon note"> <img alt="[Note]"
           src="../images/note.png">
         <h3> 注意 </h3>
-        <p> localectl 仅可用于 systemd 环境（译者注：你要是用 sysV 什么的就别用这个命令瞎捣乱了）。</p>
+        <p> localectl 仅可用于 systemd 环境（译者注：你要是用 SysVinit 什么的就别用这个命令瞎捣乱了）。</p>
       </div>
       <p> <span class="command"><strong>localectl</strong></span>
         实用程序跟随相应的参数也可以更改 X11 的键盘布局、模型、变形和选项：</p>
@@ -121,10 +117,18 @@ EOF</kbd>
       <div class="admon note"> <img alt="[Note]"
           src="../images/note.png">
         <h3> 注意 </h3>
-        <p> 想要使用以上的参数，你需要从 BLFS 中安装 Xkeyboard 软件包. </p>
+        <p> 想要使用以上的参数，你需要从 BLFS 中安装 Xkeyboard 软件包。 </p>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>,<a href="http://github.com/wxy" target="_blank">wxy</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/ictlyh" target="_blank">ictlyh</a></span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev"> <a accesskey="p" href="clock.html"
             title="配置系统时间">上一页</a>
