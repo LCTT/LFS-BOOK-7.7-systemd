@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title> 7.5.&nbsp;Configuring the system clock </title>
+    <title> 7.5.&nbsp;配置系统时间 </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css">
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
     <link rel="stylesheet" href="../stylesheets/lfs-print.css"
@@ -14,8 +14,8 @@
       <h3> 第七章 基本系统配置 </h3>
       <ul>
         <li class="prev"> <a accesskey="p" href="symlinks.html"
-            title="创建自定义符号连接设备">上一页</a>
-          <p> 创建自定义符号连接设备 </p>
+            title="创建自定义符号链接到设备">上一页</a>
+          <p> 创建自定义符号链接到设备 </p>
         </li>
         <li class="next"> <a accesskey="n" href="console.html"
             title="配置 Linux 控制台">下一页</a>
@@ -33,9 +33,8 @@
           name="ch-scripts-clock"></a>7.5. 配置系统时间 </h1>
       <p> 本节将会讨论如何配置 <span class="command"><strong>systemd-timedated</strong></span>
         系统服务，包括配置系统时间和时区。</p>
-      <p> 如果你不确定是否将硬件时钟设置为 UTC，可以通过 <strong class="userinput"><code>hwclock
-
-            --localtime --show</code></strong>
+      <p> 如果你不确定是否将硬件时钟设置为 UTC，可以通过
+        <strong class="userinput"><code>hwclock --localtime --show</code></strong>
         来查看。这将根据硬件时钟显示当前的时间。如果实现和手表的时间相同，应该是设置为本地时间了；如果时间不一致，应该是设置为 UTC
         了。通过增减数小时，可以确定你所在时区。</p>
       <p> <span class="command"><strong>systemd-timedated</strong></span>
@@ -49,9 +48,11 @@
 LOCAL</code>
 EOF</kbd>
 </pre>
-      <p> 如果第一次启动时 <code class="filename">/etc/adjtime</code> 文件不存在，<span class="command"><strong>systemd-timedated</strong></span> 会认为硬件时钟设置成 UTC 并且以此调整该文件。
+      <p> 如果第一次启动时 <code class="filename">/etc/adjtime</code> 文件不存在，<span class="command"><strong>systemd-timedated</strong></span>
+        会认为硬件时钟设置成 UTC 并且以此调整该文件。
       </p>
-      <p> 你也可以使用 <span class="command"><strong>timedatectl</strong></span> 程序来告诉 <span class="command"><strong>systemd-timedated</strong></span> 你的硬件时钟是 UTC 还是本地时间：
+      <p> 你也可以使用 <span class="command"><strong>timedatectl</strong></span> 程序来告诉
+        <span class="command"><strong>systemd-timedated</strong></span> 你的硬件时钟是 UTC 还是本地时间：
       </p>
       <pre class="userinput"><kbd class="command">timedatectl set-local-rtc 1</kbd>
 </pre>
@@ -75,7 +76,7 @@ EOF</kbd>
       </div>
       <div class="sect2" xml:lang="en" lang="en">
         <h2 class="sect2"> 7.5.1. 网络时间同步</h2>
-        <p> 从版本号 213 的 systemd 开始，包括了一个名为<strong> </strong><span
+        <p> 从版本号 213 的 systemd 开始，包括了一个名为<span
             class="command"><strong>systemd-timesyncd</strong></span>
           的守护进程，将能够和远程的 NTP 服务器同步时间。 </p>
         <p> 此守护进程并不是为了取代已有的 NTP 服务，而是作为 SNTP
@@ -92,10 +93,18 @@ EOF</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>,<a href="http://github.com/wxy" target="_blank">wxy</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/ictlyh" target="_blank">ictlyh</a></span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev"> <a accesskey="p" href="symlinks.html"
-            title="创建自定义符号连接设备">上一页</a>
-          <p> 创建自定义符号连接设备 </p>
+            title="创建自定义符号链接到设备">上一页</a>
+          <p> 创建自定义符号链接到设备 </p>
         </li>
         <li class="next"> <a accesskey="n" href="console.html"
             title="配置 Linux 控制台">下一页</a>

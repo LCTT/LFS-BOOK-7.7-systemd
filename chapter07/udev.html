@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title> 7.3.&nbsp;Device and Module Handling on an LFS System </title>
+    <title> 7.3.&nbsp;LFS 系统中的设备和模块管理 </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css">
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
     <link rel="stylesheet" href="../stylesheets/lfs-print.css"
@@ -18,8 +18,8 @@
           <p> 通用网络设置 </p>
         </li>
         <li class="next"> <a accesskey="n" href="symlinks.html"
-            title="创建自定义符号连接设备 ">下一页</a>
-          <p> 创建自定义符号连接设备  </p>
+            title="创建自定义符号链接到设备 ">下一页</a>
+          <p> 创建自定义符号链接到设备  </p>
         </li>
         <li class="up"> <a accesskey="u" href="chapter07.html"
             title="第七章 基本系统配置">返回</a>
@@ -31,7 +31,7 @@
     <div class="sect1" xml:lang="en" lang="en">
       <h1 class="sect1"> <a id="ch-scripts-udev" name="ch-scripts-udev"></a>7.3.
 
-        LFS 系统上的设备和模块处理 </h1>
+        LFS 系统中的设备和模块管理 </h1>
       <p> 在 <a class="xref" href="../chapter06/chapter06.html"
           title="第六章 安装基本的系统软件">第六章</a>, 我们通过 systemd 的源码包安装好了
         udev。在开始了解它是如何工作之前，我们先来简要的回顾下以前处理设备的方法。</p>
@@ -47,32 +47,31 @@
       <div class="sect2" xml:lang="en" lang="en">
         <h2 class="sect2"> 7.3.1. 历史 </h2>
         <p> 2000 年 2 月，一种名叫 <code class="systemitem">devfs</code>
-          的文件系统随着 2.3.46 版本的内核横空出世，到 2.4
-          版本的内核时基本可用。尽管它存在于内核的源代码中，但是这种动态创建设备的方法却从来都得不到核心内核开发者的大力支持。 </p>
+          的文件系统被合并到 2.3.46 内核版本，2.4 系列的稳定内核中基本可用。尽管它存在于内核的源代码中，但是这种动态创建设备的方法却从来都得不到核心内核开发者的大力支持。 </p>
         <p>
-          问题存在于它处理设备的检测、创建和命令的方式，其中最大的问题莫过于它对设备节点的命名方式。大部分开发者的观点是，设备的命名应该由系统的所有者决
-          定，而不是开发者。<code class="systemitem">devfs</code>
+          问题存在于它处理设备的检测、创建和命令的方式，其中最大的问题莫过于它对设备节点的命名方式。大部分开发者的观点是，设备的命名应该由系统的所有者决定，而不是开发者。
+          <code class="systemitem">devfs</code>
           存在一个严重的设计缺陷：它存在严重的 race conditions
           问题，如不对内核做大量的修改就无法修正这一问题。最终，因为缺乏有效的维护，在 2006 年 6 月终被移出内核源代码。<br>
         </p>
-        <p> 再后来，随着非稳定的 2.5 版本的内核开发，到稳定的 2.6 内核，又一种全新的虚拟文件系统<code> </code><code
-            class="systemitem">sysfs</code> 闪亮登场。<code
+        <p> 再后来，随着非稳定的 2.5 版本的内核开发，到稳定的 2.6 内核，又出现了一种全新的虚拟文件系统
+            <code class="systemitem">sysfs</code>。<code
             class="systemitem">sysfs</code>
-          的工作是将系统的硬件配置导入到用户空间进程。通过对用户空间可视化的改善，代替<code> </code><code
-            class="systemitem">devfs</code> 的实机已然到来。</p>
+          的工作是将系统的硬件配置导入到用户空间进程。通过对用户空间可视化的改善，代替<code
+            class="systemitem">devfs</code> 变得更加现实。</p>
       </div>
       <div class="sect2" xml:lang="en" lang="en">
         <h2 class="sect2"> 7.3.2. Udev 实现 </h2>
         <div class="sect3">
           <h3 class="sect3"> 7.3.2.1. Sysfs </h3>
-          <p>上文简单的提及了 <code></code><code class="systemitem">sysfs </code>文
-            件系统。有些人可能会问，<code></code><code class="systemitem">sysfs</code>
+          <p>上文简单的提及了 <code class="systemitem">sysfs</code>
+            文件系统。有些人可能会问，<code class="systemitem">sysfs</code>
             到底是如何知道当前系统有哪些设备，这些设备又该使用什么设备号呢。对于那些已经编译进内核的设备，会在内核检测到时直接注册为
             <code class="systemitem">sysfs</code> 对象（devtmpfs
-            内建）。对于编译为内核模块的设备，将会在模块载入的时候注册。<code></code>一旦 <code></code><code
-              class="systemitem">sysfs</code> 文件系统挂载到 /sys，已经在 <code></code><code
-              class="systemitem">sysfs</code> 注册的硬件数据就可以被用户空间的进程使用，udev
-            也就能够处理了（包括对设备节点进行修改）。</p>
+            内建）。对于编译为内核模块的设备，将会在模块载入的时候注册。一旦
+            <code class="systemitem">sysfs</code> 文件系统挂载到 /sys，已经在
+            <code class="systemitem">sysfs</code> 注册的硬件数据就可以被用户空间的进程使用，
+            udevd 也就能够处理了（包括对设备节点进行修改）。</p>
         </div>
         <div class="sect3">
           <h3 class="sect3"> 7.3.2.2. 设备节点的创建</h3>
@@ -88,14 +87,28 @@
               class="command"><strong>udevd</strong></span>
             将会建立到设备节点文件的额外符号链接，这有可能更改其权限，所有者，所在组，或者是更改 <span
               class="command"><strong>udevd</strong></span> 内建接口（名称）。</p>
-          <p> 这三个目录下的规则都像 LFS-Bootscripts 包那样标有数字，所有三个目录都会统一到一起。 如果 <span class="command"><strong>udevd</strong></span> 找不到和所创建设备相应的规则，它会保留 <code class="systemitem">devtmpfs</code> 里初始化时使用过的权限和属主。
+          <p> 这三个目录下的规则都像 LFS-Bootscripts 包那样标有数字，所有三个目录都会统一到一起。如果
+            <span class="command"><strong>udevd</strong></span> 找不到和所创建设备相应的规则，它会保留
+            <code class="systemitem">devtmpfs</code> 里初始化时使用过的权限和属主。
 	  </p>
         </div>
         <div class="sect3">
           <h3 class="sect3"> 7.3.2.3. 加载模块 </h3>
-          <p> 编译成模块的设备驱动可能会包含别名。别名可以通过 <span class="command"><strong>modinfo</strong></span> 打印出来查看，一般是模块支持的特定总线的设备描述符。举个例子，驱动 <span class="emphasis"><em>snd-fm801</em></span> 支持厂商 ID 为 0x1319 以及设备 ID 为 0x0801 的设备，它包含一个 <span class="quote">“<span class="quote">pci:v00001319d00000801sv*sd*bc04sc01i*</span>”</span> 的别名，总线驱动导出该驱动别名并通过 <code class="systemitem">sysfs</code> 处理相关设备。例如，文件 <code class="filename">/sys/bus/pci/devices/0000:00:0d.0/modalias</code> 应该会包含字符串 <span class="quote">“<span class="quote">pci:v00001319d00000801sv00001319sd00001319bc04sc01i00</span>”</span>。Udev 采用的默认规则会让 <span class="command"><strong>udevd</strong></span> 根据 uevent 环境变量 <code class="envar">MODALIAS</code> 的内容（它应该和 sysfs 里的 <code class="filename">modalias</code> 文件内容一样）调用 <span class="command"><strong>/sbin/modprobe</strong></span>，这样就可以加载在通配符扩展后能和这个字符串一致的所有模块。
+          <p> 编译成模块的设备驱动可能会包含别名。别名可以通过
+            <span class="command"><strong>modinfo</strong></span>
+            打印出来查看，一般是模块支持的特定总线的设备描述符。举个例子，驱动
+            <span class="emphasis"><em>snd-fm801</em></span>
+            支持厂商 ID 为 0x1319 以及设备 ID 为 0x0801 的设备，它包含一个
+            <span class="quote">“<span class="quote">pci:v00001319d00000801sv*sd*bc04sc01i*</span>”</span>
+            的别名，总线驱动导出该驱动别名并通过 <code class="systemitem">sysfs</code>
+            处理相关设备。例如，文件 <code class="filename">/sys/bus/pci/devices/0000:00:0d.0/modalias</code>
+            应该会包含字符串 <span class="quote">“<span class="quote">pci:v00001319d00000801sv00001319sd00001319bc04sc01i00</span>”</span>。Udev
+            采用的默认规则会让 <span class="command"><strong>udevd</strong></span> 根据 uevent 环境变量
+            <code class="envar">MODALIAS</code> 的内容（它应该和 sysfs 里的 <code class="filename">modalias</code> 文件内容一样）调用
+            <span class="command"><strong>/sbin/modprobe</strong></span>，这样就可以加载在通配符扩展后能和这个字符串一致的所有模块。
 	  </p>
-          <p> 在这个例子里，意味着，除了 <span class="emphasis"><em>snd-fm801</em></span> 之外，一个已经废弃的（不是我们所希望的）驱动 <span class="emphasis"><em>forte</em></span> 如果存在的话也会被加载。下面有几种可以避免加载多余驱动的方式。
+          <p> 在这个例子里，意味着，除了 <span class="emphasis"><em>snd-fm801</em></span> 之外，一个已经废弃的（不是我们所希望的）驱动
+            <span class="emphasis"><em>forte</em></span> 如果存在的话也会被加载。下面有几种可以避免加载多余驱动的方式。
 	  </p>
 	  <p> 内核本身也能够根据需要加载网络协议，文件系统以及 NLS 支持模块。
 	  </p>
@@ -111,7 +124,7 @@
         <p> 在自动创建设备节点时可能会碰到一些问题。 </p>
         <div class="sect3">
           <h3 class="sect3"> 7.3.3.1. 内核模块没有自动加载</h3>
-          <p> Udev 只会加载包含有特定总线别名而且已经被总线驱动导出到 <code class="systemitem">sysfs</code> 下的模块。在其他情况下，你应该考虑用其他方式加载模块。采用 Linux-3.19，Udev 可以加载编写合适的 INPUT、IDE、PCI、USB、SCSI、SERIO 和 FireWire 设备驱动。
+          <p> Udev 只会加载包含有特定总线别名而且已经被总线驱动导出到 <code class="systemitem">sysfs</code> 下的模块。在其它情况下，你应该考虑用其它方式加载模块。采用 Linux-3.19，Udev 可以加载编写合适的 INPUT、IDE、PCI、USB、SCSI、SERIO 和 FireWire 设备驱动。
 	  </p>
           <p> 要确定你希望加载的驱动是否支持 Udev，可以用模块名字作为参数运行 <span class="command"><strong>modinfo</strong></span>。然后查看 <code class="filename">/sys/bus</code> 下的设备目录里是否有个 <code class="filename">modalias</code> 文件。
 	  </p>
@@ -124,7 +137,7 @@
         </div>
         <div class="sect3">
           <h3 class="sect3"> 7.3.3.2. 内核驱动没有自动加载，Udev 也没有尝试加载</h3>
-          <p> 如果是 <span class="quote">“<span class="quote">封装</span>”</span> 模块只是强化其他模块的功能（比如，<span class="emphasis"><em>snd-pcm-oss</em></span> 模块通过允许 OSS 应用直接访问声卡的方式加强了 <span class="emphasis"><em>snd-pcm</em></span> 模块的功能），需要配置 <span class="command"><strong>modprobe</strong></span> 在 Udev 加载硬件驱动模块后再加载相应的封装模块。可以在任意 <code class="filename">/etc/modprobe.d/<em class="replaceable"><code>&lt;filename&gt;</code></em>.conf</code>文件里增加一行 <span class="quote">“<span class="quote">softdep</span>”</span>，例如：
+          <p> 如果是 <span class="quote">“<span class="quote">封装</span>”</span> 模块只是强化其它模块的功能（比如，<span class="emphasis"><em>snd-pcm-oss</em></span> 模块通过允许 OSS 应用直接访问声卡的方式加强了 <span class="emphasis"><em>snd-pcm</em></span> 模块的功能），需要配置 <span class="command"><strong>modprobe</strong></span> 在 Udev 加载硬件驱动模块后再加载相应的封装模块。可以在任意 <code class="filename">/etc/modprobe.d/<em class="replaceable"><code>&lt;filename&gt;</code></em>.conf</code>文件里增加一行 <span class="quote">“<span class="quote">softdep</span>”</span>，例如：
 	  </p>
           <pre class="screen"><code class="literal">softdep snd-pcm post: snd-pcm-oss</code>
 </pre>
@@ -161,7 +174,7 @@
         </div>
         <div class="sect3">
           <h3 class="sect3"> 7.3.3.7. 设备名称顺序在重启后随机改变</h3>
-          <p> 这是因为 Udev 被设计成并行处理 uevents 并加载模块，所以是不可预期的顺序。这个不会<span class="quote">“<span class="quote">修复</span>”</span>。你不应该依赖稳定的内核模块名称。而是，在检测到设备的稳定特征，比如序列号或 Udev 安装的一些 *_id 应用的输出，来判断设备的稳定名称，之后创建自己的规则生成相应的软链接。可以参考 <a class="xref" href="symlinks.html" title="7.4.&nbsp;创建自定义符号连接设备">7.4, “创建自定义符号连接设备”</a>和<a class="xref" href="network.html" title="7.2.&nbsp;通用网络设置">7.2, “通用网络设置”</a>。
+          <p> 这是因为 Udev 被设计成并行处理 uevents 并加载模块，所以是不可预期的顺序。这个不会<span class="quote">“<span class="quote">修复</span>”</span>。你不应该依赖稳定的内核模块名称。而是，在检测到设备的稳定特征，比如序列号或 Udev 安装的一些 *_id 应用的输出，来判断设备的稳定名称，之后创建自己的规则生成相应的软链接。可以参考 <a class="xref" href="symlinks.html" title="7.4.&nbsp;创建自定义符号链接到设备">7.4, “创建自定义符号链接到设备”</a>和<a class="xref" href="network.html" title="7.2.&nbsp;通用网络设置">7.2, “通用网络设置”</a>。
 	  </p>
         </div>
       </div>
@@ -187,14 +200,22 @@ href="http://www.kernel.org/pub/linux/kernel/people/mochel/doc/papers/ols-2005/m
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>,<a href="http://github.com/wxy" target="_blank">wxy</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/ictlyh" target="_blank">ictlyh</a></span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev"> <a accesskey="p" href="network.html"
             title="通用网络设置">上一页</a>
           <p> 通用网络设置</p>
         </li>
         <li class="next"> <a accesskey="n" href="symlinks.html"
-            title="创建自定义符号连接设备">下一页</a>
-          <p> 创建自定义符号连接设备 </p>
+            title="创建自定义符号链接到设备">下一页</a>
+          <p> 创建自定义符号链接到设备 </p>
         </li>
         <li class="up"> <a accesskey="u" href="chapter07.html"
             title="第七章 基本系统配置">返回</a>

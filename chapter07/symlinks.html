@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title> 7.4.&nbsp;Creating Custom Symlinks to Devices </title>
+    <title> 7.4.&nbsp;创建自定义符号链接到设备 </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css">
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
     <link rel="stylesheet" href="../stylesheets/lfs-print.css"
@@ -14,8 +14,8 @@
       <h3> 第七章 基本系统配置 </h3>
       <ul>
         <li class="prev"> <a accesskey="p" href="udev.html"
-            title="LFS 系统上的设备和模块处理">上一页</a>
-          <p> LFS 系统上的设备和模块处理 </p>
+            title="LFS 系统中的设备和模块处理">上一页</a>
+          <p> LFS 系统中的设备和模块处理 </p>
         </li>
         <li class="next"> <a accesskey="n" href="clock.html"
             title="配置系统时间">下一页</a>
@@ -30,21 +30,20 @@
     </div>
     <div class="sect1" xml:lang="en" lang="en">
       <h1 class="sect1"> <a id="ch-scripts-symlinks"
-          name="ch-scripts-symlinks"></a>7.4. 创建自定义符号连接设备 </h1>
+          name="ch-scripts-symlinks"></a>7.4. 创建自定义符号链接到设备 </h1>
       <div class="sect2" xml:lang="en" lang="en">
         <h2 class="sect2"> 7.4.1. 处理相似性质的设备 </h2>
-        <p> 正如 <a class="xref" href="udev.html" title="7.3.&nbsp;Device
-            and Module Handling on an LFS System">Section&nbsp;7.3, “LFS
-            系统上的设备和模块处理 ”</a> 节中解释的，具有相同功能的设备出现在 <code class="filename">/dev</code>
+        <p> 正如 <a class="xref" href="udev.html" title="7.3.&nbsp;LFS 系统中的设备和模块管理">章节&nbsp;7.3, “LFS
+            系统中的设备和模块管理 ”</a> 中解释的，具有相同功能的设备出现在 <code class="filename">/dev</code>
           目录下的顺序是随机的。假如你有一个 USB 摄像头和一个电视调谐器，<code class="filename">/dev/video0</code>
           有可能是 USB 摄像头，<code class="filename">/dev/video1</code>
           是电视调谐器，有时候又可能是反过来的。对于除声卡和网卡外的设备，都可以通过创建自定义持久性符号链接的 udev
           规则来固定。网卡如何设置请看 <a class="xref" href="network.html"
-            title="7.2.&nbsp;General Network Configuration">7.2,
+            title="7.2.&nbsp;通用网络配置">7.2,
             “通用网络配置”</a>，网卡的相关设置请看 <a class="ulink"
 href="http://www.linuxfromscratch.org/blfs/view/systemd/postlfs/devices.html">BLFS</a>。
         </p>
-        <p> 对于你所有的硬件，都有可能遇到此问题（尽管此问题可能在你当前的 Linux 发行版上不存在），在 <code></code><code
+        <p> 对于你所有的硬件，都有可能遇到此问题（尽管此问题可能在你当前的 Linux 发行版上不存在），在 <code
             class="filename">/sys/class</code> 或 <code class="filename">/sys/block</code>
           目录下找到对应目录，比如，显卡可能的路径为 <code class="filename">/sys/class/video4linux/video<em
               class="replaceable"><code>X</code></em></code>。找到该设备的唯一设备标识（通常，厂商和产品 ID 以及/或 序列号会有用）：</p>
@@ -68,10 +67,18 @@ EOF</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>,<a href="http://github.com/wxy" target="_blank">wxy</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/ictlyh" target="_blank">ictlyh</a></span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev"> <a accesskey="p" href="udev.html"
-            title="LFS 系统上的设备和模块处理">上一页</a>
-          <p> LFS 系统上的设备和模块处理 </p>
+            title="LFS 系统中的设备和模块管理">上一页</a>
+          <p> LFS 系统中的设备和模块管理 </p>
         </li>
         <li class="next"> <a accesskey="n" href="clock.html"
             title="配置系统时间">下一页</a>
