@@ -62,8 +62,8 @@ EOF</kbd>
             class="filename">/etc/fstab </code>中指定了专门的分区，那么此操作是多余的。</p>
       </div>
       <div class="sect2" xml:lang="en" lang="en">
-        <h2 class="sect2"> 7.10.4. 配置自动建立和删除文件</h2>
-        <p> 有这样几个服务可以建立或删除文件/文件夹：</p>
+        <h2 class="sect2"> 7.10.4. 配置自动创建和删除文件</h2>
+        <p> 有这样几个服务可以建立或删除文件/目录：</p>
         <div class="itemizedlist">
           <ul>
             <li class="listitem">
@@ -77,17 +77,12 @@ EOF</kbd>
             </li>
           </ul>
         </div>
-        <p> 系统配置文件为 <code class="filename">/usr/lib/tmpfiles.d/*.conf。</code>本
-          地配置文件在 <code class="filename">/etc/tmpfiles.d</code> 中。 <code
-            class="filename">/etc/tmpfiles.d</code> 中的所有文件都来自于 <code
-            class="filename">/usr/lib/tmpfiles.d</code>，且具有相同名称中的文件（译者注：
-          在原文中，说的是 <code class="filename">/etc/tmpfiles.d </code>目录中的文
-          件是 <code class="filename">/usr/lib/tmpfiles.d</code> 中的文件的
-          override，也就是说，当2个目录存在相同文件名的文件，<code class="filename">/etc/tmpfiles.d</code>
-          优先读取，但是当 <code class="filename">/etc/tmpfiles.d</code>
-          下的文件存在问题，则会去读取<code class="filename"> /usr/lib/tmpfiles.d</code>
-          中的文件）。可以在 man 手册的 <code class="filename">tmpfiles.d(5)</code>
-          中查看此文件的格式。</p>
+        <p> 系统配置文件在 <code class="filename">/usr/lib/tmpfiles.d/*.conf</code>
+            中。本地配置文件在 <code class="filename">/etc/tmpfiles.d</code> 中。
+            <code class="filename">/etc/tmpfiles.d</code> 中的文件会覆盖 <code
+            class="filename">/usr/lib/tmpfiles.d</code> 中相同名称的文件。
+            （译者注：首先读取系统范围配置文件，再读取用户范围配置文件，用户范围配置文件会覆盖系统范围配置文件的相同部分。）可以在
+            man 手册的 <code class="filename">tmpfiles.d(5)</code> 中获取文件格式详情。</p>
       </div>
       <div class="sect2" xml:lang="en" lang="en">
         <h2 class="sect2"> 7.10.5. 覆盖默认服务的行为</h2>
@@ -102,8 +97,8 @@ RestartSec=30</code>
 EOF</kbd>
 </pre>
         <p> 可以在 man 手册的 <code class="filename">systemd.unit(5)</code>
-          中查询更多信息。建立好文件之后，请运行<code><strong> </strong></code><strong
-            class="userinput"><code>systemctl daemon-reload</code></strong>
+          中查询更多信息。创建好文件之后，请运行
+          <strong class="userinput"><code>systemctl daemon-reload</code></strong>
           和 <strong class="userinput"><code>systemctl restart foobar</code></strong>
           激活所做更改。<br>
         </p>
@@ -132,10 +127,18 @@ EOF</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>,<a href="http://github.com/wxy" target="_blank">wxy</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/ictlyh" target="_blank">ictlyh</a></span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev"> <a accesskey="p" href="etcshells.html"
-            title="建立 /etc/shells 文件">上一页</a>
-          <p> 建立 /etc/shells 文件 </p>
+            title="创建 /etc/shells 文件">上一页</a>
+          <p> 创建 /etc/shells 文件 </p>
         </li>
         <li class="next"> <a accesskey="n"
             href="../chapter08/chapter08.html" title="让 LFS 可以启动">下一页</a>

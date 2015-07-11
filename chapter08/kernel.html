@@ -45,9 +45,22 @@
       </div>
       <div class="installation" xml:lang="en" lang="en">
         <h2 class="sect2"> 8.3.1. 安装内核</h2>
-        <p> 编译内核包括以下步骤——配置、编译和安装。阅读内核源码树中的 <code class="filename">README</code>
+        <p> 编译内核包括以下步骤&mdash;配置、编译和安装。阅读内核源码树中的 <code class="filename">README</code>
           可以获得替代本手册配置的方法。</p>
-        <p> 通过以下命令来编译：</p>
+          <div class="admon note">
+        <img alt="[Note]" src="../images/note.png" />
+        <h3>
+          注意
+        </h3>
+        <p>
+          本章节里的命令都要在 chroot 环境下运行。如果因为某种原因（比如说重启）离开了这个环境，请保证要按照
+          <a class="xref" href="../chapter06/kernfs.html#ch-system-bindmount" title="6.2.2.&nbsp;挂载和激活/dev">6.2.2,&ldquo;挂载和激活/dev&rdquo;</a>
+          和 <a class="xref" href="../chapter06/kernfs.html#ch-system-kernfsmount" title="6.2.3.&nbsp;挂载虚拟内核文件系统">6.2.3,&ldquo;挂载虚拟内核文件系统&rdquo;</a>
+          里所说的那样挂载虚拟内核文件系统，然后按照 <a class="xref" href="../chapter06/revisedchroot.html" title="6.72.&nbsp;清理">6.72.&nbsp;清理</a> 介绍的方法重新进入
+          chroot 环境。否则运行下面的 make 命令会提示段错误。并进入源码目录（sources），解压 Linux-3.19.tar.gz 文件并进入解压后的目录。
+        </p>
+      </div>
+        <p> 运行以下命令准备编译：</p>
         <pre class="userinput"><kbd class="command">make mrproper</kbd>
 </pre>
         <p> 这将保证内核树的绝对干净。内核小组建议在每次编译之前都执行此命令，无用的代码将会在解压后删除。</p>
@@ -257,6 +270,14 @@ EOF</kbd>
       </div>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/wxy" target="_blank">wxy</a>,<a href="http://github.com/ictlyh" target="_blank">ictlyh</a></span>
+            </div>
+        </div>
+      </div>
       <ul>
         <li class="prev"> <a accesskey="p" href="fstab.html"
             title="创建 /etc/fstab 文件">上一页</a>

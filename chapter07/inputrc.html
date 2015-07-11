@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title> 7.8.&nbsp;Creating the /etc/inputrc File </title>
+    <title> 7.8.&nbsp;创建 /etc/inputrc 文件 </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css">
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
     <link rel="stylesheet" href="../stylesheets/lfs-print.css"
@@ -19,8 +19,8 @@
           <p> 系统区域设置 </p>
         </li>
         <li class="next"> <a accesskey="n" href="etcshells.html"
-            title="建立 /etc/shells 文件">下一页</a>
-          <p> 建立 /etc/shells 文件 </p>
+            title="创建 /etc/shells 文件">下一页</a>
+          <p> 创建 /etc/shells 文件 </p>
         </li>
         <li class="up"> <a accesskey="u" href="chapter07.html"
             title="第七章 基本系统配置">返回</a>
@@ -31,7 +31,7 @@
     </div>
     <div class="sect1" xml:lang="en" lang="en">
       <h1 class="sect1"> <a id="ch-scripts-inputrc"
-          name="ch-scripts-inputrc"></a>7.8. 建立 /etc/inputrc 文件</h1>
+          name="ch-scripts-inputrc"></a>7.8. 创建 /etc/inputrc 文件</h1>
       <p> <code class="filename">inputrc</code>
         文件的作用是告知系统应该以怎样的键盘布局处理键盘。此文件对于 readline（readline： GNU readline
         library，和输入紧密相关的库）或者是一些 shell （例如 bash 等）来说十分重要。</p>
@@ -45,7 +45,7 @@
             Init File</em></span> 一节。其实查看 <span class="command"><strong>info
             readline</strong></span> 也可以获得不少有用的东西啦。</p>
       <p> 下面显示的就是通用的 <code class="filename">inputrc</code>
-        文件，其中包含有“#”的都是注释行（需要注意的是，此文件不支持在设置后跟随注释）。使用以下命令创建此文件：</p>
+        文件，其中包含有 “#” 的都是注释行（需要注意的是，此文件不支持在设置后跟随注释）。使用以下命令创建此文件：</p>
       <pre class="userinput"><kbd class="command">cat &gt; /etc/inputrc &lt;&lt; "EOF"
 <code class="literal"># Begin /etc/inputrc
 # Modified by Chris Lynn &lt;roryo@roryo.dynup.net&gt;
@@ -92,14 +92,22 @@ EOF</kbd>
 </pre>
     </div>
     <div class="navfooter">
+        <div class="book">
+        <div class="titlepage">
+            <div class="author">
+                <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>,<a href="http://github.com/wxy" target="_blank">wxy</a>,<a href="http://github.com/dongfengweixiao" target="_blank">dongfengweixiao</a>,<a href="http://github.com/ictlyh" target="_blank">ictlyh</a></span>
+            </div>
+        </div>
+        </div>
       <ul>
         <li class="prev"> <a accesskey="p" href="locale.html"
             title="系统区域设置">上一页</a>
           <p> 系统区域设置 </p>
         </li>
         <li class="next"> <a accesskey="n" href="etcshells.html"
-            title="建立 /etc/shells 文件">下一页</a>
-          <p> 建立 /etc/shells 文件 <br>
+            title="创建 /etc/shells 文件">下一页</a>
+          <p> 创建 /etc/shells 文件 <br>
           </p>
         </li>
         <li class="up"> <a accesskey="u" href="chapter07.html"
