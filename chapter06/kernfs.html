@@ -32,7 +32,7 @@
           <a accesskey="n" href="pkgmgt.html" title=
           "安装包管理">下一页</a>
           <p>
-            安装包管理
+            软件包管理
           </p>
         </li>
         <li class="up">
@@ -64,7 +64,7 @@
           6.2.1. 创建初始设备节点
         </h2>
         <p>
-          在内核引导系统的时候，它依赖于几个设备节点，特别是<code class="filename">console</code>和<code class="filename">null</code>两个设备。这些设备节点需要创建在硬盘上，这样在<span class="command"><strong>udevd</strong></span> 启动之前它们也仍然有效，特别是在Linux使用<em class="parameter"><code>init=/bin/bash</code></em>参数启动的时候。运行下面的命令创建这几个设备节点：
+          在内核引导系统的时候，它依赖于几个设备节点，特别是 <code class="filename">console</code> 和 <code class="filename">null</code> 两个设备。这些设备节点需要创建在硬盘上，这样在 <span class="command"><strong>udevd</strong></span>  启动之前它们也仍然有效，特别是在 Linux 使用<em class="parameter"><code>init=/bin/bash</code></em> 参数启动的时候。运行下面的命令创建这几个设备节点：
         </p>
         <pre class="userinput">
 <kbd class="command">mknod -m 600 $LFS/dev/console c 5 1
@@ -74,10 +74,10 @@ mknod -m 666 $LFS/dev/null c 1 3</kbd>
       <div class="sect2" lang="en" xml:lang="en">
         <h2 class="sect2">
           <a id="ch-system-bindmount" name="ch-system-bindmount"></a>6.2.2.
-          挂载和激活/dev
+          挂载和激活 /dev
         </h2>
         <p>
-          通常激活<code class="filename">/dev</code>目录下设备的方式是在<code class="filename">/dev</code>目录挂载一个虚拟文件系统（比如<code class="systemitem">tmpfs</code>），然后允许在检测到设备或打开设备时在这个虚拟文件系统里动态创建设备节点。这个通常是在启动过程中由Udev完成。由于我们的新系统还没有Udev而且也没有被引导启动，有必要手动挂载和激活<code class="filename">/dev</code>目录。这可以通过绑定挂载宿主机系统的<code class="filename">/dev</code>目录实现。绑定挂载是一种特殊的挂载模式，它允许创建某个目录或挂载点的镜像到另外的位置。运行下面的命令来实现：
+          通常激活 <code class="filename">/dev</code> 目录下设备的方式是在 <code class="filename">/dev</code>目录挂载一个虚拟文件系统（比如 <code class="systemitem">tmpfs</code>），然后允许在检测到设备或打开设备时在这个虚拟文件系统里动态创建设备节点。这个通常是在启动过程中由 Udev 完成。由于我们的新系统还没有 Udev 而且也没有被引导启动，有必要手动挂载和激活 <code class="filename">/dev</code> 目录。这可以通过绑定挂载宿主机系统的 <code class="filename">/dev</code> 目录实现。绑定挂载是一种特殊的挂载模式，它允许在另外的位置创建某个目录或挂载点的镜像。运行下面的命令来实现：
         </p>
         <pre class="userinput">
 <kbd class="command">mount -v --bind /dev $LFS/dev</kbd>
@@ -99,7 +99,7 @@ mount -vt tmpfs tmpfs $LFS/run</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>devpts挂载选项的含义：</strong>
+            <strong>devpts 挂载选项的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -108,7 +108,7 @@ mount -vt tmpfs tmpfs $LFS/run</kbd>
             </dt>
             <dd>
               <p>
-                这个选项会让devpts创建的所有设备节点属主的组ID都是5。这是我们待会将要指定给<code class="systemitem">tty</code>组的ID。现在我们先用ID代替组名，因为宿主机系统可能会为它的<code class="systemitem">tty</code>组分配了不同的ID。
+                这个选项会让 devpts 创建的所有设备节点属主的组 ID 都是 5。这是我们待会将要指定给 <code class="systemitem">tty</code> 组的 ID。现在我们先用 ID 代替组名，因为宿主机系统可能会为它的 <code class="systemitem">tty</code> 组分配了不同的 ID。
               </p>
             </dd>
             <dt>
@@ -117,13 +117,13 @@ mount -vt tmpfs tmpfs $LFS/run</kbd>
             </dt>
             <dd>
               <p>
-                这个选项会让devpts创建的所有设备节点的属性是0620（属主用户可读写，组成员可写）。和上一个选项同时使用，可以保证devpts所创建的设备节点能满足grantpt()函数的要求，意味着不需要Glibc的<span class="command"><strong>pt_chown</strong></span>帮助程序（默认没有安装）了。
+                这个选项会让 devpts 创建的所有设备节点的属性是 0620（属主用户可读写，组成员可写）。和上一个选项同时使用，可以保证 devpts 所创建的设备节点能满足 grantpt() 函数的要求，这意味着不需要 Glibc 的 <span class="command"><strong>pt_chown</strong></span> 帮助程序（默认没有安装）了。
               </p>
             </dd>
           </dl>
         </div>
         <p>
-          在某些宿主机系统里，<code class="filename">/dev/shm</code>是一个指向<code class="filename">/run/shm</code>的软链接。/run tmpfs已经在之前挂载了，所以在这里只需要创建一个目录。
+          在某些宿主机系统里，<code class="filename">/dev/shm</code> 是一个指向 <code class="filename">/run/shm</code> 的软链接。这个 /run 下的 tmpfs 文件系统已经在之前挂载了，所以在这里只需要创建一个目录。
         </p>
         <pre class="userinput">
 <kbd class="command">if [ -h $LFS/dev/shm ]; then
@@ -137,7 +137,7 @@ fi</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/</span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
       </div>
@@ -153,7 +153,7 @@ fi</kbd>
           <a accesskey="n" href="pkgmgt.html" title=
           "安装包管理">下一页</a>
           <p>
-            安装包管理
+            软件包管理
           </p>
         </li>
         <li class="up">

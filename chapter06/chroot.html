@@ -25,7 +25,7 @@
           <a accesskey="p" href="pkgmgt.html" title=
           "管理软件包">下一页</a>
           <p>
-            管理软件包
+            软件包管理
           </p>
         </li>
         <li class="next">
@@ -37,7 +37,7 @@
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "第6章 安装基本的系统软件">返回</a>
+          "第六章 安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=
@@ -50,7 +50,7 @@
         <a id="ch-system-chroot" name="ch-system-chroot"></a>6.4. 进入Chroot环境
       </h1>
       <p>
-        现在可以切换到chroot环境开始构建和安装最终的LFS系统了。使用<code class="systemitem">root</code>用户，运行下面的命令进入这个空间，目前，里面只入住了之前准备的临时工具：
+        现在可以切换到 chroot 环境开始构建和安装最终的 LFS 系统了。以 <code class="systemitem">root</code> 用户运行下面的命令进入这个“空间”，目前，里面只入住了之前准备的临时工具：
       </p>
       <pre class="userinput">
 <kbd class="command">chroot "$LFS" /tools/bin/env -i \
@@ -61,16 +61,16 @@
     /tools/bin/bash --login +h</kbd>
 </pre>
       <p>
-        <span class="command"><strong>env</strong></span>命令的<em class="parameter"><code>-i</code></em>选项会清除chroot切换进去的环境里所有变量。随后，只重新设定了<code class="envar">HOME</code>、<code class="envar">TERM</code>、<code class="envar">PS1</code>和<code class="envar">PATH</code>变量。<em class="parameter"><code>TERM=$TERM</code></em>语句会设定chroot进入的环境里的<code class="envar">TERM</code>变量为进入前该变量同样的值。许多程序需要这个变量才能正常工作，比如<span class="command"><strong>vim</strong></span>和<span class="command"><strong>less</strong></span>。如果还需要设定其他变量，比如<code class="envar">CFLAGS</code>或<code class="envar">CXXFLAGS</code>，就在这里一起设定比较合适。
+        给 <span class="command"><strong>env</strong></span> 命令传递 <em class="parameter"><code>-i</code></em> 选项会清除这个 chroot 切换进去的环境里所有变量。随后，只重新设定了 <code class="envar">HOME</code>、<code class="envar">TERM</code>、<code class="envar">PS1</code> 和 <code class="envar">PATH</code> 变量。<em class="parameter"><code>TERM=$TERM</code></em> 语句会设定 chroot 进入的环境里的 <code class="envar">TERM</code> 变量为进入前该变量同样的值。许多程序需要这个变量才能正常工作，比如 <span class="command"><strong>vim</strong></span> 和 <span class="command"><strong>less</strong></span>。如果还需要设定其他变量，比如 <code class="envar">CFLAGS</code> 或 <code class="envar">CXXFLAGS</code>，就在这里一起设定比较合适。
       </p>
       <p>
-        从这以后，不再需要<code class="envar">LFS</code>变量了，因为后面所有工作都将被限定在LFS文件系统里。这是因为我们已经告诉Bash终端<code class="filename">$LFS</code>就是当前的根目录(<code class="filename">/</code>)。
+        从这里以后，就不再需要 <code class="envar">LFS</code> 变量了，因为后面所有工作都将被限定在 LFS 文件系统里。这是因为我们已经告诉 Bash 终端 <code class="filename">$LFS</code> 就是当前的根目录（<code class="filename">/</code>）。
       </p>
       <p>
-        请注意<code class="filename">/tools/bin</code>放在了<code class="envar">PATH</code>变量的最后。意思是在每个软件的最后版本编译安装好后就不再使用的临时工具。这还需要shell不能<span class="quote">&ldquo;<span class="quote">记住</span>&rdquo;</span>每个可执行文件的位置&mdash;这样的话，还要给<span class="command"><strong>bash</strong></span>加上<em class="parameter"><code>+h</code></em>选项来关闭哈希功能。
+        请注意 <code class="filename">/tools/bin</code> 放在了 <code class="envar">PATH</code> 变量的最后。意思是在每个软件的最后版本编译安装好后就不再使用临时工具了。这还需要让 shell 不要<span class="quote">&ldquo;<span class="quote">记住</span>&rdquo;</span>每个可执行文件的位置&mdash;这样的话，还要给 <span class="command"><strong>bash</strong></span> 加上 <em class="parameter"><code>+h</code></em> 选项来关闭其哈希功能。
       </p>
       <p>
-        注意一下<span class="command"><strong>bash</strong></span>的提示符是<code class="computeroutput">I have no name!</code>。这是正常的，因为这个时候<code class="filename">/etc/passwd</code>文件还没有被创建。
+        注意一下 <span class="command"><strong>bash</strong></span> 的提示符是 <code class="computeroutput">I have no name!</code>。这是正常的，因为这个时候 <code class="filename">/etc/passwd</code> 文件还没有被创建。
       </p>
       <div class="admon note">
         <img alt="[Note]" src="../images/note.png" />
@@ -78,7 +78,7 @@
           注意
         </h3>
         <p>
-          非常重要，本章从这以后的命令，以及后续章节里的命令都要在chroot环境下运行。如果因为某种原因（比如说重启）离开了这个环境，请保证要按照<a class="xref" href="kernfs.html#ch-system-bindmount" title="6.2.2.&nbsp;挂载和激活/dev">6.2.2,&ldquo;挂载和激活/dev&rdquo;</a>和<a class="xref" href="kernfs.html#ch-system-kernfsmount" title="6.2.3.&nbsp;挂载虚拟内核文件系统">6.2.3,&ldquo;挂载虚拟内核文件系统&rdquo;</a>里所说的那样挂载虚拟内核文件系统，然后在继续构建之前重新运行chroot进入环境。
+          非常重要，本章从这以后的命令，以及后续章节里的命令都要在 chroot 环境下运行。如果因为某种原因（比如说重启）离开了这个环境，请保证要按照 <a class="xref" href="kernfs.html#ch-system-bindmount" title="6.2.2.&nbsp;挂载和激活/dev">6.2.2,&ldquo;挂载和激活 /dev&rdquo;</a> 和 <a class="xref" href="kernfs.html#ch-system-kernfsmount" title="6.2.3.&nbsp;挂载虚拟内核文件系统">6.2.3,&ldquo;挂载虚拟内核文件系统&rdquo;</a>里所说的那样挂载虚拟内核文件系统，然后在继续构建之前重新运行 chroot 进入环境。
         </p>
       </div>
     </div>
@@ -87,7 +87,7 @@
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/</span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
       </div>
@@ -96,7 +96,7 @@
           <a accesskey="p" href="pkgmgt.html" title=
           "管理软件包">下一页</a>
           <p>
-            管理软件包
+            软件包管理
           </p>
         </li>
         <li class="next">
@@ -108,7 +108,7 @@
         </li>
         <li class="up">
           <a accesskey="u" href="chapter06.html" title=
-          "第6章 安装基本的系统软件">返回</a>
+          "第六章 安装基本的系统软件">返回</a>
         </li>
         <li class="home">
           <a accesskey="h" href="../index.html" title=

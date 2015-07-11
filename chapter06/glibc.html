@@ -51,7 +51,7 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          Glibc 软件包包含了主要的 C 函数库。这个库提供了分配内存，搜索目录，打开关闭文件，读写文件，操作字符串，模式匹配，基础算法，等基本程序。
+          Glibc 软件包包含了主要的 C 函数库。这个库提供了分配内存、搜索目录、打开关闭文件、读写文件、操作字符串、模式匹配、基础算法等基本程序。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -86,7 +86,7 @@
           </p>
         </div>
         <p>
-          有些 Glibc 程序会用到和 FHS 不兼容的 <code class="filename">/var/db</code> 目录来存储它们的运行时数据。打上下面的补丁让这些程序在 FHS 兼容的位置存储它们的运行时数据。
+          有些 Glibc 程序会用到和 FHS 不兼容的 <code class="filename">/var/db</code> 目录来存储它们的运行时数据。打上如下的补丁让这些程序在 FHS 兼容的位置存储它们的运行时数据。
         </p>
         <pre class="userinput">
 <kbd class="command">patch -Np1 -i ../glibc-2.21-fhs-1.patch</kbd>
@@ -103,7 +103,7 @@
     -i  sysdeps/i386/i686/multiarch/mempcpy_chk.S</kbd>
 </pre>
         <p>
-          Glibc 文档里建议在 Glibc 源代码目录之外的特定的编译目录下编译：
+          Glibc 文档里建议在 Glibc 源代码目录之外的特定编译目录下编译：
         </p>
         <pre class="userinput">
 <kbd class="command">mkdir -v ../glibc-build
@@ -121,7 +121,7 @@ cd ../glibc-build</kbd>
 </pre>
         <div class="variablelist">
           <p class="title">
-            <strong>新的 configure 选项参数的含义：</strong>
+            <strong>新出现的 configure 选项参数的含义：</strong>
           </p>
           <dl class="variablelist">
             <dt>
@@ -130,7 +130,7 @@ cd ../glibc-build</kbd>
             </dt>
             <dd>
               <p>
-                要求安装 NIS 和 RPC 相关的头文件，默认是不安装的；重新编译 Glibc 时以及一些 BLFS 软件包需要这些头文件。
+                安装 NIS 和 RPC 相关的头文件，默认是不安装的；重新编译 Glibc 时以及一些 BLFS 软件包需要这些头文件。
               </p>
             </dd>
           </dl>
@@ -151,7 +151,7 @@ cd ../glibc-build</kbd>
           </p>
         </div>
         <p>
-          通常会有一些测试不能通过，但是一般你可以忽略下面列出来的任何失败项。现在开始测试编译结果：
+          通常会有一些测试不能通过，但是一般你可以忽略任何下面列出来的失败项。现在开始测试编译结果：
         </p>
         <pre class="userinput">
 <kbd class="command">make check</kbd>
@@ -215,9 +215,9 @@ install -v -Dm644 ../glibc-2.21/nscd/nscd.service /lib/systemd/system/nscd.servi
         </p>
         <p>
           单独的语言环境可以用 <span class="command"><strong>localedef</strong></span> 
-	  程序安装。例如，下面第一行 <span class="command"><strong>localedef</strong></span> 
-	  命令结合了 <code class="filename">/usr/share/i18n/locales/cs_CZ</code> 字符无关的语言环境定义和
-	  <code class="filename">/usr/share/i18n/charmaps/UTF-8.gz</code> 字符表定义，并将结果附加到
+	  程序安装。例如，下面第一个 <span class="command"><strong>localedef</strong></span> 
+	  命令将 <code class="filename">/usr/share/i18n/locales/cs_CZ</code> 字符无关的语言环境定义和
+	  <code class="filename">/usr/share/i18n/charmaps/UTF-8.gz</code> 字符表定义组合在一起，并将结果附加到
 	  <code class="filename">/usr/lib/locale/locale-archive</code> 文件末尾。下面的命令将安装能完美覆盖测试所需语言环境的最小集合：
         </p>
         <pre class="userinput">
@@ -253,15 +253,15 @@ localedef -i zh_CN -f GB18030 zh_CN.GB18030</kbd>
         <pre class="userinput">
 <kbd class="command">make localedata/install-locales</kbd>
 </pre>
-        <p>你需要的语言环境在 <code class="filename">glibc-2.21/localedata/SUPPORTED</code> 文件中没有列出来几乎是不可能的，但如果真的没有可以使用 <span class="command"><strong>localedef</strong></span> 命令创建和安装。
+        <p>你需要的语言环境几乎不大可能没列在 <code class="filename">glibc-2.21/localedata/SUPPORTED</code> 文件中，但如果真的没有可以使用 <span class="command"><strong>localedef</strong></span> 命令创建和安装。
         </p>
       </div>
       <div class="configuration" lang="en" xml:lang="en">
         <h2 class="sect2">
-          <a id="conf-glibc" name="conf-glibc"></a>6.9.2. Configuring Glibc
+          <a id="conf-glibc" name="conf-glibc"></a>6.9.2. 配置 Glibc
         </h2>
         <p>
-          尽管 Glibc 在文件 <code class="filename">/etc/nsswitch.conf</code> 丢失或损坏的情况下会创建默认的，我们需要手动该创建文件，因为 Glibc 的默认文件在网络环境下工作时有问题。另外，也需要设置一下时区。
+          尽管 Glibc 在文件 <code class="filename">/etc/nsswitch.conf</code> 丢失或损坏的情况下会创建一个默认的，但是我们需要手动该创建文件，因为 Glibc 的默认文件在网络环境下工作时有问题。另外，也需要设置一下时区。
         </p>
         <p>
           运行下面的命令创建一个新文件 <code class="filename">/etc/nsswitch.conf</code>：
@@ -316,8 +316,8 @@ unset ZONEINFO</kbd>
             </dt>
             <dd>
               <p>
-                这会创建没有时间补偿的 posix 标准时区。一般将它们同时放在 <code class="filename">zoneinfo</code> 和 <code class=
-                "filename">zoneinfo/posix</code> 目录下。另外需要将 POSIX 标准时区放到<code class="filename">zoneinfo</code> 目录下，否则很多测试套件会报错。在嵌入式平台，如果存储空间紧张而且你也不准备更新时区，也可以不用 <code class="filename">posix</code> 目录从而节省 1.9MB，但是一些应用程序或测试套件也许会出错。
+                这会创建没有时间补偿的 posix 时区数据。一般将它们同时放在 <code class="filename">zoneinfo</code> 和 <code class=
+                "filename">zoneinfo/posix</code> 目录下。另外需要将 POSIX 时区数据放到 <code class="filename">zoneinfo</code>  目录下，否则很多测试套件会报错。在嵌入式平台，如果存储空间紧张而且你也不准备更新时区，也可以不用 <code class="filename">posix</code> 目录从而节省 1.9MB，但是一些应用程序或测试套件也许会出错。
               </p>
             </dd>
             <dt>
@@ -326,7 +326,7 @@ unset ZONEINFO</kbd>
             </dt>
             <dd>
               <p>
-                这会创建包含时间补偿的 right 时区。在嵌入式平台，空间比较紧张而且你也不打算更新时区或者不需要准确时间，你可以忽略 <code class="filename">right</code> 目录从而节省 1.9MB。
+                这会创建包含时间补偿的 right 时区数据。在嵌入式平台，空间比较紧张而且你也不打算更新时区或者不需要准确时间，你可以忽略 <code class="filename">right</code> 目录从而节省 1.9MB。
               </p>
             </dd>
             <dt>
@@ -365,7 +365,7 @@ unset ZONEINFO</kbd>
           <a id="conf-ld" name="conf-ld"></a>6.9.3. 配置动态库加载器
         </h2>
         <p>
-          默认情况下，动态库加载器（<code class="filename">/lib/ld-linux.so.2</code>）会搜索目录<code class="filename">/lib</code> 和 <code class="filename">/usr/lib</code> 查找程序运行时所需的动态库文件。不过，如果库文件不在 <code class="filename">/lib</code> 和 <code class="filename">/usr/lib</code> 目录下，需要把它所在目录加到 <code class="filename">/etc/ld.so.conf</code> 文件里，保证动态库加载器能找到这些库。通常有两个目录包含额外的动态库，<code class="filename">/usr/local/lib</code> 和 <code class="filename">/opt/lib</code>，把这两个目录加到动态库加载器的搜索路径中。
+          默认情况下，动态库加载器（<code class="filename">/lib/ld-linux.so.2</code>）会搜索目录 <code class="filename">/lib</code> 和 <code class="filename">/usr/lib</code> 查找程序运行时所需的动态库文件。不过，如果库文件不在 <code class="filename">/lib</code> 和 <code class="filename">/usr/lib</code> 目录下，需要把它所在目录加到 <code class="filename">/etc/ld.so.conf</code> 文件里，保证动态库加载器能找到这些库。通常有两个目录包含额外的动态库，<code class="filename">/usr/local/lib</code> 和 <code class="filename">/opt/lib</code>，把这两个目录加到动态库加载器的搜索路径中。
         </p>
         <p>
           运行下面的命令创建一个新文件<code class="filename">/etc/ld.so.conf</code>：
@@ -479,7 +479,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    显示文件系统相关系统配置变量的值
+                    显示文件系统相关的系统配置变量的值
                   </p>
                 </td>
               </tr>
@@ -674,7 +674,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    为实现远端进程调用（RPC）协议生成 C 语言代码
+                    生成实现远端进程调用（RPC）协议的 C 语言代码
                   </p>
                 </td>
               </tr>
@@ -687,7 +687,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    静态链接的 <span class="command"><strong>ln</strong></span> 程序
+                    一个静态链接的 <span class="command"><strong>ln</strong></span> 程序
                   </p>
                 </td>
               </tr>
@@ -729,7 +729,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    询问用户系统的地理位置并给出相应的时区描述
+                    询问用户该系统的地理位置并给出相应的时区描述
                   </p>
                 </td>
               </tr>
@@ -757,7 +757,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    时区输出工具
+                    时区数据输出工具
                   </p>
                 </td>
               </tr>
@@ -770,7 +770,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    时区编译工具
+                    时区数据编译工具
                   </p>
                 </td>
               </tr>
@@ -783,7 +783,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    动态库执行辅助程序
+                    用于动态库执行的辅助程序
                   </p>
                 </td>
               </tr>
@@ -849,7 +849,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    Glibc 内部用于在函数 <code class="function">getaddrinfo()</code> 中处理本地化域名
+                    Glibc 内部用于在函数 <code class="function">getaddrinfo()</code> 中处理国际化域名
                   </p>
                 </td>
               </tr>
@@ -888,7 +888,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    没有函数的一个空库。以前是 <span class="command"><strong>g++</strong></span> 的运行时库
+                    不包含函数的一个空库。以前是 <span class="command"><strong>g++</strong></span> 的运行时库
                   </p>
                 </td>
               </tr>
@@ -901,8 +901,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-					链接该模块会强制使用电气与电子工程师协会（Institute of Electrical
-                    and Electronic Engineers，IEEE) 定义的数学函数错误处理规则。默认的是 POSIX.1 错误处理。
+					          链接该模块会强制使用电气与电子工程师协会（IEEE) 定义的数学函数错误处理规则。默认的是 POSIX.1 错误处理。
                   </p>
                 </td>
               </tr>
@@ -980,7 +979,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    包含一些分析函数，用于跟踪特定源代码里的CPU时间占用情况
+                    包含一些分析函数，用于跟踪特定源代码里的 CPU 时间占用情况
                   </p>
                 </td>
               </tr>
@@ -1006,7 +1005,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    包含了创建、发送和解析因特网域名服务器封包的函数
+                    包含了创建、发送和解析互联网域名服务器封包的函数
                   </p>
                 </td>
               </tr>
@@ -1019,7 +1018,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    包含了提供各种 RPC 服务的函数
+                    包含了提供杂项 RPC 服务的函数
                   </p>
                 </td>
               </tr>
@@ -1058,7 +1057,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
                 </td>
                 <td>
                   <p>
-                    包含 Unix 中很多应用程序中用到的<span class="quote">&ldquo;<span class="quote">标准</span>&rdquo;</span> 函数
+                    包含各种 Unix 应用程序中用到的<span class="quote">&ldquo;<span class="quote">标准</span>&rdquo;</span> 函数的代码
                   </p>
                 </td>
               </tr>
@@ -1072,7 +1071,7 @@ mkdir -pv /etc/ld.so.conf.d</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/</span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
       </div>

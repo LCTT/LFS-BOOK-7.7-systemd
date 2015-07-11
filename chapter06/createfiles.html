@@ -126,7 +126,7 @@ ln -sv bash /bin/sh</kbd>
           </dt>
           <dd>
             <p>
-              Glibc 需要它让 pthreads 库正常工作。
+              Glibc 需要这个让 pthreads 库正常工作。
             </p>
           </dd>
           <dt>
@@ -159,7 +159,7 @@ ln -sv bash /bin/sh</kbd>
         </dl>
       </div>
       <p>
-        由于历史原因，Linux 在文件<code class="filename">/etc/mtab</code>中维护了已挂载文件系统列表。而现代内核改为在内部维护这个列表，并通过
+        由于历史原因，Linux 在文件<code class="filename">/etc/mtab</code>中维护一个已挂载文件系统的列表。而现代内核改为在内部维护这个列表，并通过
 	<code class="filename">/proc</code> 文件系统输出给用户。为了满足一些依赖 <code class="filename">/etc/mtab</code>
 	文件的应用程序，我们要创建下面的符号链接：
       </p>
@@ -233,16 +233,15 @@ EOF</kbd>
 </pre>
       <p>
         这里创建的用户组没有参照任何标准 &mdash; 它们一部分是为了满足本章中配置 Udev 的需要，还有一部分来自一些现存 Linux
-	发行版的通用设定。另外，某些测试套件也依赖特定用户或组。而 Linux Standard Base （LSB，参见<a class="ulink" href=
-        "http://www.linuxbase.org">http://www.linuxbase.org</a>）只要求以组ID（GID）为 0 创建用户组 <code class="systemitem">root</code> 
+	发行版的通用设定。另外，某些测试套件也依赖特定用户或组。而 Linux 标准规范 （LSB，参见<a class="ulink" href=
+        "http://www.linuxbase.org">http://www.linuxbase.org</a>）只要求以组 ID（GID）为 0 创建用户组 <code class="systemitem">root</code> 
 	以及以 GID 为 1 创建用户组<code class="systemitem">bin</code>。系统管理员可以自由分配其他所有用户组名字和 GID，因为优秀的程序不会依赖
 	GID 数字，而是使用组名。
       </p>
       <p>
-        为了移除 <span class="quote">&ldquo;<span class="quote">I have no name!</span>&rdquo;</span> 的提示，可以打开一个新 shell
-	窗口。因为完整的 Glibc 已经在 <a class="xref" href=
+        为了移除 <span class="quote">&ldquo;<span class="quote">I have no name!</span>&rdquo;</span> 的提示符，可以打开一个新 shell。由于完整的 Glibc 已经在 <a class="xref" href=
         "../chapter05/chapter05.html" title=
-        "第五章 构建临时系统">第五章</a> 里装好了。而且已经创建好了
+        "第五章 构建临时系统">第五章</a> 里装好了，而且已经创建好了
 	<code class="filename">/etc/passwd</code> 和 <code class=
         "filename">/etc/group</code> 文件，用户名和组名就可以正常解析了：
       </p>
@@ -251,7 +250,7 @@ EOF</kbd>
 </pre>
       <p>
         注意这里使用了 <em class="parameter"><code>+h</code></em> 参数。这样会告诉
-	<span class="command"><strong>bash</strong></span> 不要使用它的内建路径哈希功能。而不加这个参数的话，
+	<span class="command"><strong>bash</strong></span> 不要使用它内建的路径哈希功能。而不加这个参数的话，
 	<span class="command"><strong>bash</strong></span> 将会记住曾经执行过程序的路径。为了在新编译安装好程序后就能马上使用，参数
 	<em class="parameter"><code>+h</code></em> 将在本章中一直使用。
       </p>
@@ -343,7 +342,7 @@ chmod -v 600  /var/log/btmp</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>/</span>
+                <span class="surname">译者/校对：<a href="http://github.com/zpl1025" target="_blank">zpl1025</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
       </div>
