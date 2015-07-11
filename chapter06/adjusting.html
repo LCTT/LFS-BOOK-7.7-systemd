@@ -49,11 +49,11 @@
         调整工具链
       </h1>
       <p>
-        现在最后的 C 语言库已经装好了，是时候调整工具链,让新编译的程序链接到这些新的库上。
+        现在最后的 C 语言库已经装好了，是时候调整工具链，让新编译的程序链接到这些新的库上。
       </p>
       <p>
         首先,备份 <code class="filename">/tools</code> 连接器，然后用我们在第五章调整过的链接器代替它。我们还会创建一个链接，链接到
-		<code class="filename">/tools/$(gcc -dumpmachine)/bin</code>的副本：
+		<code class="filename">/tools/$(gcc -dumpmachine)/bin</code> 的副本：
       </p>
       <pre class="userinput">
 <kbd class="command">mv -v /tools/bin/{ld,ld-old}
@@ -76,10 +76,10 @@ ln -sv /tools/bin/ld /tools/$(gcc -dumpmachine)/bin/ld</kbd>
     `dirname $(gcc --print-libgcc-file-name)`/specs</kbd>
 </pre>
       <p>
-        能够显示出参数文件，看见我们要做的修改确实完成了是个好想法。        
+        直观地检查参数文件，来确认预期的变化确实完成了是个好的主意。        
       </p>
       <p>
-        在这个关键时刻，确保已调整的工具链的基本功能（编译和链接）都能如期进行是非常必要的。
+        确保已调整的工具链的基本功能（编译和链接）都能如期进行是非常必要的。
         怎样做呢？执行下面这条命令：
       </p>
       <pre class="userinput">
@@ -112,7 +112,7 @@ readelf -l a.out | grep ': /lib'</kbd>
 /usr/lib/crtn.o succeeded</code>
 </pre>
       <p>
-        确保连接器能找到正确的头文件：
+        确保链接器能找到正确的头文件：
       </p>
       <pre class="userinput">
 <kbd class="command">grep -B1 '^ /usr/include' dummy.log</kbd>
@@ -131,7 +131,7 @@ readelf -l a.out | grep ': /lib'</kbd>
 <kbd class="command">grep 'SEARCH.*/usr/lib' dummy.log |sed 's|; |\n|g'</kbd>
 </pre>
       <p>
-        带有 '-linux-gnu' 的参考路径应该被忽略，上条命令的输出应该是：
+        应该忽略指向带有 '-linux-gnu' 的路径，上条命令的输出应该是：
       </p>
       <pre class="screen">
 <code class="computeroutput">SEARCH_DIR("/usr/lib")
@@ -144,7 +144,7 @@ SEARCH_DIR("/lib");</code>
 <kbd class="command">grep "/lib.*/libc.so.6 " dummy.log</kbd>
 </pre>
       <p>
-        上条命令的输出应该是（允许在64位主机上有lib64）：
+        上条命令的输出应该是（在 64 位主机上会有 lib64 目录）：
       </p>
       <pre class="screen">
 <code class="computeroutput">attempt to open /lib/libc.so.6 succeeded</code>
@@ -156,15 +156,13 @@ SEARCH_DIR("/lib");</code>
 <kbd class="command">grep found dummy.log</kbd>
 </pre>
       <p>
-        上条命令的结果应该是（允许不同的平台上链接器名字不同，64为主机上有 lib64 目录）：
+        上条命令的结果应该是（不同的平台上链接器名字可以不同，64 位主机上是 lib64 目录）：
       </p>
       <pre class="screen">
 <code class="computeroutput">found ld-linux.so.2 at /lib/ld-linux.so.2</code>
 </pre>
       <p>
-        如果显示的结果不一样或者根本没有显示，那就出了大问题。
-       	检查回溯之前的步骤，找到出错的地方并改正。最有可能的原因是参数文件的调整出了问题。
-        在进行下一步之前所有的问题都要解决。
+        如果显示的结果不一样或者根本没有显示，那就出了大问题。检查病回溯之前的步骤，找到出错的地方并改正。最有可能的原因是参数文件的调整出了问题。在进行下一步之前所有的问题都要解决。
       </p>
       <p>
         一旦所有的事情都正常了，清除测试文件：
@@ -178,7 +176,7 @@ SEARCH_DIR("/lib");</code>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/H-mudcup" target="_blank">H-mudcup</a>,<a href="http://github.com/" target="_blank"></a></span>
+                <span class="surname">译者/校对：<a href="http://github.com/H-mudcup" target="_blank">H-mudcup</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
       </div>

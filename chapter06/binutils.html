@@ -70,17 +70,13 @@
           6.13.1. 安装 Binutils
         </h2>
         <p>
-            通过一个简单测试验证 PTYs 能在 chroot 环境下正常工作：
+            通过一个简单测试验证在 chroot 环境下 PTY 工作正常：
         </p>
-        <pre class="userinput">
-<kbd class="command">expect -c "spawn ls"</kbd>
-</pre>
+        <pre class="userinput"><kbd class="command">expect -c "spawn ls"</kbd></pre>
         <p>
             这个命令应该输出以下内容：
         </p>
-        <pre class="screen">
-<code class="computeroutput">spawn ls</code>
-</pre>
+        <pre class="screen"><code class="computeroutput">spawn ls</code></pre>
         <p>
             假如输出包括下面的信息，那么表示没有为 PTY 操作设置好环境。在运行 Binutils 和 GCC 的测试套件之前需要解决这个问题：
         </p>
@@ -89,14 +85,14 @@
 Ask your system administrator to create more.</code>
 </pre>
         <p>
-            Binutils 指南建议在源文件目录之外一个专用的编译目录编译 Binutils：
+            Binutils 的文档建议在源文件目录之外一个专用的编译目录编译 Binutils：
         </p>
         <pre class="userinput">
 <kbd class="command">mkdir -v ../binutils-build
 cd ../binutils-build</kbd>
 </pre>
         <p>
-          准备编译 Binutils:
+          准备编译 Binutils：
         </p>
         <pre class="userinput">
 <kbd class="command">../binutils-2.25/configure --prefix=/usr   \
@@ -104,7 +100,7 @@ cd ../binutils-build</kbd>
                            --disable-werror</kbd>
 </pre>
         <p>
-          编译软件包:
+          编译软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make tooldir=/usr</kbd>
@@ -123,7 +119,7 @@ cd ../binutils-build</kbd>
                 一般来说，tooldir (最终存放可执行文件的目录) 设置为
                 <code class="filename">$(exec_prefix)/$(target_alias)</code>。例如，x86_64 机器会把它扩展为<code class=
                 "filename">/usr/x86_64-unknown-linux-gnu</code>。因为这是个自定制的系统，并不需要 <code class="filename">/usr</code>
-                中的特定目标目录。如果系统用于交叉编译(例如，在 Intel 机器上编译能生成在 PowerPC 机器上运行的代码的软件包)会使用
+                中的特定目标目录。如果系统用于交叉编译（例如，在 Intel 机器上编译能生成在 PowerPC 机器上运行的代码的软件包）会使用
                 <code class="filename">$(exec_prefix)/$(target_alias)</code>。
               </p>
             </dd>
@@ -135,17 +131,17 @@ cd ../binutils-build</kbd>
             重要
           </h3>
           <p>
-            该章节 Binutils 的测试套件至关重要，任何情况下都不能跳过。
+            本章节中的 Binutils 测试套件至关重要，任何情况下都不能跳过。
           </p>
         </div>
         <p>
-          查看结果:
+          查看结果：
         </p>
         <pre class="userinput">
 <kbd class="command">make -k check</kbd>
 </pre>
         <p>
-          安装软件包:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make tooldir=/usr install</kbd>
@@ -158,18 +154,18 @@ cd ../binutils-build</kbd>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">安装的程序:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">addr2line, ar, as, c++filt, elfedit,
               gprof, ld, ld.bfd, nm, objcopy, objdump, ranlib, readelf, size,
               strings, 和 strip</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">安装的库:</strong>
+              <strong class="segtitle">安装的库：</strong>
               <span class="segbody">libbfd.{a,so} 和
               libopcodes.{a,so}</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">安装目录:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/usr/lib/ldscripts</span>
             </div>
           </div>
@@ -194,7 +190,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    转换程序地址为文件名称和行号；给定一个地址和可执行文件的名称，它使用可执行文件的调试信息判断和地址关联的源文件以及行号。
+                    转换程序地址为文件名称和行号；给定一个地址和可执行文件的名称，它使用可执行文件中的调试信息来判断与该地址关联的源文件以及行号。
                   </p>
                 </td>
               </tr>
@@ -220,7 +216,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    一个将<span class=
+                    一个将 <span class=
                     "command"><strong>gcc</strong></span> 的输出汇编到目标文件的汇编器。
                   </p>
                 </td>
@@ -276,7 +272,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    一个将多个目标文件和归档文件合并为单一文件，重定位数据以及绑定符号引用的链接器。
+                    一个将多个目标文件和归档文件合并为单一文件，重定位数据及绑定符号引用的链接器。
                   </p>
                 </td>
               </tr>
@@ -332,7 +328,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    显示给定目标文件的信息，用选项控制要显示的特定信息；显示的信息使用编译工具的程序员非常有用。
+                    显示给定目标文件的信息，用选项可以控制显示特定信息；显示的信息对于使用编译工具的程序员非常有用。
                   </p>
                 </td>
               </tr>
@@ -346,7 +342,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    生成归档文件内容的索引并保存到归档文件；索引列出了所有归档文件成员-可重定位的目标文件定义的符号。
+                    生成归档文件内容的索引并保存到归档文件；索引列出了所有归档文件成员——可重定位的目标文件定义的符号。
                   </p>
                 </td>
               </tr>
@@ -360,7 +356,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    显示 ELF 类型二进制文件的信息
+                    显示 ELF 类型的二进制文件的信息
                   </p>
                 </td>
               </tr>
@@ -388,7 +384,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    对每个给定文件，输出不低于指定长度(默认是4)的可打印字符序列；对于目标文件，它默认只打印初始化和引导部分的字符串，而对于其它类型的文件扫描整个文件。 
+                    对每个给定文件，输出不低于指定长度（默认是4）的可打印字符序列；对于目标文件，它默认只打印初始化和引导部分的字符串，而对于其它类型的文件扫描整个文件。 
                   </p>
                 </td>
               </tr>
@@ -402,7 +398,7 @@ cd ../binutils-build</kbd>
                 </td>
                 <td>
                   <p>
-                    忽略目标文件中的符号
+                    从目标文件中去除符号
                   </p>
                 </td>
               </tr>
@@ -430,7 +426,7 @@ cd ../binutils-build</kbd>
                   <p>
                     用于处理操作码&mdash;处理器指令的<span class=
                     "quote">&ldquo;<span class="quote">可读文本</span>&rdquo;</span>版本
-                        的库；用于构建类似<span class="command"><strong>objdump</strong></span>
+                        的库；用于构建类似 <span class="command"><strong>objdump</strong></span>
                         的工具。
                   </p>
                 </td>
@@ -445,7 +441,7 @@ cd ../binutils-build</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
         </div>
