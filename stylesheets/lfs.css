@@ -618,3 +618,29 @@ li.sect1 a,li.appendix a {
 li.translated a,li.translated a{
   color: green !important;
 }
+
+code,.command {
+  background-color: #333;
+  border-radius: 4px;
+  color: #FFF;
+  padding: 2px 4px;
+}
+
+pre.userinput {
+  width: 90%;
+  margin: 1em auto;
+  padding: 1em;
+  white-space: pre-wrap;
+  background-color: #333;
+  color: #FFF;
+  border: 2px solid #0AF;
+  border-radius: 8px;
+}
+
+pre code {
+  border: none !important;
+  background-color: #333 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  margin: 1em 0 !important;
+}
