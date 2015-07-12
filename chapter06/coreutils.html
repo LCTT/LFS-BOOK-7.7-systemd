@@ -72,9 +72,8 @@
           6.29.1. 安装 Coreutils
         </h2>
         <p>
-            POSIX 要求 Coreutils 中的程序即使在多字节地区也能正确识别字符边界。
-            下面的补丁修复这个不兼容性以及其它一些和国际化相关的 bug。之后确保
-            <code class=
+            POSIX 要求 Coreutils 中的程序即使在多字节地区也能正确识别字符边界。下面的补丁修复这个不兼容性以及其它一些和国际化相关的
+            bug。之后确保 <code class=
           "filename">Makefile.in</code> 文件的时间戳比其它所有文件都晚以免出现
           <span class="command"><strong>make</strong></span> 错误：
         </p>
@@ -120,8 +119,7 @@ touch Makefile.in</kbd>
             </dt>
             <dd>
               <p>
-                该选项的目的是防止 Coreutils 安装其它软件包后面会安装的
-                二进制包。
+                该选项的目的是防止 Coreutils 安装后面其它软件包会安装的二进制包。
               </p>
             </dd>
           </dl>
@@ -143,9 +141,8 @@ touch Makefile.in</kbd>
 <kbd class="command">make NON_ROOT_USERNAME=nobody check-root</kbd>
 </pre>
         <p>
-            我们会以 <code class=
-          "systemitem">nobody</code> 用户运行剩下的测试。但是，一些测试要求用户
-          属于多个组。由于不跳过这些测试，我们会添加一个临时的组并添加用户
+            我们会以 <code class="systemitem">nobody</code>
+            用户运行剩下的测试。但是，一些测试要求用户属于多个组。由于不跳过这些测试，我们会添加一个临时的组并添加用户
           <code class="systemitem">nobody</code> 作为它的成员：
         </p>
         <pre class="userinput">
@@ -220,7 +217,7 @@ sed -i s/\"1\"/\"8\"/1 /usr/share/man/man8/chroot.8</kbd>
               sha512sum, shred, shuf, sleep, sort, split, stat, stdbuf, stty,
               sum, sync, tac, tail, tee, test, timeout, touch, tr, true,
               truncate, tsort, tty, uname, unexpand, uniq, unlink, users,
-              vdir, wc, who, whoami, 以及 yes</span>
+              vdir, wc, who, whoami, 和 yes</span>
             </div>
             <div class="seg">
               <strong class="segtitle">安装的库：</strong>

@@ -151,8 +151,8 @@ PKG_CONFIG_PATH=/tools/lib/pkgconfig \
             <dd>
               <p>
                 这会阻止 E2fsprogs 编译和安装 <code class="systemitem">libuuid</code> 和 <code class=
-                "systemitem">libblkid</code> 库、 <code class=
-                "systemitem">uuidd</code> 守护进程、 以及 <span class=
+                "systemitem">libblkid</code> 库、<code class=
+                "systemitem">uuidd</code> 守护进程、以及 <span class=
                 "command"><strong>fsck</strong></span> 封装包。因为 Util-Linux 安装了更新的版本，
               </p>
             </dd>
@@ -165,8 +165,8 @@ PKG_CONFIG_PATH=/tools/lib/pkgconfig \
 <kbd class="command">make</kbd>
 </pre>
         <p>
-            要设置和运行测试套件，我们首先需要把 /tools/lib 中的一些库链接到
-            测试程序查找的位置。输入命令运行测试：
+            要设置和运行测试套件，我们首先需要把 /tools/lib
+            中的一些库链接到测试程序查找的位置。输入命令运行测试：
         </p>
         <pre class="userinput">
 <kbd class="command">ln -sfv /tools/lib/lib{blk,uu}id.so.1 lib

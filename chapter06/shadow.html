@@ -84,8 +84,7 @@
         </div>
         <p>
             取消安装 <span class=
-          "command"><strong>groups</strong></span> 程序以及它的 man 文档，
-            因为 Coreutils 提供了一个更好的版本：
+          "command"><strong>groups</strong></span> 程序以及它的 man 文档，因为 Coreutils 提供了一个更好的版本：
         </p>
         <pre class="userinput">
 <kbd class="command">sed -i 's/groups$(EXEEXT) //' src/Makefile.in
@@ -95,10 +94,10 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
             <a id="shadow-login_defs" name="shadow-login_defs"></a>比起默认的
             <span class="emphasis"><em>crypt</em></span> 方法，用更安全的
             <span class=
-          "emphasis"><em>SHA-512</em></span> 方法加密密码，它允许密码长度
-            超过 8 个字符。也需要把 Shadow 默认使用的用户邮箱由陈旧的
+          "emphasis"><em>SHA-512</em></span> 方法加密密码，它允许密码长度超过
+            8 个字符。也需要把 Shadow 默认使用的用户邮箱由陈旧的
             <code class=
-          "filename">/var/spool/mail</code> 位置改为正在使用的<code class=
+          "filename">/var/spool/mail</code> 位置改为正在使用的 <code class=
           "filename">/var/mail</code> 位置：
         </p>
         <pre class="userinput">
@@ -143,7 +142,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
             </dt>
             <dd>
               <p>
-                最长用户名为 32 个字符。使组名称也一样。
+                最长用户名为 32 个字符，使组名称也是如此。
               </p>
             </dd>
           </dl>
@@ -164,7 +163,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
 <kbd class="command">make install</kbd>
 </pre>
         <p>
-            移动错误位置的程序到正确的位置：
+            移动位置错误的程序到正确的位置：
         </p>
         <pre class="userinput">
 <kbd class="command">mv -v /usr/bin/passwd /bin</kbd>
@@ -196,16 +195,14 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
 </pre>
         <p>
             用于 <span class=
-          "command"><strong>useradd</strong></span> 工具的 Shadow 配置有一些需要解释的
-            注意事项。首先，<span class="command"><strong>useradd</strong></span> 工具
-            的默认操作是创建用户以及和用户名相同的组。默认用户 ID(UID) 和 组 ID(GID) 数字
-            从 1000开始。这意味着如果你不传递参数给 <span class=
-          "command"><strong>useradd</strong></span>，系统中的每个用户都会属于一个不同的组。
-            如果不需要这样的结果，你需要传递参数 <em class=
+          "command"><strong>useradd</strong></span> 工具的 Shadow
+            配置有一些需要解释的注意事项。首先，<span class="command"><strong>useradd</strong></span>
+            工具的默认操作是创建用户以及和用户名相同的组。默认用户 ID(UID) 和组 ID(GID) 数字
+            从 1000 开始。这意味着如果你不传递参数给 <span class=
+          "command"><strong>useradd</strong></span>，系统中的每个用户都会属于一个不同的组。如果不需要这样的结果，你需要传递参数 <em class=
           "parameter"><code>-g</code></em> 到 <span class=
           "command"><strong>useradd</strong></span>。默认参数保存在 <code class=
-          "filename">/etc/default/useradd</code> 文件中。你需要修改该文件中的两个参数来实现你的
-          特定需求。
+          "filename">/etc/default/useradd</code> 文件中。你需要修改该文件中的两个参数来实现你的特定需求。
         </p>
         <div class="variablelist">
           <p class="title">
@@ -219,13 +216,12 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
             </dt>
             <dd>
               <p>
-                该参数设定 /etc/group 文件中使用的起始组序号。你可以把它更改
-                为任何你需要的数字。注意 <span class=
-                "command"><strong>useradd</strong></span> 永远不会重用 UID 或 GID。
-                    如果该参数指定的数字已经被使用了，会使用它之后的下一个可用数字。
-                    另外注意如果你系统中没有序号为 1000 的组，第一次使用<span class=
-                "command"><strong>useradd</strong></span> 而没有参数 <em class="parameter"><code>-g</code></em>，
-                    你会在终端中看到一个提示信息：
+                该参数设定 /etc/group 文件中使用的起始组序号。你可以把它更改为任何你需要的数字。注意
+                <span class="command"><strong>useradd</strong></span> 永远不会重用 UID 或
+                GID。如果该参数指定的数字已经被使用了，会使用它之后的下一个可用数字。
+                    另外注意如果你系统中没有序号为 1000 的组，第一次使用 <span class=
+                "command"><strong>useradd</strong></span> 而没有参数
+                    <em class="parameter"><code>-g</code></em>，你会在终端中看到一个提示信息：
                 <code class="computeroutput">useradd: unknown GID
                 1000</code>。你可以忽视这个信息然后就会使用组号 1000。
               </p>

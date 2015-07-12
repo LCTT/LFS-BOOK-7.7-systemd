@@ -92,9 +92,9 @@
             </dt>
             <dd>
               <p>
-                这个选项会编译宽字符库(例如 <code class="filename">libncursesw.so.5.9</code>) 而不是通常的(例如 <code class=
+                这个选项会编译宽字符库(例如 <code class="filename">libncursesw.so.5.9</code>) 而不是常规的(例如 <code class=
                 "filename">libncurses.so.5.9</code>)。宽字符库可用于多字节和传统的 8-bit 本地字符，
-                而通常的库只能用于 8-bit 本地字符。宽字符库和通常的库源文件兼容，但二进制文件并不兼容。
+                而常规的库只能用于 8-bit 本地字符。宽字符库和常规的库源文件兼容，但二进制文件并不兼容。
               </p>
             </dd>
             <dt>
@@ -139,8 +139,7 @@
 "command">ln -sfv ../../lib/$(readlink /usr/lib/libncursesw.so) /usr/lib/libncursesw.so</kbd>
 </pre>
         <p>
-            很多应用程序仍然希望编辑器能找到非宽字符 Ncurses 库。通过符号链接和链接器脚本
-            欺骗这样的应用链接到宽字符库：
+            很多应用程序仍然希望编辑器能找到非宽字符 Ncurses 库。通过符号链接和链接器脚本欺骗这样的应用链接到宽字符库：
         </p>
         <pre class="userinput">
 <kbd class="command">for lib in ncurses form panel menu ; do
@@ -153,7 +152,7 @@ done
 ln -sfv libncurses++w.a /usr/lib/libncurses++.a</kbd>
 </pre>
         <p>
-            最后，确保仍然可编译在编译时会查找 <code class=
+            最后，确保仍然可以编译在编译时会查找 <code class=
           "filename">-lcurses</code> 的旧应用程序：
         </p>
         <pre class="userinput">
