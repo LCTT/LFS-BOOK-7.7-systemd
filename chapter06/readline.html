@@ -77,11 +77,9 @@
 "command">patch -Np1 -i ../readline-6.3-upstream_fixes-3.patch</kbd>
 </pre>
         <p>
-            重装 Readline 会使旧的库移动到 &lt;libraryname&gt;.old。
-            通常来说这并不是什么问题，但一些情况下可能引起
+            重装 Readline 会使旧的库移动到 &lt;libraryname&gt;.old。通常来说这并不是什么问题，但一些情况下可能引起
             <span class=
-          "command"><strong>ldconfig</strong></span> 链接错误。可以通过
-            下面的两个 sed 命令避免这个问题：
+          "command"><strong>ldconfig</strong></span> 链接错误。可以通过下面的两个 sed 命令避免这个问题：
         </p>
         <pre class="userinput">
 <kbd class="command">sed -i '/MV.*old/d' Makefile.in
@@ -112,7 +110,7 @@ sed -i '/{OLDSUFF}/c:' support/shlib-install</kbd>
             <dd>
               <p>
                 该选项强制 Readline 链接到 <code class=
-                "filename">libncurses</code> (实际上， <code class=
+                "filename">libncurses</code> (实际上是 <code class=
                 "filename">libncursesw</code>) 库。
               </p>
             </dd>

@@ -84,8 +84,7 @@
         </div>
         <p>
             取消安装 <span class=
-          "command"><strong>groups</strong></span> 程序以及它的 man 文档，
-            因为 Coreutils 提供了一个更好的版本：
+          "command"><strong>groups</strong></span> 程序以及它的 man 文档，因为 Coreutils 提供了一个更好的版本：
         </p>
         <pre class="userinput">
 <kbd class="command">sed -i 's/groups$(EXEEXT) //' src/Makefile.in
@@ -95,10 +94,9 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
             <a id="shadow-login_defs" name="shadow-login_defs"></a>比起默认的
             <span class="emphasis"><em>crypt</em></span> 方法，用更安全的
             <span class=
-          "emphasis"><em>SHA-512</em></span> 方法加密密码，它允许密码长度
-            超过 8 个字符。也需要把 Shadow 默认使用的用户邮箱由陈旧的
+          "emphasis"><em>SHA-512</em></span> 方法加密密码，它允许密码长度超过 8 个字符。也需要把 Shadow 默认使用的用户邮箱由陈旧的
             <code class=
-          "filename">/var/spool/mail</code> 位置改为正在使用的<code class=
+          "filename">/var/spool/mail</code> 位置改为正在使用的 <code class=
           "filename">/var/mail</code> 位置：
         </p>
         <pre class="userinput">
@@ -120,7 +118,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
 </pre>
         </div>
         <p>
-            做个小的改动使默认的 useradd 和 LFS 组文件一致：
+            做个小的改动使 useradd 的默认设置和 LFS 的组文件一致：
         </p>
         <pre class="userinput">
 <kbd class="command">sed -i 's/1000/999/' etc/useradd</kbd>
@@ -143,7 +141,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
             </dt>
             <dd>
               <p>
-                最长用户名为 32 个字符。使组名称也一样。
+                最长用户名为 32 个字符，使组名称也是如此。
               </p>
             </dd>
           </dl>
@@ -164,7 +162,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
 <kbd class="command">make install</kbd>
 </pre>
         <p>
-            移动错误位置的程序到正确的位置：
+            移动位置错误的程序到正确的位置：
         </p>
         <pre class="userinput">
 <kbd class="command">mv -v /usr/bin/passwd /bin</kbd>
@@ -175,11 +173,10 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
           <a id="conf-shadow" name="conf-shadow"></a>6.25.2. 配置 Shadow
         </h2>
         <p>
-            该软件包包含增加、更改、以及删除用户和组的工具；设置和修改密码；
-            进行其它特权级任务。软件包解压后的 <code class="filename">doc/HOWTO</code>
+            该软件包包含增加、更改、以及删除用户和组的工具；设置和修改密码；执行其它特权级任务。软件包解压后的 <code class="filename">doc/HOWTO</code>
             文件有关于 <span class=
           "emphasis"><em>password shadowing</em></span> 的完整解释。如果使用
-            Shadow 支持，记住需要验证密码(显示管理器、FTP 程序、pop3 守护进程，等)的程序必须和 Shadow 兼容。
+            Shadow 支持，记住需要验证密码（显示管理器、FTP 程序、pop3 守护进程等）的程序必须和 Shadow 兼容。
             也就是说，它们要能使用 Shadow 加密的密码。
         </p>
         <p>
@@ -189,23 +186,18 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
 <kbd class="command">pwconv</kbd>
 </pre>
         <p>
-            运行下面的命令启用shadow 组密码：
+            运行下面的命令启用 shadow 组密码：
         </p>
         <pre class="userinput">
 <kbd class="command">grpconv</kbd>
 </pre>
         <p>
             用于 <span class=
-          "command"><strong>useradd</strong></span> 工具的 Shadow 配置有一些需要解释的
-            注意事项。首先，<span class="command"><strong>useradd</strong></span> 工具
-            的默认操作是创建用户以及和用户名相同的组。默认用户 ID(UID) 和 组 ID(GID) 数字
-            从 1000开始。这意味着如果你不传递参数给 <span class=
-          "command"><strong>useradd</strong></span>，系统中的每个用户都会属于一个不同的组。
-            如果不需要这样的结果，你需要传递参数 <em class=
+          "command"><strong>useradd</strong></span> 工具的 Shadow 配置有一些需要解释的注意事项。首先，<span class="command"><strong>useradd</strong></span> 工具的默认操作是创建用户以及和用户名相同的组。默认情况下，用户 ID(UID) 和组 ID(GID) 的数字从 1000 开始。这意味着如果你不传递参数给 <span class=
+          "command"><strong>useradd</strong></span>，系统中的每个用户都会属于一个不同的组。如果不需要这样的结果，你需要传递参数 <em class=
           "parameter"><code>-g</code></em> 到 <span class=
           "command"><strong>useradd</strong></span>。默认参数保存在 <code class=
-          "filename">/etc/default/useradd</code> 文件中。你需要修改该文件中的两个参数来实现你的
-          特定需求。
+          "filename">/etc/default/useradd</code> 文件中。你需要修改该文件中的两个参数来实现你的特定需求。
         </p>
         <div class="variablelist">
           <p class="title">
@@ -219,15 +211,11 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
             </dt>
             <dd>
               <p>
-                该参数设定 /etc/group 文件中使用的起始组序号。你可以把它更改
-                为任何你需要的数字。注意 <span class=
-                "command"><strong>useradd</strong></span> 永远不会重用 UID 或 GID。
-                    如果该参数指定的数字已经被使用了，会使用它之后的下一个可用数字。
-                    另外注意如果你系统中没有序号为 1000 的组，第一次使用<span class=
-                "command"><strong>useradd</strong></span> 而没有参数 <em class="parameter"><code>-g</code></em>，
-                    你会在终端中看到一个提示信息：
+                该参数设定 /etc/group 文件中使用的起始组序号。你可以把它更改为任何你需要的数字。注意 <span class=
+                "command"><strong>useradd</strong></span> 永远不会重用 UID 或 GID。如果该参数指定的数字已经被使用了，将会使用它之后的下一个可用数字。另外注意如果你系统中没有序号为 1000 的组，第一次使用<span class=
+                "command"><strong>useradd</strong></span> 而没有参数 <em class="parameter"><code>-g</code></em> 的话，你会在终端中看到一个提示信息：
                 <code class="computeroutput">useradd: unknown GID
-                1000</code>。你可以忽视这个信息然后就会使用组号 1000。
+                1000</code>。你可以忽视这个信息，它会使用组号 1000。
               </p>
             </dd>
             <dt>
@@ -237,12 +225,10 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
             <dd>
               <p>
                 这个参数会为 <span class=
-                "command"><strong>useradd</strong></span> 新添加的用户
-                    创建邮箱文件。<span class=
+                "command"><strong>useradd</strong></span> 新添加的用户创建邮箱文件。<span class=
                 "command"><strong>useradd</strong></span> 会使组 <code class=
-                "systemitem">mail</code> 拥有该文件的所有权，并赋予组 0660 的权限。
-                如果你希望 <span class="command"><strong>useradd</strong></span>
-                不会创建这些邮箱文件，你可以运行下面的命令：
+                "systemitem">mail</code> 拥有该文件的所有权，并赋予组 0660 的权限。如果你希望 <span class="command"><strong>useradd</strong></span>
+                不创建这些邮箱文件，你可以运行下面的命令：
               </p>
               <pre class="userinput">
 <kbd class="command">sed -i 's/yes/no/' /etc/default/useradd</kbd>
@@ -318,7 +304,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
                 </td>
                 <td>
                   <p>
-                    用来更改用户的完整名称以及其它信息
+                    用来更改用户的全名以及其它信息
                   </p>
                 </td>
               </tr>
@@ -388,8 +374,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
                 </td>
                 <td>
                   <p>
-                    用来检查登录失败的日志文件，设置锁定用户的最大失败次数，
-                    或者重置失败次数
+                    用来检查登录失败的日志文件，设置锁定用户的最大失败次数，或者重置失败次数
                   </p>
                 </td>
               </tr>
@@ -473,7 +458,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
                 </td>
                 <td>
                   <p>
-                    验证组文件<code class=
+                    验证组文件 <code class=
                     "filename">/etc/group</code> 和 <code class=
                     "filename">/etc/gshadow</code> 的完整性
                   </p>
@@ -489,7 +474,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
                 </td>
                 <td>
                   <p>
-                    从普通组文件创建或升级 shadow 组文件
+                    从普通组文件创建或升级为 shadow 组文件
                   </p>
                 </td>
               </tr>
@@ -503,7 +488,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
                 </td>
                 <td>
                   <p>
-                    从 <code class="filename">/etc/gshadow</code> 升级
+                    从 <code class="filename">/etc/gshadow</code> 更新到
                     <code class="filename">/etc/group</code> 然后删除前者
                   </p>
                 </td>
@@ -532,7 +517,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
                 </td>
                 <td>
                   <p>
-                    系统用于允许用户登录
+                    用于系统让用户登录进来
                   </p>
                 </td>
               </tr>
@@ -574,7 +559,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
                 </td>
                 <td>
                   <p>
-                    用于创建或更新整个系列的用户账户
+                    用于批量创建或更新用户账户
                   </p>
                 </td>
               </tr>
@@ -588,7 +573,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
                 </td>
                 <td>
                   <p>
-                    显示账户不可用信息；设计来作为不可用账户登录的默认 shell
+                    显示一个账户不可用的信息；它用于来作为不可登录的账户的默认 shell
                   </p>
                 </td>
               </tr>
@@ -646,7 +631,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
                 </td>
                 <td>
                   <p>
-                    从 <code class="filename">/etc/shadow</code> 升级
+                    从 <code class="filename">/etc/shadow</code> 更新到
                     <code class="filename">/etc/passwd</code> 然后删除前者
                   </p>
                 </td>
@@ -759,7 +744,7 @@ find man -name Makefile.in -exec sed -i 's/groups\.1 / /' {} \;</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
         </div>

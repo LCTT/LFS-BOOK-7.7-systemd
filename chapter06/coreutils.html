@@ -72,8 +72,7 @@
           6.29.1. 安装 Coreutils
         </h2>
         <p>
-            POSIX 要求 Coreutils 中的程序即使在多字节地区也能正确识别字符边界。
-            下面的补丁修复这个不兼容性以及其它一些和国际化相关的 bug。之后确保
+            POSIX 要求 Coreutils 中的程序即使在多字节地区也能正确识别字符边界。下面的补丁修复这个不兼容性以及其它一些和国际化相关的 bug。之后确保
             <code class=
           "filename">Makefile.in</code> 文件的时间戳比其它所有文件都晚以免出现
           <span class="command"><strong>make</strong></span> 错误：
@@ -120,8 +119,7 @@ touch Makefile.in</kbd>
             </dt>
             <dd>
               <p>
-                该选项的目的是防止 Coreutils 安装其它软件包后面会安装的
-                二进制包。
+                该选项的目的是防止 Coreutils 安装其它软件包后面会安装的二进制包。
               </p>
             </dd>
           </dl>
@@ -144,8 +142,7 @@ touch Makefile.in</kbd>
 </pre>
         <p>
             我们会以 <code class=
-          "systemitem">nobody</code> 用户运行剩下的测试。但是，一些测试要求用户
-          属于多个组。由于不跳过这些测试，我们会添加一个临时的组并添加用户
+          "systemitem">nobody</code> 用户运行剩下的测试。但是，一些测试要求用户属于多个组。由于不跳过这些测试，我们会添加一个临时的组并添加用户
           <code class="systemitem">nobody</code> 作为它的成员：
         </p>
         <pre class="userinput">
