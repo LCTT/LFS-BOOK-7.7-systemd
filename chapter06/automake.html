@@ -72,7 +72,7 @@
           6.45.1.  Automake 的安装
         </h2>
         <p>
-          Automake 编译前的准备：
+          准备编译 Automake：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -85,10 +85,7 @@
 <kbd class="command">make</kbd>
 </pre>
         <p>
-          有些测试会错误的链接到 flex 库的错误版本，
-          所以我们暂时先解决这个问题。还有，由于每个单独的测试之间会有延迟，
-          即使是在只有一个处理器的系统上也要使用 -j4 编译选项提高测试的速度。
-          对结果的测试：
+          有些测试会错误的链接到 flex 库的错误版本，所以我们暂时先解决这个问题。还有，由于每个单独的测试之间会有延迟，即使是在只有一个处理器的系统上也要使用 -j4 编译选项提高测试的速度。用以下命令测试结果：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -144,8 +141,8 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    基于 <code class="filename">configure.in</code> 文件的内容
-                    生成 <code class="filename">aclocal.m4</code> 文件
+                    基于 <code class="filename">configure.in</code>
+                    文件的内容生成 <code class="filename">aclocal.m4</code> 文件
                   </p>
                 </td>
               </tr>
@@ -174,8 +171,8 @@ make -j4 check</kbd>
                 </td>
                 <td>
                   <p>
-                    一个从 <code class="filename">Makefile.am</code> 文件
-                    自动生成 <code class="filename">Makefile.in</code> 文件的工具
+                    一个从 <code class="filename">Makefile.am</code>
+                    文件自动生成 <code class="filename">Makefile.in</code> 文件的工具
                     [要生成一个软件包里所有的 
                     <code class="filename">Makefile.in</code> 文件，在最上层的目录运行这个程序。
                    通过扫描 <code class="filename">configure.in</code>
@@ -336,7 +333,7 @@ make -j4 check</kbd>
                 <td>
                   <p>
                     包含<span class=
-                    "command"><strong>lex</strong></span> and <span class=
+                    "command"><strong>lex</strong></span> 和 <span class=
                     "command"><strong>yacc</strong></span>
                   </p>
                 </td>
@@ -351,7 +348,7 @@ make -j4 check</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/H-mudcup" target="_blank">H-mudcup</a>/</span>
+                <span class="surname">译者/校对：<a href="http://github.com/H-mudcup" target="_blank">H-mudcup</a>/<a href="http://github.com/ictlyh" target="_blank">ictlyh</a></span>
             </div>
         </div>
       </div>

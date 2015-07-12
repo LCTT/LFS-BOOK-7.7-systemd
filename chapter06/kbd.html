@@ -70,7 +70,7 @@
           6.58.1. 安装 Kbd
         </h2>
         <p>
-            在 Kbd 软件包中退格键(Backspace)和删除键(Delete)的行为和键映射并不一致。
+            在 Kbd 软件包中退格键（Backspace）和删除键（Delete）的行为和键映射并不一致。
             下面的补丁修复了 i386 键映射中的这个问题：
         </p>
         <pre class="userinput">
@@ -82,12 +82,12 @@
         <p>
             移除冗余的 <span class=
           "command"><strong>resizecons</strong></span>
-            程序(它要求功能不全的 svglib 提供视频模式文件 - 用于正常使用
+            程序（它要求功能不全的 svglib 提供视频模式文件 - 用于正常使用
             <span class="command"><strong>setfont</strong></span>
-            设置控制台字体大小)以及帮助手册。
+            设置控制台字体大小）以及帮助手册。
         </p>
         <pre class="userinput">
-<kbd class="command">sed -i 's/\(RESIZECONS_PROGS=\)yes/\1no/g' configure
+<kbd class="command">sed -i 's/\（RESIZECONS_PROGS=\）yes/\1no/g' configure
 sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in</kbd>
 </pre>
         <p>
@@ -138,7 +138,7 @@ sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in</kbd>
           </h3>
           <p>
             由于通常使用的 CP1251 键映射假设使用 ISO-8859-5 编码，Kbd
-            软件包不能为某些语言(例如 Belarusian) 提供可用的键映射。
+            软件包不能为某些语言（例如 Belarusian） 提供可用的键映射。
             使用这样的语言需要单独下载能工作的键映射。
           </p>
         </div>
@@ -160,8 +160,8 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
               <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">chvt, deallocvt, dumpkeys, fgconsole,
               getkeycodes, kbdinfo, kbd_mode, kbdrate, loadkeys, loadunimap,
-              mapscrn, openvt, psfaddtable (链接到 psfxtable), psfgettable
-              (链接到 psfxtable), psfstriptable (链接到 psfxtable),
+              mapscrn, openvt, psfaddtable （链接到 psfxtable）, psfgettable
+              （链接到 psfxtable）, psfstriptable （链接到 psfxtable）,
               psfxtable, setfont, setkeycodes, setleds, setmetamode,
               showconsolefont, showkey, unicode_start, 和
               unicode_stop</span>
@@ -351,7 +351,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    在一个新的虚拟终端(VT)启动程序
+                    在一个新的虚拟终端（VT）启动程序
                   </p>
                 </td>
               </tr>
@@ -421,7 +421,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    更改控制台的增强图形适配器(Enhanced Graphic Adapter,EGA)和视频图形阵列(Video Graphics Array,VGA)的字体
+                    更改控制台的增强图形适配器（Enhanced Graphic Adapter,EGA）和视频图形阵列（Video Graphics Array,VGA）的字体
                   </p>
                 </td>
               </tr>
@@ -449,7 +449,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
                 </td>
                 <td>
                   <p>
-                    设置键盘标记和发光二极管(Light Emitting Diodes,LEDs)
+                    设置键盘标记和发光二极管（Light Emitting Diodes,LEDs）
                   </p>
                 </td>
               </tr>
@@ -534,7 +534,7 @@ cp -R -v docs/doc/* /usr/share/doc/kbd-2.0.2</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
         </div>
