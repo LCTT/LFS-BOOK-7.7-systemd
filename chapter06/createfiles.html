@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content=
     "application/xhtml+xml; charset=utf-8" />
     <title>
-      6.6.&nbsp;创建必需的文件和链接
+      6.6.&nbsp;创建必需的文件和符号链接
     </title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/lfs.css" />
     <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
@@ -23,9 +23,9 @@
       <ul>
         <li class="prev">
           <a accesskey="p" href="creatingdirs.html" title=
-          "创建系统目录">上一页</a>
+          "创建目录">上一页</a>
           <p>
-            创建系统目录
+            创建目录
           </p>
         </li>
         <li class="next">
@@ -48,10 +48,10 @@
     <div class="sect1" lang="en" xml:lang="en">
       <h1 class="sect1">
         <a id="ch-system-createfiles" name="ch-system-createfiles"></a>6.6.
-        创建必需的文件和链接
+        创建必需的文件和符号链接
       </h1>
       <p>
-        有些程序里会使用写死的路径调用其他暂时还未安装的程序。为了满足这种类型程序的需要，我们将创建一些符号链接，在完成本章内容后这些软件会安装好，并替代之前的符号链接：
+        有些程序里会使用写死的路径调用其它暂时还未安装的程序。为了满足这种类型程序的需要，我们将创建一些符号链接，在完成本章内容后这些软件会安装好，并替代之前的符号链接：
       </p>
       <pre class="userinput">
 <kbd class="command">ln -sv /tools/bin/{bash,cat,echo,pwd,stty} /bin
@@ -192,7 +192,7 @@ EOF</kbd>
 </pre>
       <p>
         <code class="systemitem">root</code> 用户的实际密码（这里的
-	<span class="quote">&ldquo;<span class="quote">x</span>&rdquo;</span> 只是用来占位置）将在后面创建。
+	<span class="quote">&ldquo;<span class="quote">x</span>&rdquo;</span> 只是占位符）将在后面创建。
       </p>
       <p>
         运行下面的命令创建 <code class="filename">/etc/group</code> 文件：
@@ -235,7 +235,7 @@ EOF</kbd>
         这里创建的用户组没有参照任何标准 &mdash; 它们一部分是为了满足本章中配置 Udev 的需要，还有一部分来自一些现存 Linux
 	发行版的通用设定。另外，某些测试套件也依赖特定用户或组。而 Linux 标准规范 （LSB，参见<a class="ulink" href=
         "http://www.linuxbase.org">http://www.linuxbase.org</a>）只要求以组 ID（GID）为 0 创建用户组 <code class="systemitem">root</code> 
-	以及以 GID 为 1 创建用户组<code class="systemitem">bin</code>。系统管理员可以自由分配其他所有用户组名字和 GID，因为优秀的程序不会依赖
+	以及以 GID 为 1 创建用户组 <code class="systemitem">bin</code>。系统管理员可以自由分配其它所有用户组名字和 GID，因为优秀的程序不会依赖
 	GID 数字，而是使用组名。
       </p>
       <p>
@@ -256,7 +256,7 @@ EOF</kbd>
       </p>
       <p>
         程序 <span class="command"><strong>login</strong></span>，<span class="command"><strong>agetty</strong></span> 和
-	<span class="command"><strong>init</strong></span>（还有一些其他的）会使用一些日志文件来记录信息，比如谁在什么时候登录了系统。不过，在日志文件不存在的时候这些程序一般不会写入。下面初始化一下日志文件并加上合适的权限：
+	<span class="command"><strong>init</strong></span>（还有一些其它的）会使用一些日志文件来记录信息，比如谁在什么时候登录了系统。不过，在日志文件不存在的时候这些程序一般不会写入。下面初始化一下日志文件并加上合适的权限：
       </p>
       <pre class="userinput">
 <kbd class="command">touch /var/log/{btmp,lastlog,wtmp}
@@ -349,9 +349,9 @@ chmod -v 600  /var/log/btmp</kbd>
       <ul>
         <li class="prev">
           <a accesskey="p" href="creatingdirs.html" title=
-          "创建系统目录">上一页</a>
+          "创建目录">上一页</a>
           <p>
-            创建系统目录
+            创建目录
           </p>
         </li>
         <li class="next">

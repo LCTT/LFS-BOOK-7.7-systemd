@@ -52,7 +52,7 @@
         现在最后的 C 语言库已经装好了，是时候调整工具链，让新编译的程序链接到这些新的库上。
       </p>
       <p>
-        首先,备份 <code class="filename">/tools</code> 连接器，然后用我们在第五章调整过的链接器代替它。我们还会创建一个链接，链接到
+        首先,备份 <code class="filename">/tools</code> 链接器，然后用我们在第五章调整过的链接器代替它。我们还会创建一个链接，链接到
 		<code class="filename">/tools/$(gcc -dumpmachine)/bin</code> 的副本：
       </p>
       <pre class="userinput">
@@ -62,11 +62,11 @@ mv -v /tools/bin/{ld-new,ld}
 ln -sv /tools/bin/ld /tools/$(gcc -dumpmachine)/bin/ld</kbd>
 </pre>
       <p>
-        接下来，修改 GCC 参数文件，让它指向新的动态连接器。
-        只需删除所有 <span class=
-        "quote">&ldquo;<span class="quote">/tools</span>&rdquo;</span> 的实例，这样应该可以留下
-        到达动态链接器的正确路径。还要调整参数文件，这样 GCC 就知道怎样找到正确的头文件和 Glibc 启动文件。
-        一个 <span class="command"><strong>sed</strong></span> 命令就能完成这些:
+        接下来，修改 GCC 参数文件，让它指向新的动态连接器。只需删除所有 <span class=
+        "quote">&ldquo;<span class="quote">/tools</span>&rdquo;</span>
+            的实例，这样应该可以留下到达动态链接器的正确路径。还要调整参数文件，这样
+            GCC 就知道怎样找到正确的头文件和 Glibc 启动文件。一个
+            <span class="command"><strong>sed</strong></span> 命令就能完成这些:
       </p>
       <pre class="userinput">
 <kbd class=
@@ -162,7 +162,7 @@ SEARCH_DIR("/lib");</code>
 <code class="computeroutput">found ld-linux.so.2 at /lib/ld-linux.so.2</code>
 </pre>
       <p>
-        如果显示的结果不一样或者根本没有显示，那就出了大问题。检查病回溯之前的步骤，找到出错的地方并改正。最有可能的原因是参数文件的调整出了问题。在进行下一步之前所有的问题都要解决。
+        如果显示的结果不一样或者根本没有显示，那就出了大问题。检查并回溯之前的步骤，找到出错的地方并改正。最有可能的原因是参数文件的调整出了问题。在进行下一步之前所有的问题都要解决。
       </p>
       <p>
         一旦所有的事情都正常了，清除测试文件：
