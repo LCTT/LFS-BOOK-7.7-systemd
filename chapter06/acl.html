@@ -49,8 +49,7 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-            Acl 软件包包含管理访问控制列表的工具，访问控制列表用于
-            定义文件和目录更细粒度的自主访问权限。
+            Acl 软件包包含管理访问控制列表的工具，访问控制列表用于定义文件和目录更细粒度的自定义访问权限。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -70,7 +69,7 @@
           6.22.1. 安装 Acl
         </h2>
         <p>
-          修改文件目录，使它成为版本目录：
+          修改存放文档的目录，使它放在版本特定的目录：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -85,7 +84,7 @@
 </pre>
         <p>
             另外，修复一个超长组名称时会使 <span class=
-          "command"><strong>getfacl -e</strong></span> 出现段错误的 bug：
+          "command"><strong>getfacl -e</strong></span> 出现段错误的错误：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -105,8 +104,8 @@
 <kbd class="command">make</kbd>
 </pre>
         <p>
-            Acl 测试需要在用与 Acl 库一起构建 <span class="application">Coreutils</span>
-            后支持访问控制的文件系统上进行。如果需要的话，可以在本章后面构建完<span class=
+            在用 Acl 库构建 <span class="application">Coreutils</span>
+            后，Acl 测试才能在支持访问控制的文件系统上运行。如果需要的话，可以在本章后面构建完 <span class=
           "application">Coreutils</span> 之后回到这个软件包运行 <span class="command"><strong>make -j1
           tests</strong></span> 进行测试。
         </p>
@@ -118,7 +117,7 @@
 chmod -v 755 /usr/lib/libacl.so</kbd>
 </pre>
         <p>
-            需要移动共享库到<code class=
+            需要移动共享库到 <code class=
           "filename">/lib</code>，因此需要重建 <code class=
           "filename">/usr/lib</code> 中的 <code class=
           "filename">.so</code> 文件：
@@ -135,15 +134,15 @@ ln -sfv ../../lib/$(readlink /usr/lib/libacl.so) /usr/lib/libacl.so</kbd>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">安装的程序:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">chacl, getfacl, 以及 setacl</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">安装的库:</strong>
+              <strong class="segtitle">安装的库：</strong>
               <span class="segbody">libacl.{a,so}</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">安装目录:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/usr/include/acl 以及
               /usr/share/doc/acl-2.2.52</span>
             </div>
@@ -224,7 +223,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libacl.so) /usr/lib/libacl.so</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
         </div>

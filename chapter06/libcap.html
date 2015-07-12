@@ -50,7 +50,7 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-            Libcap 软件包实现了到 Linux 内核可用的 POSIX 1003.1e 功能的用户空间接口。
+            Libcap 软件包实现了可用在 Linux 内核上的对 POSIX 1003.1e 功能的用户空间接口。
             这些功能将所有强大 root 权限划分为不同的权限组合。
         </p>
         <div class="segmentedlist">
@@ -80,7 +80,7 @@
             这个软件包没有测试套件。
         </p>
         <p>
-          按软件包：
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make RAISE_SETFCAP=no prefix=/usr install
@@ -104,7 +104,7 @@ chmod -v 755 /usr/lib/libcap.so</kbd>
           </dl>
         </div>
         <p>
-           需要移动共享库到<code class=
+           需要移动共享库到 <code class=
           "filename">/lib</code>，因此需要重建 <code class=
           "filename">/usr/lib</code> 中的 <code class=
           "filename">.so</code> 文件：
@@ -121,12 +121,12 @@ ln -sfv ../../lib/$(readlink /usr/lib/libcap.so) /usr/lib/libcap.so</kbd>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">安装的程序:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">capsh, getcap, getpcaps, 和
               setcap</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">安装的库:</strong>
+              <strong class="segtitle">安装的库：</strong>
               <span class="segbody">libcap.{a,so}</span>
             </div>
           </div>
@@ -206,7 +206,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libcap.so) /usr/lib/libcap.so</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
         </div>

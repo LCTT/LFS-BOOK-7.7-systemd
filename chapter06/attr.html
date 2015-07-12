@@ -49,7 +49,7 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-            attr 软件包包含管理文件系统对象扩展属性的工具。
+            attr 软件包包含管理文件系统对象的扩展属性的工具。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -69,7 +69,7 @@
           6.21.1. 安装 Attr
         </h2>
         <p>
-            修改文件目录，使它成为版本目录：
+            修改存放文档的目录，使它放在版本特定的目录：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -108,7 +108,7 @@
 chmod -v 755 /usr/lib/libattr.so</kbd>
 </pre>
         <p>
-            需要移动共享库到<code class=
+            需要移动共享库到 <code class=
           "filename">/lib</code>，因此需要重建 <code class=
           "filename">/usr/lib</code> 中的 <code class=
           "filename">.so</code> 文件：
@@ -125,15 +125,15 @@ ln -sfv ../../lib/$(readlink /usr/lib/libattr.so) /usr/lib/libattr.so</kbd>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">安装的程序:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">attr, getfattr, 以及 setattr</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">安装的库:</strong>
+              <strong class="segtitle">安装的库：</strong>
               <span class="segbody">libattr.{a,so}</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">安装目录:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/usr/include/attr 以及
               /usr/share/doc/attr-2.4.47</span>
             </div>
@@ -159,7 +159,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libattr.so) /usr/lib/libattr.so</kbd>
                 </td>
                 <td>
                   <p>
-                    文件系统对象的扩展属性
+                    扩展文件系统对象的属性
                   </p>
                 </td>
               </tr>
@@ -214,7 +214,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libattr.so) /usr/lib/libattr.so</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
         </div>

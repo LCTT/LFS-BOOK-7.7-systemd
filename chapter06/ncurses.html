@@ -51,7 +51,7 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-            Ncurses 软件包包含用于终端无关的字符屏幕的库。
+            Ncurses 软件包包含用于不依赖于特定终端的字符屏幕处理的库。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
@@ -92,9 +92,9 @@
             </dt>
             <dd>
               <p>
-                这个选项会编译宽字符库(例如 <code class="filename">libncursesw.so.5.9</code>) 而不是通常的(例如 <code class=
-                "filename">libncurses.so.5.9</code>)。宽字符库可用于多字节和传统的 8-bit 本地字符，
-                而通常的库只能用于 8-bit 本地字符。宽字符库和通常的库源文件兼容，但二进制文件并不兼容。
+                这个选项会编译宽字符库（例如 <code class="filename">libncursesw.so.5.9</code>）而不是通常的）例如 <code class=
+                "filename">libncurses.so.5.9</code>）。宽字符库可用于多字节和传统的 8 位本地字符，
+                而通常的库只能用于 8 位本地字符。宽字符库和通常的库是源文件兼容的，而不是二进制文件兼容的。
               </p>
             </dd>
             <dt>
@@ -120,7 +120,7 @@
           "filename">README</code> 文件获取更详细信息。
         </p>
         <p>
-          安装软件包:
+          安装软件包：
         </p>
         <pre class="userinput">
 <kbd class="command">make install</kbd>
@@ -128,18 +128,14 @@
         <p>
             移动共享库到期望的 <code class="filename">/lib</code> 文件夹：
         </p>
-        <pre class="userinput">
-<kbd class="command">mv -v /usr/lib/libncursesw.so.5* /lib</kbd>
-</pre>
+        <pre class="userinput"><kbd class="command">mv -v /usr/lib/libncursesw.so.5* /lib</kbd></pre>
         <p>
             由于库已经被移走了，符号链接指向了一个不存在的文件。重建符号链接：
         </p>
-        <pre class="userinput">
-<kbd class=
-"command">ln -sfv ../../lib/$(readlink /usr/lib/libncursesw.so) /usr/lib/libncursesw.so</kbd>
-</pre>
+        <pre class="userinput"><kbd class=
+"command">ln -sfv ../../lib/$(readlink /usr/lib/libncursesw.so) /usr/lib/libncursesw.so</kbd></pre>
         <p>
-            很多应用程序仍然希望编辑器能找到非宽字符 Ncurses 库。通过符号链接和链接器脚本
+            很多应用程序仍然希望编辑器能找到非宽字符的 Ncurses 库。通过符号链接和链接器脚本
             欺骗这样的应用链接到宽字符库：
         </p>
         <pre class="userinput">
@@ -176,8 +172,7 @@ cp -v -R doc/* /usr/share/doc/ncurses-5.9</kbd>
             注意
           </h3>
           <p>
-            上面的指令不会创建非宽字符 Ncurses 库，因为运行时没有从源文件中编译安装的软件包会链接它们。
-            如果你由于一些二进制只读应用程序或要和 LSB 兼容而必须要有这样的库，用下面的命令重新编译软件包：
+            上面的指令并不会创建非宽字符 Ncurses 库，因为没有从源文件中编译安装的软件包会在运行时链接它们。如果你由于一些仅有二进制的应用程序或要和 LSB 兼容而必须要有这样的库，用下面的命令重新编译软件包：
           </p>
           <pre class="userinput">
 <kbd class="command">make distclean
@@ -198,19 +193,19 @@ cp -av lib/lib*.so.5* /usr/lib</kbd>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">安装的程序:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">captoinfo (链接到 tic), clear, infocmp,
               infotocap (链接到 tic), ncursesw5-config, reset (链接到
               tset), tabs, tic, toe, tput, and tset</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">安装的库:</strong>
+              <strong class="segtitle">安装的库：</strong>
               <span class="segbody">libcursesw.{a,so} (到 libncursesw.{a,so} 的符号链接和链接器脚本), libformw.{a,so},
               libmenuw.{a,so}, libncurses++w.a, libncursesw.{a,so},
-              libpanelw.{a,so}, 和库名称中没有 "w" 的对应的非宽字符部分</span>
+              libpanelw.{a,so}, 以及库名称中没有 "w" 的对应的非宽字符部分</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">安装目录:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/usr/share/tabset, /usr/share/terminfo,
               和 /usr/share/doc/ncurses-5.9</span>
             </div>
@@ -306,7 +301,7 @@ cp -av lib/lib*.so.5* /usr/lib</kbd>
                 </td>
                 <td>
                   <p>
-                    重新初始化终端为默认值
+                    重新初始化终端为默认设置
                   </p>
                 </td>
               </tr>
@@ -320,7 +315,7 @@ cp -av lib/lib*.so.5* /usr/lib</kbd>
                 </td>
                 <td>
                   <p>
-                    清空并设置标签在终端中停止
+                    清空终端并设置制表符长度
                   </p>
                 </td>
               </tr>
@@ -333,7 +328,7 @@ cp -av lib/lib*.so.5* /usr/lib</kbd>
                 </td>
                 <td>
                   <p>
-                    将 terminfo 文件从源文件格式转换到二进制格式的 terminfo 条目描述编译器需要 ncurses 例程[terminfo 文件包含特定终端的功能信息]
+                    将 terminfo 文件从源文件格式转换到二进制格式的 terminfo 条目描述编译器需要 ncurses 例程 [terminfo 文件包含特定终端的功能信息]
                   </p>
                 </td>
               </tr>
@@ -346,7 +341,7 @@ cp -av lib/lib*.so.5* /usr/lib</kbd>
                 </td>
                 <td>
                   <p>
-                    列出所有可用的终端类型，给出每个的名称和描述
+                    列出所有可用的终端类型，给出每个主名称和描述
                   </p>
                 </td>
               </tr>
@@ -360,7 +355,7 @@ cp -av lib/lib*.so.5* /usr/lib</kbd>
                 </td>
                 <td>
                   <p>
-                    使终端相关的变量对 shell 可用；也可用来重置或初始化终端或者报告它的完整名称
+                    可以在 shell 中使用终端特定的功能值；也可用来重置或初始化终端或者报告它的完整名称
                   </p>
                 </td>
               </tr>
@@ -400,7 +395,7 @@ cp -av lib/lib*.so.5* /usr/lib</kbd>
                 </td>
                 <td>
                   <p>
-                    包含在一个终端屏幕以多种复制方式显示文本的函数；使用这些功能的一个好的例子是内核 <span class="command"><strong>make
+                    包含在一个终端屏幕以多种复杂方式显示文本的函数；使用这些功能的一个好的例子是内核 <span class="command"><strong>make
                     menuconfig</strong></span> 时的菜单显示
                   </p>
                 </td>
@@ -454,7 +449,7 @@ cp -av lib/lib*.so.5* /usr/lib</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
         </div>

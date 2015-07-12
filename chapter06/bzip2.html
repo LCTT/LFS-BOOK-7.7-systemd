@@ -79,7 +79,7 @@
 <kbd class="command">patch -Np1 -i ../bzip2-1.0.6-install_docs-1.patch</kbd>
 </pre>
         <p>
-            下面的命令确保安装的符号链接是相关联的：
+            下面的命令确保安装的符号链接是相对链接：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -129,7 +129,7 @@ make clean</kbd>
 <kbd class="command">make PREFIX=/usr install</kbd>
 </pre>
         <p>
-            安装共享 <span class=
+            安装使用动态链接库的 <span class=
           "command"><strong>bzip2</strong></span> 二进制文件到 <code class="filename">/bin</code> 目录，
             创建一些必须的符号链接并清理：
         </p>
@@ -149,18 +149,18 @@ ln -sv bzip2 /bin/bzcat</kbd>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">安装的程序:</strong>
+              <strong class="segtitle">安装的程序：</strong>
               <span class="segbody">bunzip2 (链接到 bzip2), bzcat (链接到
               bzip2), bzcmp (链接到 bzdiff), bzdiff, bzegrep (链接到
               bzgrep), bzfgrep (链接到 bzgrep), bzgrep, bzip2, bzip2recover,
               bzless (链接到 bzmore), 和 bzmore</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">安装的库:</strong>
+              <strong class="segtitle">安装的库：</strong>
               <span class="segbody">libbz2.{a,so}</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">安装目录:</strong>
+              <strong class="segtitle">安装目录：</strong>
               <span class="segbody">/usr/share/doc/bzip2-1.0.6</span>
             </div>
           </div>
@@ -283,10 +283,9 @@ ln -sv bzip2 /bin/bzcat</kbd>
                 </td>
                 <td>
                   <p>
-                    使用 Burrows-Wheeler 块哈夫曼编码排序文本压缩算法压缩文件；压缩率比传统的用<span class=
+                    使用哈夫曼编码的 Burrows-Wheeler 块排序文本压缩算法压缩文件；压缩率比传统的用 <span class=
                     "quote">&ldquo;<span class=
                     "quote">Lempel-Ziv</span>&rdquo;</span> 算法的压缩器要好，比如
-
                     <span class="command"><strong>gzip</strong></span>。
                   </p>
                 </td>
@@ -342,7 +341,7 @@ ln -sv bzip2 /bin/bzcat</kbd>
                 </td>
                 <td>
                   <p>
-                    用 Burrows-Wheeler 算法实现的少丢失块排序数据压缩库
+                    用 Burrows-Wheeler 算法实现的无损的块排序数据压缩库
                   </p>
                 </td>
               </tr>
@@ -356,7 +355,7 @@ ln -sv bzip2 /bin/bzcat</kbd>
         <div class="titlepage">
             <div class="author">
                 <span class="firstname">翻译团队：<a href="http://lctt.github.io/" target="_blank">LCTT</a></span>
-                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,</span>
+                <span class="surname">译者/校对：<a href="http://github.com/ictlyh" target="_blank">ictlyh</a>,<a href="http://github.com/wxy" target="_blank">wxy</a></span>
             </div>
         </div>
         </div>
