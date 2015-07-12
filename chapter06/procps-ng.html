@@ -92,7 +92,7 @@
             </dt>
             <dd>
               <p>
-                该选项取消编译已经由 Util-linux 软件包安装了的
+                该选项将不会编译已经由 Util-linux 软件包安装了的
                 <span class=
                 "command"><strong>kill</strong></span> 命令。
               </p>
@@ -106,8 +106,7 @@
 <kbd class="command">make</kbd>
 </pre>
         <p>
-            对于 LFS，测试套件需要自定义某些更改。移除当脚本不使用 tty 设备时失败的测试。
-            用下面的命令运行测试套件：
+            对于 LFS，测试套件需要自定义某些更改。移除当脚本不使用 tty 设备时失败的测试。用下面的命令运行测试套件：
         </p>
         <pre class="userinput">
 <kbd class=
@@ -121,8 +120,8 @@ make check</kbd>
 <kbd class="command">make install</kbd>
 </pre>
         <p>
-            最后，移动重要文件到如果 <code class="filename">/usr</code> 
-            没有挂载但仍可以找到的位置。
+            最后，移动重要文件到一个可以找到的位置，如果 <code class="filename">/usr</code> 
+            没有挂载的话。
         </p>
         <pre class="userinput">
 <kbd class="command">mv -v /usr/bin/pidof /bin
@@ -201,7 +200,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    报告指定程序的 PIDs
+                    报告指定程序的 PID
                   </p>
                 </td>
               </tr>
@@ -215,7 +214,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    根据名称和其它属性处理信号
+                    根据名称和其它属性给进程发送信号
                   </p>
                 </td>
               </tr>
@@ -229,7 +228,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    报告指定进程的内存映射
+                    报告指定进程的内存映射情况
                   </p>
                 </td>
               </tr>
@@ -311,7 +310,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    显示最 CPU 密集型进程列表；它可以实时连续查看处理器活动
+                    显示最 CPU 密集型进程列表；它可以实时地连续查看处理器活动
                   </p>
                 </td>
               </tr>
@@ -325,7 +324,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    报告系统运行时间、登录用户数目以及系统平均负荷
+                    报告系统运行时长、登录用户数目以及系统平均负荷
                   </p>
                 </td>
               </tr>
@@ -339,8 +338,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    报告虚拟内存统计信息、给出关于进程、内存、分页、块输入/输出（IO）、
-                    陷阱以及 CPU 活动的信息
+                    报告虚拟内存统计信息、给出关于进程、内存、分页、块输入/输出(IO)、陷阱以及 CPU 活动的信息
                   </p>
                 </td>
               </tr>
@@ -353,7 +351,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    显示当前登录的用户、以及登录时间和地点
+                    显示当前登录的用户、以及登录地点和时间
                   </p>
                 </td>
               </tr>
@@ -367,7 +365,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) /usr/lib/libprocps.so</kbd>
                 </td>
                 <td>
                   <p>
-                    重复运行指定命令，显示输出的第一全屏；这允许用户查看随着时间的输出变化
+                    重复运行指定命令，显示输出的第一个整屏；这允许用户查看随着时间的输出变化
                   </p>
                 </td>
               </tr>

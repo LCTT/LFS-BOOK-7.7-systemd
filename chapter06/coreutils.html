@@ -72,7 +72,7 @@
           6.29.1. 安装 Coreutils
         </h2>
         <p>
-            POSIX 要求 Coreutils 中的程序即使在多字节地区也能正确识别字符边界。下面的补丁修复这个不兼容性以及其它一些和国际化相关的 bug。之后确保
+            POSIX 要求 Coreutils 中的程序即使在多字节语言环境也能正确识别字符边界。下面的补丁修复这个不兼容性以及其它一些和国际化相关的 错误。之后确保
             <code class=
           "filename">Makefile.in</code> 文件的时间戳比其它所有文件都晚以免出现
           <span class="command"><strong>make</strong></span> 错误：
@@ -87,8 +87,7 @@ touch Makefile.in</kbd>
             注意
           </h3>
           <p>
-            之前在这个补丁中发现了很多 bug。当向 Coreutils 维护者报告新 bug
-            的时候，请先检查没有该补丁是否可以重现 bug。
+            之前在这个补丁中发现了很多错误。当向 Coreutils 维护者报告新错误的时候，请先检查没有该补丁是否可以重现该错误。
           </p>
         </div>
         <p>
@@ -156,15 +155,14 @@ touch Makefile.in</kbd>
 </pre>
         <p>
             现在运行测试。确保 <strong class=
-          "userinput"><code>su</code></strong> 环境中的 PATH
-            包含了/tools/bin。
+          "userinput"><code>su</code></strong> 环境中的 PATH 环境变量包含了 /tools/bin。
         </p>
         <pre class="userinput">
 <kbd class="command">su nobody -s /bin/bash \
           -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check"</kbd>
 </pre>
         <p>
-            在虚拟主机中 stty-pairs 测试很可能失败，而在 X 终端中则能通过。
+            已知在虚拟主控台中 stty-pairs 测试会失败，而在 X 终端中则能通过。
         </p>
         <p>
             移除临时组：
@@ -191,7 +189,7 @@ mv -v /usr/share/man/man1/chroot.1 /usr/share/man/man8/chroot.8
 sed -i s/\"1\"/\"8\"/1 /usr/share/man/man8/chroot.8</kbd>
 </pre>
         <p>
-            BLFS 以及上游中的一些软件包希望下面的程序在 <code class="filename">/bin</code>
+            BLFS 以及上游中的一些软件包希望如下的程序放在 <code class="filename">/bin</code>
             中，确保把它们放到了那里：
         </p>
         <pre class="userinput">
@@ -249,7 +247,7 @@ sed -i s/\"1\"/\"8\"/1 /usr/share/man/man8/chroot.8</kbd>
                 </td>
                 <td>
                   <p>
-                    根据 base64（RFC3548） 规范编码界解码数据
+                    根据 base64（RFC3548）规范编码和解码数据
                   </p>
                 </td>
               </tr>
@@ -276,7 +274,7 @@ sed -i s/\"1\"/\"8\"/1 /usr/share/man/man8/chroot.8</kbd>
                 </td>
                 <td>
                   <p>
-                    输出文件到标准输出
+                    将文件连接到标准输出
                   </p>
                 </td>
               </tr>
