@@ -71,7 +71,7 @@
         </h2>
         <p>
             首先创建文件使得当使用第五章中编译的
-            Util-Linux 以及停用默认的 LTO 时能顺利编译 systemd：
+            Util-Linux 以及停用默认的 LTO（链接时优化） 时能顺利编译 systemd：
         </p>
         <pre class="userinput">
 <kbd class="command">cat &gt; config.cache &lt;&lt; "EOF"
@@ -96,7 +96,7 @@ EOF</kbd>
             另外，修复一个使用第五章中编译的 Util-Linux 时的编译错误：
         </p>
         <pre class="userinput">
-<kbd class="command">sed -i "s:blkid/::" $(grep -rl "blkid/blkid.h")</kbd>
+<kbd class="command">sed -i "s:blkid/::" $（grep -rl "blkid/blkid.h"）</kbd>
 </pre>
         <p>
             应用下面的补丁使得安装 compat
@@ -198,7 +198,7 @@ EOF</kbd>
                 该选项防止安装启动时会运行
                 <span class="command"><strong>ldconfig</strong></span>
                 而导致启动时间过长的 systemd 单元。尽管对于类似 LFS
-                之类的源发行版并无用处，如果需要改功能的话可以移除这个选项。
+                之类的源发行版并无用处，如果需要该功能的话可以移除这个选项。
               </p>
             </dd>
             <dt>
@@ -280,8 +280,8 @@ sed -i "/pam.d/d" /usr/lib/tmpfiles.d/etc.conf</kbd>
 <kbd class="command">systemd-machine-id-setup</kbd>
 </pre>
         <p>
-            由于测试套件高度依赖于宿主系统的内核配置，一些测试很可能失败。另外还需要
-            做些更改使得不会查找本章后面 Util-Linux 软件包安装的一个程序。用以下命令测试结果：
+            由于测试套件高度依赖于宿主系统的内核配置，一些测试很可能失败。另外还需要做些更改使得不会查找本章后面
+            Util-Linux 软件包安装的一个程序。用以下命令测试结果：
         </p>
         <pre class="userinput">
 <kbd class="command">sed -i "s:minix:ext4:g" src/test/test-path-util.c
@@ -453,7 +453,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    用于向/从 /boot 中添加或移除 内核以及 initramfs 镜像
+                    用于向 / 从 /boot 中添加或移除内核以及 initramfs 镜像
                   </p>
                 </td>
               </tr>
@@ -524,8 +524,8 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 <td>
                   <p>
                     告诉内核暂停系统并关闭计算机
-                    (查看 <span class=
-                    "command"><strong>halt</strong></span>)
+                    （查看 <span class=
+                    "command"><strong>halt</strong></span>）
                   </p>
                 </td>
               </tr>
@@ -540,8 +540,8 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 <td>
                   <p>
                     告诉内核重启系统
-                    (查看 <span class=
-                    "command"><strong>halt</strong></span>)
+                    （查看 <span class=
+                    "command"><strong>halt</strong></span>）
                   </p>
                 </td>
               </tr>
@@ -712,7 +712,7 @@ make LD_LIBRARY_PATH=/tools/lib -k check</kbd>
                 </td>
                 <td>
                   <p>
-                    用户管理硬件数据库(hwdb)
+                    用户管理硬件数据库（hwdb）
                   </p>
                 </td>
               </tr>
