@@ -50,16 +50,16 @@
       </h1>
       <div class="package" lang="en" xml:lang="en">
         <p>
-          Vim 安装包包含了一个强大的文本编辑器。
+          Vim 软件包包含了一个强大的文本编辑器。
         </p>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">近似构建时间：</strong>
+              <strong class="segtitle">大概构建时间：</strong>
               <span class="segbody">1.0 SBU</span>
             </div>
             <div class="seg">
-              <strong class="segtitle">所需磁盘空间：</strong>
+              <strong class="segtitle">需要磁盘空间：</strong>
               <span class="segbody">139 MB</span>
             </div>
           </div>
@@ -70,7 +70,7 @@
             Vim 的替代品
           </h3>
           <p>
-            如果你钟情于其他的编辑器 &mdash;比如 Emacs、 Joe、 或
+            如果你钟情于其它的编辑器 &mdash;比如 Emacs、Joe， 或
             Nano&mdash;请参考 <a class="ulink" href=
             "http://www.linuxfromscratch.org/blfs/view/systemd/postlfs/editors.html">
             http://www.linuxfromscratch.org/blfs/view/systemd/postlfs/editors.html</a>
@@ -110,8 +110,7 @@
 <kbd class="command">make -j1 test</kbd>
 </pre>
         <p>
-          然而，这个测试会输出一堆二进制数据到屏幕上，这会导致当前设置下的终端出现问题。
-          把输出重定向到一个日志文件就可以解决这个问题。测试成功的话就会输出“ALL DONE”。
+          然而，这个测试会输出一堆二进制数据到屏幕上，这会导致当前设置下的终端出现问题。把输出重定向到一个日志文件就可以解决这个问题。测试成功的话就会输出 “ALL DONE”。
         </p>
         <p>
           安装软件包:
@@ -135,9 +134,9 @@ done</kbd>
 </pre>
         <p>
           默认情况下，Vim 的说明文档被安装在 <code class=
-          "filename">/usr/share/vim</code>里。 下面的这个符号链接让文件可以通过
-          <code class="filename">/usr/share/doc/vim-7.4</code>被访问，
-          让它的位置与其他软件包的文档位置保持一致：
+          "filename">/usr/share/vim</code> 里。 下面的这个符号链接使得可以通过
+          <code class="filename">/usr/share/doc/vim-7.4</code>
+          访问该文档，让它的位置与其它软件包的文档位置保持一致：
         </p>
         <pre class="userinput">
 <kbd class="command">ln -sv ../vim/vim74/doc /usr/share/doc/vim-7.4</kbd>
@@ -145,7 +144,7 @@ done</kbd>
         <p>
           如果要把一个 X Window 系统安装在 LFS 系统上，可能得在安装完 X 系统后再重新编译
            Vim。Vim 带有一个 GUI 版本，这个版本需要安装 X 和一些额外的库。
-          想了解更多信息，请参考 Vim 文档和BLFS（<a class="ulink" href=
+          想了解更多信息，请参考 Vim 文档和 BLFS（<a class="ulink" href=
           "http://www.linuxfromscratch.org/blfs/view/systemd/postlfs/vim.html">
           http://www.linuxfromscratch.org/blfs/view/systemd/postlfs/vim.html</a>）
           中 Vim 安装指导页。
@@ -156,15 +155,14 @@ done</kbd>
           <a id="conf-vim" name="conf-vim"></a>6.69.2. 设置 Vim
         </h2>
         <p>
-          默认情况下，<span class="command"><strong>vim</strong></span> 是以不
-          兼容 vi 的模式运行的。这对于过去使用其他编辑器的用户可能是个新问题。下面列出了
+          默认情况下，<span class="command"><strong>vim</strong></span>
+          是以不兼容 vi 的模式运行的。这对于过去使用其它编辑器的用户可能是个新问题。下面列出了
           <span class="quote">&ldquo;<span class=
-          "quote">非兼容性</span>&rdquo;</span>设置以突出显示使用的新特性。
-          它也提醒着那些想换成<span class=
+          "quote">非兼容性</span>&rdquo;</span>设置以突出显示使用的新特性。它也提醒着那些想换成
+          <span class=
           "quote">&ldquo;<span class="quote">兼容</span>&rdquo;</span>
-          模式的人，这是配置文件里第一个该被设置的地方。
-          这非常有必要，因为它会改变其他的设置，而且覆写必须在这个设置之后。以下面的方式，
-          创建一个默认的 <span class="command"><strong>vim</strong></span> 配置文件：
+          模式的人，这是配置文件里第一个该被设置的地方。这非常有必要，因为它会改变其它的设置，而且覆写必须在这个设置之后。以下面的方式，创建一个默认的
+          <span class="command"><strong>vim</strong></span> 配置文件：
         </p>
         <pre class="userinput">
 <kbd class="command">cat &gt; /etc/vimrc &lt;&lt; "EOF"
@@ -183,19 +181,19 @@ EOF</kbd>
         <p>
           <em class="parameter"><code>set nocompatible</code></em>
           设置让 <span class="command"><strong>vim</strong></span>
-           比 vi 兼容模式更有用。删掉<span class="quote">&ldquo;<span class=
-          "quote">no</span>&rdquo;</span>以保留旧的 <span class=
+           比 vi 兼容模式更有用。删掉 <span class="quote">&ldquo;<span class=
+          "quote">no</span>&rdquo;</span> 以保留旧的 <span class=
           "command"><strong>vi</strong></span> 特性。<em class=
-          "parameter"><code>set backspace=2</code></em> 设置让退格跨越换行、
-          自动缩进和插入的开始。<em class="parameter"><code>syntax on</code></em> 
+          "parameter"><code>set backspace=2</code></em>
+            设置让退格跨越换行、自动缩进和插入的开始。<em class="parameter"><code>syntax on</code></em> 
           参数使 vim 能高亮显示语法。最后，带有 <em class=
           "parameter"><code>set background=dark</code></em> 的 <span class=
           "emphasis"><em>if</em></span> 语句矫正了 
-          <span class="command"><strong>vim</strong></span> 对于某些终端模拟器的背景颜色的估算。
-          这让某些写在黑色背景上的程序的高亮色能有更好的调色方案。
+          <span class="command"><strong>vim</strong></span>
+          对于某些终端模拟器的背景颜色的估算。这让某些写在黑色背景上的程序的高亮色能有更好的调色方案。
         </p>
         <p>
-          用下面的命令可以获得其他选项的文档：
+          用下面的命令可以获得其它选项的文档：
         </p>
         <pre class="userinput">
 <kbd class="command">vim -c ':options'</kbd>
@@ -210,9 +208,9 @@ EOF</kbd>
             请从 <a class="ulink" href=
             "ftp://ftp.vim.org/pub/vim/runtime/spell/">ftp://ftp.vim.org/pub/vim/runtime/spell/</a>
              下载你所用语言的
-             <code class="filename">*.spl</code> 文件，可下也可不下的 <code class="filename">*.sug</code> 文件
-             以及文字编码。并把它们保存到 <code class=
-            "filename">/usr/share/vim/vim74/spell/</code>.
+             <code class="filename">*.spl</code> 文件，可下也可不下的 <code class="filename">*.sug</code>
+             文件以及文字编码。并把它们保存到 <code class=
+            "filename">/usr/share/vim/vim74/spell/</code>。
           </p>
           <p>
             要使用这些文件，需要设置 <code class=
@@ -234,10 +232,10 @@ set spell</code>
         <div class="segmentedlist">
           <div class="seglistitem">
             <div class="seg">
-              <strong class="segtitle">已安装软件：</strong>
+              <strong class="segtitle">安装的软件：</strong>
               <span class="segbody">ex （链接到 vim），rview （链接到 vim），
               rvim （链接到 vim），vi （链接到 vim），view （链接到 vim），vim，
-              vimdiff （链接到 vim），vimtutor，还有 xxd</span>
+              vimdiff （链接到 vim），vimtutor，和 xxd</span>
             </div>
             <div class="seg">
               <strong class="segtitle">安装目录：</strong>
@@ -247,7 +245,7 @@ set spell</code>
         </div>
         <div class="variablelist">
           <h3>
-            简短描述
+            简要介绍
           </h3>
           <table border="0" class="variablelist">
             <colgroup>
@@ -278,8 +276,8 @@ set spell</code>
                 </td>
                 <td>
                   <p>
-                    是 <span class="command"><strong>view</strong></span> 的一个受限版本；
-                    不能启动 shell 命令，而且 <span class=
+                    是 <span class="command"><strong>view</strong></span> 的一个受限版本；不能启动
+                    shell 命令，而且 <span class=
                     "command"><strong>view</strong></span> 无法暂停
                   </p>
                 </td>
@@ -294,8 +292,8 @@ set spell</code>
                 </td>
                 <td>
                   <p>
-                    是 <span class="command"><strong>vim</strong></span> 的一个受限版本；
-                    不能启动 shell 命令，而且 <span class=
+                    是 <span class="command"><strong>vim</strong></span> 的一个受限版本；不能启动
+                    shell 命令，而且 <span class=
                     "command"><strong>vim</strong></span> 无法暂停
                   </p>
                 </td>
