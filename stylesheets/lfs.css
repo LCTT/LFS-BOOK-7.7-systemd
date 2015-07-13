@@ -612,34 +612,44 @@ p.updated {
   color: #8E6B23
 }
 
+/* add by lctt */
+
 li.sect1 a,li.appendix a {
   color: red !important;
 }
 li.translated a,li.translated a{
   color: green !important;
 }
-
-code,.command {
-  background-color: #333;
+.variablelist table {
+  border-collapse: collapse;
+}
+code,span.command {
+  background-color: #555;
   border-radius: 4px;
   color: #FFF;
   padding: 2px 4px;
 }
-
-pre.userinput {
+code.filename {
+  color: #DDD;
+}
+pre.userinput,pre.screen {
   width: 90%;
   margin: 1em auto;
   padding: 1em;
   white-space: pre-wrap;
-  background-color: #333;
+  background-color: #555;
   color: #FFF;
   border: 2px solid #0AF;
   border-radius: 8px;
 }
 
+pre.screen {
+  background-color: #555;
+  border-color: #ccc;
+}
 pre code {
   border: none !important;
-  background-color: #333 !important;
+  background-color: rgba(0,0,0,0) !important;
   padding: 0 !important;
   border-radius: 0 !important;
   margin: 1em 0 !important;
