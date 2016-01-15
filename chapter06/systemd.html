@@ -96,7 +96,7 @@ EOF</kbd>
             另外，修复一个使用第五章中编译的 Util-Linux 时的编译错误：
         </p>
         <pre class="userinput">
-<kbd class="command">sed -i "s:blkid/::" $（grep -rl "blkid/blkid.h"）</kbd>
+<kbd class="command">sed -i "s:blkid/::" $(grep -rl "blkid/blkid.h")</kbd>
 </pre>
         <p>
             应用下面的补丁使得安装 compat
