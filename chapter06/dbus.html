@@ -129,7 +129,7 @@
         </p>
         <pre class="userinput">
 <kbd class="command">mv -v /usr/lib/libdbus-1.so.* /lib
-ln -sfv ../../lib/$（readlink /usr/lib/libdbus-1.so） /usr/lib/libdbus-1.so</kbd>
+ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) /usr/lib/libdbus-1.so</kbd>
 </pre>
         <p>
             创建符号链接，使得 D-Bus 和 systemd 可以使用相同的
